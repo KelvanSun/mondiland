@@ -54,6 +54,7 @@
     <Compile Include="DAL_SizeClass.cs" />
     <Compile Include="DAL_SizeData.cs" />
     <Compile Include="DAL_StandardData.cs" />
+    <Compile Include="DAL_UserName.cs" />
     <Compile Include="DAL_WashPrintTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartDataReader.cs" />
