@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menu_base = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_base_safe = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,14 +95,14 @@
             // menu_product_add
             // 
             this.menu_product_add.Name = "menu_product_add";
-            this.menu_product_add.Size = new System.Drawing.Size(152, 22);
+            this.menu_product_add.Size = new System.Drawing.Size(148, 22);
             this.menu_product_add.Text = "产品信息管理";
             this.menu_product_add.Click += new System.EventHandler(this.menu_product_add_Click);
             // 
             // menu_print
             // 
             this.menu_print.Name = "menu_print";
-            this.menu_print.Size = new System.Drawing.Size(152, 22);
+            this.menu_print.Size = new System.Drawing.Size(148, 22);
             this.menu_print.Text = "产品标签打印";
             this.menu_print.Click += new System.EventHandler(this.menu_print_Click);
             // 
@@ -111,6 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 346);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
