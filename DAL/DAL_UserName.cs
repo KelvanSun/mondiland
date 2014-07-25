@@ -12,7 +12,7 @@ using Mondiland.Global;
 
 namespace Mondiland.DAL
 {
-    public class DAL_UserName:BaseDal<Table_UserName_Entity>
+    public class DAL_UserName:BaseDal<Table_UserName_Entity>,ITable_UserName
     {
          public static DAL_UserName Instance
 		{

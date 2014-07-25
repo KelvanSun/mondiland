@@ -54,6 +54,7 @@
     <Compile Include="Table_SizeClass_Entity.cs" />
     <Compile Include="Table_SizeData_Entity.cs" />
     <Compile Include="Table_StardardData_Entity.cs" />
+    <Compile Include="Table_UserMenu_Entity.cs" />
     <Compile Include="Table_UserName_Entity.cs" />
     <Compile Include="Table_WashPrintTemplate_Entity.cs" />
   </ItemGroup>
