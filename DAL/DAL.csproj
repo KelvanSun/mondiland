@@ -46,6 +46,7 @@
     <Compile Include="DAL_MadePlace.cs" />
     <Compile Include="DAL_MaterialData.cs" />
     <Compile Include="DAL_MaterialFill.cs" />
+    <Compile Include="DAL_MenuInfo.cs" />
     <Compile Include="DAL_PartName.cs" />
     <Compile Include="DAL_ProductData.cs" />
     <Compile Include="DAL_TagPrintTemplate.cs" />
