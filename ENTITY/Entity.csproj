@@ -46,6 +46,7 @@
     <Compile Include="Table_MadePlace_Entity.cs" />
     <Compile Include="Table_MaterialData_Entity.cs" />
     <Compile Include="Table_MaterialFill_Entity.cs" />
+    <Compile Include="Table_MenuInfo_Entity.cs" />
     <Compile Include="Table_PartName_Entity.cs" />
     <Compile Include="Table_ProductData_Entity.cs" />
     <Compile Include="Table_TagPrintTemplate_Entity.cs" />
