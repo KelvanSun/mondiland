@@ -38,7 +38,7 @@ namespace Mondiland.DAL
             entity.Id = reader.GetInt32("id");
             entity.Type = reader.GetString("type");
             entity.Memo = reader.GetString("memo");
-            entity.LastTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetLong("lastamp");
             
 
             return entity;
@@ -58,7 +58,7 @@ namespace Mondiland.DAL
             hash.Add("id", info.Id);
             hash.Add("type", info.Type);
             hash.Add("memo", info.Memo);
-            hash.Add("lasttamp", info.LastTamp);
+            hash.Add("lasttamp", info.LasTamp);
 
             return hash;
         }

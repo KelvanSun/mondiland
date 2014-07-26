@@ -12,7 +12,7 @@ namespace Mondiland.Entity
         private string m_memo = string.Empty;
         private long m_lastamp = 0;
 
-        public long LastTamp
+        public long LasTamp
         {
             get { return m_lastamp; }
             set { m_lastamp = value; }

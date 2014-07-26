@@ -12,7 +12,13 @@ namespace Mondiland.Entity
         private string m_barcode = string.Empty;
         private int m_size_class_id = 0;
         private string m_memo = string.Empty;
+        private long m_lastamp = 0;
 
+        public long LasTamp
+        {
+            get { return m_lastamp; }
+            set { m_lastamp = value; }
+        }
         public int Id
         {
             get { return m_id; }

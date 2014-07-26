@@ -10,6 +10,14 @@ namespace Mondiland.Entity
         private int m_id = 0;
         private int m_user_id = 0;
         private int m_menu_id = 0;
+        private long m_lastamp = 0;
+
+        public long LasTamp
+        {
+            get { return m_lastamp; }
+            set { m_lastamp = value; }
+        }
+
 
         public int Id
         {

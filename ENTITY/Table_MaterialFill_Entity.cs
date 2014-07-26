@@ -12,7 +12,13 @@ namespace Mondiland.Entity
         private string m_size_name = string.Empty;
         private string m_type = string.Empty;
         private string m_fill = string.Empty;
+        private long m_lastamp = 0;
 
+        public long LasTamp
+        {
+            get { return m_lastamp; }
+            set { m_lastamp = value; }
+        }
         public int Product_Id
         {
             get { return m_product_id; }

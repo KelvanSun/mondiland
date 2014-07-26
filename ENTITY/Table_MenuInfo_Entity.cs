@@ -12,6 +12,13 @@ namespace Mondiland.Entity
         private int m_menu_bmp = 0;
         private string m_menu_window = string.Empty;
         private string m_menu_memo = string.Empty;
+        private long m_lastamp = 0;
+
+        public long LasTamp
+        {
+            get { return m_lastamp; }
+            set { m_lastamp = value; }
+        }
 
         public string MenuMemo
         {

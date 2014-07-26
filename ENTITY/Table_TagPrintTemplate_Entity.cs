@@ -11,6 +11,13 @@ namespace Mondiland.Entity
         private string m_type = string.Empty;
         private string m_file_name = string.Empty;
         private string m_memo = string.Empty;
+        private long m_lastamp = 0;
+
+        public long LasTamp
+        {
+            get { return m_lastamp; }
+            set { m_lastamp = value; }
+        }
 
         public int Id
         {

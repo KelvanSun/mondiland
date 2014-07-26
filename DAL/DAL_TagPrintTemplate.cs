@@ -39,6 +39,8 @@ namespace Mondiland.DAL
             entity.Type = reader.GetString("type");
             entity.File_Name = reader.GetString("file_name");
             entity.Memo = reader.GetString("memo");
+            entity.LasTamp = reader.GetLong("lastamp");
+
 
             return entity;
         }
@@ -58,6 +60,7 @@ namespace Mondiland.DAL
             hash.Add("type", info.Type);
             hash.Add("file_name", info.File_Name);
             hash.Add("memo", info.Memo);
+            hash.Add("lastamp", info.LasTamp);
 
             return hash;
         }
