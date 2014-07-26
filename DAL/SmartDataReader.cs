@@ -25,6 +25,11 @@ namespace Mondiland.DAL
             short data = (reader.IsDBNull(reader.GetOrdinal(column))) ? (short)0 : short.Parse(reader[column].ToString());
             return data;
         }
+        public long GetLong(String column)
+        {
+            long data = (reader.IsDBNull(reader.GetOrdinal(column))) ? (long)0 : long.Parse(reader[column].ToString());
+            return data;
+        }
 
         public float GetFloat(String column)
         {
