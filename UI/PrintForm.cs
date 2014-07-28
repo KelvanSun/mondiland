@@ -10,6 +10,7 @@ using System.Configuration;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
+using Mondiland.Global;
 
 using Seagull.BarTender.Print;
 
@@ -38,7 +39,7 @@ namespace Mondiland.UI
 
             if (m_product_id == 0) //没有找到记录
             {
-                MessageBox.Show("货号对应的产品没有找到");
+                MessageUtil.ShowTips("货号对应的产品没有找到");
 
 
                 ProductAddEditForm form = new ProductAddEditForm();
@@ -77,19 +78,19 @@ namespace Mondiland.UI
         {
             if (txb_huohao.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("请输入货号");
+                MessageUtil.ShowTips("请输入货号");
                 return;
             }
 
             if(m_product_id == 0)
             {
-                MessageBox.Show("请重新输入货号");
+                MessageUtil.ShowTips("请重新输入货号");
                 return;
             }
 
             if (cbx_select.Text == string.Empty)
             {
-                MessageBox.Show("请选择打印的尺寸");
+                MessageUtil.ShowTips("请选择打印的尺寸");
                 return;
             }
 
@@ -97,7 +98,7 @@ namespace Mondiland.UI
             {
                 if (txb_price.Text == "0.00")
                 {
-                    MessageBox.Show("产品价格不能为0,请输入价格，按回车保存价格!");
+                    MessageUtil.ShowTips("产品价格不能为0,请输入价格，按回车保存价格!");
                     txb_price.ReadOnly = false;
                     txb_price.Focus();
                     bt_print.Enabled = false;
@@ -201,7 +202,7 @@ namespace Mondiland.UI
             {
                 if (txb_price.ReadOnly == false)
                 {
-                    if(MessageBox.Show("是否保存价格","提示",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    if (MessageUtil.ShowYesNoAndTips("是否保存价格") == System.Windows.Forms.DialogResult.Yes)
                         BLLFactory<BLLProductPrint>.Instance.UpdatePrice(m_product_id, Convert.ToDecimal(txb_price.Text));
                     txb_price.ReadOnly = true;
                     bt_print.Enabled = true;

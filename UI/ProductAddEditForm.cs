@@ -197,8 +197,7 @@ namespace Mondiland.UI
             {
                 if(this.m_iSaved == false)
                 {
-                    if(MessageBox.Show("数据未保存,是否先保存数据?","提示",
-                        MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Cancel)
+                    if(MessageUtil.ShowYesNoAndTips("数据未保存,是否先保存数据?") == System.Windows.Forms.DialogResult.No)
                     {
                         this.ClearData();
                         this.m_mode = Mode.Add;
@@ -230,49 +229,49 @@ namespace Mondiland.UI
         {
             if (cbx_partname.Text == string.Empty)
             {
-                MessageBox.Show("请选择[产品种类]信息");
+                MessageUtil.ShowTips("请选择[产品种类]信息");
                 cbx_partname.Focus();
                 return;
             }
 
             if (cbx_dengji.Text == string.Empty)
             {
-                MessageBox.Show("请选择[产品等级]信息");
+                MessageUtil.ShowTips("请选择[产品等级]信息");
                 cbx_dengji.Focus();
                 return;
             }
 
             if (cbx_madeplace.Text == string.Empty)
             {
-                MessageBox.Show("请输入[产品产地]信息");
+                MessageUtil.ShowTips("请输入[产品产地]信息");
                 cbx_madeplace.Focus();
                 return;
             }
 
             if (cbx_safedata.Text == string.Empty)
             {
-                MessageBox.Show("请输入[安全类别]信息");
+                MessageUtil.ShowTips("请输入[安全类别]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
             if (cbx_standard.Text == string.Empty)
             {
-                MessageBox.Show("请输入[执行标准]信息");
+                MessageUtil.ShowTips("请输入[执行标准]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
             if (cbx_wash.Text == string.Empty)
             {
-                MessageBox.Show("请选择[洗唛模板]");
+                MessageUtil.ShowTips("请选择[洗唛模板]");
                 cbx_wash.Focus();
                 return;
             }
 
             if (bindingSource_material.Count == 0)
             {
-                MessageBox.Show("[产品成份明细]不能为空!");
+                MessageUtil.ShowTips("[产品成份明细]不能为空!");
                 return;
             }
 
@@ -281,7 +280,7 @@ namespace Mondiland.UI
             {
                 if (txb_fill.Text == string.Empty)
                 {
-                    MessageBox.Show("请输入[填充成份内容]");
+                    MessageUtil.ShowTips("请输入[填充成份内容]");
                     return;
                 }
             }
@@ -324,7 +323,7 @@ namespace Mondiland.UI
                     BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(product_id, str, index);
                 }
 
-                MessageBox.Show("保存成功");
+                MessageUtil.ShowTips("保存成功");
 
                 ClearData();
                 m_iSaved = true;
@@ -334,7 +333,7 @@ namespace Mondiland.UI
             }
             else
             {
-                MessageBox.Show("保存失败");
+                MessageUtil.ShowTips("保存失败");
             }
 
            
@@ -345,21 +344,21 @@ namespace Mondiland.UI
                        
             if (cbx_partname.Text == string.Empty)
             {
-                MessageBox.Show("请选择[产品种类]信息");
+                MessageUtil.ShowTips("请选择[产品种类]信息");
                 cbx_partname.Focus();
                 return;
             }
 
             if (cbx_dengji.Text == string.Empty)
             {
-                MessageBox.Show("请选择[产品等级]信息");
+                MessageUtil.ShowTips("请选择[产品等级]信息");
                 cbx_dengji.Focus();
                 return;
             }
 
             if (txb_huohao.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("请输入[产品货号]信息");
+                MessageUtil.ShowTips("请输入[产品货号]信息");
                 txb_huohao.Focus();
                 return;
             }
@@ -373,42 +372,42 @@ namespace Mondiland.UI
 
             if (cbx_madeplace.Text == string.Empty)
             {
-                MessageBox.Show("请输入[产品产地]信息");
+                MessageUtil.ShowTips("请输入[产品产地]信息");
                 cbx_madeplace.Focus();
                 return;
             }
 
             if (cbx_safedata.Text == string.Empty)
             {
-                MessageBox.Show("请输入[安全类别]信息");
+                MessageUtil.ShowTips("请输入[安全类别]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
             if (cbx_standard.Text == string.Empty)
             {
-                MessageBox.Show("请输入[执行标准]信息");
+                MessageUtil.ShowTips("请输入[执行标准]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
             if (cbx_wash.Text == string.Empty)
             {
-                MessageBox.Show("请选择[洗唛模板]");
+                MessageUtil.ShowTips("请选择[洗唛模板]");
                 cbx_wash.Focus();
                 return;
             }
 
             if (bindingSource_material.Count == 0)
             {
-                MessageBox.Show("[产品成份明细]不能为空!");
+                MessageUtil.ShowTips("[产品成份明细]不能为空!");
                 return;
             }
 
 
             if (BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(txb_huohao.Text))
             {
-                MessageBox.Show("记录已存在无法保存");
+                MessageUtil.ShowTips("记录已存在无法保存");
                 return;
             }
 
@@ -416,7 +415,7 @@ namespace Mondiland.UI
             {
                 if (txb_fill.Text == string.Empty)
                 {
-                    MessageBox.Show("请输入[填充成份内容]");
+                    MessageUtil.ShowTips("请输入[填充成份内容]");
                     return;
                 }
             }
@@ -467,7 +466,7 @@ namespace Mondiland.UI
                     }
                 }
 
-                MessageBox.Show("保存成功");
+                MessageUtil.ShowTips("保存成功");
 
                 ClearData();
                 m_iSaved = true;
@@ -475,7 +474,7 @@ namespace Mondiland.UI
             }
             else
             {
-                MessageBox.Show("当前编辑的数据可能已被修改,无法保存!");
+                MessageUtil.ShowTips("当前编辑的数据可能已被修改,无法保存!");
             }
         }
         /// <summary>
@@ -515,8 +514,7 @@ namespace Mondiland.UI
             {
                 if (this.m_iSaved == false)
                 {
-                    if (MessageBox.Show("数据未保存,是否先保存数据?", "提示",
-                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Cancel)
+                    if (MessageUtil.ShowYesNoAndTips("数据未保存,是否先保存数据?") == System.Windows.Forms.DialogResult.No)
                     {
                         e.Cancel = false;
                     }
@@ -541,7 +539,7 @@ namespace Mondiland.UI
 
                 if (BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(txb_huohao.Text))
                 {
-                    MessageBox.Show("找到存在的记录,自动进入编辑模式!");
+                    MessageUtil.ShowTips("找到存在的记录,自动进入编辑模式!");
                     //找到记录，自动转到编辑模式！
                     m_mode = Mode.Edit;
                     txb_huohao.ReadOnly = true;

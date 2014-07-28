@@ -40,6 +40,9 @@
   <ItemGroup>
     <Compile Include="BaseBLL.cs" />
     <Compile Include="BLLFactory.cs" />
+    <Compile Include="BLLLogin.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BLLMadePlace.cs" />
     <Compile Include="BLLProductInfo.cs" />
     <Compile Include="BLLProductPrint.cs" />

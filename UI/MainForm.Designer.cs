@@ -38,7 +38,11 @@
             this.menu_product_add = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_print = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.username = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupname = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -106,21 +110,48 @@
             this.menu_print.Text = "产品标签打印";
             this.menu_print.Click += new System.EventHandler(this.menu_print_Click);
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.username,
+            this.groupname});
+            this.statusStrip.Location = new System.Drawing.Point(0, 324);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(650, 22);
+            this.statusStrip.TabIndex = 3;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // username
+            // 
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(44, 17);
+            this.username.Text = "用户名";
+            // 
+            // groupname
+            // 
+            this.groupname.Name = "groupname";
+            this.groupname.Size = new System.Drawing.Size(560, 17);
+            this.groupname.Spring = true;
+            this.groupname.Text = "用户组";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 346);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
-            this.Text = "产品标签打印管理系统";
+            this.Text = "宁波麦迪茉莱登商品管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,5 +168,8 @@
         private System.Windows.Forms.ToolStripMenuItem menu_product_add;
         private System.Windows.Forms.ToolStripMenuItem menu_print;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel username;
+        private System.Windows.Forms.ToolStripStatusLabel groupname;
     }
 }

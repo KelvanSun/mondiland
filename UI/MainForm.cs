@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Mondiland.BLL;
+
 namespace Mondiland.UI
 {
     public partial class MainForm : Form
     {
+        private int m_user_id = 0;
+
         public MainForm()
         {
             InitializeComponent();
-
+        }
+        /// <summary>
+        /// 登陆成功后获得ID
+        /// </summary>
+        /// <param name="id"></param>
+        public void SetUserId(int id)
+        {
+            m_user_id = id;
         }
 
         private void menu_base_safe_Click(object sender, EventArgs e)
@@ -50,21 +61,21 @@ namespace Mondiland.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //if(ConfigurationManager.AppSettings["Template"] == string.Empty)
-            //{
-            //    if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //        AppSettingsSection app = config.AppSettings;
-            //        app.Settings["Template"].Value = folderBrowserDialog.SelectedPath;
-            //        config.Save();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("打印模板文件目录必需选择!");
-            //        Close();
-            //    }
-            //}
+            LoginForm form = new LoginForm(this);
+            this.Visible = false;
+            form.ShowDialog();
+            
+            if(m_user_id == 0)
+            {
+                Close();
+
+                return;
+            }
+
+            statusStrip.Items["username"].Text = string.Format("用户名:{0}", BLLFactory<BLLLogin>.Instance.GetUserName(m_user_id));
+            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", BLLFactory<BLLLogin>.Instance.GetGroupName(m_user_id));
+
+            this.Visible = true;
         }
 
     }

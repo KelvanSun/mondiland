@@ -22,7 +22,7 @@ namespace Mondiland.DAL
 			}
 		}
          public DAL_UserInfo()
-            : base("UserInfo", "id", string.Empty, OrderType.ASC)
+            : base("UserInfo", "id", "name", OrderType.ASC)
 		{ }
 
         /// <summary>
