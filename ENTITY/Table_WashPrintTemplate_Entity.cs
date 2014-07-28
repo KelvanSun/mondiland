@@ -12,12 +12,12 @@ namespace Mondiland.Entity
         private string m_file_name = string.Empty;
         private string m_memo = string.Empty;
         private string m_daxiao = string.Empty;
-        private long m_lastamp = 0;
+        private long m_lasLasTamp = 0;
 
         public long LasTamp
         {
-            get { return m_lastamp; }
-            set { m_lastamp = value; }
+            get { return m_lasLasTamp; }
+            set { m_lasLasTamp = value; }
         }
 
         public string DaXiao

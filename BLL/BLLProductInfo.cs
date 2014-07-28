@@ -88,6 +88,7 @@ namespace Mondiland.BLL
             info.Wash = GetWashType(entity.Wash_Id);
             info.Id = entity.Id;
             info.Pwash = entity.Pwash;
+            info.LasTamp = entity.LasTamp;
             
             return info;
             
@@ -240,22 +241,35 @@ namespace Mondiland.BLL
             return MaterialData_Dal.Delete(hash);
         }
 
-        public bool UpdateProductInfo(BEProductDataInfo info,int product_id)
+        public bool UpdateProductInfo(BEProductDataInfo info,int product_id,long LasTamp)
         {
-            Hashtable hash = new Hashtable();
-            hash.Add("partname_id", info.PartName_Id);
-            hash.Add("safedata_id", info.SafeData_Id);
-            hash.Add("standarddata_id", info.StandardData_Id);
-            hash.Add("price", info.Price);
-            hash.Add("madeplace_id", info.MadePlace_Id);
-            hash.Add("dengji_id", info.Dengji_Id);
-            hash.Add("tag_id", info.Tag_Id);
-            hash.Add("wash_id", info.Wash_Id);
-            hash.Add("memo", info.Memo);
-            hash.Add("pwash", info.Pwash);
+            Hashtable field = new Hashtable();
+            field.Add("partname_id", info.PartName_Id);
+            field.Add("safedata_id", info.SafeData_Id);
+            field.Add("standarddata_id", info.StandardData_Id);
+            field.Add("price", info.Price);
+            field.Add("madeplace_id", info.MadePlace_Id);
+            field.Add("dengji_id", info.Dengji_Id);
+            field.Add("tag_id", info.Tag_Id);
+            field.Add("wash_id", info.Wash_Id);
+            field.Add("memo", info.Memo);
+            field.Add("pwash", info.Pwash);
 
-            return ProductData_Dal.Update(product_id, hash);
+            Hashtable where = new Hashtable();
 
+            where.Add("id", product_id);
+            where.Add("LasTamp", LasTamp);
+
+            if (ProductData_Dal.Update(field, where))
+            {
+                field.Clear();
+
+                field.Add("lastamp", UtilFun.GetTimeSLasTamp());
+
+                return ProductData_Dal.Update(product_id, field);
+            }
+            else
+                return false;
         }
 
         public int GetTagTemplateId(string str_name)

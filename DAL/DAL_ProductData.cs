@@ -47,7 +47,7 @@ namespace Mondiland.DAL
             entity.Wash_Id = reader.GetInt32("wash_id");
             entity.Memo = reader.GetString("memo");
             entity.Pwash = reader.GetInt32("pwash");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetLong("LasTamp");
 
             return entity;
         }
@@ -75,7 +75,7 @@ namespace Mondiland.DAL
             hash.Add("wash_id", info.Wash_Id);
             hash.Add("memo", info.Memo);
             hash.Add("pwash", info.Pwash);
-            hash.Add("lastamp", info.LasTamp);
+            hash.Add("LasTamp", info.LasTamp);
 
             return hash;
         }

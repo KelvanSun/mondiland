@@ -40,7 +40,7 @@ namespace Mondiland.DAL
             entity.File_Name = reader.GetString("file_name");
             entity.Memo = reader.GetString("memo");
             entity.DaXiao = reader.GetString("daxiao");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetLong("LasTamp");
 
             return entity;
         }
@@ -61,7 +61,7 @@ namespace Mondiland.DAL
             hash.Add("file_name", info.File_Name);
             hash.Add("memo", info.Memo);
             hash.Add("daxiao", info.DaXiao);
-            hash.Add("lastamp", info.LasTamp);
+            hash.Add("LasTamp", info.LasTamp);
 
             return hash;
         }

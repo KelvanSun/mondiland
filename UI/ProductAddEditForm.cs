@@ -292,6 +292,7 @@ namespace Mondiland.UI
             info.HuoHao = txb_huohao.Text;
             info.SafeData_Id = BLLFactory<BLLProductInfo>.Instance.GetSafeDataId(cbx_safedata.Text);
             info.StandardData_Id = BLLFactory<BLLProductInfo>.Instance.GetStandardDataId(cbx_standard.Text);
+            
             if (txb_price.Text == string.Empty)
             {
                 info.Price = 0;
@@ -305,6 +306,7 @@ namespace Mondiland.UI
             info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagTemplateId(tb_tag.Text);
             info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashNameId(cbx_wash.Text);
             info.Memo = txb_memo.Text;
+            info.LasTamp = Convert.ToInt64(txb_huohao.Tag);
             if (chb_wash.Checked)
                 info.Pwash = 1;
             else
@@ -312,7 +314,7 @@ namespace Mondiland.UI
 
             int product_id = BLLFactory<BLLProductInfo>.Instance.GetProductId(txb_huohao.Text);
 
-            if(BLLFactory<BLLProductInfo>.Instance.UpdateProductInfo(info,product_id))
+            if(BLLFactory<BLLProductInfo>.Instance.UpdateProductInfo(info,product_id,info.LasTamp))
             {
                 BLLFactory<BLLProductInfo>.Instance.DeleteMaterialInfo(product_id);
 
@@ -321,17 +323,20 @@ namespace Mondiland.UI
                     string str = dgv_material.Rows[index].Cells["type"].Value.ToString();
                     BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(product_id, str, index);
                 }
+
+                MessageBox.Show("保存成功");
+
+                ClearData();
+                m_iSaved = true;
+                txb_huohao.Focus();
+                txb_huohao.ReadOnly = false;
+                m_mode = Mode.Add;
+            }
+            else
+            {
+                MessageBox.Show("保存失败");
             }
 
-            MessageBox.Show("保存成功");
-
-            ClearData();
-            m_iSaved = true;
-            txb_huohao.Focus();
-            txb_huohao.ReadOnly = false;
-            m_mode = Mode.Add;
-
-            
            
         }
 
@@ -470,7 +475,7 @@ namespace Mondiland.UI
             }
             else
             {
-                MessageBox.Show("主记录保存失败");
+                MessageBox.Show("当前编辑的数据可能已被修改,无法保存!");
             }
         }
         /// <summary>
@@ -481,6 +486,7 @@ namespace Mondiland.UI
             cbx_partname.Items.Clear();
             cbx_dengji.Items.Clear();
             txb_huohao.Text = string.Empty;
+            txb_huohao.Tag = string.Empty;
             txb_price.Text = string.Empty;
             cbx_madeplace.Items.Clear();
             cbx_safedata.Items.Clear();
@@ -504,7 +510,7 @@ namespace Mondiland.UI
 
         private void ProductAddEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (m_mode == Mode.Edit) return;
+            //if (m_mode == Mode.Edit) return;
             if (txb_huohao.Text != string.Empty)
             {
                 if (this.m_iSaved == false)
@@ -557,6 +563,7 @@ namespace Mondiland.UI
                     cbx_wash.Items.Add(info.Wash);
                     cbx_wash.Text = info.Wash;
                     txb_memo.Text = info.Memo;
+                    txb_huohao.Tag = info.LasTamp;
 
                     if (info.Pwash == 0)
                         chb_wash.Checked = false;

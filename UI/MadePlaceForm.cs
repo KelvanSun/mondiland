@@ -30,5 +30,10 @@ namespace Mondiland.UI
             this.dataGridView.DataSource = list;
             this.dataGridView.Focus();
         }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Mondiland.Global.UtilFun.GetTimeSLasTamp().ToString());
+        }
     }
 }

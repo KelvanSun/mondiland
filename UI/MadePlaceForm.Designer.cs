@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.bt_add = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bt_add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,15 +57,6 @@
             this.dataGridView.Size = new System.Drawing.Size(777, 273);
             this.dataGridView.TabIndex = 0;
             // 
-            // bt_add
-            // 
-            this.bt_add.Location = new System.Drawing.Point(343, 288);
-            this.bt_add.Name = "bt_add";
-            this.bt_add.Size = new System.Drawing.Size(82, 33);
-            this.bt_add.TabIndex = 1;
-            this.bt_add.Text = "新增";
-            this.bt_add.UseVisualStyleBackColor = true;
-            // 
             // id
             // 
             this.id.DataPropertyName = "Id";
@@ -89,6 +80,16 @@
             this.memo.Name = "memo";
             this.memo.ReadOnly = true;
             this.memo.Width = 400;
+            // 
+            // bt_add
+            // 
+            this.bt_add.Location = new System.Drawing.Point(343, 288);
+            this.bt_add.Name = "bt_add";
+            this.bt_add.Size = new System.Drawing.Size(82, 33);
+            this.bt_add.TabIndex = 1;
+            this.bt_add.Text = "新增";
+            this.bt_add.UseVisualStyleBackColor = true;
+            this.bt_add.Click += new System.EventHandler(this.bt_add_Click);
             // 
             // MadePlaceForm
             // 

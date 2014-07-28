@@ -11,12 +11,12 @@ namespace Mondiland.Entity
         private int m_product_id = 0;
         private int m_order_index = 0;
         private string m_type = string.Empty;
-        private long m_lastamp = 0;
+        private long m_lasLasTamp = 0;
 
         public long LasTamp
         {
-            get { return m_lastamp; }
-            set { m_lastamp = value; }
+            get { return m_lasLasTamp; }
+            set { m_lasLasTamp = value; }
         }
 
         public int Order_Index

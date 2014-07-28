@@ -39,6 +39,7 @@ namespace Mondiland.BLL
             MaterialFill_Dal = Reflect<ITable_MaterialFill>.Create("DAL_MaterialFill", "Mondiland.DAL");
             WashPrintTemplate_Dal = Reflect<ITable_WashPrintTemplate>.Create("DAL_WashPrintTemplate", "Mondiland.DAL");
         }
+
         public bool UpdatePrice(int product_id,decimal price)
         {
             Hashtable hash_update = new Hashtable();;
