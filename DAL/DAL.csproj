@@ -43,6 +43,7 @@
     <Compile Include="BaseDAL.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="DAL_Dengji.cs" />
+    <Compile Include="DAL_GroupInfo.cs" />
     <Compile Include="DAL_MadePlace.cs" />
     <Compile Include="DAL_MaterialData.cs" />
     <Compile Include="DAL_MaterialFill.cs" />
