@@ -258,7 +258,7 @@ namespace Mondiland.BLL
             Hashtable where = new Hashtable();
 
             where.Add("id", product_id);
-            where.Add("LasTamp", LasTamp);
+            where.Add("lastamp", LasTamp);
 
             if (ProductData_Dal.Update(field, where))
             {

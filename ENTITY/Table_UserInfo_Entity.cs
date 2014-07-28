@@ -5,24 +5,16 @@ using System.Text;
 
 namespace Mondiland.Entity
 {
-    public class Table_UserName_Entity:BaseEntity
+    public class Table_UserInfo_Entity:BaseEntity
     {
-        private int m_id = 0;
         private string m_name = string.Empty;
         private string m_pwd = string.Empty;
-        private long m_lasLasTamp = 0;
+        private int m_group_id = 0;
 
-        public long LasTamp
+        public int Group_Id
         {
-            get { return m_lasLasTamp; }
-            set { m_lasLasTamp = value; }
-        }
-
-
-        public int Id
-        {
-            get { return m_id; }
-            set { m_id = value; }
+            get { return m_group_id; }
+            set { m_group_id = value; }
         }
 
         public string Name

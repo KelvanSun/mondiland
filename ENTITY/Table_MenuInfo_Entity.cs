@@ -7,18 +7,10 @@ namespace Mondiland.Entity
 {
     public class Table_MenuInfo_Entity:BaseEntity
     {
-        private int m_id = 0;
         private string m_menu_name = string.Empty;
         private int m_menu_bmp = 0;
         private string m_menu_window = string.Empty;
         private string m_menu_memo = string.Empty;
-        private long m_lasLasTamp = 0;
-
-        public long LasTamp
-        {
-            get { return m_lasLasTamp; }
-            set { m_lasLasTamp = value; }
-        }
 
         public string MenuMemo
         {
@@ -49,12 +41,7 @@ namespace Mondiland.Entity
             }
 
         }
-        public int Id
-        {
-            get { return m_id; }
-            set { m_id = value; }
-        }
-
+ 
         public string MenuName
         {
             get { return m_menu_name; }

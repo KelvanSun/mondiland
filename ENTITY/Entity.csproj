@@ -43,6 +43,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Table_Dengji_Entity.cs" />
+    <Compile Include="Table_GroupInfo_Entity.cs" />
     <Compile Include="Table_MadePlace_Entity.cs" />
     <Compile Include="Table_MaterialData_Entity.cs" />
     <Compile Include="Table_MaterialFill_Entity.cs" />
@@ -54,8 +55,8 @@
     <Compile Include="Table_SizeClass_Entity.cs" />
     <Compile Include="Table_SizeData_Entity.cs" />
     <Compile Include="Table_StardardData_Entity.cs" />
-    <Compile Include="Table_UserMenu_Entity.cs" />
-    <Compile Include="Table_UserName_Entity.cs" />
+    <Compile Include="Table_GroupMenu_Entity.cs" />
+    <Compile Include="Table_UserInfo_Entity.cs" />
     <Compile Include="Table_WashPrintTemplate_Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

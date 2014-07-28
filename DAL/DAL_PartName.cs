@@ -40,7 +40,7 @@ namespace Mondiland.DAL
             entity.Barcode = reader.GetString("barcode");
             entity.SizeClass_id = reader.GetInt32("size_class_id");
             entity.Memo = reader.GetString("memo");
-            entity.LasTamp = reader.GetLong("LasTamp");
+            entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
         }
@@ -61,7 +61,7 @@ namespace Mondiland.DAL
             hash.Add("barcode", info.Barcode);
             hash.Add("size_class_id", info.SizeClass_id);
             hash.Add("memo", info.Memo);
-            hash.Add("LasTamp", info.LasTamp);
+            hash.Add("lastamp", info.LasTamp);
 
             return hash;
         }

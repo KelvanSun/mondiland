@@ -7,7 +7,6 @@ namespace Mondiland.Entity
 {
     public class Table_ProductData_Entity:BaseEntity
     {
-        private int m_id = 0;
         private int m_partname_id = 0;
         private string m_huohao = string.Empty;
         private int m_safedata_id = 0;
@@ -19,13 +18,6 @@ namespace Mondiland.Entity
         private int m_wash_id = 0;
         private string m_memo = string.Empty;
         private int m_pwash = 0;
-        private long m_lasLasTamp = 0;
-
-        public long LasTamp
-        {
-            get { return m_lasLasTamp; }
-            set { m_lasLasTamp = value; }
-        }
 
         public int Pwash
         {
@@ -83,12 +75,6 @@ namespace Mondiland.Entity
         {
             get { return m_safedata_id; }
             set { m_safedata_id = value; }
-        }
-
-        public int Id
-        {
-            get { return m_id; }
-            set { m_id = value; }
         }
 
         public int PartName_Id

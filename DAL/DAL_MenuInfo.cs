@@ -40,7 +40,7 @@ namespace Mondiland.DAL
             entity.MenuBmp = reader.GetInt32("menu_bmp");
             entity.MenuWindow = reader.GetString("menu_window");
             entity.MenuMemo = reader.GetString("menu_memo");
-            entity.LasTamp = reader.GetLong("LasTamp");
+            entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
         }
@@ -61,7 +61,7 @@ namespace Mondiland.DAL
             hash.Add("menu_bmp", info.MenuBmp);
             hash.Add("menu_window", info.MenuWindow);
             hash.Add("menu_memo", info.MenuMemo);
-            hash.Add("LasTamp", info.LasTamp);
+            hash.Add("lastamp", info.LasTamp);
 
             return hash;
         }

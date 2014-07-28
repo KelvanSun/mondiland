@@ -7,25 +7,11 @@ namespace Mondiland.Entity
 {
     public class Table_SizeData_Entity:BaseEntity
     {
-        private int m_id = 0;
         private int m_class_id = 0;
         private string m_size_name = string.Empty;
         private string m_size_type = string.Empty;
         private string m_other = string.Empty;
         private string m_memo = string.Empty;
-        private long m_lasLasTamp = 0;
-
-        public long LasTamp
-        {
-            get { return m_lasLasTamp; }
-            set { m_lasLasTamp = value; }
-        }
-
-        public int Id
-        {
-            get { return m_id; }
-            set { m_id = value; }
-        }
 
         public int Class_Id
         {

@@ -44,7 +44,7 @@ namespace Mondiland.DAL
             entity.Size_Type = reader.GetString("size_type");
             entity.Other = reader.GetString("other");
             entity.Memo = reader.GetString("memo");
-            entity.LasTamp = reader.GetLong("LasTamp");
+            entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
         }
@@ -66,7 +66,7 @@ namespace Mondiland.DAL
             hash.Add("size_type", info.Size_Type);
             hash.Add("other", info.Other);
             hash.Add("memo", info.Memo);
-            hash.Add("LasTamp", info.LasTamp);
+            hash.Add("lastamp", info.LasTamp);
 
             return hash;
         }

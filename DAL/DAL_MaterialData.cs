@@ -39,7 +39,7 @@ namespace Mondiland.DAL
             entity.Type = reader.GetString("type");
             entity.Product_Id = reader.GetInt32("product_id");
             entity.Order_Index = reader.GetInt32("order_index");
-            entity.LasTamp = reader.GetLong("LasTamp");
+            entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
         }
@@ -59,7 +59,7 @@ namespace Mondiland.DAL
             hash.Add("type", info.Type);
             hash.Add("product_id", info.Product_Id);
             hash.Add("order_index", info.Order_Index);
-            hash.Add("LasTamp", info.LasTamp);
+            hash.Add("lastamp", info.LasTamp);
 
             return hash;
         }

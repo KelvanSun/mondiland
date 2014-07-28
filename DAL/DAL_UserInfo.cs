@@ -12,17 +12,17 @@ using Mondiland.Global;
 
 namespace Mondiland.DAL
 {
-    public class DAL_UserMenu : BaseDal<Table_UserMenu_Entity>, ITable_UserMenu
+    public class DAL_UserInfo:BaseDal<Table_UserInfo_Entity>,ITable_UserInfo
     {
-        public static DAL_UserMenu Instance
+         public static DAL_UserInfo Instance
 		{
 			get
 			{
-				return new DAL_UserMenu();
+				return new DAL_UserInfo();
 			}
 		}
-        public DAL_UserMenu()
-            : base("UserMenu", "id", string.Empty, OrderType.ASC)
+         public DAL_UserInfo()
+            : base("UserInfo", "id", string.Empty, OrderType.ASC)
 		{ }
 
         /// <summary>
@@ -30,15 +30,16 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="dr">有效的DataReader对象</param>
         /// <returns>实体类对象</returns>
-        protected override Table_UserMenu_Entity DataReaderToEntity(IDataReader dataReader)
+        protected override Table_UserInfo_Entity DataReaderToEntity(IDataReader dataReader)
         {
-            Table_UserMenu_Entity entity = new Table_UserMenu_Entity();
+            Table_UserInfo_Entity entity = new Table_UserInfo_Entity();
             SmartDataReader reader = new SmartDataReader(dataReader);
 
             entity.Id = reader.GetInt32("id");
-            entity.User_Id = reader.GetInt32("user_id");
-            entity.Menu_Id = reader.GetInt32("menu_id");
-            entity.LasTamp = reader.GetLong("LasTamp");
+            entity.Name = reader.GetString("name");
+            entity.Pwd = reader.GetString("pwd");
+            entity.Group_Id = reader.GetInt32("group_id");
+            entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
         }
@@ -49,15 +50,16 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="obj">有效的实体对象</param>
         /// <returns>包含键值映射的Hashtable</returns>
-        protected override Hashtable GetHashByEntity(Table_UserMenu_Entity obj)
+        protected override Hashtable GetHashByEntity(Table_UserInfo_Entity obj)
         {
-            Table_UserMenu_Entity info = obj as Table_UserMenu_Entity;
+            Table_UserInfo_Entity info = obj as Table_UserInfo_Entity;
             Hashtable hash = new Hashtable();
 
             hash.Add("id", info.Id);
-            hash.Add("user_id",info.User_Id);
-            hash.Add("menu_id",info.Menu_Id);
-            hash.Add("LasTamp", info.LasTamp);
+            hash.Add("name", info.Name);
+            hash.Add("pwd", info.Pwd);
+            hash.Add("lastamp", info.LasTamp);
+            hash.Add("group_id", info.Group_Id);
 
             return hash;
         }

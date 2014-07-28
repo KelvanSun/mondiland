@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="IBaseDal.cs" />
     <Compile Include="ITable_Dengji.cs" />
+    <Compile Include="ITable_GroupInfo.cs" />
     <Compile Include="ITable_MadePlace.cs" />
     <Compile Include="ITable_MaterialData.cs" />
     <Compile Include="ITable_MaterialFill.cs" />
@@ -51,8 +52,8 @@
     <Compile Include="ITable_SizeClass.cs" />
     <Compile Include="ITable_SizeData.cs" />
     <Compile Include="ITable_StandardData.cs" />
-    <Compile Include="ITable_UserMenu.cs" />
-    <Compile Include="ITable_UserName.cs" />
+    <Compile Include="ITable_GroupMenu.cs" />
+    <Compile Include="ITable_UserInfo.cs" />
     <Compile Include="ITable_WashPrintTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

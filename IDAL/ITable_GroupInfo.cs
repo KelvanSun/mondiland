@@ -7,7 +7,7 @@ using Mondiland.Entity;
 
 namespace Mondiland.IDal
 {
-    public interface ITable_UserName:IBaseDal<Table_UserName_Entity>
+    public interface ITable_GroupInfo:IBaseDal<Table_GroupInfo_Entity>
     {
     }
 }

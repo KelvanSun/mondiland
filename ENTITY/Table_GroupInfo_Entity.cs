@@ -5,11 +5,9 @@ using System.Text;
 
 namespace Mondiland.Entity
 {
-    public class Table_PartName_Entity:BaseEntity
+    public class Table_GroupInfo_Entity:BaseEntity
     {
         private string m_name = string.Empty;
-        private string m_barcode = string.Empty;
-        private int m_size_class_id = 0;
         private string m_memo = string.Empty;
 
         public string Name
@@ -22,25 +20,6 @@ namespace Mondiland.Entity
                 else
                     m_name = value;
             }
-
-        }
-   
-        public string Barcode
-        {
-            get { return m_barcode; }
-            set
-            {
-                if (value.Length > 50)
-                    m_barcode = value.Substring(0, 49);
-                else
-                    m_barcode = value;
-            }
-        }
-    
-        public int SizeClass_id
-        {
-            get { return m_size_class_id; }
-            set { m_size_class_id = value; }
         }
 
         public string Memo
@@ -59,6 +38,5 @@ namespace Mondiland.Entity
                 }
             }
         }
-
     }
 }

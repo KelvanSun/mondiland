@@ -7,19 +7,11 @@ namespace Mondiland.Entity
 {
     public class Table_WashPrintTemplate_Entity:BaseEntity
     {
-        private int m_id = 0;
         private string m_type = string.Empty;
         private string m_file_name = string.Empty;
         private string m_memo = string.Empty;
         private string m_daxiao = string.Empty;
-        private long m_lasLasTamp = 0;
-
-        public long LasTamp
-        {
-            get { return m_lasLasTamp; }
-            set { m_lasLasTamp = value; }
-        }
-
+        
         public string DaXiao
         {
             get { return m_daxiao; }
@@ -31,12 +23,6 @@ namespace Mondiland.Entity
                     m_daxiao = value;
             }
         }
-        public int Id
-        {
-            get { return m_id; }
-            set { m_id = value; }
-        }
-
         public string File_Name
         {
             get { return m_file_name; }
