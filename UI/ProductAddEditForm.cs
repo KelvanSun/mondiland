@@ -19,12 +19,47 @@ namespace Mondiland.UI
         private bool m_iSaved = false;
         public ProductAddEditForm()
         {
+           
             InitializeComponent();
         }
 
         private void ProductAddEditForm_Load(object sender, EventArgs e)
         {
-   
+            cbx_dengji.DataSource = BLLFactory<BLLProductInfo>.Instance.GetDengjiList();
+            cbx_dengji.DisplayMember = "Type";
+            cbx_dengji.ValueMember = "Id";
+            cbx_dengji.Text = string.Empty;
+            cbx_dengji.SelectedValue = 0;
+
+            cbx_madeplace.DataSource = BLLFactory<BLLProductInfo>.Instance.GetMadePlaceList();
+            cbx_madeplace.DisplayMember = "Type";
+            cbx_madeplace.ValueMember = "Id";
+            cbx_madeplace.Text = string.Empty;
+            cbx_madeplace.SelectedValue = 0;
+
+            cbx_partname.DataSource = BLLFactory<BLLProductInfo>.Instance.GetPartNameList();
+            cbx_partname.DisplayMember = "PartName";
+            cbx_partname.ValueMember = "Id";
+            cbx_partname.Text = string.Empty;
+            cbx_partname.SelectedValue = 0;
+
+            cbx_safedata.DataSource = BLLFactory<BLLProductInfo>.Instance.GetSafeDataList();
+            cbx_safedata.DisplayMember = "Type";
+            cbx_safedata.ValueMember = "Id";
+            cbx_safedata.Text = string.Empty;
+            cbx_safedata.SelectedValue = 0;
+
+            cbx_standard.DataSource = BLLFactory<BLLProductInfo>.Instance.GetStandardDataList();
+            cbx_standard.DisplayMember = "Type";
+            cbx_standard.ValueMember = "Id";
+            cbx_standard.Text = string.Empty;
+            cbx_standard.SelectedValue = 0;
+
+            cbx_wash.DataSource = BLLFactory<BLLProductInfo>.Instance.GetWashPrintTemplateList();
+            cbx_wash.DisplayMember = "Type";
+            cbx_wash.ValueMember = "Id";
+            cbx_wash.Text = string.Empty;
+            cbx_wash.SelectedValue = 0;
         }
 
         private void txb_price_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,86 +146,6 @@ namespace Mondiland.UI
           
         }
 
-        private void cbx_product_DropDown(object sender, EventArgs e)
-        {
-            List<string> product_list = BLLFactory<BLLProductInfo>.Instance.GetPartName();
-            
-            IEnumerator<string> product_ator = product_list.GetEnumerator();
-
-            this.cbx_partname.Items.Clear();
-
-            while (product_ator.MoveNext())
-            {
-                this.cbx_partname.Items.Add(product_ator.Current.ToString());
-            }
-        }
-
-        private void cbx_dengji_DropDown(object sender, EventArgs e)
-        {
-            List<string> dengji_list = BLLFactory<BLLProductInfo>.Instance.GetDengjiName();
-
-            IEnumerator<string> dengji_ator = dengji_list.GetEnumerator();
-
-            cbx_dengji.Items.Clear();
-
-            while (dengji_ator.MoveNext())
-            {
-                this.cbx_dengji.Items.Add(dengji_ator.Current.ToString());
-            }
-        }
-
-        private void cbx_madeplace_DropDown(object sender, EventArgs e)
-        {
-            List<string> madeplace_list = BLLFactory<BLLProductInfo>.Instance.GetMadePlaceName();
-
-            cbx_madeplace.Items.Clear();
-
-            IEnumerator<string> madeplace_ator = madeplace_list.GetEnumerator();
-            while (madeplace_ator.MoveNext())
-            {
-                this.cbx_madeplace.Items.Add(madeplace_ator.Current.ToString());
-            }
-        }
-
-        private void cbx_safedata_DropDown(object sender, EventArgs e)
-        {
-            List<string> safedata_list = BLLFactory<BLLProductInfo>.Instance.GetSafeDataName();
-
-            cbx_safedata.Items.Clear();
-
-            IEnumerator<string> safedata_ator = safedata_list.GetEnumerator();
-            while (safedata_ator.MoveNext())
-            {
-                this.cbx_safedata.Items.Add(safedata_ator.Current.ToString());
-            }
-        }
-
-        private void cbx_standard_DropDown(object sender, EventArgs e)
-        {
-            List<string> standarddata_list = BLLFactory<BLLProductInfo>.Instance.GetStandarDataName();
-
-            cbx_standard.Items.Clear();
-
-            IEnumerator<string> standarddata_ator = standarddata_list.GetEnumerator();
-            while (standarddata_ator.MoveNext())
-            {
-                this.cbx_standard.Items.Add(standarddata_ator.Current.ToString());
-            }
-        }
-
-        private void cbx_wash_DropDown(object sender, EventArgs e)
-        {
-            List<string> wash_list = BLLFactory<BLLProductInfo>.Instance.GetWashTemplateName();
-
-            cbx_wash.Items.Clear();
-
-            IEnumerator<string> wash_ator = wash_list.GetEnumerator();
-            while(wash_ator.MoveNext())
-            {
-                this.cbx_wash.Items.Add(wash_ator.Current.ToString());
-            }
-        }
-
         private void tsb_add_Click(object sender, EventArgs e)
         {
             if(txb_huohao.Text != string.Empty && m_mode == Mode.Add)
@@ -227,42 +182,42 @@ namespace Mondiland.UI
 
         private void EditSave()
         {
-            if (cbx_partname.Text == string.Empty)
+            if (cbx_partname.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[产品种类]信息");
                 cbx_partname.Focus();
                 return;
             }
 
-            if (cbx_dengji.Text == string.Empty)
+            if (cbx_dengji.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[产品等级]信息");
                 cbx_dengji.Focus();
                 return;
             }
 
-            if (cbx_madeplace.Text == string.Empty)
+            if (cbx_madeplace.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[产品产地]信息");
                 cbx_madeplace.Focus();
                 return;
             }
 
-            if (cbx_safedata.Text == string.Empty)
+            if (cbx_safedata.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[安全类别]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
-            if (cbx_standard.Text == string.Empty)
+            if (cbx_standard.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[执行标准]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
-            if (cbx_wash.Text == string.Empty)
+            if (cbx_wash.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[洗唛模板]");
                 cbx_wash.Focus();
@@ -287,10 +242,10 @@ namespace Mondiland.UI
 
             BEProductDataInfo info = new BEProductDataInfo();
 
-            info.PartName_Id = BLLFactory<BLLProductInfo>.Instance.GetPartNameId(cbx_partname.Text);
+            info.PartName_Id = Convert.ToInt32(cbx_partname.SelectedValue);
             info.HuoHao = txb_huohao.Text;
-            info.SafeData_Id = BLLFactory<BLLProductInfo>.Instance.GetSafeDataId(cbx_safedata.Text);
-            info.StandardData_Id = BLLFactory<BLLProductInfo>.Instance.GetStandardDataId(cbx_standard.Text);
+            info.SafeData_Id = Convert.ToInt32(cbx_safedata.SelectedValue);
+            info.StandardData_Id = Convert.ToInt32(cbx_standard.SelectedValue);
             
             if (txb_price.Text == string.Empty)
             {
@@ -300,10 +255,10 @@ namespace Mondiland.UI
             {
                 info.Price = Convert.ToDecimal(txb_price.Text);
             }
-            info.MadePlace_Id = BLLFactory<BLLProductInfo>.Instance.GetMadePlaceId(cbx_madeplace.Text);
-            info.Dengji_Id = BLLFactory<BLLProductInfo>.Instance.GetDengjiNameId(cbx_dengji.Text);
+            info.MadePlace_Id = Convert.ToInt32(cbx_madeplace.SelectedValue);
+            info.Dengji_Id = Convert.ToInt32(cbx_dengji.SelectedValue);
             info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagTemplateId(tb_tag.Text);
-            info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashNameId(cbx_wash.Text);
+            info.Wash_Id = Convert.ToInt32(cbx_wash.SelectedValue);
             info.Memo = txb_memo.Text;
             info.LasTamp = Convert.ToInt64(txb_huohao.Tag);
             if (chb_wash.Checked)
@@ -342,14 +297,14 @@ namespace Mondiland.UI
         private void AddSave()
         {
                        
-            if (cbx_partname.Text == string.Empty)
+            if (cbx_partname.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[产品种类]信息");
                 cbx_partname.Focus();
                 return;
             }
 
-            if (cbx_dengji.Text == string.Empty)
+            if (cbx_dengji.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[产品等级]信息");
                 cbx_dengji.Focus();
@@ -370,28 +325,28 @@ namespace Mondiland.UI
             //    return;
             //}
 
-            if (cbx_madeplace.Text == string.Empty)
+            if (cbx_madeplace.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[产品产地]信息");
                 cbx_madeplace.Focus();
                 return;
             }
 
-            if (cbx_safedata.Text == string.Empty)
+            if (cbx_safedata.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[安全类别]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
-            if (cbx_standard.Text == string.Empty)
+            if (cbx_standard.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请输入[执行标准]信息");
                 cbx_safedata.Focus();
                 return;
             }
 
-            if (cbx_wash.Text == string.Empty)
+            if (cbx_wash.SelectedValue == null)
             {
                 MessageUtil.ShowTips("请选择[洗唛模板]");
                 cbx_wash.Focus();
@@ -422,10 +377,10 @@ namespace Mondiland.UI
 
             BEProductDataInfo info = new BEProductDataInfo();
 
-            info.PartName_Id = BLLFactory<BLLProductInfo>.Instance.GetPartNameId(cbx_partname.Text);
+            info.PartName_Id = Convert.ToInt32(cbx_partname.SelectedValue);
             info.HuoHao = txb_huohao.Text;
-            info.SafeData_Id = BLLFactory<BLLProductInfo>.Instance.GetSafeDataId(cbx_safedata.Text);
-            info.StandardData_Id = BLLFactory<BLLProductInfo>.Instance.GetStandardDataId(cbx_standard.Text);
+            info.SafeData_Id = Convert.ToInt32(cbx_safedata.SelectedValue);
+            info.StandardData_Id = Convert.ToInt32(cbx_standard.SelectedValue);
             if (txb_price.Text == string.Empty)
             {
                 info.Price = 0;
@@ -434,10 +389,10 @@ namespace Mondiland.UI
             {
                 info.Price = Convert.ToDecimal(txb_price.Text);
             }
-            info.MadePlace_Id = BLLFactory<BLLProductInfo>.Instance.GetMadePlaceId(cbx_madeplace.Text);
-            info.Dengji_Id = BLLFactory<BLLProductInfo>.Instance.GetDengjiNameId(cbx_dengji.Text);
+            info.MadePlace_Id = Convert.ToInt32(cbx_madeplace.SelectedValue);
+            info.Dengji_Id = Convert.ToInt32(cbx_dengji.SelectedValue);
             info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagTemplateId(tb_tag.Text);
-            info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashNameId(cbx_wash.Text);
+            info.Wash_Id = Convert.ToInt32(cbx_wash.SelectedValue);
             info.Memo = txb_memo.Text;
             if (chb_wash.Checked)
                 info.Pwash = 1;
@@ -482,15 +437,29 @@ namespace Mondiland.UI
         /// </summary>
         private void ClearData()
         {
-            cbx_partname.Items.Clear();
-            cbx_dengji.Items.Clear();
+
             txb_huohao.Text = string.Empty;
             txb_huohao.Tag = string.Empty;
+
+            cbx_dengji.Text = string.Empty;
+            cbx_dengji.SelectedValue = 0;
+
+            cbx_madeplace.Text = string.Empty;
+            cbx_madeplace.SelectedValue = 0;
+
+            cbx_partname.Text = string.Empty;
+            cbx_partname.SelectedValue = 0;
+
+            cbx_safedata.Text = string.Empty;
+            cbx_safedata.SelectedValue = 0;
+
+            cbx_standard.Text = string.Empty;
+            cbx_standard.SelectedValue = 0;
+
+            cbx_wash.Text = string.Empty;
+            cbx_wash.SelectedValue = 0;
+
             txb_price.Text = string.Empty;
-            cbx_madeplace.Items.Clear();
-            cbx_safedata.Items.Clear();
-            cbx_standard.Items.Clear();
-            cbx_wash.Items.Clear();
             tb_tag.Text = string.Empty;
             txb_memo.Text = string.Empty;
             dgv_material.Rows.Clear();
@@ -544,22 +513,16 @@ namespace Mondiland.UI
                     m_mode = Mode.Edit;
                     txb_huohao.ReadOnly = true;
 
-                    BEProductDataAllInfo info = BLLFactory<BLLProductInfo>.Instance.GetProductAllInfo(txb_huohao.Text);
+                    BEProductDataReadProduct info = BLLFactory<BLLProductInfo>.Instance.ReadProductData(txb_huohao.Text);
 
-                    cbx_partname.Items.Add(info.PartName);
-                    cbx_partname.Text = info.PartName;
-                    cbx_dengji.Items.Add(info.DengJi);
-                    cbx_dengji.Text = info.DengJi;
-                    cbx_madeplace.Items.Add(info.MadePlace);
-                    cbx_madeplace.Text = info.MadePlace;
+                    cbx_partname.SelectedValue = info.PartName_Id;
+                    cbx_dengji.SelectedValue = info.Dengji_Id;
+                    cbx_madeplace.SelectedValue = info.MadePlace_Id;
                     txb_price.Text = info.Price.ToString();
-                    cbx_safedata.Items.Add(info.SafeData);
-                    cbx_safedata.Text = info.SafeData;
-                    cbx_standard.Items.Add(info.StandardData);
-                    cbx_standard.Text = info.StandardData;
+                    cbx_safedata.SelectedValue = info.SafeData_Id;
+                    cbx_standard.SelectedValue = info.StandardData_Id;
                     tb_tag.Text = info.Tag;
-                    cbx_wash.Items.Add(info.Wash);
-                    cbx_wash.Text = info.Wash;
+                    cbx_wash.SelectedValue = info.Wash_Id;
                     txb_memo.Text = info.Memo;
                     txb_huohao.Tag = info.LasTamp;
 

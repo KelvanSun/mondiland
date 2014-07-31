@@ -28,6 +28,7 @@ namespace Mondiland.BLL
         private ITable_SizeData SizeData_Dal = null;
         private ITable_MaterialFill MaterialFill_Dal = null;
         private ITable_WashPrintTemplate WashPrintTemplate_Dal = null;
+        private ITable_SizeClass SizeClass_Dal = null;
 
         public BLLProductInfo()
         {
@@ -42,8 +43,158 @@ namespace Mondiland.BLL
             SizeData_Dal = Reflect<ITable_SizeData>.Create("DAL_SizeData", "Mondiland.DAL");
             MaterialFill_Dal = Reflect<ITable_MaterialFill>.Create("DAL_MaterialFill", "Mondiland.DAL");
             WashPrintTemplate_Dal = Reflect<ITable_WashPrintTemplate>.Create("DAL_WashPrintTemplate", "Mondiland.DAL");
+            SizeClass_Dal = Reflect<ITable_SizeClass>.Create("DAL_SizeClass", "Mondiland.DAL");
         }
         
+
+        /// <summary>
+        /// 返回洗唛列表
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BEWashPrintTemplateProduct> GetWashPrintTemplateList()
+        {
+            BindingList<BEWashPrintTemplateProduct> list = new BindingList<BEWashPrintTemplateProduct>();
+
+            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.GetAll(false).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                BEWashPrintTemplateProduct info = new BEWashPrintTemplateProduct();
+
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+                info.DaXiao = ator.Current.DaXiao;
+       
+                list.Add(info);
+            }
+
+            return list;    
+        }
+
+        /// <summary>
+        /// 返回执行标准信息列表
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BEStandardDataProduct> GetStandardDataList()
+        {
+            BindingList<BEStandardDataProduct> list = new BindingList<BEStandardDataProduct>();
+
+            IEnumerator<Table_StardardData_Entity> ator = StandardData_Dal.GetAll(true).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                BEStandardDataProduct info = new BEStandardDataProduct();
+
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+                info.Memo = ator.Current.Memo;
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 返回安全类别信息列表
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BESafeDataProduct> GetSafeDataList()
+        {
+            BindingList<BESafeDataProduct> list = new BindingList<BESafeDataProduct>();
+
+            IEnumerator<Table_SafeData_Entity> ator = SafeData_Dal.GetAll(true).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                BESafeDataProduct info = new BESafeDataProduct();
+
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+                info.Memo = ator.Current.Memo;
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 返回产品种类信息列表
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BEPartNameProduct> GetPartNameList()
+        {
+            BindingList<BEPartNameProduct> list = new BindingList<BEPartNameProduct>();
+
+            IEnumerator<Table_PartName_Entity> ator = PartName_Dal.GetAll(false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                BEPartNameProduct info = new BEPartNameProduct();
+
+                Table_SizeClass_Entity entity = SizeClass_Dal.FindByID(ator.Current.SizeClass_id);
+
+                info.Id = ator.Current.Id;
+                info.PartName = ator.Current.Name;
+                info.ClassType = entity.Type;
+                info.Memo = ator.Current.Memo;
+
+                list.Add(info);
+
+            }
+
+
+            return list;
+        }
+
+
+        /// <summary>
+        /// 反回产品产地的列表信息
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BEMadePlaceProduct> GetMadePlaceList()
+        {
+            BindingList<BEMadePlaceProduct> list = new BindingList<BEMadePlaceProduct>();
+
+            IEnumerator<Table_MadePlace_Entity> ator = MadePlace_Dal.GetAll(false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                BEMadePlaceProduct info = new BEMadePlaceProduct();
+
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 返回产品等级所有信息列表
+        /// </summary>
+        /// <returns>绑定列表</returns>
+        public BindingList<BEDengjiProduct> GetDengjiList()
+        {
+            BindingList<BEDengjiProduct> list = new BindingList<BEDengjiProduct>();
+
+            IEnumerator<Table_Dengji_Entity> ator = Dengji_Dal.GetAll(false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                BEDengjiProduct info = new BEDengjiProduct();
+
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+                info.Memo = ator.Current.Memo;
+
+                list.Add(info);
+            }
+
+            return list;
+        }
 
         public BindingList<BEMaterialDataInfo> GetMaterialDataList(int product_id)
         {
@@ -67,39 +218,36 @@ namespace Mondiland.BLL
 
         }
 
-        public BEProductDataAllInfo GetProductAllInfo(string str_huohao)
+        /// <summary>
+        /// 读取存在的记录
+        /// </summary>
+        /// <param name="str_huohao">货号</param>
+        /// <returns>BEProductDataReadProduct</returns>
+        public BEProductDataReadProduct ReadProductData(string str_huohao)
         {
-            
-            BEProductDataAllInfo info = new BEProductDataAllInfo();
+            BEProductDataReadProduct info = new BEProductDataReadProduct();
 
             Hashtable hash = new Hashtable();
             hash.Add("huohao", str_huohao);
 
             Table_ProductData_Entity entity = ProductData_Dal.Find(hash);
 
-            info.PartName = GetPartNameType(entity.PartName_Id);
-            info.DengJi = GetDengjiType(entity.Dengji_Id);
-            info.MadePlace = GetMadePlaceType(entity.MadePlace_Id);
+            info.PartName_Id = entity.PartName_Id;
+            info.Dengji_Id = entity.Dengji_Id;
+            info.MadePlace_Id = entity.MadePlace_Id;
             info.Price = entity.Price;
-            info.SafeData = GetSafeDataType(entity.SafeData_Id);
-            info.StandardData = GetStandardDataType(entity.StandardData_Id);
+            info.SafeData_Id = entity.SafeData_Id;
+            info.StandardData_Id = entity.StandardData_Id;
             info.Memo = entity.Memo;
             info.Tag = GetTagType(entity.Tag_Id);
-            info.Wash = GetWashType(entity.Wash_Id);
+            info.Wash_Id = entity.Wash_Id;
             info.Id = entity.Id;
             info.Pwash = entity.Pwash;
             info.LasTamp = entity.LasTamp;
-            
+
             return info;
-            
         }
 
-        private string GetWashType(int id)
-        {
-            Table_WashPrintTemplate_Entity entity = WashPrintTemplate_Dal.FindByID(id);
-
-            return entity.Type;
-        }
         private string GetTagType(int id)
         {
             Table_TagPrintTemplate_Entity entity = TagPrintTemplate_Dal.FindByID(id);
@@ -107,42 +255,7 @@ namespace Mondiland.BLL
             return entity.Type;
         }
 
-        private string GetStandardDataType(int id)
-        {
-            Table_StardardData_Entity entity = StandardData_Dal.FindByID(id);
-
-            return entity.Type;
-
-        }
-
-        private string GetSafeDataType(int id)
-        {
-            
-            Table_SafeData_Entity entity = SafeData_Dal.FindByID(id);
-
-            return entity.Type;
-        }
-        private string GetMadePlaceType(int id)
-        {
-            Table_MadePlace_Entity entity = MadePlace_Dal.FindByID(id);
-
-            return entity.Type;
-        }
-
-        private string GetDengjiType(int id)
-        {
-            Table_Dengji_Entity entity = Dengji_Dal.FindByID(id);
-
-            return entity.Type;
-        }
-
-        private string GetPartNameType(int id)
-        {
-            Table_PartName_Entity entity = PartName_Dal.FindByID(id);
-
-            return entity.Name;
-        }
-
+    
         public List<string> GetFillSizeList(string str_parntname)
         {
             Table_PartName_Entity parntname = new Table_PartName_Entity();
@@ -280,55 +393,7 @@ namespace Mondiland.BLL
             return TagPrintTemplate_Dal.FindPrimaryKey(hash);
         }
 
-        public int GetStandardDataId(string str_name)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return StandardData_Dal.FindPrimaryKey(hash);
-        }
-        public int GetSafeDataId(string str_name)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return SafeData_Dal.FindPrimaryKey(hash);
-
-        }
-        public int GetMadePlaceId(string str_name)
-        {
-  
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return MadePlace_Dal.FindPrimaryKey(hash);
-        }
-
-        public int GetPartNameId(string str_partname)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("name",str_partname);
-
-            return PartName_Dal.FindPrimaryKey(hash);
-        }
-         
-        public int GetDengjiNameId(string str_name)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return Dengji_Dal.FindPrimaryKey(hash);
-        }
-
-        public int GetWashNameId(string str_name)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return WashPrintTemplate_Dal.FindPrimaryKey(hash);
-        }
-
-
+      
         /// <summary>
         /// 根据货号检察记录是否存在        
         /// </summary>
@@ -343,89 +408,7 @@ namespace Mondiland.BLL
 
             return ProductData_Dal.IsExistKey(hash);
         }
-
-
-        public List<string> GetStandarDataName()
-        {
-            IEnumerator<string> ator = StandardData_Dal.GetItemString("type",true).GetEnumerator();
-            List<string> list = new List<string>();
-
-            while (ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-
-            return list;
-        }
-        
-        
-        public List<string> GetSafeDataName()
-        {
-            IEnumerator<string> ator = SafeData_Dal.GetItemString("type",true).GetEnumerator();
-            List<string> list = new List<string>();
-
-            while (ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-
-            return list;
-        }
-
-
-
-        public List<string> GetMadePlaceName()
-        {
-            IEnumerator<string> ator = MadePlace_Dal.GetItemString("type",false).GetEnumerator();
-            List<string> list = new List<string>();
-
-            while(ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-
-            return list;
-        }
-        
-        public List<string> GetPartName()
-        {
-            IEnumerator<string> ator = PartName_Dal.GetItemString("name",false).GetEnumerator();
-            List<string> list = new List<string>();
-
-            while(ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-
-            return list;
-        }
-
-        public List<string> GetWashTemplateName()
-        {
-            IEnumerator<string> ator = WashPrintTemplate_Dal.GetItemString("type",false).GetEnumerator();
-            
-            List<string> list = new List<string>();
-
-            while(ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-            
-            return list;
-        }
-
-        public List<string> GetDengjiName()
-        {
-            IEnumerator<string> ator = Dengji_Dal.GetItemString("type",false).GetEnumerator();
-            List<string> list = new List<string>();
-
-            while(ator.MoveNext())
-            {
-                list.Add(ator.Current.ToString());
-            }
-
-            return list;
-        }
-
+   
+   
     }
 }

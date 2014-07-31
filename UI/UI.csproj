@@ -169,9 +169,11 @@
     <EmbeddedResource Include="SafeDataForm.resx">
       <DependentUpon>SafeDataForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMadePlaceProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMeterialFillInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEProductDataAllInfo.datasource" />
+    <None Include="Properties\DataSources\Mondiland.BLLEntity.BLLDengjiProduct.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

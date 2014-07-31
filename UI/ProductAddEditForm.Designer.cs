@@ -29,29 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddEditForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbx_partname = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbx_safedata = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbx_standard = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbx_dengji = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbx_madeplace = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txb_price = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chb_wash = new System.Windows.Forms.CheckBox();
             this.bt_del = new System.Windows.Forms.Button();
             this.bt_add = new System.Windows.Forms.Button();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.txb_fill = new System.Windows.Forms.TextBox();
@@ -61,7 +54,6 @@
             this.info = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tb_tag = new System.Windows.Forms.TextBox();
-            this.cbx_wash = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txb_memo = new System.Windows.Forms.TextBox();
@@ -71,21 +63,29 @@
             this.tsb_save = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsb_close = new System.Windows.Forms.ToolStripButton();
-            this.chb_wash = new System.Windows.Forms.CheckBox();
+            this.cbx_dengji = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.cbx_madeplace = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.cbx_partname = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.cbx_safedata = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.cbx_standard = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
+            this.cbx_wash = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 47);
+            this.label1.Location = new System.Drawing.Point(29, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 2;
@@ -94,22 +94,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 82);
+            this.label2.Location = new System.Drawing.Point(29, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
             this.label2.Text = "产品种类";
-            // 
-            // cbx_partname
-            // 
-            this.cbx_partname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_partname.FormattingEnabled = true;
-            this.cbx_partname.Location = new System.Drawing.Point(88, 79);
-            this.cbx_partname.Name = "cbx_partname";
-            this.cbx_partname.Size = new System.Drawing.Size(100, 20);
-            this.cbx_partname.TabIndex = 0;
-            this.cbx_partname.DropDown += new System.EventHandler(this.cbx_product_DropDown);
-            this.cbx_partname.SelectionChangeCommitted += new System.EventHandler(this.cbx_product_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -120,16 +109,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "安全类别";
             // 
-            // cbx_safedata
-            // 
-            this.cbx_safedata.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_safedata.FormattingEnabled = true;
-            this.cbx_safedata.Location = new System.Drawing.Point(88, 115);
-            this.cbx_safedata.Name = "cbx_safedata";
-            this.cbx_safedata.Size = new System.Drawing.Size(307, 20);
-            this.cbx_safedata.TabIndex = 4;
-            this.cbx_safedata.DropDown += new System.EventHandler(this.cbx_safedata_DropDown);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -138,16 +117,6 @@
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 7;
             this.label4.Text = "执行标准";
-            // 
-            // cbx_standard
-            // 
-            this.cbx_standard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_standard.FormattingEnabled = true;
-            this.cbx_standard.Location = new System.Drawing.Point(88, 153);
-            this.cbx_standard.Name = "cbx_standard";
-            this.cbx_standard.Size = new System.Drawing.Size(307, 20);
-            this.cbx_standard.TabIndex = 5;
-            this.cbx_standard.DropDown += new System.EventHandler(this.cbx_standard_DropDown);
             // 
             // label5
             // 
@@ -158,34 +127,14 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "产品等级";
             // 
-            // cbx_dengji
-            // 
-            this.cbx_dengji.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_dengji.FormattingEnabled = true;
-            this.cbx_dengji.Location = new System.Drawing.Point(274, 44);
-            this.cbx_dengji.Name = "cbx_dengji";
-            this.cbx_dengji.Size = new System.Drawing.Size(121, 20);
-            this.cbx_dengji.TabIndex = 1;
-            this.cbx_dengji.DropDown += new System.EventHandler(this.cbx_dengji_DropDown);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(211, 82);
+            this.label6.Location = new System.Drawing.Point(211, 84);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 11;
             this.label6.Text = "产品产地";
-            // 
-            // cbx_madeplace
-            // 
-            this.cbx_madeplace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_madeplace.FormattingEnabled = true;
-            this.cbx_madeplace.Location = new System.Drawing.Point(274, 78);
-            this.cbx_madeplace.Name = "cbx_madeplace";
-            this.cbx_madeplace.Size = new System.Drawing.Size(121, 20);
-            this.cbx_madeplace.TabIndex = 3;
-            this.cbx_madeplace.DropDown += new System.EventHandler(this.cbx_madeplace_DropDown);
             // 
             // label7
             // 
@@ -226,6 +175,17 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "产品成份明细";
+            // 
+            // chb_wash
+            // 
+            this.chb_wash.AutoSize = true;
+            this.chb_wash.Location = new System.Drawing.Point(94, -1);
+            this.chb_wash.Name = "chb_wash";
+            this.chb_wash.Size = new System.Drawing.Size(120, 16);
+            this.chb_wash.TabIndex = 3;
+            this.chb_wash.Text = "打印\"(水洗产品)\"";
+            this.chb_wash.UseVisualStyleBackColor = true;
+            this.chb_wash.CheckedChanged += new System.EventHandler(this.chb_wash_CheckedChanged);
             // 
             // bt_del
             // 
@@ -268,25 +228,6 @@
             this.dgv_material.Size = new System.Drawing.Size(362, 142);
             this.dgv_material.TabIndex = 0;
             this.dgv_material.TabStop = false;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "成份内容";
-            this.type.MaxInputLength = 50;
-            this.type.Name = "type";
-            this.type.Width = 350;
-            // 
-            // bindingSource_material
-            // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
             // groupBox4
             // 
@@ -351,8 +292,8 @@
             // 
             // size_name
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.size_name.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.size_name.DefaultCellStyle = dataGridViewCellStyle1;
             this.size_name.HeaderText = "规格";
             this.size_name.Name = "size_name";
             this.size_name.ReadOnly = true;
@@ -365,8 +306,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tb_tag);
             this.groupBox2.Controls.Add(this.cbx_wash);
+            this.groupBox2.Controls.Add(this.tb_tag);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(412, 78);
@@ -383,16 +324,6 @@
             this.tb_tag.ReadOnly = true;
             this.tb_tag.Size = new System.Drawing.Size(121, 21);
             this.tb_tag.TabIndex = 19;
-            // 
-            // cbx_wash
-            // 
-            this.cbx_wash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_wash.FormattingEnabled = true;
-            this.cbx_wash.Location = new System.Drawing.Point(69, 64);
-            this.cbx_wash.Name = "cbx_wash";
-            this.cbx_wash.Size = new System.Drawing.Size(121, 20);
-            this.cbx_wash.TabIndex = 1;
-            this.cbx_wash.DropDown += new System.EventHandler(this.cbx_wash_DropDown);
             // 
             // label9
             // 
@@ -480,22 +411,109 @@
             this.tsb_close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsb_close.Click += new System.EventHandler(this.tsb_close_Click);
             // 
-            // chb_wash
+            // cbx_dengji
             // 
-            this.chb_wash.AutoSize = true;
-            this.chb_wash.Location = new System.Drawing.Point(94, -1);
-            this.chb_wash.Name = "chb_wash";
-            this.chb_wash.Size = new System.Drawing.Size(120, 16);
-            this.chb_wash.TabIndex = 3;
-            this.chb_wash.Text = "打印\"(水洗产品)\"";
-            this.chb_wash.UseVisualStyleBackColor = true;
-            this.chb_wash.CheckedChanged += new System.EventHandler(this.chb_wash_CheckedChanged);
+            this.cbx_dengji.ComboBoxHeight = 14;
+            this.cbx_dengji.DisplayMember = "Id";
+            this.cbx_dengji.DropDownHeight = 114;
+            this.cbx_dengji.DropDownWidth = 121;
+            this.cbx_dengji.FormattingEnabled = true;
+            this.cbx_dengji.ItemDropDownHeight = 14;
+            this.cbx_dengji.Location = new System.Drawing.Point(274, 43);
+            this.cbx_dengji.Name = "cbx_dengji";
+            this.cbx_dengji.Size = new System.Drawing.Size(121, 20);
+            this.cbx_dengji.TabIndex = 22;
+            this.cbx_dengji.ValueMember = "Id";
+            // 
+            // cbx_madeplace
+            // 
+            this.cbx_madeplace.ComboBoxHeight = 14;
+            this.cbx_madeplace.DropDownHeight = 114;
+            this.cbx_madeplace.DropDownWidth = 121;
+            this.cbx_madeplace.FormattingEnabled = true;
+            this.cbx_madeplace.ItemDropDownHeight = 14;
+            this.cbx_madeplace.Location = new System.Drawing.Point(274, 81);
+            this.cbx_madeplace.Name = "cbx_madeplace";
+            this.cbx_madeplace.Size = new System.Drawing.Size(121, 20);
+            this.cbx_madeplace.TabIndex = 23;
+            // 
+            // cbx_partname
+            // 
+            this.cbx_partname.ComboBoxHeight = 14;
+            this.cbx_partname.DropDownHeight = 114;
+            this.cbx_partname.DropDownWidth = 121;
+            this.cbx_partname.FormattingEnabled = true;
+            this.cbx_partname.ItemDropDownHeight = 14;
+            this.cbx_partname.Location = new System.Drawing.Point(88, 81);
+            this.cbx_partname.Name = "cbx_partname";
+            this.cbx_partname.Size = new System.Drawing.Size(100, 20);
+            this.cbx_partname.TabIndex = 24;
+            // 
+            // cbx_safedata
+            // 
+            this.cbx_safedata.ComboBoxHeight = 14;
+            this.cbx_safedata.DropDownHeight = 114;
+            this.cbx_safedata.DropDownWidth = 121;
+            this.cbx_safedata.FormattingEnabled = true;
+            this.cbx_safedata.ItemDropDownHeight = 14;
+            this.cbx_safedata.Location = new System.Drawing.Point(88, 116);
+            this.cbx_safedata.Name = "cbx_safedata";
+            this.cbx_safedata.Size = new System.Drawing.Size(307, 20);
+            this.cbx_safedata.TabIndex = 25;
+            // 
+            // cbx_standard
+            // 
+            this.cbx_standard.ComboBoxHeight = 14;
+            this.cbx_standard.DropDownHeight = 114;
+            this.cbx_standard.DropDownWidth = 121;
+            this.cbx_standard.FormattingEnabled = true;
+            this.cbx_standard.ItemDropDownHeight = 14;
+            this.cbx_standard.Location = new System.Drawing.Point(88, 153);
+            this.cbx_standard.Name = "cbx_standard";
+            this.cbx_standard.Size = new System.Drawing.Size(307, 20);
+            this.cbx_standard.TabIndex = 26;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            this.type.HeaderText = "成份内容";
+            this.type.MaxInputLength = 50;
+            this.type.Name = "type";
+            this.type.Width = 350;
+            // 
+            // bindingSource_material
+            // 
+            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
+            // 
+            // cbx_wash
+            // 
+            this.cbx_wash.ComboBoxHeight = 14;
+            this.cbx_wash.DropDownHeight = 114;
+            this.cbx_wash.DropDownWidth = 121;
+            this.cbx_wash.FormattingEnabled = true;
+            this.cbx_wash.ItemDropDownHeight = 14;
+            this.cbx_wash.Location = new System.Drawing.Point(69, 64);
+            this.cbx_wash.Name = "cbx_wash";
+            this.cbx_wash.Size = new System.Drawing.Size(121, 20);
+            this.cbx_wash.TabIndex = 20;
             // 
             // ProductAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 486);
+            this.Controls.Add(this.cbx_standard);
+            this.Controls.Add(this.cbx_safedata);
+            this.Controls.Add(this.cbx_partname);
+            this.Controls.Add(this.cbx_madeplace);
+            this.Controls.Add(this.cbx_dengji);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.txb_huohao);
             this.Controls.Add(this.groupBox4);
@@ -505,15 +523,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txb_price);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbx_madeplace);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cbx_dengji);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbx_standard);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbx_safedata);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbx_partname);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -526,7 +539,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).EndInit();
@@ -536,6 +548,7 @@
             this.groupBox3.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,22 +558,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbx_partname;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbx_safedata;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbx_standard;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbx_dengji;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbx_madeplace;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txb_price;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private UCControl.UCDataGridView dgv_material;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cbx_wash;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txb_memo;
@@ -584,5 +591,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsb_close;
         private System.Windows.Forms.CheckBox chb_wash;
+        private UCControl.MultiColumnComboBoxEx cbx_dengji;
+        private UCControl.MultiColumnComboBoxEx cbx_madeplace;
+        private UCControl.MultiColumnComboBoxEx cbx_partname;
+        private UCControl.MultiColumnComboBoxEx cbx_safedata;
+        private UCControl.MultiColumnComboBoxEx cbx_standard;
+        private UCControl.MultiColumnComboBoxEx cbx_wash;
     }
 }
