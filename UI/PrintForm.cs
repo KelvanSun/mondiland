@@ -235,5 +235,20 @@ namespace Mondiland.UI
             }
         }
 
+        private void PrintForm_Load(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
+            IEnumerator<string> ator = BLLFactory<BLLProductPrint>.Instance.GetHuoHaoList().GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                acsc.Add(ator.Current.ToString());
+            }
+
+            txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txb_huohao.AutoCompleteCustomSource = acsc;
+        }
+
     }
 }

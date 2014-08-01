@@ -45,9 +45,6 @@
             this.bt_del = new System.Windows.Forms.Button();
             this.bt_add = new System.Windows.Forms.Button();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.txb_fill = new System.Windows.Forms.TextBox();
@@ -72,14 +69,17 @@
             this.cbx_partname = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_safedata = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_standard = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -228,25 +228,6 @@
             this.dgv_material.Size = new System.Drawing.Size(362, 142);
             this.dgv_material.TabIndex = 0;
             this.dgv_material.TabStop = false;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "成份内容";
-            this.type.MaxInputLength = 50;
-            this.type.Name = "type";
-            this.type.Width = 350;
-            // 
-            // bindingSource_material
-            // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
             // groupBox4
             // 
@@ -504,6 +485,25 @@
             this.cbx_standard.Size = new System.Drawing.Size(307, 20);
             this.cbx_standard.TabIndex = 26;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            this.type.HeaderText = "成份内容";
+            this.type.MaxInputLength = 50;
+            this.type.Name = "type";
+            this.type.Width = 350;
+            // 
+            // bindingSource_material
+            // 
+            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
+            // 
             // ProductAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -539,7 +539,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).EndInit();
@@ -549,6 +548,7 @@
             this.groupBox3.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -375,6 +375,7 @@
             this.Name = "PrintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "商品信息打印";
+            this.Load += new System.EventHandler(this.PrintForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

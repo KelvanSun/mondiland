@@ -60,6 +60,21 @@ namespace Mondiland.UI
             cbx_wash.ValueMember = "Id";
             cbx_wash.Text = string.Empty;
             cbx_wash.SelectedValue = 0;
+
+
+            AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
+            IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                acsc.Add(ator.Current.ToString());
+            }
+
+            txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txb_huohao.AutoCompleteCustomSource = acsc;
+    
+
         }
 
         private void txb_price_KeyPress(object sender, KeyPressEventArgs e)
@@ -541,6 +556,5 @@ namespace Mondiland.UI
         {
             Material_CountToTagName();
         }
-
     }
 }

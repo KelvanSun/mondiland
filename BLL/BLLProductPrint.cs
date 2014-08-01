@@ -40,6 +40,24 @@ namespace Mondiland.BLL
             WashPrintTemplate_Dal = Reflect<ITable_WashPrintTemplate>.Create("DAL_WashPrintTemplate", "Mondiland.DAL");
         }
 
+
+        /// <summary>
+        /// 返回所有产品货号信息
+        /// </summary>
+        /// <returns>列表<</returns>
+        public List<string> GetHuoHaoList()
+        {
+            List<string> list = new List<string>();
+
+            IEnumerator<Table_ProductData_Entity> ator = ProductData_Dal.GetAll(false).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                list.Add(ator.Current.HuoHao);
+            }
+
+            return list;
+        }
         public bool UpdatePrice(int product_id,decimal price)
         {
             Hashtable hash_update = new Hashtable();;
