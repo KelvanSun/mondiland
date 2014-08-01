@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
+
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
@@ -207,6 +209,29 @@ namespace Mondiland.UI
                     txb_price.ReadOnly = true;
                     bt_print.Enabled = true;
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LabelFormatDocument format = m_engine.Documents.Open("d:\\Template\\tmp.btw");
+            
+            
+            StreamReader sr = new StreamReader("C:\\data.txt", Encoding.Default);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] aa = System.Text.RegularExpressions.Regex.Split(line, @"\s+");
+
+                format.SubStrings.SetSubString("HuoHao", aa[0]);
+                format.SubStrings.SetSubString("ChengFeng", string.Format("面料:{0}", aa[1]));
+                format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(aa[2])));
+
+                format.PrintSetup.IdenticalCopiesOfLabel = 1;
+
+                format.Print();
+
+                MessageBox.Show("继续");
             }
         }
 
