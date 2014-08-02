@@ -274,13 +274,15 @@ namespace Mondiland.BLL
         }
 
     
-        public List<string> GetFillSizeList(int class_id)
+        public List<string> GetFillSizeList(int partname_id)
         {
-            Table_PartName_Entity parntname = new Table_PartName_Entity();
+            
             List<string> list = new List<string>();
 
+            Table_PartName_Entity parntname = PartName_Dal.FindByID(partname_id);
+
             Hashtable hash = new Hashtable();
-            hash.Add("class_id",class_id);
+            hash.Add("class_id",parntname.SizeClass_id);
 
             IEnumerator<Table_SizeData_Entity> ator = SizeData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
 
