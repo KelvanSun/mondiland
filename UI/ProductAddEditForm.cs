@@ -64,7 +64,7 @@ namespace Mondiland.UI
 
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
             IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
-
+  
             while(ator.MoveNext())
             {
                 acsc.Add(ator.Current.ToString());
@@ -142,23 +142,6 @@ namespace Mondiland.UI
                     tb_tag.Text = BLLFactory<BLLProductInfo>.Instance.GetTagName(false, bindingSource_material.Count + 1);
                 }
             }
-        }
-
-        private void cbx_product_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            dgv_fill.Rows.Clear();
-            
-            List<string> list = BLLFactory<BLLProductInfo>.Instance.GetFillSizeList(cbx_partname.Text);
-
-            IEnumerator<string> ator = list.GetEnumerator();
-
-            while (ator.MoveNext())
-            {
-                int index = dgv_fill.Rows.Add();
-
-                dgv_fill.Rows[index].Cells["size_name"].Value = ator.Current.ToString();
-            }
-          
         }
 
         private void tsb_add_Click(object sender, EventArgs e)
@@ -555,6 +538,22 @@ namespace Mondiland.UI
         private void chb_wash_CheckedChanged(object sender, EventArgs e)
         {
             Material_CountToTagName();
+        }
+
+        private void cbx_partname_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            dgv_fill.Rows.Clear();
+
+            List<string> list = BLLFactory<BLLProductInfo>.Instance.GetFillSizeList(Convert.ToInt32(cbx_partname.SelectedValue));
+
+            IEnumerator<string> ator = list.GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                int index = dgv_fill.Rows.Add();
+
+                dgv_fill.Rows[index].Cells["size_name"].Value = ator.Current.ToString();
+            }
         }
     }
 }

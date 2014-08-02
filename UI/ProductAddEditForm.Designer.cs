@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddEditForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +45,9 @@
             this.bt_del = new System.Windows.Forms.Button();
             this.bt_add = new System.Windows.Forms.Button();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.txb_fill = new System.Windows.Forms.TextBox();
@@ -69,17 +72,14 @@
             this.cbx_partname = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_safedata = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_standard = new Mondiland.UCControl.MultiColumnComboBoxEx();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -229,6 +229,25 @@
             this.dgv_material.TabIndex = 0;
             this.dgv_material.TabStop = false;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            this.type.HeaderText = "成份内容";
+            this.type.MaxInputLength = 50;
+            this.type.Name = "type";
+            this.type.Width = 350;
+            // 
+            // bindingSource_material
+            // 
+            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.checkBox);
@@ -292,8 +311,8 @@
             // 
             // size_name
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.size_name.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.size_name.DefaultCellStyle = dataGridViewCellStyle1;
             this.size_name.HeaderText = "规格";
             this.size_name.Name = "size_name";
             this.size_name.ReadOnly = true;
@@ -460,6 +479,7 @@
             this.cbx_partname.Name = "cbx_partname";
             this.cbx_partname.Size = new System.Drawing.Size(100, 20);
             this.cbx_partname.TabIndex = 24;
+            this.cbx_partname.SelectionChangeCommitted += new System.EventHandler(this.cbx_partname_SelectionChangeCommitted);
             // 
             // cbx_safedata
             // 
@@ -484,25 +504,6 @@
             this.cbx_standard.Name = "cbx_standard";
             this.cbx_standard.Size = new System.Drawing.Size(307, 20);
             this.cbx_standard.TabIndex = 26;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "成份内容";
-            this.type.MaxInputLength = 50;
-            this.type.Name = "type";
-            this.type.Width = 350;
-            // 
-            // bindingSource_material
-            // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
             // ProductAddEditForm
             // 
@@ -539,6 +540,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fill)).EndInit();
@@ -548,7 +550,6 @@
             this.groupBox3.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
