@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Deployment.Application;
 
 using Mondiland.BLL;
 
@@ -74,6 +75,19 @@ namespace Mondiland.UI
 
             statusStrip.Items["username"].Text = string.Format("用户名:{0}", BLLFactory<BLLLogin>.Instance.GetUserName(m_user_id));
             statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", BLLFactory<BLLLogin>.Instance.GetGroupName(m_user_id));
+
+            try
+            {
+                statusStrip.Items["version"].Text = string.Format("系统版本:{0}", 
+                                     ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString());
+            }
+            catch 
+            {
+                statusStrip.Items["version"].Text = "系统版本:(未知)";
+            }
+                  
+
+
 
             this.Visible = true;
         }

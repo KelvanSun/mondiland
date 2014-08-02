@@ -41,6 +41,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.username = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupname = new System.Windows.Forms.ToolStripStatusLabel();
+            this.version = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +115,8 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.username,
-            this.groupname});
+            this.groupname,
+            this.version});
             this.statusStrip.Location = new System.Drawing.Point(0, 324);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(650, 22);
@@ -130,9 +132,15 @@
             // groupname
             // 
             this.groupname.Name = "groupname";
-            this.groupname.Size = new System.Drawing.Size(560, 17);
+            this.groupname.Size = new System.Drawing.Size(535, 17);
             this.groupname.Spring = true;
             this.groupname.Text = "用户组";
+            // 
+            // version
+            // 
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(56, 17);
+            this.version.Text = "系统版本";
             // 
             // MainForm
             // 
@@ -171,5 +179,6 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel username;
         private System.Windows.Forms.ToolStripStatusLabel groupname;
+        private System.Windows.Forms.ToolStripStatusLabel version;
     }
 }
