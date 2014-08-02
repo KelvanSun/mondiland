@@ -558,8 +558,24 @@ namespace Mondiland.UI
             int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
             int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
 
-            if (safe_id > 0) cbx_safedata.SelectedValue = safe_id;
-            if (standard_id > 0) cbx_standard.SelectedValue = standard_id;
+            if (safe_id > 0)
+            {
+                cbx_safedata.SelectedValue = safe_id;
+            }
+            else
+            {
+                cbx_safedata.Text = string.Empty;
+                cbx_safedata.SelectedValue = 0;
+            }
+            if (standard_id > 0)
+            {
+                cbx_standard.SelectedValue = standard_id;
+            }
+            else
+            {
+                cbx_standard.Text = string.Empty;
+                cbx_standard.SelectedValue = 0;
+            }
 
         }
     }
