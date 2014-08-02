@@ -577,6 +577,12 @@ namespace Mondiland.UI
                 cbx_standard.SelectedValue = 0;
             }
 
+            //选择了休闲裤，打印水洗产品
+            if(Convert.ToInt32(cbx_partname.SelectedValue) == 11)
+            {
+                chb_wash.Checked = true;
+            }
+
         }
     }
 }
