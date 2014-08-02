@@ -554,6 +554,13 @@ namespace Mondiland.UI
 
                 dgv_fill.Rows[index].Cells["size_name"].Value = ator.Current.ToString();
             }
+
+            int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
+            int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
+
+            if (safe_id > 0) cbx_safedata.SelectedValue = safe_id;
+            if (standard_id > 0) cbx_standard.SelectedValue = standard_id;
+
         }
     }
 }

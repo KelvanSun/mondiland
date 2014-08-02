@@ -46,6 +46,28 @@ namespace Mondiland.BLL
             SizeClass_Dal = Reflect<ITable_SizeClass>.Create("DAL_SizeClass", "Mondiland.DAL");
         }
 
+        /// <summary>
+        /// 根据产品种类选择合适的安全标准
+        /// </summary>
+        /// <param name="partname_id"></param>
+        /// <returns>安全标准ID</returns>
+        public int GetOptimizeSafeId(int partname_id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
+
+            return entity.Safe_Id;
+        }
+        /// <summary>
+        /// 根据产品种类选择合适的执行标准
+        /// </summary>
+        /// <param name="partname_id"></param>
+        /// <returns>安全标准ID</returns>
+        public int GetOptimizeStandardId(int partname_id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
+
+            return entity.Standard_Id;
+        }
 
         /// <summary>
         /// 返回所有产品货号信息

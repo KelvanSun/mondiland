@@ -10,7 +10,22 @@ namespace Mondiland.Entity
         private string m_name = string.Empty;
         private string m_barcode = string.Empty;
         private int m_size_class_id = 0;
+        private int m_safe_id = 0;
+        private int m_standard_id = 0;
         private string m_memo = string.Empty;
+
+        public int Safe_Id
+        {
+            get { return m_safe_id; }
+            set { m_safe_id = value; }
+        }
+
+        public int Standard_Id
+        {
+            get { return m_standard_id; }
+            set { m_standard_id = value; }
+        }
+
 
         public string Name
         {
