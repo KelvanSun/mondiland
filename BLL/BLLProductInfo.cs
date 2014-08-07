@@ -380,6 +380,7 @@ namespace Mondiland.BLL
             entity.Wash_Id = info.Wash_Id;
             entity.Memo = info.Memo;
             entity.Pwash = info.Pwash;
+            entity.LasTamp = UtilFun.GetTimeSLasTamp();
             
             return ProductData_Dal.Insert(entity);
         }

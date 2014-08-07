@@ -56,9 +56,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(73, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 19);
+            this.label1.Size = new System.Drawing.Size(249, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "宁波麦迪茉莱登商品管理系统";
+            this.label1.Text = "宁波麦迪莱登商品管理系统";
             // 
             // bt_cancel
             // 
