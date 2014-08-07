@@ -557,6 +557,7 @@ namespace Mondiland.UI
 
             int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
             int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
+            int pwash = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
 
             if (safe_id > 0)
             {
@@ -578,11 +579,10 @@ namespace Mondiland.UI
             }
 
             //选择了休闲裤，打印水洗产品
-            if(Convert.ToInt32(cbx_partname.SelectedValue) == 11)
-            {
+            if (pwash > 0)
                 chb_wash.Checked = true;
-            }
-
-        }
+            else
+                chb_wash.Checked = false;
+         }
     }
 }

@@ -41,8 +41,10 @@ namespace Mondiland.DAL
             entity.SizeClass_id = reader.GetInt32("size_class_id");
             entity.Safe_Id = reader.GetInt32("safe_id");
             entity.Standard_Id = reader.GetInt32("standard_id");
+            entity.Pwash = reader.GetInt32("pwash");
             entity.Memo = reader.GetString("memo");
             entity.LasTamp = reader.GetLong("lastamp");
+         
 
             return entity;
         }
@@ -64,6 +66,7 @@ namespace Mondiland.DAL
             hash.Add("size_class_id", info.SizeClass_id);
             hash.Add("safe_id", info.Safe_Id);
             hash.Add("standard_id", info.Standard_Id);
+            hash.Add("pwash", info.Pwash);
             hash.Add("memo", info.Memo);
             hash.Add("lastamp", info.LasTamp);
 

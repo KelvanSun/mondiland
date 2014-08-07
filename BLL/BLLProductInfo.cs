@@ -69,6 +69,13 @@ namespace Mondiland.BLL
             return entity.Standard_Id;
         }
 
+        public int GetOptimizePwash(int partname_id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
+
+            return entity.Pwash;
+        }
+
         /// <summary>
         /// 返回所有产品货号信息
         /// </summary>

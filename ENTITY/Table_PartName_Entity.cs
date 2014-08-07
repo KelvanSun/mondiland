@@ -12,7 +12,14 @@ namespace Mondiland.Entity
         private int m_size_class_id = 0;
         private int m_safe_id = 0;
         private int m_standard_id = 0;
+        private int m_pwash = 0;
         private string m_memo = string.Empty;
+
+        public int Pwash
+        {
+            get { return m_pwash; }
+            set { m_pwash = value; }
+        }
 
         public int Safe_Id
         {
