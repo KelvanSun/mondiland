@@ -83,6 +83,9 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UtilityLibrary">
+      <HintPath>..\Reference\UtilityLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>..\Reference\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
@@ -105,6 +108,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainToolForm.Designer.cs">
+      <DependentUpon>MainToolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintForm.cs">
       <SubType>Form</SubType>
@@ -152,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainToolForm.resx">
+      <DependentUpon>MainToolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintForm.resx">
       <DependentUpon>PrintForm.cs</DependentUpon>
