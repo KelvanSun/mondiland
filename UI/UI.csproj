@@ -83,8 +83,17 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Reference\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +144,9 @@
     <Compile Include="SafeDataForm.Designer.cs">
       <DependentUpon>SafeDataForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
