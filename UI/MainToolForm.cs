@@ -32,8 +32,10 @@ namespace Mondiland.UI
             while(parent_ator.MoveNext())
             {
                 OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent_ator.Current.Menu_name);
+                outlookShortcutsBand.LargeImageList = m_mainForm.imageList;
+                outlookShortcutsBand.SmallImageList = m_mainForm.imageList;
                 outlookShortcutsBand.Background = Color.White;
-
+                
                 this.outlookBar.Bands.Add(outlookShortcutsBand);
             }
 
