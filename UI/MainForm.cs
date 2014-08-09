@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 
 using Mondiland.BLL;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Mondiland.UI
 {
@@ -16,9 +17,18 @@ namespace Mondiland.UI
     {
         private int m_user_id = 0;
 
+        private MainToolForm m_mainToolForm = null;
+        private DefaultForm m_defaultForm = null;
+
         public MainForm()
         {
             InitializeComponent();
+
+            m_defaultForm = new DefaultForm();
+            m_mainToolForm = new MainToolForm();
+
+            m_mainToolForm.Show(this.dockPanel, DockState.DockLeft);
+            m_defaultForm.Show(this.dockPanel);
         }
         /// <summary>
         /// 登陆成功后获得ID
