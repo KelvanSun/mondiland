@@ -34,6 +34,7 @@
             // outlookBar
             // 
             this.outlookBar.AnimationSpeed = 20;
+            this.outlookBar.BackColor = System.Drawing.Color.White;
             this.outlookBar.BackgroundBitmap = null;
             this.outlookBar.BorderType = UtilityLibrary.WinControls.BorderType.None;
             this.outlookBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -43,20 +44,22 @@
             this.outlookBar.Location = new System.Drawing.Point(0, 0);
             this.outlookBar.Name = "outlookBar";
             this.outlookBar.RightBottomColor = System.Drawing.Color.Empty;
-            this.outlookBar.Size = new System.Drawing.Size(174, 590);
+            this.outlookBar.Size = new System.Drawing.Size(128, 546);
             this.outlookBar.TabIndex = 0;
             this.outlookBar.Text = "outlookBar1";
             // 
             // MainToolForm
             // 
-            this.ClientSize = new System.Drawing.Size(174, 590);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(128, 546);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
             this.Controls.Add(this.outlookBar);
-            this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
-            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom)));
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.HideOnClose = true;
+            this.MinimumSize = new System.Drawing.Size(144, 0);
             this.Name = "MainToolForm";
+            this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.DockLeft;
             this.Text = "导航条";
             this.ResumeLayout(false);
 

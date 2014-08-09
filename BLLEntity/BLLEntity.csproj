@@ -43,6 +43,7 @@
     <Compile Include="BEMadePlaceProduct.cs" />
     <Compile Include="BEMadePlaceInfo.cs" />
     <Compile Include="BEMaterialDataInfo.cs" />
+    <Compile Include="BEParentMenuInfo.cs" />
     <Compile Include="BEPartNameProduct.cs" />
     <Compile Include="BEProductDataReadProduct.cs" />
     <Compile Include="BEProductDataAllInfo.cs" />

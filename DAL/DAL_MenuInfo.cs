@@ -22,7 +22,7 @@ namespace Mondiland.DAL
             }
         }
         public DAL_MenuInfo()
-            : base("MenuInfo", "id", string.Empty, OrderType.ASC)
+            : base("MenuInfo", "id", "menu_order", OrderType.ASC)
         { }
 
         /// <summary>
@@ -40,6 +40,8 @@ namespace Mondiland.DAL
             entity.MenuBmp = reader.GetInt32("menu_bmp");
             entity.MenuWindow = reader.GetString("menu_window");
             entity.MenuMemo = reader.GetString("menu_memo");
+            entity.MenuParent = reader.GetInt32("menu_parent");
+            entity.MenuOrder = reader.GetInt32("menu_order");
             entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
@@ -62,6 +64,8 @@ namespace Mondiland.DAL
             hash.Add("menu_window", info.MenuWindow);
             hash.Add("menu_memo", info.MenuMemo);
             hash.Add("lastamp", info.LasTamp);
+            hash.Add("menu_parent", info.MenuParent);
+            hash.Add("menu_order", info.MenuOrder);
 
             return hash;
         }

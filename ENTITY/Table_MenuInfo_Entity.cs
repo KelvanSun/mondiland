@@ -10,8 +10,22 @@ namespace Mondiland.Entity
         private string m_menu_name = string.Empty;
         private int m_menu_bmp = 0;
         private string m_menu_window = string.Empty;
+        private int m_menu_parent = 0;
         private string m_menu_memo = string.Empty;
+        private int m_menu_order = 0;
 
+        public int MenuOrder
+        {
+            get { return m_menu_order; }
+            set { m_menu_order = value; }
+        }
+
+        public int MenuParent
+        {
+            get { return m_menu_parent; }
+            set { m_menu_parent = value; }
+        }
+        
         public string MenuMemo
         {
             get { return m_menu_memo; }
@@ -34,10 +48,15 @@ namespace Mondiland.Entity
             get { return m_menu_window; }
             set
             {
-                if (value.Length > 50)
-                    m_menu_window = value.Substring(0, 49);
+                if (string.IsNullOrEmpty(value))
+                    m_menu_window = "";
                 else
-                    m_menu_window = value;
+                {
+                    if (value.Length > 50)
+                        m_menu_window = value.Substring(0, 49);
+                    else
+                        m_menu_window = value;
+                }
             }
 
         }

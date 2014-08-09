@@ -25,10 +25,8 @@ namespace Mondiland.UI
             InitializeComponent();
 
             m_defaultForm = new DefaultForm();
-            m_mainToolForm = new MainToolForm();
-
-            m_mainToolForm.Show(this.dockPanel, DockState.DockLeft);
-            m_defaultForm.Show(this.dockPanel);
+            m_mainToolForm = new MainToolForm(this);
+            
         }
         /// <summary>
         /// 登陆成功后获得ID
@@ -95,10 +93,11 @@ namespace Mondiland.UI
             {
                 statusStrip.Items["version"].Text = "系统版本:(未知)";
             }
-                  
 
+            m_mainToolForm.LoadMenuInfo(m_user_id);
 
-
+            m_mainToolForm.Show(this.dockPanel, DockState.DockLeft);
+            m_defaultForm.Show(this.dockPanel);
             this.Visible = true;
         }
 
