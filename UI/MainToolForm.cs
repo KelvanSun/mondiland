@@ -35,10 +35,29 @@ namespace Mondiland.UI
                 outlookShortcutsBand.LargeImageList = m_mainForm.imageList;
                 outlookShortcutsBand.SmallImageList = m_mainForm.imageList;
                 outlookShortcutsBand.Background = Color.White;
-                
+
+                IEnumerator<BEChildMenuInfo> child_ator = BLLFactory<BLLMenuInfo>.Instance.GetChildMenuInfo(parent_ator.Current.Menu_id).GetEnumerator();
+
+                while(child_ator.MoveNext())
+                {
+                    OutlookBarItem item = new OutlookBarItem();
+
+                    item.Text = child_ator.Current.MenuName;
+                    item.Tag = child_ator.Current.MenuWindow;
+                    item.ImageIndex = child_ator.Current.MenuBmp;
+
+                    outlookShortcutsBand.Items.Add(item);
+                }
+
+
                 this.outlookBar.Bands.Add(outlookShortcutsBand);
             }
 
         }
+
+        private void outlookBar_ItemClicked(OutlookBarBand band, OutlookBarItem item)
+        {
+            m_mainForm.OpenWindows(item.Tag as string);
+        }   
     }
 }

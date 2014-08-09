@@ -61,5 +61,46 @@ namespace Mondiland.BLL
             return list;
         }
 
+        /// <summary>
+        /// 得到子菜单信息
+        /// </summary>
+        /// <param name="parent_menu_id">父菜单ID</param>
+        /// <returns>子菜单信息</returns>
+        public List<BEChildMenuInfo> GetChildMenuInfo(int parent_menu_id)
+        {
+            List<BEChildMenuInfo> list = new List<BEChildMenuInfo>();
+
+            Hashtable menu_info_hash = new Hashtable();
+
+            menu_info_hash.Add("menu_parent",parent_menu_id);
+
+            IEnumerator<Table_MenuInfo_Entity> menu_info_ator = MenuInfo_Dal.Find(menu_info_hash, SqlOperator.And, true).GetEnumerator();
+
+            while(menu_info_ator.MoveNext())
+            {
+                Hashtable group_menu_hash = new Hashtable();
+
+                group_menu_hash.Add("menu_id",menu_info_ator.Current.Id);
+
+                int cout = GroupMenu_Dal.FindPrimaryKey(group_menu_hash);
+
+                if(cout > 0)
+                {
+                    BEChildMenuInfo info = new BEChildMenuInfo();
+
+                    info.Id = menu_info_ator.Current.Id;
+                    info.MenuBmp = menu_info_ator.Current.MenuBmp;
+                    info.MenuName = menu_info_ator.Current.MenuName;
+                    info.MenuWindow = menu_info_ator.Current.MenuWindow;
+                    info.MenuMemo = menu_info_ator.Current.MenuMemo;
+
+                    list.Add(info);
+                }
+
+            }
+
+            return list;
+        }
+
     }
 }

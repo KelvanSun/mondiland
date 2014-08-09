@@ -28,7 +28,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationRevision>81</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -159,6 +159,12 @@
     <Compile Include="SafeDataForm.Designer.cs">
       <DependentUpon>SafeDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupplierManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierManagerForm.Designer.cs">
+      <DependentUpon>SupplierManagerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SafeDataForm.resx">
       <DependentUpon>SafeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierManagerForm.resx">
+      <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMadePlaceProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMaterialDataInfo.datasource" />

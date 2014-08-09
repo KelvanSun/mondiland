@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEChildMenuInfo.cs" />
     <Compile Include="BEMadePlaceProduct.cs" />
     <Compile Include="BEMadePlaceInfo.cs" />
     <Compile Include="BEMaterialDataInfo.cs" />

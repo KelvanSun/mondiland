@@ -47,6 +47,7 @@
             this.outlookBar.Size = new System.Drawing.Size(128, 546);
             this.outlookBar.TabIndex = 0;
             this.outlookBar.Text = "outlookBar1";
+            this.outlookBar.ItemClicked += new UtilityLibrary.WinControls.OutlookBarItemClickedHandler(this.outlookBar_ItemClicked);
             // 
             // MainToolForm
             // 

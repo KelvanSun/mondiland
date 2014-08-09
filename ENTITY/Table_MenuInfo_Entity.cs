@@ -11,8 +11,14 @@ namespace Mondiland.Entity
         private int m_menu_bmp = 0;
         private string m_menu_window = string.Empty;
         private int m_menu_parent = 0;
+        private int m_menu_order = 0;
         private string m_menu_memo = string.Empty;
 
+        public int MenuOrder
+        {
+            get { return m_menu_order; }
+            set { m_menu_order = value; }
+        }
         public int MenuParent
         {
             get { return m_menu_parent; }
