@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
+using UtilityLibrary.WinControls;
 
 namespace Mondiland.UI
 {
@@ -26,6 +27,15 @@ namespace Mondiland.UI
         /// <param name="user_id">登陆的用户ID</param>
         public void LoadMenuInfo(int user_id)
         {
+            IEnumerator<BEParentMenuInfo> parent_ator = BLLFactory<BLLMenuInfo>.Instance.GetParentMenuInfo(user_id).GetEnumerator();
+
+            while(parent_ator.MoveNext())
+            {
+                OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent_ator.Current.Menu_name);
+                outlookShortcutsBand.Background = Color.White;
+
+                this.outlookBar.Bands.Add(outlookShortcutsBand);
+            }
 
         }
     }

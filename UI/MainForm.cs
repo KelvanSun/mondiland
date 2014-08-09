@@ -8,8 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Deployment.Application;
 
+using Mondiland.Global;
 using Mondiland.BLL;
 using WeifenLuo.WinFormsUI.Docking;
+
 
 namespace Mondiland.UI
 {
@@ -99,6 +101,23 @@ namespace Mondiland.UI
             m_mainToolForm.Show(this.dockPanel, DockState.DockLeft);
             m_defaultForm.Show(this.dockPanel);
             this.Visible = true;
+        }
+
+        /// <summary>
+        /// 打开指定窗口
+        /// </summary>
+        /// <param name="name">窗口名称</param>
+        public void OpenWindows(string form_name)
+        {
+            try
+            {
+                BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name));
+                form.Show(this.dockPanel);
+            }
+            catch (Exception ex)
+            {
+                MessageUtil.ShowError(ex.Message);
+            }
         }
 
     }

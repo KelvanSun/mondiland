@@ -22,7 +22,7 @@ namespace Mondiland.DAL
 			}
 		}
         public DAL_GroupMenu()
-            : base("GroupMenu", "id", string.Empty, OrderType.ASC)
+            : base("GroupMenu", "id", "menu_order", OrderType.ASC)
 		{ }
 
         /// <summary>
@@ -36,8 +36,9 @@ namespace Mondiland.DAL
             SmartDataReader reader = new SmartDataReader(dataReader);
 
             entity.Id = reader.GetInt32("id");
-            entity.Group_Id = reader.GetInt32("group_id");
-            entity.Menu_Id = reader.GetInt32("menu_id");
+            entity.GroupId = reader.GetInt32("group_id");
+            entity.MenuId = reader.GetInt32("menu_id");
+            entity.MenuOrder = reader.GetInt32("menu_order");
             entity.LasTamp = reader.GetLong("lastamp");
 
             return entity;
@@ -55,8 +56,9 @@ namespace Mondiland.DAL
             Hashtable hash = new Hashtable();
 
             hash.Add("id", info.Id);
-            hash.Add("group_id",info.Group_Id);
-            hash.Add("menu_id",info.Menu_Id);
+            hash.Add("group_id",info.GroupId);
+            hash.Add("menu_id",info.MenuId);
+            hash.Add("menu_order", info.MenuOrder);
             hash.Add("lastamp", info.LasTamp);
 
             return hash;

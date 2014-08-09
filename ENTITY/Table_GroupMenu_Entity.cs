@@ -9,14 +9,21 @@ namespace Mondiland.Entity
     {
         private int m_group_id = 0;
         private int m_menu_id = 0;
+        private int m_menu_order = 0;
+
+        public int MenuOrder
+        {
+            get { return m_menu_order; }
+            set { m_menu_order = value; }
+        }
         
-        public int Group_Id
+        public int GroupId
         {
             get { return m_group_id; }
             set { m_group_id  = value; }
         }
 
-        public int Menu_Id
+        public int MenuId
         {
             get { return m_menu_id; }
             set { m_menu_id = value; }

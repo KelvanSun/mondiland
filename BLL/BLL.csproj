@@ -44,6 +44,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BLLMadePlace.cs" />
+    <Compile Include="BLLMenuInfo.cs" />
     <Compile Include="BLLProductInfo.cs" />
     <Compile Include="BLLProductPrint.cs" />
     <Compile Include="BLLSafeData.cs" />
