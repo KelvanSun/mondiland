@@ -54,6 +54,7 @@
     <Compile Include="ITable_StandardData.cs" />
     <Compile Include="ITable_GroupMenu.cs" />
     <Compile Include="ITable_UserInfo.cs" />
+    <Compile Include="ITable_UserMenuFavorites.cs" />
     <Compile Include="ITable_WashPrintTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

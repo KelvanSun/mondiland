@@ -57,6 +57,7 @@
     <Compile Include="Table_StardardData_Entity.cs" />
     <Compile Include="Table_GroupMenu_Entity.cs" />
     <Compile Include="Table_UserInfo_Entity.cs" />
+    <Compile Include="Table_UserMenuFavorites_Entity.cs" />
     <Compile Include="Table_WashPrintTemplate_Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
