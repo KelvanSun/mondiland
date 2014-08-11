@@ -112,6 +112,15 @@ namespace Mondiland.UI
         {
             try
             {
+                foreach(Form childrenForm in this.MdiChildren)
+                {
+                    if(childrenForm.Name == form_name)
+                    {
+                        childrenForm.Activate();
+                        return;
+                    }
+                }
+                                
                 BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name));
                 form.Show(this.dockPanel);
             }
