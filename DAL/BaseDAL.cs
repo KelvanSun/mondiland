@@ -730,7 +730,7 @@ namespace Mondiland.DAL
                 sqlconn.Close();
             }
 
-            return result > 0;
+            return result >= 0;
         }
         /// <summary>
         /// 查询数据库,检查是否存在指定键值的对象

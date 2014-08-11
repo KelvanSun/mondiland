@@ -31,6 +31,11 @@ namespace Mondiland.UI
             
             
         }
+
+        public int UserId
+        {
+            get { return m_user_id; }
+        }
         /// <summary>
         /// 登陆成功后获得ID
         /// </summary>
@@ -132,12 +137,12 @@ namespace Mondiland.UI
 
         private void MainForm_MdiChildActivate(object sender, EventArgs e)
         {
-            ToolStripManager.RevertMerge(this.main_toolStrip);
+            //ToolStripManager.RevertMerge(this.main_toolStrip);
 
-            if(this.ActiveMdiChild is IMergeToolStrip)
-            {
-                ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
-            }
+            //if(this.ActiveMdiChild is IMergeToolStrip)
+            //{
+            //    ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
+            //}
     
         }
 

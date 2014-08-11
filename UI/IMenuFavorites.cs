@@ -10,12 +10,12 @@ namespace Mondiland.UI
         /// <summary>
         /// 返回是否已经收藏
         /// </summary>
-        bool IsFavorites
+        bool Favorites
         {
             get;
         }
 
-        void Favorites();
+        void SetFavorites();
         void UnFavorites();
 
     }
