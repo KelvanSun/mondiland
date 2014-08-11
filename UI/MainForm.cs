@@ -112,9 +112,9 @@ namespace Mondiland.UI
         {
             try
             {
-                foreach(Form childrenForm in this.MdiChildren)
+                foreach (Form childrenForm in this.MdiChildren)
                 {
-                    if(childrenForm.Name == form_name)
+                    if (childrenForm.Name == form_name)
                     {
                         childrenForm.Activate();
                         return;
@@ -134,13 +134,11 @@ namespace Mondiland.UI
         {
             ToolStripManager.RevertMerge(this.main_toolStrip);
 
-            if (this.ActiveMdiChild == null) return;
-
-            if ((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip == null) return;
-
-            ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
-            //ToolStripManager.Merge(main_toolStrip,(this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip);
-   
+            if(this.ActiveMdiChild is IMergeToolStrip)
+            {
+                ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
+            }
+    
         }
 
     }
