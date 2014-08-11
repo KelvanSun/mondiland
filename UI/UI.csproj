@@ -103,6 +103,7 @@
     <Compile Include="DefaultForm.Designer.cs">
       <DependentUpon>DefaultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMenuFavorites.cs" />
     <Compile Include="IMergeToolStrip.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -166,6 +167,12 @@
     <Compile Include="SupplierManagerForm.Designer.cs">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCListViewItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCListViewItem.Designer.cs">
+      <DependentUpon>UCListViewItem.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierManagerForm.resx">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCListViewItem.resx">
+      <DependentUpon>UCListViewItem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMadePlaceProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMaterialDataInfo.datasource" />

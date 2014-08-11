@@ -121,7 +121,7 @@ namespace Mondiland.UI
                     }
                 }
                                 
-                BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name));
+                BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name),this);
                 form.Show(this.dockPanel);
             }
             catch (Exception ex)

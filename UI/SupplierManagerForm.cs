@@ -10,8 +10,10 @@ namespace Mondiland.UI
 {
     public partial class SupplierManagerForm : Mondiland.UI.BaseForm,IMergeToolStrip
     {
-        public SupplierManagerForm()
+        private MainForm m_mainfrom = null;
+        public SupplierManagerForm(MainForm main)
         {
+            m_mainfrom = main;
             InitializeComponent();
             this.toolStrip.Visible = false;
         }
