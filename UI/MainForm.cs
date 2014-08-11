@@ -29,6 +29,7 @@ namespace Mondiland.UI
             m_defaultForm = new DefaultForm();
             m_mainToolForm = new MainToolForm(this);
             
+            
         }
         /// <summary>
         /// 登陆成功后获得ID
@@ -118,6 +119,19 @@ namespace Mondiland.UI
             {
                 MessageUtil.ShowError(ex.Message);
             }
+        }
+
+        private void MainForm_MdiChildActivate(object sender, EventArgs e)
+        {
+            ToolStripManager.RevertMerge(this.main_toolStrip);
+
+            if (this.ActiveMdiChild == null) return;
+
+            if ((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip == null) return;
+
+            ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
+            //ToolStripManager.Merge(main_toolStrip,(this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip);
+   
         }
 
     }

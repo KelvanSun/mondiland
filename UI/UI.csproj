@@ -103,6 +103,7 @@
     <Compile Include="DefaultForm.Designer.cs">
       <DependentUpon>DefaultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMergeToolStrip.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

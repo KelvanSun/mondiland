@@ -60,8 +60,11 @@
             this.version = new System.Windows.Forms.ToolStripStatusLabel();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.main_toolStrip = new System.Windows.Forms.ToolStrip();
+            this.exit = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.main_toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -224,11 +227,33 @@
             this.imageList.Images.SetKeyName(0, "0.png");
             this.imageList.Images.SetKeyName(1, "1.png");
             // 
+            // main_toolStrip
+            // 
+            this.main_toolStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.main_toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exit});
+            this.main_toolStrip.Location = new System.Drawing.Point(0, 25);
+            this.main_toolStrip.Name = "main_toolStrip";
+            this.main_toolStrip.Size = new System.Drawing.Size(650, 56);
+            this.main_toolStrip.TabIndex = 8;
+            this.main_toolStrip.Text = "主工具";
+            // 
+            // exit
+            // 
+            this.exit.Image = ((System.Drawing.Image)(resources.GetObject("exit.Image")));
+            this.exit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(60, 53);
+            this.exit.Text = "退出系统";
+            this.exit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.exit.ToolTipText = "退出系统";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 346);
+            this.Controls.Add(this.main_toolStrip);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -239,10 +264,13 @@
             this.Text = "宁波麦迪茉莱登商品管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.MdiChildActivate += new System.EventHandler(this.MainForm_MdiChildActivate);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.main_toolStrip.ResumeLayout(false);
+            this.main_toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +293,7 @@
         private System.Windows.Forms.ToolStripStatusLabel version;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         public System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.ToolStrip main_toolStrip;
+        private System.Windows.Forms.ToolStripButton exit;
     }
 }

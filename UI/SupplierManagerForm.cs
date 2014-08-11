@@ -8,11 +8,17 @@ using System.Windows.Forms;
 
 namespace Mondiland.UI
 {
-    public partial class SupplierManagerForm : Mondiland.UI.BaseForm
+    public partial class SupplierManagerForm : Mondiland.UI.BaseForm,IMergeToolStrip
     {
         public SupplierManagerForm()
         {
             InitializeComponent();
+            this.toolStrip.Visible = false;
+        }
+
+        public ToolStrip MergeToolStrip
+        {
+            get { return this.toolStrip; }
         }
     }
 }
