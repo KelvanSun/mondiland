@@ -27,11 +27,14 @@ namespace Mondiland.UI
             InitializeComponent();
 
             m_defaultForm = new DefaultForm();
-            m_mainToolForm = new MainToolForm(this);
+            m_mainToolForm = new MainToolForm();
             
             
         }
 
+        /// <summary>
+        /// 登陆成功后的用户名ID
+        /// </summary>
         public int UserId
         {
             get { return m_user_id; }
@@ -102,7 +105,8 @@ namespace Mondiland.UI
                 statusStrip.Items["version"].Text = "系统版本:(未知)";
             }
 
-            m_mainToolForm.LoadMenuInfo(m_user_id);
+            m_mainToolForm.LoadMenuInfo();
+            m_defaultForm.LoadFavoritesMenu();
 
             m_mainToolForm.Show(this.dockPanel, DockState.DockLeft);
             m_defaultForm.Show(this.dockPanel);
@@ -126,7 +130,7 @@ namespace Mondiland.UI
                     }
                 }
                                 
-                BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name),this);
+                BaseForm form = (BaseForm)Activator.CreateInstance(Type.GetType("Mondiland.UI." + form_name));
                 form.Show(this.dockPanel);
             }
             catch (Exception ex)

@@ -11,11 +11,38 @@ namespace Mondiland.UI
 {
     public partial class UCListViewItem : UserControl
     {
-        private MainForm mainform = null; 
-        public UCListViewItem(MainForm main)
+        private string m_form_name = string.Empty;
+        public UCListViewItem()
         {
-            mainform = main;
             InitializeComponent();
+        }
+
+        public string ItemFormName
+        {
+            get { return m_form_name; }
+            set { m_form_name = value; }
+        }
+
+        public string ItemCaption
+        {
+            get { return label_caption.Text; }
+            set { label_caption.Text = value; }
+        }
+
+        public string ItemMemo
+        {
+            get { return label_memo.Text; }
+            set { label_memo.Text = value; }
+        }
+
+        public Image ItemImage
+        {
+            set { pbx_main.Image = value; }
+        }
+
+        private void label_caption_Click(object sender, EventArgs e)
+        {
+            Program.main_form.OpenWindows(this.ItemFormName);
         }
     }
 }

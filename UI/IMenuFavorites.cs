@@ -7,16 +7,7 @@ namespace Mondiland.UI
 {
     public interface IMenuFavorites
     {
-        /// <summary>
-        /// 返回是否已经收藏
-        /// </summary>
-        bool Favorites
-        {
-            get;
-        }
-
         void SetFavorites();
         void UnFavorites();
-
     }
 }

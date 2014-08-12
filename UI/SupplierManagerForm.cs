@@ -13,16 +13,10 @@ namespace Mondiland.UI
 {
     public partial class SupplierManagerForm : Mondiland.UI.BaseForm,IMenuFavorites
     {
-        private MainForm m_mainfrom = null;
         private bool m_favorites = false;
 
-        public bool Favorites
+        public SupplierManagerForm()
         {
-            get { return m_favorites; }
-        }
-        public SupplierManagerForm(MainForm main)
-        {
-            m_mainfrom = main;
             InitializeComponent();
             
             
@@ -32,7 +26,7 @@ namespace Mondiland.UI
 
         private void UpdateFavoritesMenu()
         {
-            m_favorites = BLLFactory<BLLMenuInfo>.Instance.IsUserMenuFavorites(m_mainfrom.UserId,
+            m_favorites = BLLFactory<BLLMenuInfo>.Instance.IsUserMenuFavorites(Program.main_form.UserId,
                                                                                this.Name);
                         
             if (m_favorites)
@@ -50,7 +44,7 @@ namespace Mondiland.UI
 
         public void UnFavorites()
         {
-            if (BLLFactory<BLLMenuInfo>.Instance.UnFavorites(m_mainfrom.UserId, this.Name))
+            if (BLLFactory<BLLMenuInfo>.Instance.UnFavorites(Program.main_form.UserId, this.Name))
                 MessageUtil.ShowWarning("成功取消快捷方式!");
             else
                 MessageUtil.ShowWarning("取消快捷方式失败!");
@@ -59,7 +53,7 @@ namespace Mondiland.UI
 
         public void SetFavorites()
         {
-            if (BLLFactory<BLLMenuInfo>.Instance.SetFavorites(m_mainfrom.UserId, this.Name))
+            if (BLLFactory<BLLMenuInfo>.Instance.SetFavorites(Program.main_form.UserId, this.Name))
                 MessageUtil.ShowWarning("成功收藏快捷方式!");
             else
                 MessageUtil.ShowWarning("收藏快捷方式失败!");

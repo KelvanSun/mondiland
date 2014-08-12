@@ -97,6 +97,40 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
+        /// 得到用户收藏的功能列表
+        /// </summary>
+        /// <param name="user_id">用户ID</param>
+        /// <returns>列表</returns>
+        public List<BEUserMenuFavorites> GetUserMenuFavoritesList(int user_id)
+        {
+            List<BEUserMenuFavorites> list = new List<BEUserMenuFavorites>();
+
+            Hashtable user_menu_hash = new Hashtable();
+
+            user_menu_hash.Add("user_id", user_id);
+
+            IEnumerator<Table_UserMenuFavorites_Entity> user_menu_ator = UserMenuFavorites_Dal.Find(user_menu_hash, SqlOperator.And, false).GetEnumerator();
+
+            while(user_menu_ator.MoveNext())
+            {
+                Table_MenuInfo_Entity info = MenuInfo_Dal.FindByID(user_menu_ator.Current.MenuId);
+                
+                BEUserMenuFavorites entity = new BEUserMenuFavorites();
+
+                entity.MenuBmp = info.MenuBmp;
+                entity.MenuMemo = info.MenuMemo;
+                entity.MenuName = info.MenuName;
+                entity.MenuWindow = info.MenuWindow;
+
+                list.Add(entity);
+
+            }
+                       
+
+            return list;
+        }
+
+        /// <summary>
         /// 得到系统父级菜单信息
         /// </summary>
         /// <param name="user_id">用户ID</param>

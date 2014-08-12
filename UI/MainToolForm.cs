@@ -14,10 +14,8 @@ namespace Mondiland.UI
 {
     public partial class MainToolForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        private MainForm m_mainForm = null;
-        public MainToolForm(MainForm main)
+        public MainToolForm()
         {
-            m_mainForm = main;
             InitializeComponent();
         }
 
@@ -25,15 +23,15 @@ namespace Mondiland.UI
         /// 根据user_id加载菜单项
         /// </summary>
         /// <param name="user_id">登陆的用户ID</param>
-        public void LoadMenuInfo(int user_id)
+        public void LoadMenuInfo()
         {
-            IEnumerator<BEParentMenuInfo> parent_ator = BLLFactory<BLLMenuInfo>.Instance.GetParentMenuInfo(user_id).GetEnumerator();
+            IEnumerator<BEParentMenuInfo> parent_ator = BLLFactory<BLLMenuInfo>.Instance.GetParentMenuInfo(Program.main_form.UserId).GetEnumerator();
 
             while(parent_ator.MoveNext())
             {
                 OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent_ator.Current.Menu_name);
-                outlookShortcutsBand.LargeImageList = m_mainForm.imageList;
-                outlookShortcutsBand.SmallImageList = m_mainForm.imageList;
+                outlookShortcutsBand.LargeImageList = Program.main_form.imageList;
+                outlookShortcutsBand.SmallImageList = Program.main_form.imageList;
                 outlookShortcutsBand.Background = Color.White;
 
                 IEnumerator<BEChildMenuInfo> child_ator = BLLFactory<BLLMenuInfo>.Instance.GetChildMenuInfo(parent_ator.Current.Menu_id).GetEnumerator();
@@ -57,7 +55,7 @@ namespace Mondiland.UI
 
         private void outlookBar_ItemClicked(OutlookBarBand band, OutlookBarItem item)
         {
-            m_mainForm.OpenWindows(item.Tag as string);
+            Program.main_form.OpenWindows(item.Tag as string);
         }   
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BEStandardDataInfo.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
+    <Compile Include="BEUserMenuFavorites.cs" />
     <Compile Include="BEWashPrintTemplateProduct.cs" />
     <Compile Include="BLLEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

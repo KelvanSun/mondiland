@@ -52,6 +52,7 @@
             this.label_caption.Size = new System.Drawing.Size(47, 12);
             this.label_caption.TabIndex = 4;
             this.label_caption.Text = "label1";
+            this.label_caption.Click += new System.EventHandler(this.label_caption_Click);
             // 
             // pbx_main
             // 

@@ -10,12 +10,16 @@ namespace Mondiland.UI
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
+        public static MainForm main_form = null;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            main_form = new MainForm();
+            
+            Application.Run(main_form);
         }
     }
 }
