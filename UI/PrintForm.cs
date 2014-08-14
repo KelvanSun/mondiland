@@ -250,5 +250,10 @@ namespace Mondiland.UI
             txb_huohao.AutoCompleteCustomSource = acsc;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProductObject product = new ProductObject("C1101-07");
+        }
+
     }
 }

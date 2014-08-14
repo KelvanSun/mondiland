@@ -47,6 +47,124 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
+        /// 根据产品ID返回表信息
+        /// </summary>
+        /// <param name="id">产品ID</param>
+        /// <returns>BEProductDataInfo结构</returns>
+        public BEProductDataInfo ReadByPrimaryKey(int id)
+        {
+            BEProductDataInfo info = new BEProductDataInfo();
+            
+            Table_ProductData_Entity entity = ProductData_Dal.FindByID(id);
+
+            info.Id = entity.Id;
+            info.HuoHao = entity.HuoHao;
+            info.Dengji_Id = entity.Dengji_Id;
+            info.MadePlace_Id = entity.MadePlace_Id;
+            info.PartName_Id = entity.PartName_Id;
+            info.SafeData_Id = entity.SafeData_Id;
+            info.StandardData_Id = entity.StandardData_Id;
+            info.Price = entity.Price;
+            info.Memo = entity.Memo;
+            info.Pwash = entity.Pwash;
+            info.LasTamp = entity.LasTamp;
+            info.Tag_Id = entity.Tag_Id;
+            info.Wash_Id = entity.Wash_Id;
+
+            return info;
+        }
+
+        /// <summary>
+        /// 根据执行标准ID得到执行标准内容
+        /// </summary>
+        /// <param name="id">执行标准ID</param>
+        /// <returns>执行标准内容</returns>
+        public string ReadStandardDataTypeByPrimaryKey(int id)
+        {
+            Table_StardardData_Entity entity = StandardData_Dal.FindByID(id);
+
+            return entity.Type;
+        }
+        /// <summary>
+        /// 根据安全类别ID得到安全类别名称
+        /// </summary>
+        /// <param name="id">全类别ID</param>
+        /// <returns>安全类别名称</returns>
+        public string ReadSafeDataTypeByPrimaryKey(int id)
+        {
+            Table_SafeData_Entity entity = SafeData_Dal.FindByID(id);
+
+            return entity.Type;
+        }
+        /// <summary>
+        /// 根据等级ID得到等级名称
+        /// </summary>
+        /// <param name="id">等级ID</param>
+        /// <returns>等级名称</returns>
+        public string ReadDengJiTypeByPrimaryKey(int id)
+        {
+            Table_Dengji_Entity entity = Dengji_Dal.FindByID(id);
+
+            return entity.Type;
+        }
+
+        /// <summary>
+        /// 根据产地ID得到产地名称
+        /// </summary>
+        /// <param name="id">产地ID</param>
+        /// <returns>产地名称</returns>
+        public string ReadMadePlaceTypeByPrimaryKey(int id)
+        {
+            Table_MadePlace_Entity entity = MadePlace_Dal.FindByID(id);
+
+            return entity.Type;
+        }
+
+        /// <summary>
+        /// 根据分类ID得到分类名称
+        /// </summary>
+        /// <param name="id">分类ID</param>
+        /// <returns>分类名称</returns>
+        public string ReadPartNameTypeByPrimaryKey(int id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(id);
+
+            return entity.Name;
+        }
+
+        /// <summary>
+        /// 根据产品货号返回表信息
+        /// </summary>
+        /// <param name="huohao">产品货号</param>
+        /// <returns>BEProductDataInfo结构</returns>
+        public BEProductDataInfo ReadByHuoHao(string huohao)
+        {
+            BEProductDataInfo info = new BEProductDataInfo();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("huohao", huohao);
+
+            Table_ProductData_Entity entity = ProductData_Dal.Find(hash);
+
+            info.Id = entity.Id;
+            info.HuoHao = entity.HuoHao;
+            info.Dengji_Id = entity.Dengji_Id;
+            info.MadePlace_Id = entity.MadePlace_Id;
+            info.PartName_Id = entity.PartName_Id;
+            info.SafeData_Id = entity.SafeData_Id;
+            info.StandardData_Id = entity.StandardData_Id;
+            info.Price = entity.Price;
+            info.Memo = entity.Memo;
+            info.Pwash = entity.Pwash;
+            info.LasTamp = entity.LasTamp;
+            info.Tag_Id = entity.Tag_Id;
+            info.Wash_Id = entity.Wash_Id;
+
+            return info;
+        }
+
+       
+        /// <summary>
         /// 根据产品种类选择合适的安全标准
         /// </summary>
         /// <param name="partname_id"></param>
