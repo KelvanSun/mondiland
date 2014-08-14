@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierManagerForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.favorites = new System.Windows.Forms.ToolStripButton();
-            this.panel_top = new System.Windows.Forms.Panel();
-            this.FunctionName = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip.SuspendLayout();
-            this.panel_top.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -57,38 +56,14 @@
             this.favorites.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.favorites.Click += new System.EventHandler(this.favorites_Click);
             // 
-            // panel_top
-            // 
-            this.panel_top.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(149)))), ((int)(((byte)(193)))));
-            this.panel_top.Controls.Add(this.FunctionName);
-            this.panel_top.Location = new System.Drawing.Point(0, 43);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(611, 42);
-            this.panel_top.TabIndex = 1;
-            // 
-            // FunctionName
-            // 
-            this.FunctionName.AutoSize = true;
-            this.FunctionName.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FunctionName.Location = new System.Drawing.Point(10, 7);
-            this.FunctionName.Name = "FunctionName";
-            this.FunctionName.Size = new System.Drawing.Size(265, 28);
-            this.FunctionName.TabIndex = 2;
-            this.FunctionName.Text = "[供应商]---供应商信息管理";
-            // 
             // SupplierManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(611, 355);
-            this.Controls.Add(this.panel_top);
             this.Controls.Add(this.toolStrip);
             this.Name = "SupplierManagerForm";
             this.Text = "供应商信息管理";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,8 +73,7 @@
 
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton favorites;
-        private System.Windows.Forms.Panel panel_top;
-        protected System.Windows.Forms.Label FunctionName;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

@@ -117,24 +117,24 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="dr">有效的DataReader对象</param>
         /// <returns>实体类对象</returns>
-        protected virtual T DataReaderToEntity(IDataReader dr)
-        {
-            T obj = new T();
-            PropertyInfo[] pis = obj.GetType().GetProperties();
+        protected abstract T DataReaderToEntity(IDataReader dr);
+        //{
+        //    T obj = new T();
+        //    PropertyInfo[] pis = obj.GetType().GetProperties();
 
-            foreach (PropertyInfo pi in pis)
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(dr[pi.Name].ToString()))
-                    {
-                        pi.SetValue(obj, dr[pi.Name] ?? "", null);
-                    }
-                }
-                catch { }
-            }
-            return obj;
-        }
+        //    foreach (PropertyInfo pi in pis)
+        //    {
+        //        try
+        //        {
+        //            if (!String.IsNullOrEmpty(dr[pi.Name].ToString()))
+        //            {
+        //                pi.SetValue(obj, dr[pi.Name] ?? "", null);
+        //            }
+        //        }
+        //        catch { }
+        //    }
+        //    return obj;
+        //}
 
         /// <summary>
         /// 将实体对象的属性值转化为Hashtable对应的键值(用于插入或者更新操作)
@@ -142,25 +142,25 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="obj">有效的实体对象</param>
         /// <returns>包含键值映射的Hashtable</returns>
-        protected virtual Hashtable GetHashByEntity(T obj)
-        {
-            Hashtable ht = new Hashtable();
-            PropertyInfo[] pis = obj.GetType().GetProperties();
-            for (int i = 0; i < pis.Length; i++)
-            {
-                //if (pis[i].Name != PrimaryKey)
-                {
-                    object objValue = pis[i].GetValue(obj, null);
-                    objValue = (objValue == null) ? DBNull.Value : objValue;
+        protected abstract Hashtable GetHashByEntity(T obj);
+        //{
+        //    Hashtable ht = new Hashtable();
+        //    PropertyInfo[] pis = obj.GetType().GetProperties();
+        //    for (int i = 0; i < pis.Length; i++)
+        //    {
+        //        //if (pis[i].Name != PrimaryKey)
+        //        {
+        //            object objValue = pis[i].GetValue(obj, null);
+        //            objValue = (objValue == null) ? DBNull.Value : objValue;
 
-                    if (!ht.ContainsKey(pis[i].Name))
-                    {
-                        ht.Add(pis[i].Name, objValue);
-                    }
-                }
-            }
-            return ht;
-        }
+        //            if (!ht.ContainsKey(pis[i].Name))
+        //            {
+        //                ht.Add(pis[i].Name, objValue);
+        //            }
+        //        }
+        //    }
+        //    return ht;
+        //}
 
         #endregion
 
