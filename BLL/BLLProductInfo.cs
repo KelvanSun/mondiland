@@ -47,6 +47,60 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
+        /// 得到洗唛大小
+        /// </summary>
+        /// <param name="product_id">产品ID</param>
+        /// <returns></returns>
+        public string GetWashSize(int product_id)
+        {
+            Table_ProductData_Entity product = ProductData_Dal.FindByID(product_id);
+            Table_WashPrintTemplate_Entity wash = WashPrintTemplate_Dal.FindByID(product.Wash_Id);
+
+            return wash.DaXiao;
+        }
+        /// <summary>
+        /// 得到条码前缀
+        /// </summary>
+        /// <param name="part_name_id">产品分类ID</param>
+        /// <returns></returns>
+        public string GetBarCodePrefix(int part_name_id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(part_name_id);
+
+            return entity.Barcode;
+        }
+
+        /// <summary>
+        /// 读取填充量内容
+        /// </summary>
+        /// <param name="id">产品ID</param>
+        /// <returns>BEMaterialFillData结构</returns>
+        public BindingList<BEMaterialFillData> ReadMaterialFillDataList(int id)
+        {
+            BindingList<BEMaterialFillData> list = new BindingList<BEMaterialFillData>();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("product_id", id);
+
+            IEnumerator<Table_MaterialFill_Entity> ator = MaterialFill_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                BEMaterialFillData info = new BEMaterialFillData();
+
+                info.Id = ator.Current.Id;
+                info.SizeName = ator.Current.Size_Name;
+                info.Type = ator.Current.Type;
+                info.Fill = ator.Current.Fill;
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+
+
+        /// <summary>
         /// 根据分类ID号读取产品号型列表
         /// </summary>
         /// <param name="parntname_id">分类ID号</param>
@@ -80,7 +134,7 @@ namespace Mondiland.BLL
                 {
                     info.Id = index++;
                     info.SizeName = ator.Current.Size_Name;
-                    info.SizeType = string.Format("{1}({2})", ator.Current.Size_Type, ator.Current.Other);
+                    info.SizeType = string.Format("{0}({1})", ator.Current.Size_Type, ator.Current.Other);
 
                 }
 
@@ -99,6 +153,8 @@ namespace Mondiland.BLL
             BEProductDataInfo info = new BEProductDataInfo();
             
             Table_ProductData_Entity entity = ProductData_Dal.FindByID(id);
+
+            if (entity == null) return null;
 
             info.Id = entity.Id;
             info.HuoHao = entity.HuoHao;
@@ -189,6 +245,8 @@ namespace Mondiland.BLL
 
             Table_ProductData_Entity entity = ProductData_Dal.Find(hash);
 
+            if (entity == null) return null;
+            
             info.Id = entity.Id;
             info.HuoHao = entity.HuoHao;
             info.Dengji_Id = entity.Dengji_Id;
@@ -202,6 +260,7 @@ namespace Mondiland.BLL
             info.LasTamp = entity.LasTamp;
             info.Tag_Id = entity.Tag_Id;
             info.Wash_Id = entity.Wash_Id;
+           
 
             return info;
         }
@@ -431,10 +490,6 @@ namespace Mondiland.BLL
 
         }
 
-
-
-
-
         public BindingList<BEMaterialDataInfo> GetMaterialDataList(int product_id)
         {
             BindingList<BEMaterialDataInfo> list = new BindingList<BEMaterialDataInfo>();
@@ -521,6 +576,60 @@ namespace Mondiland.BLL
 
             return ProductData_Dal.FindPrimaryKey(hash);
         }
+
+        /// <summary>
+        /// 返回吊牌文件名
+        /// </summary>
+        /// <param name="pwash">是否要打印水洗产品字样</param>
+        /// <param name="row">成份行数</param>
+        /// <returns>文件名</returns>
+        public string GetTagFileName(bool pwash,int row)
+        {
+            Table_TagPrintTemplate_Entity entity = new Table_TagPrintTemplate_Entity();
+            Hashtable hash = new Hashtable();
+
+            if (pwash)
+            {
+                hash.Add("file_name", string.Format("TagA{0}.btw", row.ToString()));
+            }
+            else
+            {
+                hash.Add("file_name", string.Format("Tag{0}.btw", row.ToString()));
+            }
+
+            entity = TagPrintTemplate_Dal.Find(hash);
+            
+            return entity.File_Name;
+        }
+
+        /// <summary>
+        /// 返回洗唛文件名
+        /// </summary>
+        /// <param name="huohao">产品货号</param>
+        /// <param name="row">成份行数</param>
+        /// <returns>文件名</returns>
+        public string GetWashFileName(string huohao,int row)
+        {
+            string str_clss = huohao.Substring(0, 1);
+            string result = string.Empty;
+
+            Hashtable hash = new Hashtable();
+            hash.Add("type",str_clss);
+
+            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                if(ator.Current.File_Name.Substring(5,1) == row.ToString())
+                {
+                    result = ator.Current.File_Name;
+                    break;
+                }
+            }
+            
+            return result;
+        }
+
 
         public string GetTagName(bool wash,int count)
         {

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbx_select = new System.Windows.Forms.ComboBox();
             this.rb_tag = new System.Windows.Forms.RadioButton();
             this.rb_wash = new System.Windows.Forms.RadioButton();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -46,7 +45,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txb_price = new System.Windows.Forms.TextBox();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -57,7 +55,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lab_daoxiao = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cbx_select = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -71,16 +70,6 @@
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 4;
             this.label1.Text = "产品货号";
-            // 
-            // cbx_select
-            // 
-            this.cbx_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_select.FormattingEnabled = true;
-            this.cbx_select.Location = new System.Drawing.Point(70, 293);
-            this.cbx_select.Name = "cbx_select";
-            this.cbx_select.Size = new System.Drawing.Size(168, 20);
-            this.cbx_select.TabIndex = 5;
-            this.cbx_select.DropDownClosed += new System.EventHandler(this.cbx_select_DropDownClosed);
             // 
             // rb_tag
             // 
@@ -107,7 +96,7 @@
             // 
             // numericUpDown
             // 
-            this.numericUpDown.Location = new System.Drawing.Point(244, 293);
+            this.numericUpDown.Location = new System.Drawing.Point(239, 293);
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.Size = new System.Drawing.Size(78, 21);
             this.numericUpDown.TabIndex = 8;
@@ -131,7 +120,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 296);
+            this.label2.Location = new System.Drawing.Point(24, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 10;
@@ -242,12 +231,6 @@
             this.txb_price.TabIndex = 27;
             this.txb_price.TabStop = false;
             this.txb_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txb_price.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_price_KeyDown);
-            this.txb_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_price_KeyPress);
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Mondiland.BLLEntity.BEProductDataAllInfo);
             // 
             // textBox6
             // 
@@ -334,6 +317,7 @@
             // lab_daoxiao
             // 
             this.lab_daoxiao.AutoSize = true;
+            this.lab_daoxiao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "WashSize", true));
             this.lab_daoxiao.ForeColor = System.Drawing.Color.Red;
             this.lab_daoxiao.Location = new System.Drawing.Point(335, 259);
             this.lab_daoxiao.Name = "lab_daoxiao";
@@ -344,7 +328,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 241);
+            this.button1.Location = new System.Drawing.Point(14, 250);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
@@ -352,22 +336,29 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // cbx_select
             // 
-            this.button2.Location = new System.Drawing.Point(29, 264);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cbx_select.ComboBoxHeight = 14;
+            this.cbx_select.DropDownHeight = 114;
+            this.cbx_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_select.DropDownWidth = 121;
+            this.cbx_select.FormattingEnabled = true;
+            this.cbx_select.ItemDropDownHeight = 14;
+            this.cbx_select.Location = new System.Drawing.Point(86, 293);
+            this.cbx_select.Name = "cbx_select";
+            this.cbx_select.Size = new System.Drawing.Size(133, 20);
+            this.cbx_select.TabIndex = 28;
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(Mondiland.UI.ProductObject);
             // 
             // PrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 331);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.cbx_select);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lab_daoxiao);
             this.Controls.Add(this.label10);
@@ -379,7 +370,6 @@
             this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.rb_wash);
             this.Controls.Add(this.rb_tag);
-            this.Controls.Add(this.cbx_select);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -400,13 +390,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbx_select;
         private System.Windows.Forms.RadioButton rb_tag;
         private System.Windows.Forms.RadioButton rb_wash;
         private System.Windows.Forms.NumericUpDown numericUpDown;
         private System.Windows.Forms.Button bt_print;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Button bt_select;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -427,6 +415,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lab_daoxiao;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource bindingSource;
+        private UCControl.MultiColumnComboBoxEx cbx_select;
     }
 }

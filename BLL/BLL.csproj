@@ -46,7 +46,6 @@
     <Compile Include="BLLMadePlace.cs" />
     <Compile Include="BLLMenuInfo.cs" />
     <Compile Include="BLLProductInfo.cs" />
-    <Compile Include="BLLProductPrint.cs" />
     <Compile Include="BLLSafeData.cs" />
     <Compile Include="BLLStandardData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

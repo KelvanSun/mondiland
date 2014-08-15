@@ -22,7 +22,7 @@ namespace Mondiland.DAL
 			}
 		}
         public DAL_MaterialFill()
-            : base("MaterialFill", "id", string.Empty, OrderType.ASC)
+            : base("MaterialFill", "id", "size_name", OrderType.ASC)
 		{ }
 
         /// <summary>

@@ -28,7 +28,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>95</ApplicationRevision>
+    <ApplicationRevision>97</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -227,6 +227,7 @@
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMeterialFillInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEProductDataAllInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BLLDengjiProduct.datasource" />
+    <None Include="Properties\DataSources\ProductObject.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
