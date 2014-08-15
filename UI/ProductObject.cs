@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
@@ -41,6 +42,16 @@ namespace Mondiland.UI
         private string m_memo = string.Empty;
         private bool m_pwash = false;
         private long m_lastamp = 0;
+
+        /// <summary>
+        /// 产品号型列表
+        /// </summary>size_data_list
+        private BindingList<BESizeDataList> m_size_data_list = new BindingList<BESizeDataList>();
+        /// <summary>
+        /// 产品成份信息
+        /// </summary>
+        private BindingList<BEMaterialDataInfo> m_material_data_list = new BindingList<BEMaterialDataInfo>();
+        //private BindingList<>
                 
         /// <summary>
         /// 打印吊牌模板文件ID号
@@ -132,6 +143,8 @@ namespace Mondiland.UI
             { 
                 m_partname_id = value;
                 m_parntname = BLLFactory<BLLProductInfo>.Instance.ReadPartNameTypeByPrimaryKey(m_partname_id);
+
+                this.m_size_data_list = BLLFactory<BLLProductInfo>.Instance.ReadSizeDataList(m_partname_id);
             }
         }
 
@@ -208,9 +221,6 @@ namespace Mondiland.UI
             set { m_huohao_id = value; }
         }
 
-
-
-
         public ProductObject() {}
         
         /// <summary>
@@ -235,6 +245,8 @@ namespace Mondiland.UI
             this.Wash_Id = product_info.Wash_Id;
             this.m_lastamp = product_info.LasTamp;
 
+            this.m_material_data_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialDataList(this.m_id);
+
         }
 
         /// <summary>
@@ -258,6 +270,8 @@ namespace Mondiland.UI
             this.Tag_Id = product_info.Tag_Id;
             this.Wash_Id = product_info.Wash_Id;
             this.m_lastamp = product_info.LasTamp;
+
+            this.m_material_data_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialDataList(this.m_id);
         }
         
     }

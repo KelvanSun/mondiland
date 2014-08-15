@@ -47,6 +47,49 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
+        /// 根据分类ID号读取产品号型列表
+        /// </summary>
+        /// <param name="parntname_id">分类ID号</param>
+        /// <returns>号型列表</returns>
+        public BindingList<BESizeDataList> ReadSizeDataList(int parntname_id)
+        {
+            BindingList<BESizeDataList> list = new BindingList<BESizeDataList>();
+
+            Table_PartName_Entity partname = PartName_Dal.FindByID(parntname_id);
+
+            Hashtable hash = new Hashtable();
+            hash.Add("class_id", partname.SizeClass_id);
+
+            IEnumerator<Table_SizeData_Entity> ator = SizeData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+
+            int index = 1;
+
+            while (ator.MoveNext())
+            {
+                BESizeDataList info = new BESizeDataList();                
+                
+                if (ator.Current.Other == string.Empty)
+                {
+                    info.Id = index++;
+                    info.SizeName = ator.Current.Size_Name;
+                    info.SizeType = ator.Current.Size_Type;
+
+                    
+                }
+                else
+                {
+                    info.Id = index++;
+                    info.SizeName = ator.Current.Size_Name;
+                    info.SizeType = string.Format("{1}({2})", ator.Current.Size_Type, ator.Current.Other);
+
+                }
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+        /// <summary>
         /// 根据产品ID返回表信息
         /// </summary>
         /// <param name="id">产品ID</param>
@@ -361,6 +404,37 @@ namespace Mondiland.BLL
             return list;
         }
 
+        /// <summary>
+        /// 读出指定产品ID号的成份列表
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
+        public BindingList<BEMaterialDataInfo> ReadMaterialDataList(int product_id)
+        {
+            BindingList<BEMaterialDataInfo> list = new BindingList<BEMaterialDataInfo>();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("product_id", product_id);
+
+            IEnumerator<Table_MaterialData_Entity> ator = MaterialData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                BEMaterialDataInfo info = new BEMaterialDataInfo();
+                info.Id = ator.Current.Id;
+                info.Type = ator.Current.Type;
+
+                list.Add(info);
+            }
+
+            return list;
+
+        }
+
+
+
+
+
         public BindingList<BEMaterialDataInfo> GetMaterialDataList(int product_id)
         {
             BindingList<BEMaterialDataInfo> list = new BindingList<BEMaterialDataInfo>();
@@ -485,6 +559,7 @@ namespace Mondiland.BLL
             entity.Size_Name = size_name;
             entity.Type = type;
             entity.Fill = fill;
+            entity.LasTamp = UtilFun.GetTimeSLasTamp();
 
             return MaterialFill_Dal.Insert(entity);
         }
