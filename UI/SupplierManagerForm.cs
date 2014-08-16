@@ -24,6 +24,9 @@ namespace Mondiland.UI
 
         }
 
+        /// <summary>
+        /// 更新收藏菜单状态
+        /// </summary>
         private void UpdateFavoritesMenu()
         {
             m_favorites = BLLFactory<BLLMenuInfo>.Instance.IsUserMenuFavorites(Program.main_form.UserId,
