@@ -45,6 +45,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txb_price = new System.Windows.Forms.TextBox();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.lab_daoxiao = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cbx_select = new Mondiland.UCControl.MultiColumnComboBoxEx();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -232,6 +232,10 @@
             this.txb_price.TabStop = false;
             this.txb_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(Mondiland.UI.ProductObject);
+            // 
             // textBox6
             // 
             this.textBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "MadePlace", true));
@@ -348,10 +352,7 @@
             this.cbx_select.Name = "cbx_select";
             this.cbx_select.Size = new System.Drawing.Size(133, 20);
             this.cbx_select.TabIndex = 28;
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Mondiland.UI.ProductObject);
+            this.cbx_select.DropDownClosed += new System.EventHandler(this.cbx_select_DropDownClosed);
             // 
             // PrintForm
             // 

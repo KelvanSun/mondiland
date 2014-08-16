@@ -8,6 +8,7 @@ namespace Mondiland.BLLEntity
     /// <summary>
     /// 业务逻辑层实体类基类
     /// </summary>
+    [Serializable]
     public class BLLEntity
     {
     }

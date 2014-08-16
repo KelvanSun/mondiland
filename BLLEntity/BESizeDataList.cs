@@ -8,6 +8,7 @@ namespace Mondiland.BLLEntity
     /// <summary>
     /// 产品规格号型外表结构
     /// </summary>
+    [Serializable]
     public class BESizeDataList:BLLEntity
     {
         private int m_id = 0;

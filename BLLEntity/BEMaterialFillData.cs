@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Mondiland.BLLEntity
 {
+    [Serializable]
     public class BEMaterialFillData:BLLEntity
     {
         private int m_id = 0;

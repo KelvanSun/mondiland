@@ -13,7 +13,6 @@ using Mondiland.Global;
 
 namespace Mondiland.BLL
 {
-     
     public class BLLProductInfo : BaseBLL
     {
         private ITable_ProductData ProductData_Dal = null;

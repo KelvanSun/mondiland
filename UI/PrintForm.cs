@@ -43,6 +43,10 @@ namespace Mondiland.UI
             {
                 MessageUtil.ShowTips("货号对应的产品没有找到");
 
+                cbx_select.DataSource = product.SizeDataList;
+                cbx_select.DisplayMember = "SizeName";
+                cbx_select.ValueMember = "Id";
+
 
                 ProductAddEditForm form = new ProductAddEditForm();
                 form.ShowDialog();
@@ -115,33 +119,35 @@ namespace Mondiland.UI
             }
         }
 
-        private void cbx_select_DropDownClosed(object sender, EventArgs e)
-        {
-            numericUpDown.Focus();
-            numericUpDown.Select(0, numericUpDown.Value.ToString().Length);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            LabelFormatDocument format = m_engine.Documents.Open("d:\\Template\\tmp.btw");
+            ProductObject one = new ProductObject("T1150-02");
+
+            ProductObject two = one.Clone() as ProductObject;
+
+            two.HuoHao = "T1111-11";
+
+                     
+            
+            //LabelFormatDocument format = m_engine.Documents.Open("d:\\Template\\tmp.btw");
             
             
-            StreamReader sr = new StreamReader("C:\\data.txt", Encoding.Default);
-            String line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                string[] aa = System.Text.RegularExpressions.Regex.Split(line, @"\s+");
+            //StreamReader sr = new StreamReader("C:\\data.txt", Encoding.Default);
+            //String line;
+            //while ((line = sr.ReadLine()) != null)
+            //{
+            //    string[] aa = System.Text.RegularExpressions.Regex.Split(line, @"\s+");
 
-                format.SubStrings.SetSubString("HuoHao", aa[0]);
-                format.SubStrings.SetSubString("ChengFeng", string.Format("面料:{0}", aa[1]));
-                format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(aa[2])));
+            //    format.SubStrings.SetSubString("HuoHao", aa[0]);
+            //    format.SubStrings.SetSubString("ChengFeng", string.Format("面料:{0}", aa[1]));
+            //    format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(aa[2])));
 
-                format.PrintSetup.IdenticalCopiesOfLabel = 1;
+            //    format.PrintSetup.IdenticalCopiesOfLabel = 1;
 
-                format.Print();
+            //    format.Print();
 
-                MessageBox.Show("继续");
-            }
+            //    MessageBox.Show("继续");
+            //}
         }
 
         private void PrintForm_Load(object sender, EventArgs e)
@@ -157,6 +163,12 @@ namespace Mondiland.UI
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txb_huohao.AutoCompleteCustomSource = acsc;
+        }
+
+        private void cbx_select_DropDownClosed(object sender, EventArgs e)
+        {
+            numericUpDown.Focus();
+            numericUpDown.Select(0, numericUpDown.Value.ToString().Length);
         }
     }
 }

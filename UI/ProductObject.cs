@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Configuration;
+using System.Runtime.Serialization.Formatters.Binary;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
@@ -15,7 +17,8 @@ namespace Mondiland.UI
     /// <summary>
     /// 产品对象类
     /// </summary>
-    public class ProductObject
+    [Serializable]
+    public class ProductObject:ICloneable
     {
         public enum PrintType
         {
@@ -420,6 +423,16 @@ namespace Mondiland.UI
 
             return str.ToString().Substring(0, str.Length - 2);
   
+        }
+
+        public Object Clone()
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            stream.Position = 0;
+
+            return formatter.Deserialize(stream);
         }
         
     }

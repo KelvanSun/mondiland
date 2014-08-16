@@ -33,7 +33,7 @@
             // 
             // outlookBar
             // 
-            this.outlookBar.AnimationSpeed = 20;
+            this.outlookBar.AnimationSpeed = 5;
             this.outlookBar.BackColor = System.Drawing.Color.White;
             this.outlookBar.BackgroundBitmap = null;
             this.outlookBar.BorderType = UtilityLibrary.WinControls.BorderType.None;
