@@ -1,6 +1,6 @@
 ﻿namespace Mondiland.UI
 {
-    partial class ProductManager
+    partial class ProductManagerForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -30,10 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // ProductManager
+            // ProductManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(657, 417);
-            this.Name = "ProductManager";
+            this.Name = "ProductManagerForm";
+            this.Text = "产品信息管理";
             this.ResumeLayout(false);
 
         }

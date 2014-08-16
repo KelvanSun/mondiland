@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Mondiland.UI
 {
-    public partial class ProductManager : Mondiland.UI.BaseForm
+    public partial class ProductManagerForm : Mondiland.UI.BaseForm
     {
-        public ProductManager()
+        public ProductManagerForm()
         {
             InitializeComponent();
         }

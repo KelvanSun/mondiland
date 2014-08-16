@@ -163,6 +163,8 @@
             // dockPanel
             // 
             this.dockPanel.ActiveAutoHideContent = null;
+            this.dockPanel.AllowEndUserDocking = false;
+            this.dockPanel.AllowEndUserNestedDocking = false;
             this.dockPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(220)))));
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel.DockBackColor = System.Drawing.SystemColors.AppWorkspace;
