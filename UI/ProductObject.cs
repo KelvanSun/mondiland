@@ -25,7 +25,22 @@ namespace Mondiland.UI
             Tag,
             Wash,
         }
-             
+
+        public class MaterialFillDataObject
+        {
+            /// <summary>
+            /// 填充成份
+            /// </summary>
+            public string material_type = string.Empty;
+            /// <summary>
+            /// 填充方式
+            /// </summary>
+            public BindingList<BEMaterialFillData> m_material_fill_list = new BindingList<BEMaterialFillData>();
+        };
+
+
+        public MaterialFillDataObject MaterialFillData = new MaterialFillDataObject();
+                    
         private int m_id = 0;
         
         private string m_huohao = string.Empty;
@@ -85,15 +100,19 @@ namespace Mondiland.UI
         /// 产品成份信息
         /// </summary>
         private BindingList<BEMaterialDataInfo> m_material_data_list = new BindingList<BEMaterialDataInfo>();
+        
+
         /// <summary>
-        /// 产品填充信息
+        /// 产品成份信息
         /// </summary>
-        private BindingList<BEMaterialFillData> m_material_fill_list = new BindingList<BEMaterialFillData>();
-        
-        
+        public BindingList<BEMaterialDataInfo> MaterialDataList
+        {
+            get { return this.m_material_data_list; }
+        }
+
         public BindingList<BESizeDataList> SizeDataList
         {
-            get { return m_size_data_list; }
+            get { return this.m_size_data_list; }
         }
 
         /// <summary>
@@ -296,11 +315,11 @@ namespace Mondiland.UI
             this.Tag_Id = info.Tag_Id;
             this.Wash_Id = info.Wash_Id;
             this.m_lastamp = info.LasTamp;
-
+            
             this.m_wash_size = BLLFactory<BLLProductInfo>.Instance.GetWashSize(this.m_id);
 
             this.m_material_data_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialDataList(this.m_id);
-            this.m_material_fill_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialFillDataList(this.m_id);
+            this.MaterialFillData.m_material_fill_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialFillDataList(this.m_id);
 
             this.m_tag_filename = string.Format("{0}\\{1}",ConfigurationManager.AppSettings["Template"],
                 BLLFactory<BLLProductInfo>.Instance.GetTagFileName(this.m_pwash, this.m_material_data_list.Count));
@@ -410,7 +429,7 @@ namespace Mondiland.UI
                 str.Append("\r\n");
             }
 
-            IEnumerator<BEMaterialFillData> materialfill_ator = this.m_material_fill_list.GetEnumerator();
+            IEnumerator<BEMaterialFillData> materialfill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
 
             while(materialfill_ator.MoveNext())
             {

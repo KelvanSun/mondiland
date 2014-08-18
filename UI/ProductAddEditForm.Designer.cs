@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddEditForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,8 +46,6 @@
             this.bt_del = new System.Windows.Forms.Button();
             this.bt_add = new System.Windows.Forms.Button();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBox = new System.Windows.Forms.CheckBox();
@@ -72,6 +71,8 @@
             this.cbx_partname = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_safedata = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.cbx_standard = new Mondiland.UCControl.MultiColumnComboBoxEx();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
@@ -229,21 +230,6 @@
             this.dgv_material.TabIndex = 0;
             this.dgv_material.TabStop = false;
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "成份内容";
-            this.type.MaxInputLength = 50;
-            this.type.Name = "type";
-            this.type.Width = 350;
-            // 
             // bindingSource_material
             // 
             this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
@@ -311,8 +297,8 @@
             // 
             // size_name
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.size_name.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.size_name.DefaultCellStyle = dataGridViewCellStyle2;
             this.size_name.HeaderText = "规格";
             this.size_name.Name = "size_name";
             this.size_name.ReadOnly = true;
@@ -505,6 +491,23 @@
             this.cbx_standard.Size = new System.Drawing.Size(307, 20);
             this.cbx_standard.TabIndex = 26;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle1;
+            this.type.HeaderText = "成份内容";
+            this.type.MaxInputLength = 50;
+            this.type.Name = "type";
+            this.type.Width = 350;
+            // 
             // ProductAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -581,8 +584,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txb_fill;
         private System.Windows.Forms.BindingSource bindingSource_material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn size_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn info;
         private System.Windows.Forms.TextBox txb_huohao;
@@ -598,5 +599,7 @@
         private UCControl.MultiColumnComboBoxEx cbx_safedata;
         private UCControl.MultiColumnComboBoxEx cbx_standard;
         private UCControl.MultiColumnComboBoxEx cbx_wash;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
     }
 }
