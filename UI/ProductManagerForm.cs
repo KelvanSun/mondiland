@@ -404,6 +404,19 @@ namespace Mondiland.UI
                 MessageUtil.ShowTips(result.Message);
 
                 this.product = new ProductObject();
+
+                txb_huohao.Text = product.HuoHao;
+                cbx_partname.SelectedValue = product.PartName_Id;
+                cbx_dengji.SelectedValue = product.DengJi_Id;
+                cbx_madeplace.SelectedValue = product.MadePlace_Id;
+                cbx_safedata.SelectedValue = product.SafeData_Id;
+                cbx_standard.SelectedValue = product.StandardData_Id;
+                txb_price.Text = product.Price.ToString();
+                txb_memo.Text = product.Memo;
+                chb_wash.Checked = product.Pwash;
+                dgv_material.DataSource = product.MaterialDataList;
+                if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
+                LoadDgvMaterialFill();
             }
         }
 
