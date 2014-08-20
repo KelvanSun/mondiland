@@ -29,10 +29,10 @@ namespace Mondiland.UI
         {
             this.m_product = product;
             this.m_type = type;
+            
+            InitializeComponent();
 
             this.Text = string.Format("{0}({1})", this.Text, this.m_product.WashSize);
-
-            InitializeComponent();
         }
 
         private void bt_print_Click(object sender, EventArgs e)
