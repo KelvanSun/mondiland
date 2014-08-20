@@ -472,6 +472,11 @@ namespace Mondiland.UI
             print.ShowDialog();
 
         }
+
+        private void txb_price_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.txb_price.Select(0, this.txb_price.Text.Length);
+        }
      
 
     }

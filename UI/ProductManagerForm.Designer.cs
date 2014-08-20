@@ -74,9 +74,9 @@
             this.bt_del = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip.SuspendLayout();
             this.panel_top.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -310,6 +310,7 @@
             this.txb_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txb_price.TextChanged += new System.EventHandler(this.txb_price_TextChanged);
             this.txb_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_price_KeyPress);
+            this.txb_price.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txb_price_MouseDown);
             // 
             // label7
             // 
@@ -582,10 +583,6 @@
             this.dgv_material.TabStop = false;
             this.dgv_material.Leave += new System.EventHandler(this.dgv_material_Leave);
             // 
-            // bindingSource_material
-            // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -600,6 +597,10 @@
             this.Type.DataPropertyName = "Type";
             this.Type.HeaderText = "成份内容";
             this.Type.Name = "Type";
+            // 
+            // bindingSource_material
+            // 
+            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
             // ProductManagerForm
             // 

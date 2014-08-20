@@ -29,7 +29,9 @@ namespace Mondiland.UI
         {
             this.m_product = product;
             this.m_type = type;
-            
+
+            this.Text = string.Format("{0}({1})", this.Text, this.m_product.WashSize);
+
             InitializeComponent();
         }
 
