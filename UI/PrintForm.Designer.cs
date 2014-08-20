@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintForm));
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bt_print = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             // 
             // numericUpDown
             // 
-            this.numericUpDown.Location = new System.Drawing.Point(233, 44);
+            this.numericUpDown.Location = new System.Drawing.Point(276, 38);
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.Size = new System.Drawing.Size(78, 21);
             this.numericUpDown.TabIndex = 8;
@@ -53,18 +54,21 @@
             // 
             // bt_print
             // 
-            this.bt_print.Location = new System.Drawing.Point(322, 42);
+            this.bt_print.Image = ((System.Drawing.Image)(resources.GetObject("bt_print.Image")));
+            this.bt_print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_print.Location = new System.Drawing.Point(340, 80);
             this.bt_print.Name = "bt_print";
-            this.bt_print.Size = new System.Drawing.Size(75, 23);
+            this.bt_print.Size = new System.Drawing.Size(87, 23);
             this.bt_print.TabIndex = 9;
-            this.bt_print.Text = "打印";
+            this.bt_print.Text = "打印   ";
+            this.bt_print.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_print.UseVisualStyleBackColor = true;
             this.bt_print.Click += new System.EventHandler(this.bt_print_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 47);
+            this.label2.Location = new System.Drawing.Point(61, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 10;
@@ -78,7 +82,7 @@
             this.cbx_select.DropDownWidth = 121;
             this.cbx_select.FormattingEnabled = true;
             this.cbx_select.ItemDropDownHeight = 14;
-            this.cbx_select.Location = new System.Drawing.Point(80, 44);
+            this.cbx_select.Location = new System.Drawing.Point(123, 38);
             this.cbx_select.Name = "cbx_select";
             this.cbx_select.Size = new System.Drawing.Size(133, 20);
             this.cbx_select.TabIndex = 28;
@@ -92,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 113);
+            this.ClientSize = new System.Drawing.Size(439, 115);
             this.Controls.Add(this.cbx_select);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bt_print);
