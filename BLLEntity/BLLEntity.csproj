@@ -50,10 +50,8 @@
     <Compile Include="BEProductDataReadProduct.cs" />
     <Compile Include="BEProductDataAllInfo.cs" />
     <Compile Include="BEProductDataInfo.cs" />
-    <Compile Include="BESafeDataInfo.cs" />
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BESizeDataList.cs" />
-    <Compile Include="BEStandardDataInfo.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BEUserMenuFavorites.cs" />
     <Compile Include="BEWashPrintTemplateProduct.cs" />

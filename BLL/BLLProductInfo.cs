@@ -336,30 +336,6 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
-        /// 返回洗唛列表
-        /// </summary>
-        /// <returns>绑定列表</returns>
-        public BindingList<BEWashPrintTemplateProduct> GetWashPrintTemplateList()
-        {
-            BindingList<BEWashPrintTemplateProduct> list = new BindingList<BEWashPrintTemplateProduct>();
-
-            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.GetAll(false).GetEnumerator();
-
-            while (ator.MoveNext())
-            {
-                BEWashPrintTemplateProduct info = new BEWashPrintTemplateProduct();
-
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
-                info.DaXiao = ator.Current.DaXiao;
-       
-                list.Add(info);
-            }
-
-            return list;    
-        }
-
-        /// <summary>
         /// 返回执行标准信息列表
         /// </summary>
         /// <returns>绑定列表</returns>
@@ -511,85 +487,6 @@ namespace Mondiland.BLL
 
         }
 
-        public BindingList<BEMaterialDataInfo> GetMaterialDataList(int product_id)
-        {
-            BindingList<BEMaterialDataInfo> list = new BindingList<BEMaterialDataInfo>();
-            
-            Hashtable hash = new Hashtable();
-            hash.Add("product_id",product_id);
-
-            IEnumerator<Table_MaterialData_Entity> ator = MaterialData_Dal.Find(hash,SqlOperator.And,true).GetEnumerator();
-
-            while(ator.MoveNext())
-            {
-                BEMaterialDataInfo info = new BEMaterialDataInfo();
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
-
-                list.Add(info);
-            }
-            
-            return list;
-
-        }
-
-        /// <summary>
-        /// 读取存在的记录
-        /// </summary>
-        /// <param name="str_huohao">货号</param>
-        /// <returns>BEProductDataReadProduct</returns>
-        public BEProductDataReadProduct ReadProductData(string str_huohao)
-        {
-            BEProductDataReadProduct info = new BEProductDataReadProduct();
-
-            Hashtable hash = new Hashtable();
-            hash.Add("huohao", str_huohao);
-
-            Table_ProductData_Entity entity = ProductData_Dal.Find(hash);
-
-            info.PartName_Id = entity.PartName_Id;
-            info.Dengji_Id = entity.Dengji_Id;
-            info.MadePlace_Id = entity.MadePlace_Id;
-            info.Price = entity.Price;
-            info.SafeData_Id = entity.SafeData_Id;
-            info.StandardData_Id = entity.StandardData_Id;
-            info.Memo = entity.Memo;
-            info.Tag = GetTagType(entity.Tag_Id);
-            info.Wash_Id = entity.Wash_Id;
-            info.Id = entity.Id;
-            info.Pwash = entity.Pwash;
-            info.LasTamp = entity.LasTamp;
-
-            return info;
-        }
-
-        private string GetTagType(int id)
-        {
-            Table_TagPrintTemplate_Entity entity = TagPrintTemplate_Dal.FindByID(id);
-
-            return entity.Type;
-        }
-
-    
-        public List<string> GetFillSizeList(int partname_id)
-        {
-            
-            List<string> list = new List<string>();
-
-            Table_PartName_Entity parntname = PartName_Dal.FindByID(partname_id);
-
-            Hashtable hash = new Hashtable();
-            hash.Add("class_id",parntname.SizeClass_id);
-
-            IEnumerator<Table_SizeData_Entity> ator = SizeData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
-
-            while(ator.MoveNext())
-            {
-                list.Add(ator.Current.Size_Name);
-            }
-
-            return list;
-        }
         public int GetProductId(string str_huohao)
         {
             Hashtable hash = new Hashtable();
@@ -705,26 +602,7 @@ namespace Mondiland.BLL
             return result;
         }
         
-
-        public string GetTagName(bool wash,int count)
-        {
-            Table_TagPrintTemplate_Entity entity = new Table_TagPrintTemplate_Entity();
-            Hashtable hash = new Hashtable();
-
-            if (wash)
-            {
-                hash.Add("file_name", string.Format("TagA{0}.btw", count.ToString()));
-            }
-            else
-            {
-                hash.Add("file_name", string.Format("Tag{0}.btw", count.ToString()));
-            }
-
-            entity = TagPrintTemplate_Dal.Find(hash);
-            return entity.Type;
-        }
-
-        
+                     
         public bool AddMaterialInfo(int product_id,string type,int order)
         {
             Table_MaterialData_Entity entity = new Table_MaterialData_Entity();
@@ -811,16 +689,7 @@ namespace Mondiland.BLL
             else
                 return false;
         }
-
-        public int GetTagTemplateId(string str_name)
-        {
-            Hashtable hash = new Hashtable();
-            hash.Add("type", str_name);
-
-            return TagPrintTemplate_Dal.FindPrimaryKey(hash);
-        }
-
-      
+                     
         /// <summary>
         /// 根据货号检察记录是否存在        
         /// </summary>

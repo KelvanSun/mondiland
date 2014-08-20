@@ -28,7 +28,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>100</ApplicationRevision>
+    <ApplicationRevision>101</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -139,12 +139,6 @@
     <Compile Include="ProductObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MadePlaceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MadePlaceForm.Designer.cs">
-      <DependentUpon>MadePlaceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SupplierManagerForm.cs">
       <SubType>Form</SubType>
@@ -189,9 +183,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="MadePlaceForm.resx">
-      <DependentUpon>MadePlaceForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SupplierManagerForm.resx">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </EmbeddedResource>
