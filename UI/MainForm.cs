@@ -48,36 +48,7 @@ namespace Mondiland.UI
             m_user_id = id;
         }
 
-        private void menu_base_safe_Click(object sender, EventArgs e)
-        {
-            SafeDataForm form = new SafeDataForm();
-            form.ShowDialog();
-        }
-
-        private void menu_base_standard_Click(object sender, EventArgs e)
-        {
-            StandardDataForm form = new StandardDataForm();
-            form.ShowDialog();
-        }
-
-        private void menu_base_madeplace_Click(object sender, EventArgs e)
-        {
-            MadePlaceForm form = new MadePlaceForm();
-            form.ShowDialog();
-        }
-
-
-        private void menu_product_add_Click(object sender, EventArgs e)
-        {
-            ProductAddEditForm form = new ProductAddEditForm();
-            form.ShowDialog();
-        }
-
-        private void menu_print_Click(object sender, EventArgs e)
-        {
-            PrintForm form = new PrintForm();
-            form.ShowDialog();
-        }
+             
 
         private void MainForm_Load(object sender, EventArgs e)
         {

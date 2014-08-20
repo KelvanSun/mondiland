@@ -409,7 +409,16 @@ namespace Mondiland.UI
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            this.bindingSource_material.AddNew();
+            if(this.txb_fill.Text.Trim() != string.Empty)
+            {
+                if(this.dgv_material.RowCount <= 5)
+                    this.bindingSource_material.AddNew();
+            }
+            else
+            {
+                if (this.dgv_material.RowCount <= 6)
+                    this.bindingSource_material.AddNew();
+            }            
         }
 
         private void bt_del_Click(object sender, EventArgs e)
@@ -423,6 +432,32 @@ namespace Mondiland.UI
         private void txb_fill_TextChanged(object sender, EventArgs e)
         {
             this.product.MaterialFillData.material_type = this.txb_fill.Text.Trim();
+        }
+
+        private void menu_print_tag_Click(object sender, EventArgs e)
+        {
+            if(this.product.Id == 0)
+            {
+                MessageUtil.ShowWarning("无法打印当前记录!");
+                return;
+            }
+
+            PrintForm print = new PrintForm(this.product, ProductObject.PrintType.Tag);
+            print.ShowDialog();
+        }
+
+        private void menu_print_wash_Click(object sender, EventArgs e)
+        {
+
+            if (this.product.Id == 0)
+            {
+                MessageUtil.ShowWarning("无法打印当前记录!");
+                return;
+            }
+
+            PrintForm print = new PrintForm(this.product, ProductObject.PrintType.Wash);
+            print.ShowDialog();
+
         }
      
 
