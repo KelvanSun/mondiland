@@ -48,7 +48,6 @@
     <Compile Include="BEParentMenuInfo.cs" />
     <Compile Include="BEPartNameProduct.cs" />
     <Compile Include="BEProductDataReadProduct.cs" />
-    <Compile Include="BEProductDataAllInfo.cs" />
     <Compile Include="BEProductDataInfo.cs" />
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BESizeDataList.cs" />

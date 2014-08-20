@@ -18,7 +18,13 @@ namespace Mondiland.Entity
         private int m_wash_id = 0;
         private string m_memo = string.Empty;
         private int m_pwash = 0;
+        private int m_pbad = 0;
 
+        public int Pbad
+        {
+            get { return m_pbad; }
+            set { m_pbad = value; }
+        }
         public int Pwash
         {
             get { return m_pwash; }
