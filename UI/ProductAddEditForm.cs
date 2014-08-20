@@ -259,11 +259,8 @@ namespace Mondiland.UI
             info.Wash_Id = Convert.ToInt32(cbx_wash.SelectedValue);
             info.Memo = txb_memo.Text;
             info.LasTamp = Convert.ToInt64(txb_huohao.Tag);
-            if (chb_wash.Checked)
-                info.Pwash = 1;
-            else
-                info.Pwash = 0;
-
+            info.Pwash = chb_wash.Checked;
+            
             int product_id = BLLFactory<BLLProductInfo>.Instance.GetProductId(txb_huohao.Text);
 
             if(BLLFactory<BLLProductInfo>.Instance.UpdateProductInfo(info,product_id,info.LasTamp))
@@ -392,12 +389,8 @@ namespace Mondiland.UI
             info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagTemplateId(tb_tag.Text);
             info.Wash_Id = Convert.ToInt32(cbx_wash.SelectedValue);
             info.Memo = txb_memo.Text;
-            if (chb_wash.Checked)
-                info.Pwash = 1;
-            else
-                info.Pwash = 0;
-
-
+            info.Pwash = chb_wash.Checked;            
+            
             if (BLLFactory<BLLProductInfo>.Instance.AddProductInfo(info))
             {
                 int product_id = BLLFactory<BLLProductInfo>.Instance.GetProductId(txb_huohao.Text);
@@ -557,7 +550,7 @@ namespace Mondiland.UI
 
             int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
             int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
-            int pwash = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
+            bool pwash = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
 
             if (safe_id > 0)
             {
@@ -579,10 +572,8 @@ namespace Mondiland.UI
             }
 
             //选择了休闲裤，打印水洗产品
-            if (pwash > 0)
-                chb_wash.Checked = true;
-            else
-                chb_wash.Checked = false;
+            chb_wash.Checked = pwash;
+            
          }
     }
 }

@@ -89,7 +89,6 @@ namespace Mondiland.BLL
 
                 info.Id = ator.Current.Id;
                 info.SizeName = ator.Current.Size_Name;
-                info.Type = ator.Current.Type;
                 info.Fill = ator.Current.Fill;
 
                 list.Add(info);
@@ -98,7 +97,30 @@ namespace Mondiland.BLL
             return list;
         }
 
+        /// <summary>
+        /// 取得填充物的面料成份
+        /// </summary>
+        /// <param name="id">产品ID</param>
+        /// <returns>面料成份内容</returns>
+        public string ReadMaterialFillMaterial(int id)
+        {
+            string str = string.Empty;
+            
+            Hashtable hash = new Hashtable();
+            hash.Add("product_id", id);
 
+            IEnumerator<Table_MaterialFill_Entity> ator = MaterialFill_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+            
+            while(ator.MoveNext())
+            {
+                str = ator.Current.Type;
+                break;
+            }
+            
+            return str;
+        }
+
+        
         /// <summary>
         /// 根据分类ID号读取产品号型列表
         /// </summary>
@@ -164,7 +186,7 @@ namespace Mondiland.BLL
             info.StandardData_Id = entity.StandardData_Id;
             info.Price = entity.Price;
             info.Memo = entity.Memo;
-            info.Pwash = entity.Pwash;
+            info.Pwash = entity.Pwash > 0 ? true:false;
             info.LasTamp = entity.LasTamp;
             info.Tag_Id = entity.Tag_Id;
             info.Wash_Id = entity.Wash_Id;
@@ -255,7 +277,7 @@ namespace Mondiland.BLL
             info.StandardData_Id = entity.StandardData_Id;
             info.Price = entity.Price;
             info.Memo = entity.Memo;
-            info.Pwash = entity.Pwash;
+            info.Pwash = entity.Pwash > 0 ? true:false;
             info.LasTamp = entity.LasTamp;
             info.Tag_Id = entity.Tag_Id;
             info.Wash_Id = entity.Wash_Id;
@@ -288,11 +310,11 @@ namespace Mondiland.BLL
             return entity.Standard_Id;
         }
 
-        public int GetOptimizePwash(int partname_id)
+        public bool GetOptimizePwash(int partname_id)
         {
             Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
 
-            return entity.Pwash;
+            return entity.Pwash > 0 ? true : false;
         }
 
         /// <summary>
@@ -602,6 +624,32 @@ namespace Mondiland.BLL
         }
 
         /// <summary>
+        /// 返回吊牌文件名ID
+        /// </summary>
+        /// <param name="pwash">是否要打印水洗产品字样</param>
+        /// <param name="row">成份行数</param>
+        /// <returns>文件名ID</returns>
+        public int GetTagFileNameId(bool pwash,int row)
+        {
+            Table_TagPrintTemplate_Entity entity = new Table_TagPrintTemplate_Entity();
+            Hashtable hash = new Hashtable();
+
+            if (pwash)
+            {
+                hash.Add("file_name", string.Format("TagA{0}.btw", row.ToString()));
+            }
+            else
+            {
+                hash.Add("file_name", string.Format("Tag{0}.btw", row.ToString()));
+            }
+
+            entity = TagPrintTemplate_Dal.Find(hash);
+
+            return entity.Id;
+
+        }
+
+        /// <summary>
         /// 返回洗唛文件名
         /// </summary>
         /// <param name="huohao">产品货号</param>
@@ -629,6 +677,34 @@ namespace Mondiland.BLL
             return result;
         }
 
+        /// <summary>
+        /// 返回洗唛文件名ID
+        /// </summary>
+        /// <param name="huohao">产品货号</param>
+        /// <param name="row">成份行数</param>
+        /// <returns>文件名ID</returns>
+        public int GetWashFileNameId(string huohao, int row)
+        {
+            string str_clss = huohao.Substring(0, 1);
+            int result = 0;
+
+            Hashtable hash = new Hashtable();
+            hash.Add("type", str_clss);
+
+            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                if (ator.Current.File_Name.Substring(5, 1) == row.ToString())
+                {
+                    result = ator.Current.Id;
+                    break;
+                }
+            }
+
+            return result;
+        }
+        
 
         public string GetTagName(bool wash,int count)
         {
@@ -655,6 +731,7 @@ namespace Mondiland.BLL
             entity.Product_Id = product_id;
             entity.Type = type;
             entity.Order_Index = order;
+            entity.LasTamp = UtilFun.GetTimeSLasTamp();
 
             return MaterialData_Dal.Insert(entity);
         }
@@ -687,7 +764,10 @@ namespace Mondiland.BLL
             entity.Tag_Id = info.Tag_Id;
             entity.Wash_Id = info.Wash_Id;
             entity.Memo = info.Memo;
-            entity.Pwash = info.Pwash;
+            if (info.Pwash)
+                entity.Pwash = 1;
+            else
+                entity.Pwash = 0;
             entity.LasTamp = UtilFun.GetTimeSLasTamp();
             
             return ProductData_Dal.Insert(entity);

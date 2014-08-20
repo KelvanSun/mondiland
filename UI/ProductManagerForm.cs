@@ -15,7 +15,7 @@ namespace Mondiland.UI
     public partial class ProductManagerForm : Mondiland.UI.BaseForm, IMenuFavorites
     {
         private bool m_favorites = false;
-        private ProductObject product = null;
+        private ProductObject product = new ProductObject();
         public ProductManagerForm()
         {
             InitializeComponent();
@@ -138,7 +138,7 @@ namespace Mondiland.UI
             IEnumerator<BESizeDataList> size_ator = this.product.SizeDataList.GetEnumerator();
 
             this.dgv_material_fill.Columns.Clear();
-            txb_fill.Text = string.Empty;
+            txb_fill.Text = this.product.MaterialFillData.material_type;
 
             while(size_ator.MoveNext())
             {
@@ -153,6 +153,8 @@ namespace Mondiland.UI
 
             }
 
+            if (this.dgv_material_fill.ColumnCount <= 0) return;
+
             int index = this.dgv_material_fill.Rows.Add();
 
             IEnumerator<BEMaterialFillData> fill_ator = this.product.MaterialFillData.m_material_fill_list.GetEnumerator();
@@ -162,7 +164,7 @@ namespace Mondiland.UI
             while(fill_ator.MoveNext())
             {
                 this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill_ator.Current.Fill;
-                txb_fill.Text = fill_ator.Current.Type;
+        
             }
 
             this.dgv_material_fill.Rows[index].Selected = false;
@@ -173,34 +175,45 @@ namespace Mondiland.UI
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txb_huohao.Tag = txb_huohao.Text;
                 if (txb_huohao.Text.Trim() == string.Empty)
                     return;
 
                 product = new ProductObject(txb_huohao.Text.Trim());
 
-                //记录存在
-                if(product.Id != 0)
-                {
-                    cbx_partname.SelectedValue = product.PartName_Id;
-                    cbx_dengji.SelectedValue = product.DengJi_Id;
-                    cbx_madeplace.SelectedValue = product.MadePlace_Id;
-                    cbx_safedata.SelectedValue = product.SafeData_Id;
-                    cbx_standard.SelectedValue = product.StandardData_Id;
-                    txb_price.Text = product.Price.ToString();
-                    txb_memo.Text = product.Memo;
-                    chb_wash.Checked = product.Pwash;
-                    dgv_material.DataSource = product.MaterialDataList;
-                    dgv_material.Rows[0].Selected = false;
-                    LoadDgvMaterialFill();
-                }
+                
+                cbx_partname.SelectedValue = product.PartName_Id;
+                cbx_dengji.SelectedValue = product.DengJi_Id;
+                cbx_madeplace.SelectedValue = product.MadePlace_Id;
+                cbx_safedata.SelectedValue = product.SafeData_Id;
+                cbx_standard.SelectedValue = product.StandardData_Id;
+                txb_price.Text = product.Price.ToString();
+                txb_memo.Text = product.Memo;
+                chb_wash.Checked = product.Pwash;
+                this.bindingSource_material.DataSource = product.MaterialDataList;
+                if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
+                LoadDgvMaterialFill();
+              
                
             }
+
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.txb_huohao.Text = txb_huohao.Tag as string;
+            }
+
         }
 
         private void dgv_material_Leave(object sender, EventArgs e)
         {
             if(this.dgv_material.RowCount > 0)
             {
+                for (int index = 0; index < this.dgv_material.RowCount; ++index)
+                {
+                    if ((this.dgv_material.Rows[index].Cells["Type"].Value as String).Trim() == string.Empty)
+                        bindingSource_material.RemoveAt(index);       
+                }
+                      
                 this.dgv_material.Rows[this.dgv_material.CurrentRow.Index].Selected = false;
             }
         }
@@ -212,5 +225,206 @@ namespace Mondiland.UI
                 this.dgv_material_fill.Rows[this.dgv_material_fill.CurrentRow.Index].Selected = false;
             }
         }
+
+        private void cbx_partname_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.PartName_Id = Convert.ToInt32(this.cbx_partname.SelectedValue);
+
+            int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
+            int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
+            bool pwash = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
+
+            if (safe_id > 0)
+            {
+                cbx_safedata.SelectedValue = safe_id;
+            }
+            else
+            {
+                cbx_safedata.Text = string.Empty;
+                cbx_safedata.SelectedValue = 0;
+            }
+            if (standard_id > 0)
+            {
+                cbx_standard.SelectedValue = standard_id;
+            }
+            else
+            {
+                cbx_standard.Text = string.Empty;
+                cbx_standard.SelectedValue = 0;
+            }
+
+            //选择了休闲裤，打印水洗产品
+            chb_wash.Checked = pwash;
+
+            cbx_safedata_DropDownClosed(sender, e);
+            cbx_standard_DropDownClosed(sender, e);
+            chb_wash_CheckedChanged(sender, e);
+
+            
+            LoadDgvMaterialFill();
+        }
+
+        private void cbx_dengji_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.DengJi_Id = Convert.ToInt32(this.cbx_dengji.SelectedValue);
+        }
+
+        private void cbx_madeplace_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.MadePlace_Id = Convert.ToInt32(this.cbx_madeplace.SelectedValue);
+        }
+
+        private void txb_price_TextChanged(object sender, EventArgs e)
+        {
+            this.product.Price = Convert.ToDecimal(this.txb_price.Text);
+        }
+
+        private void cbx_safedata_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.SafeData_Id = Convert.ToInt32(this.cbx_safedata.SelectedValue);
+        }
+
+        private void cbx_standard_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.StandardData_Id = Convert.ToInt32(this.cbx_standard.SelectedValue);
+        }
+
+        private void chb_wash_CheckedChanged(object sender, EventArgs e)
+        {
+            this.product.Pwash = this.chb_wash.Checked;
+        }
+
+        private void txb_memo_TextChanged(object sender, EventArgs e)
+        {
+            this.product.Memo = this.txb_memo.Text;
+        }
+
+        private void txb_huohao_TextChanged(object sender, EventArgs e)
+        {
+            this.product.HuoHao = this.txb_huohao.Text;
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            if (MessageUtil.ShowYesNoAndTips("确定[新增]吗?") == System.Windows.Forms.DialogResult.No) return;
+                                    
+            this.product = new ProductObject();
+
+            txb_huohao.Text = product.HuoHao;
+            cbx_partname.SelectedValue = product.PartName_Id;
+            cbx_dengji.SelectedValue = product.DengJi_Id;
+            cbx_madeplace.SelectedValue = product.MadePlace_Id;
+            cbx_safedata.SelectedValue = product.SafeData_Id;
+            cbx_standard.SelectedValue = product.StandardData_Id;
+            txb_price.Text = product.Price.ToString();
+            txb_memo.Text = product.Memo;
+            chb_wash.Checked = product.Pwash;
+            dgv_material.DataSource = product.MaterialDataList;
+            if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
+            LoadDgvMaterialFill();
+        }
+
+        
+        private void save_Click(object sender, EventArgs e)
+        {
+            if (txb_fill.Text.Trim() != string.Empty)
+            {
+                if (this.dgv_material_fill.RowCount == 0)
+                {
+                    MessageUtil.ShowError("[填充面料]不为空的情况下,必须设定填充方式!");
+                    return;
+                }
+
+                for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
+                {
+                    if (this.dgv_material_fill.Rows[0].Cells[index].Value == null)
+                    {
+                        MessageUtil.ShowError("必须完整设定填充方式!");
+
+                        return;
+                    }
+                }
+
+            }
+
+            bool fill_ok = true;
+
+            if (this.dgv_material_fill.RowCount == 0) return;
+
+            for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
+            {
+                if (this.dgv_material_fill.Rows[0].Cells[index].Value == null)
+                {
+                    fill_ok = false;
+                    break;
+                }
+            }
+
+            if (fill_ok)
+            {
+                if (txb_fill.Text.Trim() == string.Empty)
+                {
+                    MessageUtil.ShowError("[填充面料]不能为空!");
+
+                    return;
+                }
+
+            }
+
+
+            if (txb_fill.Text.Trim() != string.Empty)
+            {
+
+                this.product.MaterialFillData.m_material_fill_list.Clear();
+
+                for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
+                {
+                    BEMaterialFillData info = new BEMaterialFillData();
+
+                    info.SizeName = this.dgv_material_fill.Columns[0].HeaderText.Substring(0, 2);
+                    info.Fill = this.dgv_material_fill.Rows[0].Cells[index].Value.ToString();
+
+                    this.product.MaterialFillData.m_material_fill_list.Add(info);
+                }
+            }
+
+
+
+            ProductObject.SaveResult result = product.Save();
+
+            if (result.Code == ProductObject.CodeType.Error)
+            {
+                MessageUtil.ShowError(result.Message);
+
+                return;
+            }
+
+            if (result.Code == ProductObject.CodeType.Ok)
+            {
+                MessageUtil.ShowTips(result.Message);
+
+                this.product = new ProductObject();
+            }
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            this.bindingSource_material.AddNew();
+        }
+
+        private void bt_del_Click(object sender, EventArgs e)
+        {
+            if (bindingSource_material.Count != 0)
+            {
+                bindingSource_material.RemoveCurrent();
+            }
+        }
+
+        private void txb_fill_TextChanged(object sender, EventArgs e)
+        {
+            this.product.MaterialFillData.material_type = this.txb_fill.Text.Trim();
+        }
+     
+
     }
 }

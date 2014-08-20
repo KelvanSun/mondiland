@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductManagerForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,6 +37,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.add = new System.Windows.Forms.ToolStripButton();
+            this.save = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
             this.panel_top = new System.Windows.Forms.Panel();
             this.chb_wash = new System.Windows.Forms.CheckBox();
@@ -63,27 +70,84 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dgv_material_fill = new Mondiland.UCControl.UCDataGridView();
             this.panel_center = new System.Windows.Forms.Panel();
+            this.bt_add = new System.Windows.Forms.Button();
+            this.bt_del = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip.SuspendLayout();
             this.panel_top.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material_fill)).BeginInit();
             this.panel_center.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.add,
+            this.save,
+            this.toolStripDropDownButton1,
+            this.toolStripSeparator1,
             this.favorites});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(970, 40);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // add
+            // 
+            this.add.Image = ((System.Drawing.Image)(resources.GetObject("add.Image")));
+            this.add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(36, 37);
+            this.add.Text = "新增";
+            this.add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
+            // save
+            // 
+            this.save.Image = ((System.Drawing.Image)(resources.GetObject("save.Image")));
+            this.save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(36, 37);
+            this.save.Text = "保存";
+            this.save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(45, 37);
+            this.toolStripDropDownButton1.Text = "打印";
+            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem1.Text = "打印条码";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItem2.Text = "打印洗唛";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
             // favorites
             // 
@@ -134,6 +198,7 @@
             this.chb_wash.TabIndex = 41;
             this.chb_wash.Text = "打印[水洗产品]字样";
             this.chb_wash.UseVisualStyleBackColor = true;
+            this.chb_wash.CheckedChanged += new System.EventHandler(this.chb_wash_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -165,6 +230,7 @@
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(828, 118);
             this.txb_memo.TabIndex = 39;
+            this.txb_memo.TextChanged += new System.EventHandler(this.txb_memo_TextChanged);
             // 
             // cbx_standard
             // 
@@ -177,6 +243,7 @@
             this.cbx_standard.Name = "cbx_standard";
             this.cbx_standard.Size = new System.Drawing.Size(348, 20);
             this.cbx_standard.TabIndex = 38;
+            this.cbx_standard.DropDownClosed += new System.EventHandler(this.cbx_standard_DropDownClosed);
             // 
             // cbx_safedata
             // 
@@ -189,6 +256,7 @@
             this.cbx_safedata.Name = "cbx_safedata";
             this.cbx_safedata.Size = new System.Drawing.Size(348, 20);
             this.cbx_safedata.TabIndex = 37;
+            this.cbx_safedata.DropDownClosed += new System.EventHandler(this.cbx_safedata_DropDownClosed);
             // 
             // cbx_partname
             // 
@@ -201,6 +269,7 @@
             this.cbx_partname.Name = "cbx_partname";
             this.cbx_partname.Size = new System.Drawing.Size(100, 20);
             this.cbx_partname.TabIndex = 36;
+            this.cbx_partname.DropDownClosed += new System.EventHandler(this.cbx_partname_DropDownClosed);
             // 
             // cbx_madeplace
             // 
@@ -213,6 +282,7 @@
             this.cbx_madeplace.Name = "cbx_madeplace";
             this.cbx_madeplace.Size = new System.Drawing.Size(121, 20);
             this.cbx_madeplace.TabIndex = 35;
+            this.cbx_madeplace.DropDownClosed += new System.EventHandler(this.cbx_madeplace_DropDownClosed);
             // 
             // cbx_dengji
             // 
@@ -227,6 +297,7 @@
             this.cbx_dengji.Size = new System.Drawing.Size(121, 20);
             this.cbx_dengji.TabIndex = 34;
             this.cbx_dengji.ValueMember = "Id";
+            this.cbx_dengji.DropDownClosed += new System.EventHandler(this.cbx_dengji_DropDownClosed);
             // 
             // txb_price
             // 
@@ -235,6 +306,7 @@
             this.txb_price.Size = new System.Drawing.Size(121, 21);
             this.txb_price.TabIndex = 29;
             this.txb_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txb_price.TextChanged += new System.EventHandler(this.txb_price_TextChanged);
             this.txb_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_price_KeyPress);
             // 
             // label7
@@ -308,6 +380,7 @@
             this.txb_huohao.Name = "txb_huohao";
             this.txb_huohao.Size = new System.Drawing.Size(100, 21);
             this.txb_huohao.TabIndex = 3;
+            this.txb_huohao.TextChanged += new System.EventHandler(this.txb_huohao_TextChanged);
             this.txb_huohao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_huohao_KeyDown);
             // 
             // label1
@@ -335,11 +408,11 @@
             // 
             this.txb_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_fill.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txb_fill.Location = new System.Drawing.Point(231, 5);
             this.txb_fill.Name = "txb_fill";
             this.txb_fill.Size = new System.Drawing.Size(727, 21);
             this.txb_fill.TabIndex = 6;
+            this.txb_fill.TextChanged += new System.EventHandler(this.txb_fill_TextChanged);
             // 
             // label9
             // 
@@ -410,12 +483,42 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_center.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_center.Controls.Add(this.bt_add);
+            this.panel_center.Controls.Add(this.bt_del);
             this.panel_center.Controls.Add(this.label10);
             this.panel_center.Controls.Add(this.dgv_material);
             this.panel_center.Location = new System.Drawing.Point(0, 369);
             this.panel_center.Name = "panel_center";
             this.panel_center.Size = new System.Drawing.Size(970, 174);
             this.panel_center.TabIndex = 3;
+            // 
+            // bt_add
+            // 
+            this.bt_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add.Image = ((System.Drawing.Image)(resources.GetObject("bt_add.Image")));
+            this.bt_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_add.Location = new System.Drawing.Point(770, 5);
+            this.bt_add.Name = "bt_add";
+            this.bt_add.Size = new System.Drawing.Size(75, 23);
+            this.bt_add.TabIndex = 43;
+            this.bt_add.Text = "添加行";
+            this.bt_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_add.UseVisualStyleBackColor = true;
+            this.bt_add.Click += new System.EventHandler(this.bt_add_Click);
+            // 
+            // bt_del
+            // 
+            this.bt_del.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
+            this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_del.Location = new System.Drawing.Point(862, 5);
+            this.bt_del.Name = "bt_del";
+            this.bt_del.Size = new System.Drawing.Size(75, 23);
+            this.bt_del.TabIndex = 42;
+            this.bt_del.Text = "删除行";
+            this.bt_del.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_del.UseVisualStyleBackColor = true;
+            this.bt_del.Click += new System.EventHandler(this.bt_del_Click);
             // 
             // label10
             // 
@@ -434,6 +537,7 @@
             this.dgv_material.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_material.AutoGenerateColumns = false;
             this.dgv_material.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -445,8 +549,9 @@
             this.dgv_material.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_material.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_material.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Type});
+            this.idDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn});
+            this.dgv_material.DataSource = this.bindingSource_material;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -475,21 +580,24 @@
             this.dgv_material.TabStop = false;
             this.dgv_material.Leave += new System.EventHandler(this.dgv_material_Leave);
             // 
-            // Id
+            // bindingSource_material
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Id.Visible = false;
-            this.Id.Width = 500;
+            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
-            // Type
+            // idDataGridViewTextBoxColumn
             // 
-            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "成份内容";
-            this.Type.Name = "Type";
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "成份内容";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             // 
             // ProductManagerForm
             // 
@@ -512,6 +620,7 @@
             this.panel_center.ResumeLayout(false);
             this.panel_center.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,7 +658,16 @@
         private System.Windows.Forms.TextBox txb_memo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chb_wash;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.ToolStripButton add;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton save;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Button bt_del;
+        private System.Windows.Forms.Button bt_add;
+        private System.Windows.Forms.BindingSource bindingSource_material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
     }
 }

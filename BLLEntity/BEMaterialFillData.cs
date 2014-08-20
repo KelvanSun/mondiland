@@ -10,7 +10,7 @@ namespace Mondiland.BLLEntity
     {
         private int m_id = 0;
         private string m_size_name = string.Empty;
-        private string m_type = string.Empty;
+        //private string m_type = string.Empty;
         private string m_fill = string.Empty;
 
         /// <summary>
@@ -31,14 +31,14 @@ namespace Mondiland.BLLEntity
             set { m_size_name = value; }
         }
 
-        /// <summary>
-        /// 填充物的材质
-        /// </summary>
-        public string Type
-        {
-            get { return m_type; }
-            set { m_type = value; }
-        }
+        ///// <summary>
+        ///// 填充物的材质
+        ///// </summary>
+        //public string Type
+        //{
+        //    get { return m_type; }
+        //    set { m_type = value; }
+        //}
 
         /// <summary>
         /// 每个规格的填充克数

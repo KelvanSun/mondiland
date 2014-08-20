@@ -501,7 +501,7 @@
             // type
             // 
             this.type.DataPropertyName = "Type";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.type.DefaultCellStyle = dataGridViewCellStyle1;
             this.type.HeaderText = "成份内容";
             this.type.MaxInputLength = 50;

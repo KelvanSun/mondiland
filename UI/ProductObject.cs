@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -26,6 +27,18 @@ namespace Mondiland.UI
             Wash,
         }
 
+        public enum CodeType
+        {
+            Ok,
+            Error,
+        }
+        //保存返回信息
+        public class SaveResult
+        {
+            public CodeType Code;
+            public string Message = string.Empty;
+        }
+
         public class MaterialFillDataObject
         {
             /// <summary>
@@ -35,7 +48,7 @@ namespace Mondiland.UI
             /// <summary>
             /// 填充方式
             /// </summary>
-            public BindingList<BEMaterialFillData> m_material_fill_list = new BindingList<BEMaterialFillData>();
+            public BindingList<BEMaterialFillData> m_material_fill_list = new BindingList<BEMaterialFillData>(); 
         };
 
 
@@ -44,8 +57,7 @@ namespace Mondiland.UI
         private int m_id = 0;
         
         private string m_huohao = string.Empty;
-        private int m_huohao_id = 0;
-        
+         
         private string m_dengji = string.Empty;
         private int m_dengji_id = 0;
         
@@ -139,7 +151,10 @@ namespace Mondiland.UI
         public bool Pwash
         {
             get { return m_pwash; }
-            set { m_pwash = value; }
+            set 
+            {
+                m_pwash = value; 
+            }
         }
         /// <summary>
         /// 产品备注信息
@@ -147,7 +162,10 @@ namespace Mondiland.UI
         public string Memo
         {
             get { return m_memo; }
-            set { m_memo = value; }
+            set 
+            {
+                m_memo = value; 
+            }
         }
         /// <summary>
         /// 产品价格
@@ -155,7 +173,10 @@ namespace Mondiland.UI
         public decimal Price
         {
             get { return m_price; }
-            set { m_price = value; }
+            set 
+            {
+                m_price = value; 
+            }
         }
         /// <summary>
         /// 执行标准ID号
@@ -164,7 +185,7 @@ namespace Mondiland.UI
         {
             get { return m_standarddata_id; }
             set 
-            { 
+            {
                 m_standarddata_id = value;
                 m_standarddata = BLLFactory<BLLProductInfo>.Instance.ReadStandardDataTypeByPrimaryKey(m_standarddata_id);
             }
@@ -183,7 +204,7 @@ namespace Mondiland.UI
         {
             get { return m_safedata_id; }
             set 
-            { 
+            {
                 m_safedata_id = value;
                 m_safedata = BLLFactory<BLLProductInfo>.Instance.ReadSafeDataTypeByPrimaryKey(m_safedata_id);
             }
@@ -202,7 +223,7 @@ namespace Mondiland.UI
         {
             get { return m_partname_id; }
             set 
-            { 
+            {
                 m_partname_id = value;
                 m_parntname = BLLFactory<BLLProductInfo>.Instance.ReadPartNameTypeByPrimaryKey(m_partname_id);
 
@@ -225,7 +246,7 @@ namespace Mondiland.UI
         {
             get { return m_madeplace_id; }
             set 
-            { 
+            {
                 m_madeplace_id = value;
 
                 m_madeplace = BLLFactory<BLLProductInfo>.Instance.ReadMadePlaceTypeByPrimaryKey(m_madeplace_id);
@@ -245,7 +266,7 @@ namespace Mondiland.UI
         {
             get { return m_dengji_id; }
             set 
-            { 
+            {
                 m_dengji_id = value;
                 m_dengji = BLLFactory<BLLProductInfo>.Instance.ReadDengJiTypeByPrimaryKey(m_dengji_id);
             }
@@ -272,15 +293,10 @@ namespace Mondiland.UI
         public string HuoHao
         {
             get { return m_huohao; }
-            set { m_huohao = value; }
-        }
-        /// <summary>
-        /// 产品货号ID
-        /// </summary>
-        public int HuoHao_Id
-        {
-            get { return m_huohao_id; }
-            set { m_huohao_id = value; }
+            set 
+            {
+                m_huohao = value; 
+            }
         }
 
         public ProductObject() {}
@@ -311,7 +327,7 @@ namespace Mondiland.UI
             this.StandardData_Id = info.StandardData_Id;
             this.m_price = info.Price;
             this.m_memo = info.Memo;
-            this.Pwash = info.Pwash > 0 ? true : false;
+            this.Pwash = info.Pwash;
             this.Tag_Id = info.Tag_Id;
             this.Wash_Id = info.Wash_Id;
             this.m_lastamp = info.LasTamp;
@@ -320,11 +336,12 @@ namespace Mondiland.UI
 
             this.m_material_data_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialDataList(this.m_id);
             this.MaterialFillData.m_material_fill_list = BLLFactory<BLLProductInfo>.Instance.ReadMaterialFillDataList(this.m_id);
+            this.MaterialFillData.material_type = BLLFactory<BLLProductInfo>.Instance.ReadMaterialFillMaterial(this.m_id);
 
             this.m_tag_filename = string.Format("{0}\\{1}",ConfigurationManager.AppSettings["Template"],
-                BLLFactory<BLLProductInfo>.Instance.GetTagFileName(this.m_pwash, this.m_material_data_list.Count));
+                BLLFactory<BLLProductInfo>.Instance.GetTagFileName(this.m_pwash, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1:0)));
             this.m_wash_filename = string.Format("{0}\\{1}",ConfigurationManager.AppSettings["Template"],
-                BLLFactory<BLLProductInfo>.Instance.GetWashFileName(this.m_huohao, this.m_material_data_list.Count));
+                BLLFactory<BLLProductInfo>.Instance.GetWashFileName(this.m_huohao, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0)));
         }
 
         /// <summary>
@@ -335,7 +352,10 @@ namespace Mondiland.UI
         {
             BEProductDataInfo product_info = BLLFactory<BLLProductInfo>.Instance.ReadByHuoHao(huohao);
 
-            if (product_info != null) LoadProductData(product_info);
+            if (product_info == null)
+                this.HuoHao = huohao;
+            else
+                LoadProductData(product_info);
         }
 
         /// <summary>
@@ -435,7 +455,7 @@ namespace Mondiland.UI
             {
                 if(materialfill_ator.Current.SizeName == str_size_name)
                 {
-                    str.Append(materialfill_ator.Current.Type);
+                    str.Append(this.MaterialFillData.material_type);
                     str.Append(string.Format(" 充绒量:{0}g\r\n",materialfill_ator.Current.Fill));
                 }
             }
@@ -452,6 +472,139 @@ namespace Mondiland.UI
             stream.Position = 0;
 
             return formatter.Deserialize(stream);
+        }
+
+        /// <summary>
+        /// 保存记录
+        /// </summary>
+        /// <returns></returns>
+        public SaveResult Save()
+        {
+            SaveResult result = new SaveResult();
+
+            //save new
+            if(this.m_id == 0)
+            {
+                if(this.m_huohao.Trim() == string.Empty)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品货号]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(this.m_huohao.Trim()))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品货号]重复,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_partname_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品种类]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_dengji_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品等级]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_madeplace_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品产地]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_price == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品价格]不能为空，无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_safedata_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[安全标准]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_standarddata_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[执行标准]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if(this.m_material_data_list.Count == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[面料成份信息列表]不能为空，无法保存!";
+
+                    return result;
+                }
+
+                BEProductDataInfo info = new BEProductDataInfo();
+
+                info.HuoHao = this.m_huohao;
+                info.PartName_Id = this.m_partname_id;
+                info.Dengji_Id = this.m_dengji_id;
+                info.MadePlace_Id = this.m_madeplace_id;
+                info.Price = this.m_price;
+                info.SafeData_Id = this.m_safedata_id;
+                info.StandardData_Id = this.m_standarddata_id;
+                info.Pwash = this.m_pwash;
+                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+                info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao,this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+                
+                if(!BLLFactory<BLLProductInfo>.Instance.AddProductInfo(info))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "产品基本信息保存失败";
+
+                    return result;
+                }
+
+                this.m_id = BLLFactory<BLLProductInfo>.Instance.GetProductId(this.m_huohao);
+
+                IEnumerator<BEMaterialDataInfo> ator = this.m_material_data_list.GetEnumerator();
+
+                int index = 1;
+
+                while(ator.MoveNext())
+                {
+                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ator.Current.Type, index++);
+                }
+
+                if(this.MaterialFillData.m_material_fill_list.Count > 0)
+                {
+                    IEnumerator<BEMaterialFillData> fill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+                    while(fill_ator.MoveNext())
+                    {
+                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, fill_ator.Current.SizeName, this.MaterialFillData.material_type, fill_ator.Current.Fill);
+                    }
+                }
+
+                result.Code = CodeType.Ok;
+                result.Message = "保存成功!";
+            }
+
+
+            return result;
         }
         
     }

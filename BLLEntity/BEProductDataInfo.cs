@@ -18,7 +18,7 @@ namespace Mondiland.BLLEntity
         private int m_tag_id = 0;
         private int m_wash_id = 0;
         private string m_memo = string.Empty;
-        private int m_pwash = 0;
+        private bool m_pwash = false;
         private long m_lastamp = 0;
 
         public long LasTamp
@@ -27,7 +27,7 @@ namespace Mondiland.BLLEntity
             set { m_lastamp = value; }
         }
 
-        public int Pwash
+        public bool Pwash
         {
             get { return m_pwash; }
             set { m_pwash = value; }
