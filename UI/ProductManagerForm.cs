@@ -114,6 +114,9 @@ namespace Mondiland.UI
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txb_huohao.AutoCompleteCustomSource = acsc;
+
+
+            this.bindingSource_material.DataSource = product.MaterialDataList;
         }
 
         private void txb_price_KeyPress(object sender, KeyPressEventArgs e)
@@ -322,7 +325,7 @@ namespace Mondiland.UI
             txb_price.Text = product.Price.ToString();
             txb_memo.Text = product.Memo;
             chb_wash.Checked = product.Pwash;
-            dgv_material.DataSource = product.MaterialDataList;
+            this.bindingSource_material.DataSource = product.MaterialDataList;
             if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
             LoadDgvMaterialFill();
         }
@@ -417,7 +420,7 @@ namespace Mondiland.UI
                 txb_price.Text = product.Price.ToString();
                 txb_memo.Text = product.Memo;
                 chb_wash.Checked = product.Pwash;
-                dgv_material.DataSource = product.MaterialDataList;
+                this.bindingSource_material.DataSource = product.MaterialDataList;
                 if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
             }
