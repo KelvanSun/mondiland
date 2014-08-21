@@ -76,6 +76,14 @@ namespace Mondiland.UI
         private int m_tag_id = 0;
         private int m_wash_id = 0;
 
+        private bool m_pbad = false;
+
+        public bool Pbad
+        {
+            get { return m_pbad; }
+            set { m_pbad = value; }
+        }
+
         private string m_wash_size = string.Empty;
 
         /// <summary>
@@ -327,10 +335,11 @@ namespace Mondiland.UI
             this.StandardData_Id = info.StandardData_Id;
             this.m_price = info.Price;
             this.m_memo = info.Memo;
-            this.Pwash = info.Pwash;
-            this.Tag_Id = info.Tag_Id;
-            this.Wash_Id = info.Wash_Id;
+            this.m_pwash = info.Pwash;
+            this.m_tag_id = info.Tag_Id;
+            this.m_wash_id = info.Wash_Id;
             this.m_lastamp = info.LasTamp;
+            this.m_pbad = info.Pbad;
             
             this.m_wash_size = BLLFactory<BLLProductInfo>.Instance.GetWashSize(this.m_id);
 
@@ -339,7 +348,7 @@ namespace Mondiland.UI
             this.MaterialFillData.material_type = BLLFactory<BLLProductInfo>.Instance.ReadMaterialFillMaterial(this.m_id);
 
             this.m_tag_filename = string.Format("{0}\\{1}",ConfigurationManager.AppSettings["Template"],
-                BLLFactory<BLLProductInfo>.Instance.GetTagFileName(this.m_pwash, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1:0)));
+                BLLFactory<BLLProductInfo>.Instance.GetTagFileName(this.m_pwash,this.m_pbad, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1:0)));
             this.m_wash_filename = string.Format("{0}\\{1}",ConfigurationManager.AppSettings["Template"],
                 BLLFactory<BLLProductInfo>.Instance.GetWashFileName(this.m_huohao, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0)));
         }
@@ -567,9 +576,28 @@ namespace Mondiland.UI
                 info.SafeData_Id = this.m_safedata_id;
                 info.StandardData_Id = this.m_standarddata_id;
                 info.Pwash = this.m_pwash;
-                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+                info.Pbad = this.m_pbad;
+                
+                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash,info.Pbad, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
                 info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao,this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
                 
+                if(info.Tag_Id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "系统未能找到对应的吊牌模板文件,保存无法继续!";
+
+                    return result;
+                }
+
+                if(info.Wash_Id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
+
+                    return result;
+                }
+
+
                 if(!BLLFactory<BLLProductInfo>.Instance.AddProductInfo(info))
                 {
                     result.Code = CodeType.Error;

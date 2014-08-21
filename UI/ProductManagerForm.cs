@@ -190,6 +190,7 @@ namespace Mondiland.UI
                 txb_price.Text = product.Price.ToString();
                 txb_memo.Text = product.Memo;
                 chb_wash.Checked = product.Pwash;
+                chb_bad.Checked = product.Pbad;
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
@@ -206,6 +207,8 @@ namespace Mondiland.UI
 
         private void dgv_material_Leave(object sender, EventArgs e)
         {
+            dgv_material.EndEdit();            
+            
             if(this.dgv_material.RowCount > 0)
             {
                 for (int index = 0; index < this.dgv_material.RowCount; ++index)
@@ -232,8 +235,7 @@ namespace Mondiland.UI
 
             int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
             int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
-            bool pwash = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
-
+            
             if (safe_id > 0)
             {
                 cbx_safedata.SelectedValue = safe_id;
@@ -254,7 +256,8 @@ namespace Mondiland.UI
             }
 
             //选择了休闲裤，打印水洗产品
-            chb_wash.Checked = pwash;
+            chb_wash.Checked = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
+            chb_bad.Checked = BLLFactory<BLLProductInfo>.Instance.GetOptimizePbad(Convert.ToInt32(cbx_partname.SelectedValue));
 
             cbx_safedata_DropDownClosed(sender, e);
             cbx_standard_DropDownClosed(sender, e);
@@ -381,7 +384,7 @@ namespace Mondiland.UI
                 {
                     BEMaterialFillData info = new BEMaterialFillData();
 
-                    info.SizeName = this.dgv_material_fill.Columns[0].HeaderText.Substring(0, 2);
+                    info.SizeName = this.dgv_material_fill.Columns[index].HeaderText.Substring(0, 2);
                     info.Fill = this.dgv_material_fill.Rows[0].Cells[index].Value.ToString();
 
                     this.product.MaterialFillData.m_material_fill_list.Add(info);
@@ -476,6 +479,23 @@ namespace Mondiland.UI
         private void txb_price_MouseDown(object sender, MouseEventArgs e)
         {
             this.txb_price.Select(0, this.txb_price.Text.Length);
+        }
+
+        private void chb_bad_CheckedChanged(object sender, EventArgs e)
+        {
+            this.product.Pbad = this.chb_bad.Checked;
+        }
+
+        private void chb_bad_Click(object sender, EventArgs e)
+        {
+            if (chb_bad.Checked)
+                chb_wash.Checked = false;
+        }
+
+        private void chb_wash_Click(object sender, EventArgs e)
+        {
+            if (chb_wash.Checked)
+                chb_bad.Checked = false;
         }
      
 

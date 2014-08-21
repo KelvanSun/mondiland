@@ -187,6 +187,7 @@ namespace Mondiland.BLL
             info.Price = entity.Price;
             info.Memo = entity.Memo;
             info.Pwash = entity.Pwash > 0 ? true:false;
+            info.Pbad = entity.Pbad > 0 ? true : false;
             info.LasTamp = entity.LasTamp;
             info.Tag_Id = entity.Tag_Id;
             info.Wash_Id = entity.Wash_Id;
@@ -277,7 +278,8 @@ namespace Mondiland.BLL
             info.StandardData_Id = entity.StandardData_Id;
             info.Price = entity.Price;
             info.Memo = entity.Memo;
-            info.Pwash = entity.Pwash > 0 ? true:false;
+            info.Pwash = entity.Pwash > 0 ? true : false;
+            info.Pbad = entity.Pbad > 0 ? true : false;
             info.LasTamp = entity.LasTamp;
             info.Tag_Id = entity.Tag_Id;
             info.Wash_Id = entity.Wash_Id;
@@ -286,7 +288,12 @@ namespace Mondiland.BLL
             return info;
         }
 
-       
+        public bool GetOptimizePbad(int partname_id)
+        {
+            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
+
+            return entity.Pbad > 0 ? true : false;
+        }
         /// <summary>
         /// 根据产品种类选择合适的安全标准
         /// </summary>
@@ -501,7 +508,7 @@ namespace Mondiland.BLL
         /// <param name="pwash">是否要打印水洗产品字样</param>
         /// <param name="row">成份行数</param>
         /// <returns>文件名</returns>
-        public string GetTagFileName(bool pwash,int row)
+        public string GetTagFileName(bool pwash, bool pbad, int row)
         {
             Table_TagPrintTemplate_Entity entity = new Table_TagPrintTemplate_Entity();
             Hashtable hash = new Hashtable();
@@ -509,6 +516,10 @@ namespace Mondiland.BLL
             if (pwash)
             {
                 hash.Add("file_name", string.Format("TagA{0}.btw", row.ToString()));
+            }
+            else if(pbad)
+            {
+                hash.Add("file_name", string.Format("TagP{0}.btw", row.ToString()));
             }
             else
             {
@@ -526,7 +537,7 @@ namespace Mondiland.BLL
         /// <param name="pwash">是否要打印水洗产品字样</param>
         /// <param name="row">成份行数</param>
         /// <returns>文件名ID</returns>
-        public int GetTagFileNameId(bool pwash,int row)
+        public int GetTagFileNameId(bool pwash,bool pbad,int row)
         {
             Table_TagPrintTemplate_Entity entity = new Table_TagPrintTemplate_Entity();
             Hashtable hash = new Hashtable();
@@ -534,6 +545,10 @@ namespace Mondiland.BLL
             if (pwash)
             {
                 hash.Add("file_name", string.Format("TagA{0}.btw", row.ToString()));
+            }
+            else if(pbad)
+            {
+                hash.Add("file_name", string.Format("TagP{0}.btw", row.ToString()));
             }
             else
             {
@@ -646,6 +661,10 @@ namespace Mondiland.BLL
                 entity.Pwash = 1;
             else
                 entity.Pwash = 0;
+            if (info.Pbad)
+                entity.Pbad = 1;
+            else
+                entity.Pbad = 0;
             entity.LasTamp = UtilFun.GetTimeSLasTamp();
             
             return ProductData_Dal.Insert(entity);
@@ -659,36 +678,36 @@ namespace Mondiland.BLL
             return MaterialData_Dal.Delete(hash);
         }
 
-        public bool UpdateProductInfo(BEProductDataInfo info,int product_id,long LasTamp)
-        {
-            Hashtable field = new Hashtable();
-            field.Add("partname_id", info.PartName_Id);
-            field.Add("safedata_id", info.SafeData_Id);
-            field.Add("standarddata_id", info.StandardData_Id);
-            field.Add("price", info.Price);
-            field.Add("madeplace_id", info.MadePlace_Id);
-            field.Add("dengji_id", info.Dengji_Id);
-            field.Add("tag_id", info.Tag_Id);
-            field.Add("wash_id", info.Wash_Id);
-            field.Add("memo", info.Memo);
-            field.Add("pwash", info.Pwash);
+        //public bool UpdateProductInfo(BEProductDataInfo info,int product_id,long LasTamp)
+        //{
+        //    Hashtable field = new Hashtable();
+        //    field.Add("partname_id", info.PartName_Id);
+        //    field.Add("safedata_id", info.SafeData_Id);
+        //    field.Add("standarddata_id", info.StandardData_Id);
+        //    field.Add("price", info.Price);
+        //    field.Add("madeplace_id", info.MadePlace_Id);
+        //    field.Add("dengji_id", info.Dengji_Id);
+        //    field.Add("tag_id", info.Tag_Id);
+        //    field.Add("wash_id", info.Wash_Id);
+        //    field.Add("memo", info.Memo);
+        //    field.Add("pwash", info.Pwash);
 
-            Hashtable where = new Hashtable();
+        //    Hashtable where = new Hashtable();
 
-            where.Add("id", product_id);
-            where.Add("lastamp", LasTamp);
+        //    where.Add("id", product_id);
+        //    where.Add("lastamp", LasTamp);
 
-            if (ProductData_Dal.Update(field, where))
-            {
-                field.Clear();
+        //    if (ProductData_Dal.Update(field, where))
+        //    {
+        //        field.Clear();
 
-                field.Add("lastamp", UtilFun.GetTimeSLasTamp());
+        //        field.Add("lastamp", UtilFun.GetTimeSLasTamp());
 
-                return ProductData_Dal.Update(product_id, field);
-            }
-            else
-                return false;
-        }
+        //        return ProductData_Dal.Update(product_id, field);
+        //    }
+        //    else
+        //        return false;
+        //}
                      
         /// <summary>
         /// 根据货号检察记录是否存在        

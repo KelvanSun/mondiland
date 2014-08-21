@@ -19,8 +19,15 @@ namespace Mondiland.BLLEntity
         private int m_wash_id = 0;
         private string m_memo = string.Empty;
         private bool m_pwash = false;
+        private bool m_pbad = false;
         private long m_lastamp = 0;
 
+
+        public bool Pbad
+        {
+            get { return m_pbad; }
+            set { m_pbad = value; }
+        }
         public long LasTamp
         {
             get { return m_lastamp; }
