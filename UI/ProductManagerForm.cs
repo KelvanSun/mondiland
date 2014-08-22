@@ -113,10 +113,24 @@ namespace Mondiland.UI
 
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txb_huohao.AutoCompleteCustomSource = acsc;
+            txb_huohao.AutoCompleteCustomSource = this.GetAutoCompleteCustomSource();
 
 
             this.bindingSource_material.DataSource = product.MaterialDataList;
+        }
+
+        private AutoCompleteStringCollection GetAutoCompleteCustomSource()
+        {
+            AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
+
+            IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                acsc.Add(ator.Current.ToString());
+            }
+
+            return acsc;
         }
 
         private void txb_price_KeyPress(object sender, KeyPressEventArgs e)
@@ -423,6 +437,8 @@ namespace Mondiland.UI
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
+
+                txb_huohao.AutoCompleteCustomSource = this.GetAutoCompleteCustomSource();
             }
         }
 

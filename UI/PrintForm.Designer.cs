@@ -44,13 +44,14 @@
             this.numericUpDown.Location = new System.Drawing.Point(276, 38);
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.Size = new System.Drawing.Size(78, 21);
-            this.numericUpDown.TabIndex = 8;
+            this.numericUpDown.TabIndex = 1;
             this.numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.numericUpDown.Enter += new System.EventHandler(this.numericUpDown_Enter);
             // 
             // bt_print
             // 
@@ -85,7 +86,7 @@
             this.cbx_select.Location = new System.Drawing.Point(123, 38);
             this.cbx_select.Name = "cbx_select";
             this.cbx_select.Size = new System.Drawing.Size(133, 20);
-            this.cbx_select.TabIndex = 28;
+            this.cbx_select.TabIndex = 2;
             this.cbx_select.DropDownClosed += new System.EventHandler(this.cbx_select_DropDownClosed);
             // 
             // bindingSource

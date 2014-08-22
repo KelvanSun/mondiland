@@ -54,5 +54,10 @@ namespace Mondiland.UI
             numericUpDown.Focus();
             numericUpDown.Select(0, numericUpDown.Value.ToString().Length);
         }
+
+        private void numericUpDown_Enter(object sender, EventArgs e)
+        {
+            numericUpDown.Select(0, numericUpDown.Value.ToString().Length);
+        }
     }
 }
