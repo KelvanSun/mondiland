@@ -494,6 +494,7 @@
             this.dgv_material_fill.Size = new System.Drawing.Size(970, 85);
             this.dgv_material_fill.TabIndex = 1;
             this.dgv_material_fill.TabStop = false;
+            this.dgv_material_fill.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_material_fill_CellValueChanged);
             this.dgv_material_fill.Leave += new System.EventHandler(this.dgv_material_fill_Leave);
             // 
             // panel_center

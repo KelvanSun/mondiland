@@ -347,69 +347,6 @@ namespace Mondiland.UI
         
         private void save_Click(object sender, EventArgs e)
         {
-            if (txb_fill.Text.Trim() != string.Empty)
-            {
-                if (this.dgv_material_fill.RowCount == 0)
-                {
-                    MessageUtil.ShowError("[填充面料]不为空的情况下,必须设定填充方式!");
-                    return;
-                }
-
-                for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
-                {
-                    if (this.dgv_material_fill.Rows[0].Cells[index].Value == null)
-                    {
-                        MessageUtil.ShowError("必须完整设定填充方式!");
-
-                        return;
-                    }
-                }
-
-            }
-
-            bool fill_ok = true;
-
-            if (this.dgv_material_fill.RowCount == 0) return;
-
-            for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
-            {
-                if (this.dgv_material_fill.Rows[0].Cells[index].Value == null)
-                {
-                    fill_ok = false;
-                    break;
-                }
-            }
-
-            if (fill_ok)
-            {
-                if (txb_fill.Text.Trim() == string.Empty)
-                {
-                    MessageUtil.ShowError("[填充面料]不能为空!");
-
-                    return;
-                }
-
-            }
-
-
-            if (txb_fill.Text.Trim() != string.Empty)
-            {
-
-                this.product.MaterialFillData.m_material_fill_list.Clear();
-
-                for (int index = 0; index < this.dgv_material_fill.Rows[0].Cells.Count; ++index)
-                {
-                    BEMaterialFillData info = new BEMaterialFillData();
-
-                    info.SizeName = this.dgv_material_fill.Columns[index].HeaderText.Substring(0, 2);
-                    info.Fill = this.dgv_material_fill.Rows[0].Cells[index].Value.ToString();
-
-                    this.product.MaterialFillData.m_material_fill_list.Add(info);
-                }
-            }
-
-
-
             ProductObject.SaveResult result = product.Save();
 
             if (result.Code == ProductObject.CodeType.Error)
@@ -516,7 +453,11 @@ namespace Mondiland.UI
             if (chb_wash.Checked)
                 chb_bad.Checked = false;
         }
-     
 
+        private void dgv_material_fill_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            product.UpdataMaterialFillList(this.dgv_material_fill.Columns[e.ColumnIndex].HeaderText.Substring(0, 2),
+                                            this.dgv_material_fill.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+        }
     }
 }

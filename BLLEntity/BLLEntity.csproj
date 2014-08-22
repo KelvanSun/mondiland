@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="BEChildMenuInfo.cs" />
     <Compile Include="BEMadePlaceProduct.cs" />
-    <Compile Include="BEMadePlaceInfo.cs" />
     <Compile Include="BEMaterialDataInfo.cs" />
     <Compile Include="BEMaterialFillData.cs" />
     <Compile Include="BEParentMenuInfo.cs" />

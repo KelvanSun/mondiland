@@ -236,6 +236,37 @@ namespace Mondiland.UI
                 m_parntname = BLLFactory<BLLProductInfo>.Instance.ReadPartNameTypeByPrimaryKey(m_partname_id);
 
                 this.m_size_data_list = BLLFactory<BLLProductInfo>.Instance.ReadSizeDataList(m_partname_id);
+
+                //初始化自定义填充列表
+                IEnumerator<BESizeDataList> ator = this.m_size_data_list.GetEnumerator();
+
+                while(ator.MoveNext())
+                {
+                    BEMaterialFillData data = new BEMaterialFillData();
+
+                    data.SizeName = ator.Current.SizeName;
+                    data.Fill = "0";
+
+                    this.MaterialFillData.m_material_fill_list.Add(data);
+                }
+
+
+            }
+        }
+
+        /// <summary>
+        /// 更新填充列表信息
+        /// </summary>
+        /// <param name="size_name">规格</param>
+        /// <param name="fill">填充内容</param>
+        public void UpdataMaterialFillList(string size_name,string fill)
+        {
+            IEnumerator<BEMaterialFillData> ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                if (ator.Current.SizeName == size_name)
+                    ator.Current.Fill = fill;
             }
         }
 
@@ -566,6 +597,24 @@ namespace Mondiland.UI
                     return result;
                 }
 
+                //当填充材质不为空时处理填充数据
+                if(this.MaterialFillData.material_type.Trim() != string.Empty)
+                {
+                    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+                    while(ator_data.MoveNext())
+                    {
+                        if(ator_data.Current.Fill == "0")
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "填充规则数据制定不完整,请重新制定!";
+
+                            return result;
+                        }
+                    }
+                }
+
+
                 BEProductDataInfo info = new BEProductDataInfo();
 
                 info.HuoHao = this.m_huohao;
@@ -629,6 +678,45 @@ namespace Mondiland.UI
 
                 result.Code = CodeType.Ok;
                 result.Message = "保存成功!";
+            }
+
+            //Edit Save
+            if(this.m_id != 0)
+            {
+                if (this.m_huohao.Trim() == string.Empty)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品货号]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if (BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(this.m_huohao.Trim()))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品货号]重复,无法保存!";
+
+                    return result;
+                }
+
+
+
+                ////当填充材质不为空时处理填充数据
+                //if (this.MaterialFillData.material_type.Trim() != string.Empty)
+                //{
+                //    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+                //    while (ator_data.MoveNext())
+                //    {
+                //        if (ator_data.Current.Fill == "0")
+                //        {
+                //            result.Code = CodeType.Error;
+                //            result.Message = "填充规则数据制定不完整,请重新制定!";
+
+                //            return result;
+                //        }
+                //    }
+                //}
             }
 
 
