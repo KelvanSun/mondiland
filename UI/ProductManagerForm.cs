@@ -24,6 +24,10 @@ namespace Mondiland.UI
             UpdateFavoritesMenu();  
         }
 
+        public string HuohaoSaveAs
+        {
+            set { m_huohao_saveas = value; }
+        }
         /// <summary>
         /// 更新收藏菜单状态
         /// </summary>
@@ -340,6 +344,7 @@ namespace Mondiland.UI
             txb_price.Text = product.Price.ToString();
             txb_memo.Text = product.Memo;
             chb_wash.Checked = product.Pwash;
+            chb_bad.Checked = product.Pbad;
             this.bindingSource_material.DataSource = product.MaterialDataList;
             if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
             LoadDgvMaterialFill();
@@ -372,6 +377,7 @@ namespace Mondiland.UI
                 txb_price.Text = product.Price.ToString();
                 txb_memo.Text = product.Memo;
                 chb_wash.Checked = product.Pwash;
+                chb_bad.Checked = product.Pbad;
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
@@ -469,8 +475,48 @@ namespace Mondiland.UI
                 return;
             }
 
-            ProductSaveAsForm form = new ProductSaveAsForm();
+            ProductSaveAsForm form = new ProductSaveAsForm(this);
             form.ShowDialog();
+
+            if(m_huohao_saveas != string.Empty)
+            {
+                ProductObject save_as = this.product.Clone() as ProductObject;
+
+                save_as.Id = 0;
+                save_as.HuoHao = this.m_huohao_saveas;
+
+                ProductObject.SaveResult result = save_as.Save();
+
+                if(result.Code == ProductObject.CodeType.Error)
+                {
+                    MessageUtil.ShowError(result.Message);
+
+                    return;
+                }
+
+                if(result.Code == ProductObject.CodeType.Ok)
+                {
+                    MessageUtil.ShowTips(result.Message);
+
+                    this.product = new ProductObject();
+
+                    txb_huohao.Text = product.HuoHao;
+                    cbx_partname.SelectedValue = product.PartName_Id;
+                    cbx_dengji.SelectedValue = product.DengJi_Id;
+                    cbx_madeplace.SelectedValue = product.MadePlace_Id;
+                    cbx_safedata.SelectedValue = product.SafeData_Id;
+                    cbx_standard.SelectedValue = product.StandardData_Id;
+                    txb_price.Text = product.Price.ToString();
+                    txb_memo.Text = product.Memo;
+                    chb_wash.Checked = product.Pwash;
+                    chb_bad.Checked = product.Pbad;
+                    this.bindingSource_material.DataSource = product.MaterialDataList;
+                    if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
+                    LoadDgvMaterialFill();
+
+                    txb_huohao.AutoCompleteCustomSource = this.GetAutoCompleteCustomSource();
+                }
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Mondiland.UI
             public CodeType Code;
             public string Message = string.Empty;
         }
-
+        [Serializable]
         public class MaterialFillDataObject
         {
             /// <summary>

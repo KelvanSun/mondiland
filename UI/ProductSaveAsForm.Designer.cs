@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductSaveAsForm));
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_ok = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txb_huohao = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // button_ok
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(202, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "确定  ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_ok.Image = ((System.Drawing.Image)(resources.GetObject("button_ok.Image")));
+            this.button_ok.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_ok.Location = new System.Drawing.Point(202, 32);
+            this.button_ok.Name = "button_ok";
+            this.button_ok.Size = new System.Drawing.Size(75, 23);
+            this.button_ok.TabIndex = 1;
+            this.button_ok.Text = "确定  ";
+            this.button_ok.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button_ok.UseVisualStyleBackColor = true;
+            this.button_ok.Click += new System.EventHandler(this.button_ok_Click);
             // 
             // label1
             // 
@@ -70,13 +71,14 @@
             this.ClientSize = new System.Drawing.Size(337, 99);
             this.Controls.Add(this.txb_huohao);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_ok);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProductSaveAsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "另存为...";
+            this.Load += new System.EventHandler(this.ProductSaveAsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,7 +86,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_ok;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txb_huohao;
     }
