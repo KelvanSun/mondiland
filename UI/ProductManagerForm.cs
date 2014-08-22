@@ -501,9 +501,8 @@ namespace Mondiland.UI
 
                     this.m_huohao_saveas = string.Empty;
 
-                    this.product = new ProductObject();
+                    product = new ProductObject(save_as.HuoHao);
 
-                    txb_huohao.Text = product.HuoHao;
                     cbx_partname.SelectedValue = product.PartName_Id;
                     cbx_dengji.SelectedValue = product.DengJi_Id;
                     cbx_madeplace.SelectedValue = product.MadePlace_Id;
