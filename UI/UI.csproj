@@ -137,6 +137,12 @@
       <DependentUpon>ProductManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductObject.cs" />
+    <Compile Include="ProductSaveAsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSaveAsForm.Designer.cs">
+      <DependentUpon>ProductSaveAsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductManagerForm.resx">
       <DependentUpon>ProductManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSaveAsForm.resx">
+      <DependentUpon>ProductSaveAsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

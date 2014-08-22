@@ -15,6 +15,7 @@ namespace Mondiland.UI
     public partial class ProductManagerForm : Mondiland.UI.BaseForm, IMenuFavorites
     {
         private bool m_favorites = false;
+        private string m_huohao_saveas = string.Empty;
         private ProductObject product = new ProductObject();
         public ProductManagerForm()
         {
@@ -458,6 +459,18 @@ namespace Mondiland.UI
         {
             product.UpdataMaterialFillList(this.dgv_material_fill.Columns[e.ColumnIndex].HeaderText.Substring(0, 2),
                                             this.dgv_material_fill.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+        }
+
+        private void saveas_Click(object sender, EventArgs e)
+        {
+            if(product.Id == 0)
+            {
+                MessageUtil.ShowWarning("当前记录为空,无法[另存]操作!");
+                return;
+            }
+
+            ProductSaveAsForm form = new ProductSaveAsForm();
+            form.ShowDialog();
         }
     }
 }

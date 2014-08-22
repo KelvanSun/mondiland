@@ -670,6 +670,25 @@ namespace Mondiland.BLL
             return ProductData_Dal.Insert(entity);
         }
 
+        /// <summary>
+        /// 保存填充数据前先删除原先信息
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
+        public bool DeleteMaterialFillInfo(int product_id)
+        {
+            Hashtable hash = new Hashtable();
+
+            hash.Add("product_id", product_id);
+
+            return MaterialFill_Dal.Delete(hash);
+        }
+
+        /// <summary>
+        /// 保存前删除成份信息
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
         public bool DeleteMaterialInfo(int product_id)
         {
             Hashtable hash = new Hashtable();
@@ -678,43 +697,42 @@ namespace Mondiland.BLL
             return MaterialData_Dal.Delete(hash);
         }
 
-        //public bool UpdateProductInfo(BEProductDataInfo info,int product_id,long LasTamp)
-        //{
-        //    Hashtable field = new Hashtable();
-        //    field.Add("partname_id", info.PartName_Id);
-        //    field.Add("safedata_id", info.SafeData_Id);
-        //    field.Add("standarddata_id", info.StandardData_Id);
-        //    field.Add("price", info.Price);
-        //    field.Add("madeplace_id", info.MadePlace_Id);
-        //    field.Add("dengji_id", info.Dengji_Id);
-        //    field.Add("tag_id", info.Tag_Id);
-        //    field.Add("wash_id", info.Wash_Id);
-        //    field.Add("memo", info.Memo);
-        //    field.Add("pwash", info.Pwash);
+        /// <summary>
+        /// 保存主记录信息
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        public bool UpdateProductInfo(BEProductDataInfo info)
+        {
+            Hashtable field = new Hashtable();
+            field.Add("huohao", info.HuoHao);
+            field.Add("partname_id", info.PartName_Id);
+            field.Add("safedata_id", info.SafeData_Id);
+            field.Add("standarddata_id", info.StandardData_Id);
+            field.Add("price", info.Price);
+            field.Add("madeplace_id", info.MadePlace_Id);
+            field.Add("dengji_id", info.Dengji_Id);
+            field.Add("tag_id", info.Tag_Id);
+            field.Add("wash_id", info.Wash_Id);
+            field.Add("memo", info.Memo);
+            field.Add("pwash", info.Pwash);
+            field.Add("pbad", info.Pbad);
+            field.Add("lastamp", UtilFun.GetTimeSLasTamp());
 
-        //    Hashtable where = new Hashtable();
+            Hashtable where = new Hashtable();
 
-        //    where.Add("id", product_id);
-        //    where.Add("lastamp", LasTamp);
+            where.Add("id", info.Id);
 
-        //    if (ProductData_Dal.Update(field, where))
-        //    {
-        //        field.Clear();
-
-        //        field.Add("lastamp", UtilFun.GetTimeSLasTamp());
-
-        //        return ProductData_Dal.Update(product_id, field);
-        //    }
-        //    else
-        //        return false;
-        //}
+            return ProductData_Dal.Update(field, where);
+   
+        }
                      
         /// <summary>
         /// 根据货号检察记录是否存在        
         /// </summary>
         /// <param name="str_huohao">货号</param>
         /// <returns>true 代表存在</returns>
-        public bool CheckProductDataIsExist(string str_huohao)
+        public bool CheckProductHuoHaoIsExist(string str_huohao)
         {
        
             Hashtable hash = new Hashtable();
@@ -723,7 +741,36 @@ namespace Mondiland.BLL
 
             return ProductData_Dal.IsExistKey(hash);
         }
-   
+
+        /// <summary>
+        /// 根据货号检察记录是否存在排除自身
+        /// </summary>
+        /// <param name="id">产品ID号</param>
+        /// <param name="str_huohao">产品货号</param>
+        /// <returns>true为找到重复</returns>
+        public bool CheckProductHuoHaoIsExitsWithoutMe(int id,string str_huohao)
+        {
+            Hashtable hash = new Hashtable();
+
+            hash.Add("id", id);
+            hash.Add("huohao", str_huohao);
+
+            List<Table_ProductData_Entity> list = ProductData_Dal.Find(hash, SqlOperator.And, false);
+
+            return list.Count > 1 ? true : false; 
+        }
+        
+        /// <summary>
+        /// 修改保存前检察lastamp是否有变动
+        /// </summary>
+        /// <param name="lastamp"></param>
+        /// <returns>true为已经变动</returns>
+        public bool UpdateCheckLastamp(int id,long lastamp)
+        {
+            Table_ProductData_Entity entity = ProductData_Dal.FindByID(id);
+
+            return entity.LasTamp == lastamp;
+        }
    
     }
 }

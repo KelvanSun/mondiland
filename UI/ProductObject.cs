@@ -533,7 +533,7 @@ namespace Mondiland.UI
                     return result;
                 }
 
-                if(BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(this.m_huohao.Trim()))
+                if (BLLFactory<BLLProductInfo>.Instance.CheckProductHuoHaoIsExist(this.m_huohao.Trim()))
                 {
                     result.Code = CodeType.Error;
                     result.Message = "[产品货号]重复,无法保存!";
@@ -666,7 +666,7 @@ namespace Mondiland.UI
                     BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ator.Current.Type, index++);
                 }
 
-                if(this.MaterialFillData.m_material_fill_list.Count > 0)
+                if(this.MaterialFillData.material_type.Trim() != string.Empty)
                 {
                     IEnumerator<BEMaterialFillData> fill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
 
@@ -691,7 +691,7 @@ namespace Mondiland.UI
                     return result;
                 }
 
-                if (BLLFactory<BLLProductInfo>.Instance.CheckProductDataIsExist(this.m_huohao.Trim()))
+                if (BLLFactory<BLLProductInfo>.Instance.CheckProductHuoHaoIsExitsWithoutMe(this.m_id,this.m_huohao.Trim()))
                 {
                     result.Code = CodeType.Error;
                     result.Message = "[产品货号]重复,无法保存!";
@@ -699,24 +699,114 @@ namespace Mondiland.UI
                     return result;
                 }
 
+                if (this.m_price == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品价格]不能为空，无法保存!";
 
+                    return result;
+                }
 
-                ////当填充材质不为空时处理填充数据
-                //if (this.MaterialFillData.material_type.Trim() != string.Empty)
-                //{
-                //    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+                if (this.m_material_data_list.Count == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[面料成份信息列表]不能为空，无法保存!";
 
-                //    while (ator_data.MoveNext())
-                //    {
-                //        if (ator_data.Current.Fill == "0")
-                //        {
-                //            result.Code = CodeType.Error;
-                //            result.Message = "填充规则数据制定不完整,请重新制定!";
+                    return result;
+                }
 
-                //            return result;
-                //        }
-                //    }
-                //}
+                //当填充材质不为空时处理填充数据
+                if (this.MaterialFillData.material_type.Trim() != string.Empty)
+                {
+                    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+                    while (ator_data.MoveNext())
+                    {
+                        if (ator_data.Current.Fill == "0")
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "填充规则数据制定不完整,请重新制定!";
+
+                            return result;
+                        }
+                    }
+                }
+
+                if(BLLFactory<BLLProductInfo>.Instance.UpdateCheckLastamp(this.m_id,this.m_lastamp))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "当前编辑的记录已经变更,无法保存!";
+
+                    return result;
+                }
+
+                BEProductDataInfo info = new BEProductDataInfo();
+
+                info.Id = this.m_id;
+                info.HuoHao = this.m_huohao;
+                info.PartName_Id = this.m_partname_id;
+                info.Dengji_Id = this.m_dengji_id;
+                info.MadePlace_Id = this.m_madeplace_id;
+                info.Price = this.m_price;
+                info.SafeData_Id = this.m_safedata_id;
+                info.StandardData_Id = this.m_standarddata_id;
+                info.Pwash = this.m_pwash;
+                info.Pbad = this.m_pbad;
+
+                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, info.Pbad, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+                info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+
+                if (info.Tag_Id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "系统未能找到对应的吊牌模板文件,保存无法继续!";
+
+                    return result;
+                }
+
+                if (info.Wash_Id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
+
+                    return result;
+                }
+
+                if (!BLLFactory<BLLProductInfo>.Instance.UpdateProductInfo(info))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "产品基本信息保存失败";
+
+                    return result;
+                }
+
+                //保存成份信息
+                BLLFactory<BLLProductInfo>.Instance.DeleteMaterialInfo(this.m_id);
+
+                IEnumerator<BEMaterialDataInfo> ator = this.m_material_data_list.GetEnumerator();
+
+                int index = 1;
+
+                while (ator.MoveNext())
+                {
+                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ator.Current.Type, index++);
+                }
+                ////////////////////////////////////////////////////////
+
+                BLLFactory<BLLProductInfo>.Instance.DeleteMaterialFillInfo(this.m_id);
+
+                if (this.MaterialFillData.material_type.Trim() != string.Empty)
+                {
+                    IEnumerator<BEMaterialFillData> fill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
+
+                    while (fill_ator.MoveNext())
+                    {
+                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, fill_ator.Current.SizeName, this.MaterialFillData.material_type, fill_ator.Current.Fill);
+                    }
+                }
+
+                result.Code = CodeType.Ok;
+                result.Message = "保存成功!";
             }
 
 
