@@ -490,6 +490,7 @@ namespace Mondiland.UI
                 if(result.Code == ProductObject.CodeType.Error)
                 {
                     MessageUtil.ShowError(result.Message);
+                    this.m_huohao_saveas = string.Empty;
 
                     return;
                 }
@@ -497,6 +498,8 @@ namespace Mondiland.UI
                 if(result.Code == ProductObject.CodeType.Ok)
                 {
                     MessageUtil.ShowTips(result.Message);
+
+                    this.m_huohao_saveas = string.Empty;
 
                     this.product = new ProductObject();
 
