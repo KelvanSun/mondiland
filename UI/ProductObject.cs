@@ -532,7 +532,7 @@ namespace Mondiland.UI
                 if(this.m_huohao.Trim() == string.Empty)
                 {
                     result.Code = CodeType.Error;
-                    result.Message = "[产品货号]不能为空,无法保存!";
+                    result.Message = "[产品货号]不能为空或输入的不合法,无法保存!";
 
                     return result;
                 }
@@ -690,7 +690,7 @@ namespace Mondiland.UI
                 if (this.m_huohao.Trim() == string.Empty)
                 {
                     result.Code = CodeType.Error;
-                    result.Message = "[产品货号]不能为空,无法保存!";
+                    result.Message = "[产品货号]不能为空或输入的不合法,无法保存!";
 
                     return result;
                 }

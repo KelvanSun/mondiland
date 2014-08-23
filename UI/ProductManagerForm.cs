@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
@@ -203,6 +204,11 @@ namespace Mondiland.UI
                 if (txb_huohao.Text.Trim() == string.Empty)
                     return;
 
+                if (!CheckHuoHao(this.txb_huohao.Text.Trim()))
+                {
+                    this.txb_huohao.Text = string.Empty;
+                }
+
                 product = new ProductObject(txb_huohao.Text.Trim());
 
                 
@@ -325,9 +331,24 @@ namespace Mondiland.UI
             this.product.Memo = this.txb_memo.Text;
         }
 
+        private bool CheckHuoHao(string str)
+        {
+            Regex reg = new Regex("^[q-zQ-Z]");
+
+            return reg.IsMatch(str);
+        }
+
         private void txb_huohao_TextChanged(object sender, EventArgs e)
         {
-            this.product.HuoHao = this.txb_huohao.Text;
+            if (string.IsNullOrEmpty(this.txb_huohao.Text.Trim())) return;
+
+            if (CheckHuoHao(this.txb_huohao.Text.Trim()))
+                this.product.HuoHao = this.txb_huohao.Text;
+            else
+            {
+                this.txb_huohao.Text = string.Empty;
+                this.product.HuoHao = string.Empty;
+            }
         }
 
         private void add_Click(object sender, EventArgs e)
