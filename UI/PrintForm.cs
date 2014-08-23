@@ -39,11 +39,23 @@ namespace Mondiland.UI
 
         private void bt_print_Click(object sender, EventArgs e)
         {
-            m_product.Print(m_engine, this.m_type, Convert.ToInt32(cbx_select.SelectedValue), Convert.ToInt32(numericUpDown.Value));
+            m_product.Print(m_engine,
+                            this.cbo_prints.SelectedItem.ToString(), 
+                            this.m_type,
+                            Convert.ToInt32(cbx_select.SelectedValue), 
+                            Convert.ToInt32(numericUpDown.Value));
           
         }
         private void PrintForm_Load(object sender, EventArgs e)
         {
+            Printers printers = new Printers();
+            foreach (Printer printer in printers)
+            {
+                this.cbo_prints.Items.Add(printer.PrinterName);
+            }
+
+            cbo_prints.SelectedItem = printers.Default.PrinterName;
+            
             this.cbx_select.DataSource = this.m_product.SizeDataList;
             this.cbx_select.DisplayMember = "SizeName";
             this.cbx_select.ValueMember = "Id";

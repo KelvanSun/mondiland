@@ -404,10 +404,11 @@ namespace Mondiland.UI
         /// 打印功能
         /// </summary>
         /// <param name="engine">打印引擎</param>
+        /// <param name="printer_name">打印机名称</param>
         /// <param name="type">打印类型</param>
         /// <param name="select">规格</param>
         /// <param name="count">打印数量</param>
-        public void Print(Engine engine,PrintType type,int select,int count)
+        public void Print(Engine engine,string printer_name,PrintType type,int select,int count)
         {
             string str_size_name = string.Empty;
             string str_size_type = string.Empty;
@@ -457,6 +458,7 @@ namespace Mondiland.UI
             }
 
             format.PrintSetup.IdenticalCopiesOfLabel = Convert.ToInt32(count);
+            format.PrintSetup.PrinterName = printer_name;
 
             format.Print();
             
@@ -826,7 +828,7 @@ namespace Mondiland.UI
                 result.Code = CodeType.Ok;
                 result.Message = "保存成功!";
             }
-
+            
 
             return result;
         }

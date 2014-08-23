@@ -79,6 +79,7 @@
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip.SuspendLayout();
             this.panel_top.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -178,6 +179,7 @@
             // panel_top
             // 
             this.panel_top.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_top.Controls.Add(this.button1);
             this.panel_top.Controls.Add(this.chb_bad);
             this.panel_top.Controls.Add(this.chb_wash);
             this.panel_top.Controls.Add(this.groupBox2);
@@ -631,6 +633,15 @@
             // 
             this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 250);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ProductManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(970, 659);
@@ -703,5 +714,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.CheckBox chb_bad;
         private System.Windows.Forms.ToolStripButton saveas;
+        private System.Windows.Forms.Button button1;
     }
 }
