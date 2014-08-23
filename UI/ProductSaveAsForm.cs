@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
@@ -60,6 +61,16 @@ namespace Mondiland.UI
             form.HuohaoSaveAs = this.txb_huohao.Text.Trim();
 
             Close();
+        }
+
+        private void txb_huohao_TextChanged(object sender, EventArgs e)
+        {
+            Regex reg = new Regex("^[q-zQ-Z]");
+
+            if(!reg.IsMatch(this.txb_huohao.Text.Trim()))
+            {
+                this.txb_huohao.Text = string.Empty;
+            }
         }
     }
 }

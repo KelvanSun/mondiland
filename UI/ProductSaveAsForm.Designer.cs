@@ -63,6 +63,7 @@
             this.txb_huohao.Name = "txb_huohao";
             this.txb_huohao.Size = new System.Drawing.Size(100, 21);
             this.txb_huohao.TabIndex = 0;
+            this.txb_huohao.TextChanged += new System.EventHandler(this.txb_huohao_TextChanged);
             // 
             // ProductSaveAsForm
             // 

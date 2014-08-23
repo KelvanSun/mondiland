@@ -51,6 +51,7 @@
     <Compile Include="Table_PartName_Entity.cs" />
     <Compile Include="Table_ProductData_Entity.cs" />
     <Compile Include="Table_SupplierClass_Entity.cs" />
+    <Compile Include="Table_SupplierM_Entity.cs" />
     <Compile Include="Table_TagPrintTemplate_Entity.cs" />
     <Compile Include="Table_SafeData_Entity.cs" />
     <Compile Include="Table_SizeClass_Entity.cs" />

@@ -51,6 +51,7 @@
     <Compile Include="DAL_PartName.cs" />
     <Compile Include="DAL_ProductData.cs" />
     <Compile Include="DAL_SupplierClass.cs" />
+    <Compile Include="DAL_SupplierM.cs" />
     <Compile Include="DAL_TagPrintTemplate.cs" />
     <Compile Include="DAL_SafeData.cs" />
     <Compile Include="DAL_SizeClass.cs" />
