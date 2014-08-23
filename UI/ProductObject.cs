@@ -33,11 +33,13 @@ namespace Mondiland.UI
             Error,
         }
         //保存返回信息
+        [Serializable]
         public class SaveResult
         {
             public CodeType Code;
             public string Message = string.Empty;
         }
+
         [Serializable]
         public class MaterialFillDataObject
         {
@@ -703,6 +705,22 @@ namespace Mondiland.UI
                 {
                     result.Code = CodeType.Error;
                     result.Message = "[产品价格]不能为空，无法保存!";
+
+                    return result;
+                }
+
+                if (this.m_safedata_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[安全标准]不能为空,无法保存!";
+
+                    return result;
+                }
+
+                if (this.m_standarddata_id == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[执行标准]不能为空,无法保存!";
 
                     return result;
                 }

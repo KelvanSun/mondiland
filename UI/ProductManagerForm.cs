@@ -17,10 +17,12 @@ namespace Mondiland.UI
         private bool m_favorites = false;
         private string m_huohao_saveas = string.Empty;
         private ProductObject product = new ProductObject();
+
         public ProductManagerForm()
         {
             InitializeComponent();
 
+     
             UpdateFavoritesMenu();  
         }
 
@@ -216,8 +218,7 @@ namespace Mondiland.UI
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
-              
-               
+
             }
 
             if(e.KeyCode == Keys.Escape)
