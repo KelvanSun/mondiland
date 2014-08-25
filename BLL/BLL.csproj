@@ -45,6 +45,7 @@
     </Compile>
     <Compile Include="BLLMenuInfo.cs" />
     <Compile Include="BLLProductInfo.cs" />
+    <Compile Include="BLLSupplierInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflect.cs" />
   </ItemGroup>

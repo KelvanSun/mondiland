@@ -10,19 +10,20 @@ using Mondiland.Entity;
 using Mondiland.IDal;
 using Mondiland.Global;
 
+
 namespace Mondiland.DAL
 {
-    public class DAL_SupplierM:BaseDal<Table_SupplierM_Entity>,ITable_SupplierM
+    public class DAL_SupplierD:BaseDal<Table_SupplierD_Entity>,ITable_SupplierD
     {
-        public static DAL_SupplierM Instance
+        public static DAL_SupplierD Instance
 		{
 			get
 			{
-				return new DAL_SupplierM();
+				return new DAL_SupplierD();
 			}
 		}
-        public DAL_SupplierM()
-            : base("SupplierM", "id", string.Empty, OrderType.ASC)
+        public DAL_SupplierD()
+            : base("SupplierD", "id", string.Empty, OrderType.ASC)
 		{ }
 
         /// <summary>
@@ -30,20 +31,19 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="dr">有效的DataReader对象</param>
         /// <returns>实体类对象</returns>
-        protected override Table_SupplierM_Entity DataReaderToEntity(IDataReader dataReader)
+        protected override Table_SupplierD_Entity DataReaderToEntity(IDataReader dataReader)
         {
-            Table_SupplierM_Entity entity = new Table_SupplierM_Entity();
+            Table_SupplierD_Entity entity = new Table_SupplierD_Entity();
             SmartDataReader reader = new SmartDataReader(dataReader);
 
             entity.Id = reader.GetInt32("id");
+            entity.Supplier_Id = reader.GetInt32("supplier_id");
             entity.Pym = reader.GetString("pym");
-            entity.Class_Id = reader.GetInt32("class_id");
             entity.Name = reader.GetString("name");
-            entity.Intact_Name = reader.GetString("intact_name");
-            entity.Bank_Name = reader.GetString("bank_name");
-            entity.Account = reader.GetString("account");
             entity.Phone = reader.GetString("phone");
             entity.Fax = reader.GetString("fax");
+            entity.Email = reader.GetString("email");
+            entity.QQ = reader.GetString("qq");
             entity.Memo = reader.GetString("memo");
             entity.Address = reader.GetString("address");
             entity.LasTamp = reader.GetLong("lastamp");
@@ -57,18 +57,17 @@ namespace Mondiland.DAL
         /// </summary>
         /// <param name="obj">有效的实体对象</param>
         /// <returns>包含键值映射的Hashtable</returns>
-        protected override Hashtable GetHashByEntity(Table_SupplierM_Entity obj)
+        protected override Hashtable GetHashByEntity(Table_SupplierD_Entity obj)
         {
-            Table_SupplierM_Entity info = obj as Table_SupplierM_Entity;
+            Table_SupplierD_Entity info = obj as Table_SupplierD_Entity;
             Hashtable hash = new Hashtable();
 
             hash.Add("id", info.Id);
             hash.Add("pym", info.Pym);
-            hash.Add("class_id", info.Class_Id);
+            hash.Add("supplier_id", info.Supplier_Id);
             hash.Add("name", info.Name);
-            hash.Add("intact_name", info.Intact_Name);
-            hash.Add("bank_name", info.Bank_Name);
-            hash.Add("account", info.Account);
+            hash.Add("email", info.Email);
+            hash.Add("qq", info.QQ);
             hash.Add("phone", info.Phone);
             hash.Add("fax", info.Fax);
             hash.Add("memo", info.Memo);

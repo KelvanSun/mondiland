@@ -48,6 +48,7 @@
     <Compile Include="ITable_PartName.cs" />
     <Compile Include="ITable_ProductData.cs" />
     <Compile Include="ITable_SupplierClass.cs" />
+    <Compile Include="ITable_SupplierD.cs" />
     <Compile Include="ITable_SupplierM.cs" />
     <Compile Include="ITable_TagPrintTemplate.cs" />
     <Compile Include="ITable_SafeData.cs" />

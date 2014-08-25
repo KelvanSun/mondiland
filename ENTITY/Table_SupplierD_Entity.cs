@@ -5,26 +5,40 @@ using System.Text;
 
 namespace Mondiland.Entity
 {
-    public class Table_SupplierM_Entity:BaseEntity
+    public class Table_SupplierD_Entity:BaseEntity
     {
-        private int m_class_id = 0;
-        private string m_pym = string.Empty;
+        private int m_supplier_id = 0;
         private string m_name = string.Empty;
-        private string m_intact_name = string.Empty;
-        private string m_bank_name = string.Empty;
-        private string m_account = string.Empty;
+        private string m_pym = string.Empty;
         private string m_phone = string.Empty;
         private string m_fax = string.Empty;
+        private string m_email = string.Empty;
+        private string m_qq = string.Empty;
         private string m_address = string.Empty;
         private string m_memo = string.Empty;
 
         /// <summary>
-        /// 供应商对应的分类ID
+        /// 供应商外键表
         /// </summary>
-        public int Class_Id
+        public int Supplier_Id
         {
-            get { return m_class_id; }
-            set { m_class_id = value; }
+            get { return m_supplier_id; }
+            set { m_supplier_id = value; }
+        }
+
+        /// <summary>
+        /// 联系人名称
+        /// </summary>
+        public string Name
+        {
+            get { return m_name; }
+            set
+            {
+                if (value.Length > 50)
+                    m_name = value.Substring(0, 49);
+                else
+                    m_name = value;
+            }
         }
 
         /// <summary>
@@ -35,85 +49,15 @@ namespace Mondiland.Entity
             get { return m_pym; }
             set
             {
-                if (value.Length > 100)
-                    m_pym = value.Substring(0, 99);
+                if (value.Length > 50)
+                    m_pym = value.Substring(0, 49);
                 else
                     m_pym = value;
             }
         }
 
         /// <summary>
-        /// 供应商简称
-        /// </summary>
-        public string Name
-        {
-            get { return m_name; }
-            set 
-            {
-                if (value.Length > 50)
-                    m_name = value.Substring(0, 49);
-                else
-                    m_name = value;
-            }
-        }
-
-        /// <summary>
-        /// 供应商全称
-        /// </summary>
-        public string Intact_Name
-        {
-            get { return m_intact_name; }
-            set
-            {
-                if (value.Length > 50)
-                    m_intact_name = value.Substring(0, 49);
-                else
-                    m_intact_name = value;
-            }
-        }
-
-        /// <summary>
-        /// 供应商开户行名称
-        /// </summary>
-        public string Bank_Name
-        {
-            get { return m_bank_name; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    m_bank_name = "";
-                else
-                {
-                    if (value.Length > 50)
-                        m_bank_name = value.Substring(0, 49);
-                    else
-                        m_bank_name = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 供应商帐号
-        /// </summary>
-        public string Account
-        {
-            get { return m_account; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    m_account = "";
-                else
-                {
-                    if (value.Length > 50)
-                        m_account = value.Substring(0, 49);
-                    else
-                        m_account = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 公司电话
+        /// 联系人电话
         /// </summary>
         public string Phone
         {
@@ -133,27 +77,7 @@ namespace Mondiland.Entity
         }
 
         /// <summary>
-        /// 公司地址
-        /// </summary>
-        public string Address
-        {
-            get { return m_address; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    m_address = string.Empty;
-                else
-                {
-                    if (value.Length > 50)
-                        m_address = value.Substring(0, 49);
-                    else
-                        m_address = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 公司传真
+        /// 联系人传真
         /// </summary>
         public string Fax
         {
@@ -173,6 +97,66 @@ namespace Mondiland.Entity
         }
 
         /// <summary>
+        /// 联系人email
+        /// </summary>
+        public string Email
+        {
+            get { return m_email; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    m_email = string.Empty;
+                else
+                {
+                    if (value.Length > 50)
+                        m_email = value.Substring(0, 49);
+                    else
+                        m_email = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 联系人QQ号
+        /// </summary>
+        public string QQ
+        {
+            get { return m_qq; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    m_qq = string.Empty;
+                else
+                {
+                    if (value.Length > 50)
+                        m_qq = value.Substring(0, 49);
+                    else
+                        m_qq = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 联系人地址
+        /// </summary>
+        public string Address
+        {
+            get { return m_address; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    m_address = string.Empty;
+                else
+                {
+                    if (value.Length > 50)
+                        m_address = value.Substring(0, 49);
+                    else
+                        m_address = value;
+                }
+            }
+        }
+
+        /// <summary>
         /// 备注信息
         /// </summary>
         public string Memo
@@ -181,7 +165,7 @@ namespace Mondiland.Entity
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    m_memo = "";
+                    m_memo = string.Empty;
                 else
                 {
                     if (value.Length > 400)
