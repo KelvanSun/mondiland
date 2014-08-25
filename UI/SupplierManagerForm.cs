@@ -71,5 +71,11 @@ namespace Mondiland.UI
 
             UpdateFavoritesMenu();
         }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            SupplierAEForm form = new SupplierAEForm();
+            form.ShowDialog();
+        }
     }
 }
