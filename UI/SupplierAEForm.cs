@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Mondiland.BLL;
 using Mondiland.Global;
-
 
 namespace Mondiland.UI
 {
@@ -19,9 +19,13 @@ namespace Mondiland.UI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SupplierAEForm_Load(object sender, EventArgs e)
         {
-            MessageUtil.ShowTips(ChineseToSpell.GetChineseSpell("S中华人民共和国k"));
+            this.cbx_class.DataSource = BLLFactory<BLLSupplierInfo>.Instance.GetSupplierClassList();
+            this.cbx_class.DisplayMember = "Name";
+            this.cbx_class.ValueMember = "Id";
+            this.cbx_class.Text = string.Empty;
+            this.cbx_class.SelectedValue = 0;
         }
     }
 }

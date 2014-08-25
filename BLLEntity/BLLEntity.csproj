@@ -51,6 +51,7 @@
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BESizeDataList.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
+    <Compile Include="BESupplierClass.cs" />
     <Compile Include="BEUserMenuFavorites.cs" />
     <Compile Include="BEWashPrintTemplateProduct.cs" />
     <Compile Include="BLLEntity.cs" />
