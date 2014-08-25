@@ -36,6 +36,7 @@ namespace Mondiland.DAL
             SmartDataReader reader = new SmartDataReader(dataReader);
 
             entity.Id = reader.GetInt32("id");
+            entity.Pym = reader.GetString("pym");
             entity.Class_Id = reader.GetInt32("class_id");
             entity.Name = reader.GetString("name");
             entity.Intact_Name = reader.GetString("intact_name");
@@ -61,6 +62,7 @@ namespace Mondiland.DAL
             Hashtable hash = new Hashtable();
 
             hash.Add("id", info.Id);
+            hash.Add("pym", info.Pym);
             hash.Add("class_id", info.Class_Id);
             hash.Add("name", info.Name);
             hash.Add("intact_name", info.Intact_Name);

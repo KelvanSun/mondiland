@@ -8,6 +8,7 @@ namespace Mondiland.Entity
     public class Table_SupplierM_Entity:BaseEntity
     {
         private int m_class_id = 0;
+        private string m_pym = string.Empty;
         private string m_name = string.Empty;
         private string m_intact_name = string.Empty;
         private string m_bank_name = string.Empty;
@@ -23,6 +24,18 @@ namespace Mondiland.Entity
         {
             get { return m_class_id; }
             set { m_class_id = value; }
+        }
+
+        public string Pym
+        {
+            get { return m_pym; }
+            set
+            {
+                if (value.Length > 100)
+                    m_pym = value.Substring(0, 99);
+                else
+                    m_pym = value;
+            }
         }
 
         /// <summary>
