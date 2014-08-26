@@ -32,24 +32,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ucTextBox1 = new Mondiland.UCControl.UCTextBox();
+            this.txb_name = new Mondiland.UCControl.UCTextBox();
             this.cbx_class = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.label3 = new System.Windows.Forms.Label();
-            this.ucTextBox2 = new Mondiland.UCControl.UCTextBox();
+            this.txb_intact_name = new Mondiland.UCControl.UCTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ucTextBox3 = new Mondiland.UCControl.UCTextBox();
+            this.txb_bank_name = new Mondiland.UCControl.UCTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ucTextBox4 = new Mondiland.UCControl.UCTextBox();
+            this.txb_account = new Mondiland.UCControl.UCTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ucTextBox5 = new Mondiland.UCControl.UCTextBox();
+            this.txb_phone = new Mondiland.UCControl.UCTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.ucTextBox6 = new Mondiland.UCControl.UCTextBox();
+            this.txb_fax = new Mondiland.UCControl.UCTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ucTextBox7 = new Mondiland.UCControl.UCTextBox();
+            this.txb_memo = new Mondiland.UCControl.UCTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bt_save = new System.Windows.Forms.Button();
+            this.bt_close = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txb_address = new Mondiland.UCControl.UCTextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,13 +81,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "供应商简称";
             // 
-            // ucTextBox1
+            // txb_name
             // 
-            this.ucTextBox1.Location = new System.Drawing.Point(98, 85);
-            this.ucTextBox1.MaxLength = 50;
-            this.ucTextBox1.Name = "ucTextBox1";
-            this.ucTextBox1.Size = new System.Drawing.Size(172, 21);
-            this.ucTextBox1.TabIndex = 4;
+            this.txb_name.Location = new System.Drawing.Point(98, 85);
+            this.txb_name.MaxLength = 50;
+            this.txb_name.Name = "txb_name";
+            this.txb_name.Size = new System.Drawing.Size(172, 21);
+            this.txb_name.TabIndex = 1;
+            this.txb_name.TextChanged += new System.EventHandler(this.txb_name_TextChanged);
+            this.txb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_name_KeyDown);
             // 
             // cbx_class
             // 
@@ -97,7 +101,8 @@
             this.cbx_class.Location = new System.Drawing.Point(98, 18);
             this.cbx_class.Name = "cbx_class";
             this.cbx_class.Size = new System.Drawing.Size(279, 20);
-            this.cbx_class.TabIndex = 1;
+            this.cbx_class.TabIndex = 0;
+            this.cbx_class.DropDownClosed += new System.EventHandler(this.cbx_class_DropDownClosed);
             // 
             // label3
             // 
@@ -108,13 +113,15 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "供应商全称";
             // 
-            // ucTextBox2
+            // txb_intact_name
             // 
-            this.ucTextBox2.Location = new System.Drawing.Point(98, 127);
-            this.ucTextBox2.MaxLength = 50;
-            this.ucTextBox2.Name = "ucTextBox2";
-            this.ucTextBox2.Size = new System.Drawing.Size(498, 21);
-            this.ucTextBox2.TabIndex = 6;
+            this.txb_intact_name.Location = new System.Drawing.Point(98, 127);
+            this.txb_intact_name.MaxLength = 50;
+            this.txb_intact_name.Name = "txb_intact_name";
+            this.txb_intact_name.Size = new System.Drawing.Size(498, 21);
+            this.txb_intact_name.TabIndex = 2;
+            this.txb_intact_name.TextChanged += new System.EventHandler(this.txb_intact_name_TextChanged);
+            this.txb_intact_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_intact_name_KeyDown);
             // 
             // label4
             // 
@@ -125,13 +132,15 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "供应商开户行";
             // 
-            // ucTextBox3
+            // txb_bank_name
             // 
-            this.ucTextBox3.Location = new System.Drawing.Point(98, 253);
-            this.ucTextBox3.MaxLength = 50;
-            this.ucTextBox3.Name = "ucTextBox3";
-            this.ucTextBox3.Size = new System.Drawing.Size(498, 21);
-            this.ucTextBox3.TabIndex = 8;
+            this.txb_bank_name.Location = new System.Drawing.Point(98, 253);
+            this.txb_bank_name.MaxLength = 50;
+            this.txb_bank_name.Name = "txb_bank_name";
+            this.txb_bank_name.Size = new System.Drawing.Size(498, 21);
+            this.txb_bank_name.TabIndex = 5;
+            this.txb_bank_name.TextChanged += new System.EventHandler(this.txb_bank_name_TextChanged);
+            this.txb_bank_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_bank_name_KeyDown);
             // 
             // label5
             // 
@@ -142,13 +151,15 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "供应商帐号";
             // 
-            // ucTextBox4
+            // txb_account
             // 
-            this.ucTextBox4.Location = new System.Drawing.Point(98, 295);
-            this.ucTextBox4.MaxLength = 50;
-            this.ucTextBox4.Name = "ucTextBox4";
-            this.ucTextBox4.Size = new System.Drawing.Size(498, 21);
-            this.ucTextBox4.TabIndex = 10;
+            this.txb_account.Location = new System.Drawing.Point(98, 295);
+            this.txb_account.MaxLength = 50;
+            this.txb_account.Name = "txb_account";
+            this.txb_account.Size = new System.Drawing.Size(498, 21);
+            this.txb_account.TabIndex = 6;
+            this.txb_account.TextChanged += new System.EventHandler(this.txb_account_TextChanged);
+            this.txb_account.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_account_KeyDown);
             // 
             // label6
             // 
@@ -159,13 +170,15 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "供应商电话";
             // 
-            // ucTextBox5
+            // txb_phone
             // 
-            this.ucTextBox5.Location = new System.Drawing.Point(98, 169);
-            this.ucTextBox5.MaxLength = 50;
-            this.ucTextBox5.Name = "ucTextBox5";
-            this.ucTextBox5.Size = new System.Drawing.Size(498, 21);
-            this.ucTextBox5.TabIndex = 12;
+            this.txb_phone.Location = new System.Drawing.Point(98, 169);
+            this.txb_phone.MaxLength = 50;
+            this.txb_phone.Name = "txb_phone";
+            this.txb_phone.Size = new System.Drawing.Size(498, 21);
+            this.txb_phone.TabIndex = 3;
+            this.txb_phone.TextChanged += new System.EventHandler(this.txb_phone_TextChanged);
+            this.txb_phone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_phone_KeyDown);
             // 
             // label7
             // 
@@ -176,36 +189,39 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "供应商传真";
             // 
-            // ucTextBox6
+            // txb_fax
             // 
-            this.ucTextBox6.Location = new System.Drawing.Point(98, 211);
-            this.ucTextBox6.MaxLength = 50;
-            this.ucTextBox6.Name = "ucTextBox6";
-            this.ucTextBox6.Size = new System.Drawing.Size(498, 21);
-            this.ucTextBox6.TabIndex = 14;
+            this.txb_fax.Location = new System.Drawing.Point(98, 211);
+            this.txb_fax.MaxLength = 50;
+            this.txb_fax.Name = "txb_fax";
+            this.txb_fax.Size = new System.Drawing.Size(498, 21);
+            this.txb_fax.TabIndex = 4;
+            this.txb_fax.TextChanged += new System.EventHandler(this.txb_fax_TextChanged);
+            this.txb_fax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_fax_KeyDown);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 341);
+            this.label8.Location = new System.Drawing.Point(30, 386);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 15;
             this.label8.Text = "备注信息";
             // 
-            // ucTextBox7
+            // txb_memo
             // 
-            this.ucTextBox7.Location = new System.Drawing.Point(98, 337);
-            this.ucTextBox7.MaxLength = 50;
-            this.ucTextBox7.Multiline = true;
-            this.ucTextBox7.Name = "ucTextBox7";
-            this.ucTextBox7.Size = new System.Drawing.Size(498, 113);
-            this.ucTextBox7.TabIndex = 16;
+            this.txb_memo.Location = new System.Drawing.Point(98, 382);
+            this.txb_memo.MaxLength = 400;
+            this.txb_memo.Multiline = true;
+            this.txb_memo.Name = "txb_memo";
+            this.txb_memo.Size = new System.Drawing.Size(498, 113);
+            this.txb_memo.TabIndex = 8;
+            this.txb_memo.TextChanged += new System.EventHandler(this.txb_memo_TextChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(0, 468);
+            this.groupBox2.Location = new System.Drawing.Point(0, 513);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(645, 10);
             this.groupBox2.TabIndex = 3;
@@ -220,51 +236,74 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bt_save
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(426, 493);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "保存  ";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
+            this.bt_save.Image = ((System.Drawing.Image)(resources.GetObject("bt_save.Image")));
+            this.bt_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_save.Location = new System.Drawing.Point(426, 538);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(75, 23);
+            this.bt_save.TabIndex = 9;
+            this.bt_save.Text = "保存  ";
+            this.bt_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
-            // button3
+            // bt_close
             // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(521, 493);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "关闭  ";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
+            this.bt_close.Image = ((System.Drawing.Image)(resources.GetObject("bt_close.Image")));
+            this.bt_close.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_close.Location = new System.Drawing.Point(521, 538);
+            this.bt_close.Name = "bt_close";
+            this.bt_close.Size = new System.Drawing.Size(75, 23);
+            this.bt_close.TabIndex = 10;
+            this.bt_close.Text = "关闭  ";
+            this.bt_close.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_close.UseVisualStyleBackColor = true;
+            this.bt_close.Click += new System.EventHandler(this.bt_close_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 344);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "供应商地址";
+            // 
+            // txb_address
+            // 
+            this.txb_address.Location = new System.Drawing.Point(98, 339);
+            this.txb_address.MaxLength = 50;
+            this.txb_address.Name = "txb_address";
+            this.txb_address.Size = new System.Drawing.Size(498, 21);
+            this.txb_address.TabIndex = 7;
+            this.txb_address.TextChanged += new System.EventHandler(this.txb_address_TextChanged);
+            this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
             // SupplierAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 528);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(644, 579);
+            this.Controls.Add(this.txb_address);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.bt_close);
+            this.Controls.Add(this.bt_save);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.ucTextBox7);
+            this.Controls.Add(this.txb_memo);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.ucTextBox6);
+            this.Controls.Add(this.txb_fax);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.ucTextBox5);
+            this.Controls.Add(this.txb_phone);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.ucTextBox4);
+            this.Controls.Add(this.txb_account);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.ucTextBox3);
+            this.Controls.Add(this.txb_bank_name);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.ucTextBox2);
+            this.Controls.Add(this.txb_intact_name);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.ucTextBox1);
+            this.Controls.Add(this.txb_name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbx_class);
@@ -288,23 +327,25 @@
         private UCControl.MultiColumnComboBoxEx cbx_class;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private UCControl.UCTextBox ucTextBox1;
+        private UCControl.UCTextBox txb_name;
         private System.Windows.Forms.Label label3;
-        private UCControl.UCTextBox ucTextBox2;
+        private UCControl.UCTextBox txb_intact_name;
         private System.Windows.Forms.Label label4;
-        private UCControl.UCTextBox ucTextBox3;
+        private UCControl.UCTextBox txb_bank_name;
         private System.Windows.Forms.Label label5;
-        private UCControl.UCTextBox ucTextBox4;
+        private UCControl.UCTextBox txb_account;
         private System.Windows.Forms.Label label6;
-        private UCControl.UCTextBox ucTextBox5;
+        private UCControl.UCTextBox txb_phone;
         private System.Windows.Forms.Label label7;
-        private UCControl.UCTextBox ucTextBox6;
+        private UCControl.UCTextBox txb_fax;
         private System.Windows.Forms.Label label8;
-        private UCControl.UCTextBox ucTextBox7;
+        private UCControl.UCTextBox txb_memo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bt_save;
+        private System.Windows.Forms.Button bt_close;
+        private System.Windows.Forms.Label label9;
+        private UCControl.UCTextBox txb_address;
 
     }
 }

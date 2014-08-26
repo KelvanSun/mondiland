@@ -74,7 +74,9 @@ namespace Mondiland.UI
 
         private void add_Click(object sender, EventArgs e)
         {
-            SupplierAEForm form = new SupplierAEForm();
+            SupplierObject ob = new SupplierObject();
+            
+            SupplierAEForm form = new SupplierAEForm(ob);
             form.ShowDialog();
         }
     }

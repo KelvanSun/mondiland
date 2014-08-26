@@ -46,5 +46,41 @@ namespace Mondiland.BLL
 
             return list;
         }
+
+        /// <summary>
+        /// 根据分类ID得到分类名称
+        /// </summary>
+        /// <param name="clss_id">分类ID</param>
+        /// <returns>分类名称</returns>
+        public string GetSupplierClassName(int clss_id)
+        {
+            Table_SupplierClass_Entity entity = SupplierClass_Dal.FindByID(clss_id);
+
+            return entity.Name;
+        }
+
+        /// <summary>
+        /// 添加SupplierM表记录
+        /// </summary>
+        /// <param name="info">BESupplierMInfo对象</param>
+        /// <returns>成功true</returns>
+        public bool AddSupplierM(BESupplierMInfo info)
+        {
+            Table_SupplierM_Entity entity = new Table_SupplierM_Entity();
+
+            entity.Class_Id = info.Class_Id;
+            entity.Pym = info.Pym;
+            entity.Name = info.Name;
+            entity.Intact_Name = info.Intact_Name;
+            entity.Bank_Name = info.Bank_Name;
+            entity.Account = info.Account;
+            entity.Phone = info.Phone;
+            entity.Fax = info.Fax;
+            entity.Address = info.Address;
+            entity.Memo = info.Memo;
+            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+
+            return SupplierM_Dal.Insert(entity);
+        }
     }
 }

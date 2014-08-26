@@ -642,6 +642,7 @@ namespace Mondiland.BLL
             return MaterialFill_Dal.Insert(entity);
         }
 
+
         public bool AddProductInfo(BEProductDataInfo info)
         {
     

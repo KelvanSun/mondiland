@@ -65,7 +65,7 @@ namespace Mondiland.UI
 
         private void txb_huohao_TextChanged(object sender, EventArgs e)
         {
-            Regex reg = new Regex("^[q-zQ-Z]");
+            Regex reg = new Regex("[a-zA-Z]");
 
             if(!reg.IsMatch(this.txb_huohao.Text.Trim()))
             {

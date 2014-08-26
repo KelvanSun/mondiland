@@ -33,6 +33,8 @@ namespace Mondiland.Global
         /// <returns>返回由strText中字符及汉字部分的拼音首字母构成的字符串</returns>  
         public static string GetChineseSpell(string strText)
         {
+            if (string.IsNullOrEmpty(strText)) return string.Empty;
+            
             int len = strText.Length;
             string myStr = "";
             for (int i = 0; i < len; i++)

@@ -333,7 +333,7 @@ namespace Mondiland.UI
 
         private bool CheckHuoHao(string str)
         {
-            Regex reg = new Regex("^[q-zQ-Z]");
+            Regex reg = new Regex("[a-zA-Z]");
 
             return reg.IsMatch(str);
         }
