@@ -82,5 +82,54 @@ namespace Mondiland.BLL
 
             return SupplierM_Dal.Insert(entity);
         }
+
+        /// <summary>
+        /// 根据SupplierM表ID值读出数据
+        /// </summary>
+        /// <param name="id">ID号</param>
+        /// <returns>BESupplierMInfo结构</returns>
+        public BESupplierMInfo ReadSupplierMInfoByPrimaryKey(int id)
+        {
+            BESupplierMInfo info = new BESupplierMInfo();
+
+            Table_SupplierM_Entity entity = SupplierM_Dal.FindByID(id);
+
+            info.Id = entity.Id;
+            info.Class_Id = entity.Class_Id;
+            info.Pym = entity.Pym;
+            info.Name = entity.Name;
+            info.Intact_Name = entity.Intact_Name;
+            info.Bank_Name = entity.Bank_Name;
+            info.Account = entity.Account;
+            info.Phone = entity.Phone;
+            info.Fax = entity.Fax;
+            info.Address = entity.Address;
+            info.Memo = entity.Memo;
+            entity.LasTamp = entity.LasTamp;
+
+            return info;
+        }
+
+        /// <summary>
+        /// 供应商主表拼音码方式查询
+        /// </summary>
+        /// <param name="pym">拼音码</param>
+        /// <returns>查到的信息ID列表</returns>
+        public List<int> QuerySupplierMByPym(string pym)
+        {
+            List<int> list = new List<int>();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("pym", pym);
+
+            IEnumerator<Table_SupplierM_Entity> ator = SupplierM_Dal.Find(hash, SqlOperator.Like, false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                list.Add(ator.Current.Id);
+            }
+
+            return list;
+        }
     }
 }

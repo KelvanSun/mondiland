@@ -14,6 +14,7 @@ namespace Mondiland.UI
     public partial class SupplierManagerForm : Mondiland.UI.BaseForm,IMenuFavorites
     {
         private bool m_favorites = false;
+        private BindingList<SupplierObject> main_list = new BindingList<SupplierObject>();
 
         public SupplierManagerForm()
         {
@@ -78,6 +79,62 @@ namespace Mondiland.UI
             
             SupplierAEForm form = new SupplierAEForm(ob);
             form.ShowDialog();
+        }
+
+        private void SupplierManagerForm_Load(object sender, EventArgs e)
+        {
+            this.cbx_query_type.Text = "拼音码";
+           
+        }
+
+        private void cbx_query_type_DropDownClosed(object sender, EventArgs e)
+        {
+            this.txb_query_text.Text = string.Empty;
+            this.txb_query_text.Focus();
+        }
+
+        private void button_search_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.txb_query_text.Text)) return;
+
+            if(cbx_query_type.Text == "拼音码")
+            {
+                main_list.Clear();
+                
+                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByPym(this.txb_query_text.Text.Trim()).GetEnumerator();
+
+                while(ator.MoveNext())
+                {
+                    SupplierObject ob = new SupplierObject(ator.Current);
+
+                    main_list.Add(ob);
+                }
+
+                this.bindingSource_query.DataSource = main_list;
+
+                this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
+
+                this.dgv_main.Focus();
+            }
+
+        }
+
+        private void txb_query_text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button_search_Click(sender, e);
+            }
+        }
+
+        private void dgv_main_SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.bindingSource_query.Current == null)
+            {
+                this.bindingSource_main.DataSource = new SupplierObject();
+                return;
+            }
+            this.bindingSource_main.DataSource = this.bindingSource_query.Current as SupplierObject;
         }
     }
 }

@@ -28,6 +28,27 @@ namespace Mondiland.UI
         private string m_memo = string.Empty;
         private long m_lastamp = 0;
 
+        public SupplierObject() { }
+
+        public SupplierObject(int id)
+        {
+            BESupplierMInfo info = BLLFactory<BLLSupplierInfo>.Instance.ReadSupplierMInfoByPrimaryKey(id);
+
+            this.m_id = info.Id;
+            this.Class_Id = info.Class_Id;
+            this.m_name = info.Name;
+            this.m_intact_name = info.Intact_Name;
+            this.m_pym = info.Pym;
+            this.m_bank_name = info.Bank_Name;
+            this.m_account = info.Account;
+            this.m_phone = info.Phone;
+            this.m_fax = info.Fax;
+            this.m_address = info.Address;
+            this.m_memo = info.Memo;
+            this.m_lastamp = info.LasTamp;
+
+        }
+
         public enum CodeType
         {
             Ok,
