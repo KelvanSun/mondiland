@@ -643,9 +643,16 @@ namespace Mondiland.UI
                 info.StandardData_Id = this.m_standarddata_id;
                 info.Pwash = this.m_pwash;
                 info.Pbad = this.m_pbad;
-                
-                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash,info.Pbad, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
-                info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao,this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+
+                if (this.m_tag_id == 0)
+                    info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, info.Pbad, this.m_material_data_list.Count + (this.MaterialFillData.material_type.Trim() != string.Empty ? 1 : 0));
+                else
+                    info.Tag_Id = this.m_tag_id;
+
+                if (this.m_wash_id == 0)
+                    info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao, this.m_material_data_list.Count + (this.MaterialFillData.material_type.Trim() != string.Empty ? 1 : 0));
+                else
+                    info.Wash_Id = this.m_wash_id;
                 
                 if(info.Tag_Id == 0)
                 {
@@ -695,10 +702,12 @@ namespace Mondiland.UI
 
                 result.Code = CodeType.Ok;
                 result.Message = "保存成功!";
+
+                return result;
             }
 
             //Edit Save
-            if(this.m_id != 0)
+            if(this.m_id > 0)
             {
                 if (this.m_huohao.Trim() == string.Empty)
                 {
@@ -786,8 +795,8 @@ namespace Mondiland.UI
                 info.Pwash = this.m_pwash;
                 info.Pbad = this.m_pbad;
 
-                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, info.Pbad, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
-                info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao, this.m_material_data_list.Count + (this.MaterialFillData.m_material_fill_list.Count > 0 ? 1 : 0));
+                info.Tag_Id = BLLFactory<BLLProductInfo>.Instance.GetTagFileNameId(info.Pwash, info.Pbad, (this.MaterialFillData.material_type.Trim() != string.Empty ? 1 : 0));
+                info.Wash_Id = BLLFactory<BLLProductInfo>.Instance.GetWashFileNameId(this.m_huohao, (this.MaterialFillData.material_type.Trim() != string.Empty ? 1 : 0));
 
                 if (info.Tag_Id == 0)
                 {
@@ -840,8 +849,9 @@ namespace Mondiland.UI
 
                 result.Code = CodeType.Ok;
                 result.Message = "保存成功!";
+
+                return result;
             }
-            
 
             return result;
         }
