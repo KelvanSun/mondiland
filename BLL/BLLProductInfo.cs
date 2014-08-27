@@ -770,7 +770,7 @@ namespace Mondiland.BLL
         {
             Table_ProductData_Entity entity = ProductData_Dal.FindByID(id);
 
-            return entity.LasTamp == lastamp;
+            return entity.LasTamp != lastamp;
         }
    
     }
