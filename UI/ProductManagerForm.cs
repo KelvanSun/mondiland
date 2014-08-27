@@ -260,6 +260,8 @@ namespace Mondiland.UI
 
         private void cbx_partname_DropDownClosed(object sender, EventArgs e)
         {
+            if (this.cbx_partname.SelectedValue == null) return;
+            
             this.product.PartName_Id = Convert.ToInt32(this.cbx_partname.SelectedValue);
 
             int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
