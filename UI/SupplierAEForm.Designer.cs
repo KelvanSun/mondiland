@@ -87,7 +87,7 @@
             this.txb_name.MaxLength = 50;
             this.txb_name.Name = "txb_name";
             this.txb_name.Size = new System.Drawing.Size(172, 21);
-            this.txb_name.TabIndex = 1;
+            this.txb_name.TabIndex = 0;
             this.txb_name.TextChanged += new System.EventHandler(this.txb_name_TextChanged);
             this.txb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_name_KeyDown);
             // 
@@ -119,7 +119,7 @@
             this.txb_intact_name.MaxLength = 50;
             this.txb_intact_name.Name = "txb_intact_name";
             this.txb_intact_name.Size = new System.Drawing.Size(498, 21);
-            this.txb_intact_name.TabIndex = 2;
+            this.txb_intact_name.TabIndex = 1;
             this.txb_intact_name.TextChanged += new System.EventHandler(this.txb_intact_name_TextChanged);
             this.txb_intact_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_intact_name_KeyDown);
             // 
@@ -138,7 +138,7 @@
             this.txb_bank_name.MaxLength = 50;
             this.txb_bank_name.Name = "txb_bank_name";
             this.txb_bank_name.Size = new System.Drawing.Size(498, 21);
-            this.txb_bank_name.TabIndex = 5;
+            this.txb_bank_name.TabIndex = 4;
             this.txb_bank_name.TextChanged += new System.EventHandler(this.txb_bank_name_TextChanged);
             this.txb_bank_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_bank_name_KeyDown);
             // 
@@ -157,7 +157,7 @@
             this.txb_account.MaxLength = 50;
             this.txb_account.Name = "txb_account";
             this.txb_account.Size = new System.Drawing.Size(498, 21);
-            this.txb_account.TabIndex = 6;
+            this.txb_account.TabIndex = 5;
             this.txb_account.TextChanged += new System.EventHandler(this.txb_account_TextChanged);
             this.txb_account.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_account_KeyDown);
             // 
@@ -176,7 +176,7 @@
             this.txb_phone.MaxLength = 50;
             this.txb_phone.Name = "txb_phone";
             this.txb_phone.Size = new System.Drawing.Size(498, 21);
-            this.txb_phone.TabIndex = 3;
+            this.txb_phone.TabIndex = 2;
             this.txb_phone.TextChanged += new System.EventHandler(this.txb_phone_TextChanged);
             this.txb_phone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_phone_KeyDown);
             // 
@@ -195,7 +195,7 @@
             this.txb_fax.MaxLength = 50;
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(498, 21);
-            this.txb_fax.TabIndex = 4;
+            this.txb_fax.TabIndex = 3;
             this.txb_fax.TextChanged += new System.EventHandler(this.txb_fax_TextChanged);
             this.txb_fax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_fax_KeyDown);
             // 
@@ -215,7 +215,7 @@
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(498, 113);
-            this.txb_memo.TabIndex = 8;
+            this.txb_memo.TabIndex = 7;
             this.txb_memo.TextChanged += new System.EventHandler(this.txb_memo_TextChanged);
             // 
             // groupBox2
@@ -243,7 +243,7 @@
             this.bt_save.Location = new System.Drawing.Point(426, 538);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
-            this.bt_save.TabIndex = 9;
+            this.bt_save.TabIndex = 8;
             this.bt_save.Text = "保存  ";
             this.bt_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_save.UseVisualStyleBackColor = true;
@@ -256,7 +256,7 @@
             this.bt_close.Location = new System.Drawing.Point(521, 538);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(75, 23);
-            this.bt_close.TabIndex = 10;
+            this.bt_close.TabIndex = 9;
             this.bt_close.Text = "关闭  ";
             this.bt_close.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_close.UseVisualStyleBackColor = true;
@@ -277,7 +277,7 @@
             this.txb_address.MaxLength = 50;
             this.txb_address.Name = "txb_address";
             this.txb_address.Size = new System.Drawing.Size(498, 21);
-            this.txb_address.TabIndex = 7;
+            this.txb_address.TabIndex = 6;
             this.txb_address.TextChanged += new System.EventHandler(this.txb_address_TextChanged);
             this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 

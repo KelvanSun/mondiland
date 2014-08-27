@@ -34,10 +34,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.add = new System.Windows.Forms.ToolStripButton();
+            this.tsddb_supplier = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmi_supplier_add = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_supplier_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.tscb_class = new System.Windows.Forms.ToolStripComboBox();
             this.panel_top = new System.Windows.Forms.Panel();
             this.label_search_result = new System.Windows.Forms.Label();
             this.dgv_main = new Mondiland.UCControl.UCDataGridView();
@@ -90,25 +92,43 @@
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.add,
+            this.tsddb_supplier,
             this.toolStripSeparator1,
             this.favorites,
-            this.toolStripComboBox1});
+            this.tscb_class});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(938, 40);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
             // 
-            // add
+            // tsddb_supplier
             // 
-            this.add.Image = ((System.Drawing.Image)(resources.GetObject("add.Image")));
-            this.add.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(36, 37);
-            this.add.Text = "新增";
-            this.add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.tsddb_supplier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_supplier_add,
+            this.tsmi_supplier_edit});
+            this.tsddb_supplier.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_supplier.Image")));
+            this.tsddb_supplier.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddb_supplier.Name = "tsddb_supplier";
+            this.tsddb_supplier.Size = new System.Drawing.Size(57, 37);
+            this.tsddb_supplier.Text = "供应商";
+            this.tsddb_supplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsmi_supplier_add
+            // 
+            this.tsmi_supplier_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_add.Image")));
+            this.tsmi_supplier_add.Name = "tsmi_supplier_add";
+            this.tsmi_supplier_add.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplier_add.Text = "新增";
+            this.tsmi_supplier_add.Click += new System.EventHandler(this.tsmi_supplier_add_Click);
+            // 
+            // tsmi_supplier_edit
+            // 
+            this.tsmi_supplier_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_edit.Image")));
+            this.tsmi_supplier_edit.Name = "tsmi_supplier_edit";
+            this.tsmi_supplier_edit.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplier_edit.Text = "编辑";
+            this.tsmi_supplier_edit.Click += new System.EventHandler(this.tsmi_supplier_edit_Click);
             // 
             // toolStripSeparator1
             // 
@@ -125,13 +145,13 @@
             this.favorites.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.favorites.Click += new System.EventHandler(this.favorites_Click);
             // 
-            // toolStripComboBox1
+            // tscb_class
             // 
-            this.toolStripComboBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.Margin = new System.Windows.Forms.Padding(1, 10, 1, 0);
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 30);
+            this.tscb_class.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tscb_class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscb_class.Margin = new System.Windows.Forms.Padding(1, 10, 1, 0);
+            this.tscb_class.Name = "tscb_class";
+            this.tscb_class.Size = new System.Drawing.Size(121, 30);
             // 
             // panel_top
             // 
@@ -315,7 +335,8 @@
             this.cbx_query_type.FormattingEnabled = true;
             this.cbx_query_type.Items.AddRange(new object[] {
             "拼音码",
-            "公司名称"});
+            "公司简称",
+            "公司全称"});
             this.cbx_query_type.Location = new System.Drawing.Point(17, 22);
             this.cbx_query_type.Name = "cbx_query_type";
             this.cbx_query_type.Size = new System.Drawing.Size(92, 20);
@@ -611,7 +632,6 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage_main;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ToolStripButton add;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.BindingSource bindingSource_query;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -621,7 +641,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox tscb_class;
         private System.Windows.Forms.BindingSource bindingSource_main;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
@@ -641,6 +661,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.ToolStripDropDownButton tsddb_supplier;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_add;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_edit;
 
     }
 }

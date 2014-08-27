@@ -190,62 +190,100 @@ namespace Mondiland.UI
         {
             SaveResult result = new SaveResult();
 
-            //新增操作
-            if(this.m_id == 0)
+           
+            if(this.m_class_id == 0)
             {
-                if(this.m_class_id == 0)
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "[供应商分类]信息不能为空!";
+                result.Code = CodeType.Error;
+                result.Message = "[供应商分类]信息不能为空!";
 
-                    return result;
-                }
-
-                if(this.m_name.Trim() == string.Empty)
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "[供应商简称]信息不能为空!";
-
-                    return result;
-                }
-
-                if(this.m_intact_name.Trim() == string.Empty)
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "[供应商全称]信息不能为空!";
-
-                    return result;
-                }
-
-
+                return result;
             }
 
-            BESupplierMInfo info = new BESupplierMInfo();
-
-            info.Class_Id = this.m_class_id;
-            info.Pym = this.m_pym;
-            info.Name = this.m_name;
-            info.Intact_Name = this.m_intact_name;
-            info.Bank_Name = this.m_bank_name;
-            info.Account = this.m_account;
-            info.Phone = this.m_phone;
-            info.Fax = this.m_fax;
-            info.Address = this.m_address;
-            info.Memo = this.m_memo;
-
-            if(BLLFactory<BLLSupplierInfo>.Instance.AddSupplierM(info))
+            if(this.m_name.Trim() == string.Empty)
             {
+                result.Code = CodeType.Error;
+                result.Message = "[供应商简称]信息不能为空!";
+
+                return result;
+            }
+
+            if(this.m_intact_name.Trim() == string.Empty)
+            {
+                result.Code = CodeType.Error;
+                result.Message = "[供应商全称]信息不能为空!";
+
+                return result;
+            }
+
+            //新增操作
+            if (this.m_id == 0)
+            {
+
+                BESupplierMInfo info = new BESupplierMInfo();
+
+                info.Class_Id = this.m_class_id;
+                info.Pym = this.m_pym;
+                info.Name = this.m_name;
+                info.Intact_Name = this.m_intact_name;
+                info.Bank_Name = this.m_bank_name;
+                info.Account = this.m_account;
+                info.Phone = this.m_phone;
+                info.Fax = this.m_fax;
+                info.Address = this.m_address;
+                info.Memo = this.m_memo;
+
+                if (BLLFactory<BLLSupplierInfo>.Instance.AddSupplierM(info))
+                {
+                    result.Code = CodeType.Ok;
+                    result.Message = "保存成功!";
+
+                    return result;
+                }
+                else
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "保存失败!";
+
+                    return result;
+                }
+            }
+            else
+            {
+                if (BLLFactory<BLLSupplierInfo>.Instance.UpdateCheckLastamp(this.m_id, this.m_lastamp))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "当前编辑的记录已经变更,无法保存!";
+
+                    return result;
+                }
+
+                BESupplierMInfo info = new BESupplierMInfo();
+
+                info.Id = this.m_id;
+                info.Class_Id = this.m_class_id;
+                info.Pym = this.m_pym;
+                info.Name = this.m_name;
+                info.Intact_Name = this.m_intact_name;
+                info.Bank_Name = this.m_bank_name;
+                info.Account = this.m_account;
+                info.Phone = this.m_phone;
+                info.Fax = this.m_fax;
+                info.Address = this.m_address;
+                info.Memo = this.m_memo;
+
+                if (!BLLFactory<BLLSupplierInfo>.Instance.UpdateSupplierM(info))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "保存失败!";
+
+                    return result;
+                }
+
                 result.Code = CodeType.Ok;
                 result.Message = "保存成功!";
 
                 return result;
-            }
-            else
-            {
-                result.Code = CodeType.Error;
-                result.Message = "保存失败!";
 
-                return result;
             }
         }
     }

@@ -21,14 +21,25 @@ namespace Mondiland.UI
             supplier = ob;
 
             InitializeComponent();
+
+            this.cbx_class.DataSource = BLLFactory<BLLSupplierInfo>.Instance.GetSupplierClassList();
+            this.cbx_class.DisplayMember = "Name";
+            this.cbx_class.ValueMember = "Id";
+            this.cbx_class.SelectedValue = 0;
+            this.cbx_class.Text = string.Empty;
+          
         }
 
         private void SupplierAEForm_Load(object sender, EventArgs e)
         {
-            this.cbx_class.DataSource = BLLFactory<BLLSupplierInfo>.Instance.GetSupplierClassList();
-            this.cbx_class.DisplayMember = "Name";
-            this.cbx_class.ValueMember = "Id";
-            this.cbx_class.Text = string.Empty;
+            if(supplier.Id == 0)
+            {
+                this.Text = "新增";
+            }
+            else
+            {
+                this.Text = "编辑";
+            }
 
             this.cbx_class.SelectedValue = supplier.Class_Id;
             this.txb_name.Text = supplier.Name;

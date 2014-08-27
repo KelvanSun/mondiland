@@ -97,10 +97,11 @@ namespace Mondiland.UI
         {
             if (string.IsNullOrEmpty(this.txb_query_text.Text)) return;
 
+            main_list.Clear();
+
             if(cbx_query_type.Text == "拼音码")
             {
-                main_list.Clear();
-                
+                              
                 IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByPym(this.txb_query_text.Text.Trim()).GetEnumerator();
 
                 while(ator.MoveNext())
@@ -109,13 +110,38 @@ namespace Mondiland.UI
 
                     main_list.Add(ob);
                 }
-
-                this.bindingSource_query.DataSource = main_list;
-
-                this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
-
-                this.dgv_main.Focus();
+               
             }
+
+            if(cbx_query_type.Text == "公司简称")
+            {
+                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByName(this.txb_query_text.Text.Trim()).GetEnumerator();
+
+                while (ator.MoveNext())
+                {
+                    SupplierObject ob = new SupplierObject(ator.Current);
+
+                    main_list.Add(ob);
+                }
+            }
+
+            if(cbx_query_type.Text == "公司全称")
+            {
+                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()).GetEnumerator();
+
+                while (ator.MoveNext())
+                {
+                    SupplierObject ob = new SupplierObject(ator.Current);
+
+                    main_list.Add(ob);
+                }
+            }
+
+            this.bindingSource_query.DataSource = main_list;
+
+            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
+
+            this.dgv_main.Focus();
 
         }
 
@@ -136,5 +162,28 @@ namespace Mondiland.UI
             }
             this.bindingSource_main.DataSource = this.bindingSource_query.Current as SupplierObject;
         }
+
+        private void tsmi_supplier_add_Click(object sender, EventArgs e)
+        {
+            SupplierObject ob = new SupplierObject();
+
+            SupplierAEForm form = new SupplierAEForm(ob);
+            form.ShowDialog();
+        }
+
+        private void tsmi_supplier_edit_Click(object sender, EventArgs e)
+        {
+            if(this.bindingSource_query.Current == null)
+            {
+                MessageUtil.ShowWarning("先查询到记录再编辑!");
+                return;
+            }
+
+            SupplierAEForm form = new SupplierAEForm(this.bindingSource_query.Current as SupplierObject);
+            form.ShowDialog();
+
+            this.main_list.Clear();
+        }
+      
     }
 }
