@@ -197,7 +197,9 @@ namespace Mondiland.UI
             set 
             {
                 m_standarddata_id = value;
-                m_standarddata = BLLFactory<BLLProductInfo>.Instance.ReadStandardDataTypeByPrimaryKey(m_standarddata_id);
+
+                if(this.m_standarddata_id > 0)
+                    m_standarddata = BLLFactory<BLLProductInfo>.Instance.ReadStandardDataTypeByPrimaryKey(m_standarddata_id);
             }
         }
         /// <summary>
@@ -216,7 +218,11 @@ namespace Mondiland.UI
             set 
             {
                 m_safedata_id = value;
-                m_safedata = BLLFactory<BLLProductInfo>.Instance.ReadSafeDataTypeByPrimaryKey(m_safedata_id);
+
+                if (m_safedata_id > 0)
+                {
+                    m_safedata = BLLFactory<BLLProductInfo>.Instance.ReadSafeDataTypeByPrimaryKey(m_safedata_id);
+                }
             }
         }
         /// <summary>
@@ -235,24 +241,28 @@ namespace Mondiland.UI
             set 
             {
                 m_partname_id = value;
-                m_parntname = BLLFactory<BLLProductInfo>.Instance.ReadPartNameTypeByPrimaryKey(m_partname_id);
 
-                this.m_size_data_list = BLLFactory<BLLProductInfo>.Instance.ReadSizeDataList(m_partname_id);
-
-                //初始化自定义填充列表
-                IEnumerator<BESizeDataList> ator = this.m_size_data_list.GetEnumerator();
-
-                while(ator.MoveNext())
+                if (m_partname_id > 0)
                 {
-                    BEMaterialFillData data = new BEMaterialFillData();
 
-                    data.SizeName = ator.Current.SizeName;
-                    data.Fill = "0";
+                    m_parntname = BLLFactory<BLLProductInfo>.Instance.ReadPartNameTypeByPrimaryKey(m_partname_id);
 
-                    this.MaterialFillData.m_material_fill_list.Add(data);
+                    this.m_size_data_list = BLLFactory<BLLProductInfo>.Instance.ReadSizeDataList(m_partname_id);
+
+                    //初始化自定义填充列表
+                    IEnumerator<BESizeDataList> ator = this.m_size_data_list.GetEnumerator();
+
+                    while (ator.MoveNext())
+                    {
+                        BEMaterialFillData data = new BEMaterialFillData();
+
+                        data.SizeName = ator.Current.SizeName;
+                        data.Fill = "0";
+
+                        this.MaterialFillData.m_material_fill_list.Add(data);
+                    }
                 }
-
-
+                
             }
         }
 
@@ -290,7 +300,8 @@ namespace Mondiland.UI
             {
                 m_madeplace_id = value;
 
-                m_madeplace = BLLFactory<BLLProductInfo>.Instance.ReadMadePlaceTypeByPrimaryKey(m_madeplace_id);
+                if(this.m_madeplace_id > 0)
+                    m_madeplace = BLLFactory<BLLProductInfo>.Instance.ReadMadePlaceTypeByPrimaryKey(m_madeplace_id);
             }
         }
         /// <summary>
@@ -309,7 +320,9 @@ namespace Mondiland.UI
             set 
             {
                 m_dengji_id = value;
-                m_dengji = BLLFactory<BLLProductInfo>.Instance.ReadDengJiTypeByPrimaryKey(m_dengji_id);
+                
+                if(m_dengji_id > 0)
+                    m_dengji = BLLFactory<BLLProductInfo>.Instance.ReadDengJiTypeByPrimaryKey(m_dengji_id);
             }
         }
         /// <summary>
