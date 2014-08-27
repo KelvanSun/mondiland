@@ -167,7 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_main.AutoGenerateColumns = false;
-            this.dgv_main.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv_main.BackgroundColor = System.Drawing.SystemColors.Info;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -208,6 +208,7 @@
             this.dgv_main.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_main.RowHeadersWidth = 20;
             this.dgv_main.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_main.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
             this.dgv_main.RowTemplate.Height = 23;
             this.dgv_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_main.Size = new System.Drawing.Size(938, 202);
@@ -301,6 +302,7 @@
             // 
             this.txb_query_text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_query_text.BackColor = System.Drawing.SystemColors.Info;
             this.txb_query_text.Location = new System.Drawing.Point(115, 22);
             this.txb_query_text.Name = "txb_query_text";
             this.txb_query_text.Size = new System.Drawing.Size(717, 21);
@@ -372,12 +374,13 @@
             // 
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9.BackColor = System.Drawing.SystemColors.Info;
             this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Memo", true));
-            this.textBox9.Location = new System.Drawing.Point(108, 196);
+            this.textBox9.Location = new System.Drawing.Point(109, 173);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(798, 59);
+            this.textBox9.Size = new System.Drawing.Size(798, 82);
             this.textBox9.TabIndex = 17;
             // 
             // bindingSource_main
@@ -388,7 +391,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 200);
+            this.label9.Location = new System.Drawing.Point(26, 177);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 16;
@@ -398,17 +401,18 @@
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.BackColor = System.Drawing.SystemColors.Info;
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Address", true));
-            this.textBox8.Location = new System.Drawing.Point(108, 159);
+            this.textBox8.Location = new System.Drawing.Point(109, 146);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(798, 21);
+            this.textBox8.Size = new System.Drawing.Size(797, 21);
             this.textBox8.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 163);
+            this.label8.Location = new System.Drawing.Point(20, 150);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 14;
@@ -418,17 +422,18 @@
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox7.BackColor = System.Drawing.SystemColors.Info;
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Account", true));
-            this.textBox7.Location = new System.Drawing.Point(624, 122);
+            this.textBox7.Location = new System.Drawing.Point(109, 119);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(282, 21);
+            this.textBox7.Size = new System.Drawing.Size(797, 21);
             this.textBox7.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(517, 126);
+            this.label7.Location = new System.Drawing.Point(9, 124);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 12);
             this.label7.TabIndex = 12;
@@ -436,17 +441,20 @@
             // 
             // textBox6
             // 
+            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox6.BackColor = System.Drawing.SystemColors.Info;
             this.textBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Bank_Name", true));
-            this.textBox6.Location = new System.Drawing.Point(109, 122);
+            this.textBox6.Location = new System.Drawing.Point(109, 92);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(386, 21);
+            this.textBox6.Size = new System.Drawing.Size(797, 21);
             this.textBox6.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 126);
+            this.label6.Location = new System.Drawing.Point(14, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 10;
@@ -456,8 +464,9 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.BackColor = System.Drawing.SystemColors.Info;
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Fax", true));
-            this.textBox5.Location = new System.Drawing.Point(624, 85);
+            this.textBox5.Location = new System.Drawing.Point(624, 65);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(282, 21);
@@ -466,7 +475,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(530, 89);
+            this.label5.Location = new System.Drawing.Point(535, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 8;
@@ -474,8 +483,9 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
             this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Phone", true));
-            this.textBox4.Location = new System.Drawing.Point(108, 85);
+            this.textBox4.Location = new System.Drawing.Point(109, 65);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(386, 21);
@@ -484,7 +494,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 89);
+            this.label4.Location = new System.Drawing.Point(8, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 12);
             this.label4.TabIndex = 6;
@@ -494,8 +504,9 @@
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Intact_Name", true));
-            this.textBox3.Location = new System.Drawing.Point(108, 48);
+            this.textBox3.Location = new System.Drawing.Point(109, 38);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(798, 21);
@@ -504,7 +515,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 53);
+            this.label3.Location = new System.Drawing.Point(20, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 4;
@@ -512,6 +523,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Class_Name", true));
             this.textBox2.Location = new System.Drawing.Point(319, 11);
             this.textBox2.Name = "textBox2";
@@ -530,6 +542,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Name", true));
             this.textBox1.Location = new System.Drawing.Point(109, 11);
             this.textBox1.Name = "textBox1";

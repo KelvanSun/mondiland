@@ -254,6 +254,7 @@
             this.txb_memo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_memo.BackColor = System.Drawing.SystemColors.Info;
             this.txb_memo.Location = new System.Drawing.Point(98, 192);
             this.txb_memo.MaxLength = 400;
             this.txb_memo.Multiline = true;
@@ -264,6 +265,7 @@
             // 
             // cbx_standard
             // 
+            this.cbx_standard.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_standard.ComboBoxHeight = 14;
             this.cbx_standard.DropDownHeight = 114;
             this.cbx_standard.DropDownWidth = 121;
@@ -277,6 +279,7 @@
             // 
             // cbx_safedata
             // 
+            this.cbx_safedata.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_safedata.ComboBoxHeight = 14;
             this.cbx_safedata.DropDownHeight = 114;
             this.cbx_safedata.DropDownWidth = 121;
@@ -290,6 +293,7 @@
             // 
             // cbx_partname
             // 
+            this.cbx_partname.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_partname.ComboBoxHeight = 14;
             this.cbx_partname.DropDownHeight = 114;
             this.cbx_partname.DropDownWidth = 121;
@@ -303,6 +307,7 @@
             // 
             // cbx_madeplace
             // 
+            this.cbx_madeplace.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_madeplace.ComboBoxHeight = 14;
             this.cbx_madeplace.DropDownHeight = 114;
             this.cbx_madeplace.DropDownWidth = 121;
@@ -316,6 +321,7 @@
             // 
             // cbx_dengji
             // 
+            this.cbx_dengji.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_dengji.ComboBoxHeight = 14;
             this.cbx_dengji.DisplayMember = "Id";
             this.cbx_dengji.DropDownHeight = 114;
@@ -331,6 +337,7 @@
             // 
             // txb_price
             // 
+            this.txb_price.BackColor = System.Drawing.SystemColors.Info;
             this.txb_price.Location = new System.Drawing.Point(805, 71);
             this.txb_price.Name = "txb_price";
             this.txb_price.Size = new System.Drawing.Size(121, 21);
@@ -406,6 +413,7 @@
             // 
             // txb_huohao
             // 
+            this.txb_huohao.BackColor = System.Drawing.SystemColors.Info;
             this.txb_huohao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txb_huohao.Location = new System.Drawing.Point(98, 14);
             this.txb_huohao.MaxLength = 20;
@@ -440,6 +448,7 @@
             // 
             this.txb_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_fill.BackColor = System.Drawing.SystemColors.Info;
             this.txb_fill.Location = new System.Drawing.Point(231, 5);
             this.txb_fill.Name = "txb_fill";
             this.txb_fill.Size = new System.Drawing.Size(727, 21);
@@ -471,7 +480,7 @@
             this.dgv_material_fill.AllowUserToResizeRows = false;
             this.dgv_material_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_material_fill.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv_material_fill.BackgroundColor = System.Drawing.SystemColors.Info;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -493,7 +502,7 @@
             this.dgv_material_fill.MultiSelect = false;
             this.dgv_material_fill.Name = "dgv_material_fill";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -502,6 +511,7 @@
             this.dgv_material_fill.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_material_fill.RowHeadersWidth = 20;
             this.dgv_material_fill.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_material_fill.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
             this.dgv_material_fill.RowTemplate.Height = 23;
             this.dgv_material_fill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_material_fill.Size = new System.Drawing.Size(970, 85);
@@ -571,7 +581,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_material.AutoGenerateColumns = false;
-            this.dgv_material.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgv_material.BackgroundColor = System.Drawing.SystemColors.Info;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -606,6 +616,7 @@
             this.dgv_material.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_material.RowHeadersWidth = 20;
             this.dgv_material.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_material.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
             this.dgv_material.RowTemplate.Height = 23;
             this.dgv_material.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_material.Size = new System.Drawing.Size(970, 142);

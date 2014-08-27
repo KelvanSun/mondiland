@@ -236,18 +236,22 @@ namespace Mondiland.UI
 
         private void dgv_material_Leave(object sender, EventArgs e)
         {
-            dgv_material.EndEdit();            
-            
-            if(this.dgv_material.RowCount > 0)
+            try
             {
-                for (int index = 0; index < this.dgv_material.RowCount; ++index)
+                dgv_material.EndEdit();
+
+                if (this.dgv_material.RowCount > 0)
                 {
-                    if ((this.dgv_material.Rows[index].Cells["Type"].Value as String).Trim() == string.Empty)
-                        bindingSource_material.RemoveAt(index);       
+                    for (int index = 0; index < this.dgv_material.RowCount; ++index)
+                    {
+                        if ((this.dgv_material.Rows[index].Cells["Type"].Value as String).Trim() == string.Empty)
+                            bindingSource_material.RemoveAt(index);
+                    }
+
+                    this.dgv_material.Rows[this.dgv_material.CurrentRow.Index].Selected = false;
                 }
-                      
-                this.dgv_material.Rows[this.dgv_material.CurrentRow.Index].Selected = false;
             }
+            catch { }
         }
 
         private void dgv_material_fill_Leave(object sender, EventArgs e)
