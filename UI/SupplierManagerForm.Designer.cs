@@ -292,7 +292,7 @@
             // bindingSource_query
             // 
             this.bindingSource_query.AllowNew = false;
-            this.bindingSource_query.DataSource = typeof(Mondiland.UI.SupplierObject);
+            this.bindingSource_query.DataSource = typeof(Mondiland.Obj.SupplierObject);
             // 
             // groupBox1
             // 
@@ -407,7 +407,7 @@
             // bindingSource_main
             // 
             this.bindingSource_main.AllowNew = false;
-            this.bindingSource_main.DataSource = typeof(Mondiland.UI.SupplierObject);
+            this.bindingSource_main.DataSource = typeof(Mondiland.Obj.SupplierObject);
             // 
             // label9
             // 

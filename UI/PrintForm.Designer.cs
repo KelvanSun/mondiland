@@ -94,7 +94,7 @@
             // 
             // bindingSource
             // 
-            this.bindingSource.DataSource = typeof(Mondiland.UI.ProductObject);
+            this.bindingSource.DataSource = typeof(Mondiland.Obj.ProductObject);
             // 
             // groupBox1
             // 

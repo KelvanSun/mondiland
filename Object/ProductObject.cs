@@ -13,7 +13,7 @@ using Mondiland.BLLEntity;
 
 using Seagull.BarTender.Print;
 
-namespace Mondiland.UI
+namespace Mondiland.Obj
 {
     /// <summary>
     /// 产品对象类

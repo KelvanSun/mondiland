@@ -139,7 +139,6 @@
     <Compile Include="ProductManagerForm.Designer.cs">
       <DependentUpon>ProductManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductObject.cs" />
     <Compile Include="ProductSaveAsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,7 +160,6 @@
     <Compile Include="SupplierManagerForm.Designer.cs">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SupplierObject.cs" />
     <Compile Include="UCListViewItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -258,6 +256,10 @@
     <ProjectReference Include="..\IDAL\IDal.csproj">
       <Project>{a9c3c9fb-8c15-4f98-bceb-75575362e2b1}</Project>
       <Name>IDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Object\Obj.csproj">
+      <Project>{554fc5c1-ff95-4c36-88ad-664091576288}</Project>
+      <Name>Obj</Name>
     </ProjectReference>
     <ProjectReference Include="..\UCControl\UCControl.csproj">
       <Project>{3c389310-66f6-4941-9b17-24a79fe006f2}</Project>
