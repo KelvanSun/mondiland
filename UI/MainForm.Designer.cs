@@ -166,7 +166,6 @@
             this.Text = "宁波麦迪茉莱登商品管理系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.MdiChildActivate += new System.EventHandler(this.MainForm_MdiChildActivate);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);

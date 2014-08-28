@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Mondiland.BLL;
+using Mondiland.Obj;
 using Mondiland.BLLEntity;
 
 namespace Mondiland.UI
@@ -22,9 +23,9 @@ namespace Mondiland.UI
         {
             this.flowLayoutPanel.Controls.Clear();
 
-            IEnumerator<BEUserMenuFavorites> ator = BLLFactory<BLLMenuInfo>.Instance.GetUserMenuFavoritesList(Program.main_form.UserId).GetEnumerator();
+            IEnumerator<PermissionObject.User.FavoritesMenu> ator = Program.main_form.UserObj.FavoritesMenuList.GetEnumerator();
 
-            while(ator.MoveNext())
+            while (ator.MoveNext())
             {
                 UCListViewItem item = new UCListViewItem();
 

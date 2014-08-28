@@ -40,11 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEChildMenuInfo.cs" />
     <Compile Include="BEMadePlaceProduct.cs" />
     <Compile Include="BEMaterialDataInfo.cs" />
     <Compile Include="BEMaterialFillData.cs" />
-    <Compile Include="BEParentMenuInfo.cs" />
     <Compile Include="BEPartNameProduct.cs" />
     <Compile Include="BEProductDataReadProduct.cs" />
     <Compile Include="BEProductDataInfo.cs" />
@@ -53,7 +51,6 @@
     <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BESupplierClass.cs" />
     <Compile Include="BESupplierMInfo.cs" />
-    <Compile Include="BEUserMenuFavorites.cs" />
     <Compile Include="BEWashPrintTemplateProduct.cs" />
     <Compile Include="BLLEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

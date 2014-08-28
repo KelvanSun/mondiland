@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Collections;
 
 using Mondiland.Entity;
 using Mondiland.IDal;
@@ -92,5 +93,144 @@ namespace Mondiland.BLL
             return list;
         }
 
+        /// <summary>
+        /// 返回所有的父级菜单
+        /// </summary>
+        /// <returns></returns>
+        public List<int> GetParentMenuList()
+        {
+            List<int> list = new List<int>();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("menu_parent", 0);
+
+            IEnumerator<Table_MenuInfo_Entity> ator = MenuInfo_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                list.Add(ator.Current.Id);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 返回子菜单列表
+        /// </summary>
+        /// <param name="parent_id"></param>
+        /// <returns></returns>
+        public List<int> GetChildMenuList(int parent_id)
+        {
+            List<int> list = new List<int>();
+
+            Hashtable hash = new Hashtable();
+            hash.Add("menu_parent", parent_id);
+
+            IEnumerator<Table_MenuInfo_Entity> ator = MenuInfo_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
+
+            while (ator.MoveNext())
+            {
+                list.Add(ator.Current.Id);
+            }
+
+            return list;
+
+        }
+
+        public List<int> GetFavoritesMenuList(int user_id)
+        {
+            List<int> list = new List<int>();
+
+            Hashtable hash = new Hashtable();
+
+            hash.Add("user_id", user_id);
+
+            IEnumerator<Table_UserMenuFavorites_Entity> ator = UserMenuFavorites_Dal.Find(hash, SqlOperator.And, false).GetEnumerator();
+
+            while(ator.MoveNext())
+            {
+                list.Add(ator.Current.MenuId);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 返回菜单名称
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetMenuName(int id)
+        {
+            Table_MenuInfo_Entity entity = MenuInfo_Dal.FindByID(id);
+
+            return entity.MenuName;
+        }
+
+        public int GetMenuBmp(int id)
+        {
+            Table_MenuInfo_Entity entity = MenuInfo_Dal.FindByID(id);
+
+            return entity.MenuBmp;
+        }
+
+        public string GetMenuWindow(int id)
+        {
+            Table_MenuInfo_Entity entity = MenuInfo_Dal.FindByID(id);
+
+            return entity.MenuWindow;
+        }
+
+        public string GetMenuMemo(int id)
+        {
+            Table_MenuInfo_Entity entity = MenuInfo_Dal.FindByID(id);
+
+            return entity.MenuMemo;
+        }
+
+        /// <summary>
+        /// 取消收藏
+        /// </summary>
+        /// <param name="user_id">用户Id</param>
+        /// <param name="form_name">窗口名称</param>
+        /// <returns>成功返回true</returns>
+        public bool UnFavorites(int user_id, string form_name)
+        {
+            Hashtable menu_info_hash = new Hashtable();
+
+            menu_info_hash.Add("menu_window", form_name);
+
+            Table_MenuInfo_Entity menu_info = MenuInfo_Dal.Find(menu_info_hash);
+
+            Hashtable hash = new Hashtable();
+
+            hash.Add("user_id", user_id);
+            hash.Add("menu_id", menu_info.Id);
+
+            return UserMenuFavorites_Dal.Delete(hash);
+        }
+
+        /// <summary>
+        /// 添加收藏
+        /// </summary>
+        /// <param name="user_id">用户Id</param>
+        /// <param name="form_name">窗口名称</param>
+        /// <returns>成功返回true</returns>
+        public bool SetFavorites(int user_id, string form_name)
+        {
+            Hashtable menu_info_hash = new Hashtable();
+
+            menu_info_hash.Add("menu_window", form_name);
+
+            Table_MenuInfo_Entity menu_info = MenuInfo_Dal.Find(menu_info_hash);
+
+            Table_UserMenuFavorites_Entity entity = new Table_UserMenuFavorites_Entity();
+
+            entity.UserId = user_id;
+            entity.MenuId = menu_info.Id;
+            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+
+            return UserMenuFavorites_Dal.Insert(entity);
+        }
     }
 }

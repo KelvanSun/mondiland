@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Deployment.Application;
 
 using Mondiland.BLL;
+using Mondiland.Obj;
 using WeifenLuo.WinFormsUI.Docking;
 
 
@@ -16,7 +17,9 @@ namespace Mondiland.UI
 {
     public partial class MainForm : Form
     {
-        private int m_user_id = 0;
+        public PermissionObject.User UserObj = null;
+
+        public int UserId = 1;
 
         private MainToolForm m_mainToolForm = null;
         private DefaultForm m_defaultForm = null;
@@ -31,39 +34,21 @@ namespace Mondiland.UI
             
         }
 
-        /// <summary>
-        /// 登陆成功后的用户名ID
-        /// </summary>
-        public int UserId
-        {
-            get { return m_user_id; }
-        }
-        /// <summary>
-        /// 登陆成功后获得ID
-        /// </summary>
-        /// <param name="id"></param>
-        public void SetUserId(int id)
-        {
-            m_user_id = id;
-        }
-
-             
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoginForm form = new LoginForm(this);
             this.Visible = false;
             form.ShowDialog();
             
-            if(m_user_id == 0)
+            if(this.UserObj == null)
             {
                 Close();
 
                 return;
             }
 
-            statusStrip.Items["username"].Text = string.Format("用户名:{0}", BLLFactory<BLLLogin>.Instance.GetUserName(m_user_id));
-            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", BLLFactory<BLLLogin>.Instance.GetGroupName(m_user_id));
+            statusStrip.Items["username"].Text = string.Format("用户名:{0}", this.UserObj.Name);
+            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", this.UserObj.GroupName);
 
             try
             {
@@ -108,17 +93,5 @@ namespace Mondiland.UI
                 MessageUtil.ShowError(ex.Message);
             }
         }
-
-        private void MainForm_MdiChildActivate(object sender, EventArgs e)
-        {
-            //ToolStripManager.RevertMerge(this.main_toolStrip);
-
-            //if(this.ActiveMdiChild is IMergeToolStrip)
-            //{
-            //    ToolStripManager.Merge((this.ActiveMdiChild as IMergeToolStrip).MergeToolStrip, main_toolStrip);
-            //}
-    
-        }
-
     }
 }

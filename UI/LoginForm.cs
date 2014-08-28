@@ -42,10 +42,15 @@ namespace Mondiland.UI
 
             PermissionObject.User user = m_permission.UserList[Convert.ToInt32(cbx_usrename.SelectedValue)];
 
-            if(user.Authentication(tb_pwd.Text.Trim()))
+            if(!user.Authentication(tb_pwd.Text.Trim()))
             {
-
+                MessageUtil.ShowWarning("用户验证失败");
+                tb_pwd.Focus();
+                return;
             }
+
+            m_mainForm.UserObj = user;
+            this.Close();
 
             //if (!BLLFactory<BLLLogin>.Instance.Authentication(cbx_username.Text, tb_pwd.Text))
             //{
@@ -65,18 +70,8 @@ namespace Mondiland.UI
             this.cbx_usrename.DataSource = this.m_permission.GetLoginUserList();
             this.cbx_usrename.DisplayMember = "UserName";
             this.cbx_usrename.ValueMember = "Index";
-            
-            
-            //List<string> list = BLLFactory<BLLLogin>.Instance.GetUserList();
-
-            //IEnumerator<string> ator = list.GetEnumerator();
-
-            //while (ator.MoveNext())
-            //{
-            //    this.cbx_username.Items.Add(ator.Current.ToString());
-            //}
-
-            //this.cbx_username.SelectedIndex = 0;
+      
+           
            
         }
 

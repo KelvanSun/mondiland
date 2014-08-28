@@ -86,12 +86,168 @@ namespace Mondiland.Obj
             private int m_group_id = 0;
             private string m_group_name = string.Empty;
 
-            //public class MenuParent
-            //{
-            //    private int m_id = 0;
-            //    private string m_menu_name = string.Empty;
+            public List<MenuParent> MenuParentList = new List<MenuParent>();
+            public List<FavoritesMenu> FavoritesMenuList = new List<FavoritesMenu>();
 
-            //}
+            public bool SetFavorites(string form_name)
+            {
+                return BLLFactory<BLLPermissionInfo>.Instance.SetFavorites(this.m_id, form_name);
+            }
+            public bool UnFavorites(string form_name)
+            {
+                return BLLFactory<BLLPermissionInfo>.Instance.UnFavorites(this.m_id, form_name);
+            }
+
+            public bool IsUserMenuFavorites(string form_name)
+            {
+                IEnumerator<FavoritesMenu> ator = FavoritesMenuList.GetEnumerator();
+
+                while(ator.MoveNext())
+                {
+                    if (ator.Current.MenuWindow == form_name) return true;
+                }
+
+                return false;
+            }
+
+            public class FavoritesMenu
+            {
+                private int m_id = 0;
+                private string m_menu_name = string.Empty;
+                private int m_menu_bmp = 0;
+                private string m_menu_window = string.Empty;
+                private string m_menu_memo = string.Empty;
+
+                public FavoritesMenu(int id)
+                {
+                    this.m_id = id;
+                    this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
+                    this.m_menu_bmp = BLLFactory<BLLPermissionInfo>.Instance.GetMenuBmp(m_id);
+                    this.m_menu_window = BLLFactory<BLLPermissionInfo>.Instance.GetMenuWindow(m_id);
+                    this.m_menu_memo = BLLFactory<BLLPermissionInfo>.Instance.GetMenuMemo(m_id);
+                }
+
+                public int Id
+                {
+                    get { return m_id; }
+                    set { m_id = value; }
+                }
+
+                public string MenuName
+                {
+                    get { return m_menu_name; }
+                    set { m_menu_name = value; }
+                }
+
+                public int MenuBmp
+                {
+                    get { return m_menu_bmp; }
+                    set { m_menu_bmp = value; }
+                }
+
+                public string MenuWindow
+                {
+                    get { return m_menu_window; }
+                    set { m_menu_window = value; }
+                }
+
+                public string MenuMemo
+                {
+                    get { return m_menu_memo; }
+                    set { m_menu_memo = value; }
+                }
+            }
+            /// <summary>
+            /// 父菜单类
+            /// </summary>
+            public class MenuParent
+            {
+                private int m_id = 0;
+                private string m_menu_name = string.Empty;
+
+                public List<MenuChild> MenuChildList = new List<MenuChild>();
+
+                public MenuParent(int id)
+                {
+                    this.m_id = id;
+                    this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
+
+                    IEnumerator<int> ator = BLLFactory<BLLPermissionInfo>.Instance.GetChildMenuList(this.m_id).GetEnumerator();
+
+                    while(ator.MoveNext())
+                    {
+                        MenuChild child = new MenuChild(ator.Current);
+
+                        this.MenuChildList.Add(child);
+                    }
+
+                }
+
+                public int Id
+                {
+                    get { return m_id; }
+                    set { m_id = value; }
+                }
+
+                public string MenuName
+                {
+                    get { return m_menu_name; }
+                    set { m_menu_name = value; }
+                }
+
+                /// <summary>
+                /// 子菜单类
+                /// </summary>
+                public class MenuChild
+                {
+                    private int m_id = 0;
+                    private string m_menu_name = string.Empty;
+                    private int m_menu_bmp = 0;
+                    private string m_menu_window = string.Empty;
+                    private string m_menu_memo = string.Empty;
+
+                    public MenuChild(int id)
+                    {
+                        this.m_id = id;
+                        this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
+                        this.m_menu_bmp = BLLFactory<BLLPermissionInfo>.Instance.GetMenuBmp(m_id);
+                        this.m_menu_window = BLLFactory<BLLPermissionInfo>.Instance.GetMenuWindow(m_id);
+                        this.m_menu_memo = BLLFactory<BLLPermissionInfo>.Instance.GetMenuMemo(m_id);
+                    }
+
+                    public int Id
+                    {
+                        get { return m_id; }
+                        set { m_id = value; }
+                    }
+
+                    public string MenuName
+                    {
+                        get { return m_menu_name; }
+                        set { m_menu_name = value; }
+                    }
+
+                    public int MenuBmp
+                    {
+                        get { return m_menu_bmp; }
+                        set { m_menu_bmp = value; }
+                    }
+
+                    public string MenuWindow
+                    {
+                        get { return m_menu_window; }
+                        set { m_menu_window = value; }
+                    }
+
+                    public string MenuMemo
+                    {
+                        get { return m_menu_memo; }
+                        set { m_menu_memo = value; }
+                    }
+                }
+
+            }
+
             public User(int id)
             {
                 this.m_id = id;
@@ -99,7 +255,26 @@ namespace Mondiland.Obj
                 this.m_pwd = BLLFactory<BLLPermissionInfo>.Instance.GetUserPwd(id);
                 this.m_group_id = BLLFactory<BLLPermissionInfo>.Instance.GetGroupId(id);
                 this.m_group_name = BLLFactory<BLLPermissionInfo>.Instance.GetGroupName(this.m_group_id);
+
+                IEnumerator<int> ator = BLLFactory<BLLPermissionInfo>.Instance.GetParentMenuList().GetEnumerator();
+
+                while(ator.MoveNext())
+                {
+                    MenuParent parent = new MenuParent(ator.Current);
+
+                    this.MenuParentList.Add(parent);
+                }
+
+                IEnumerator<int> ator_fav = BLLFactory<BLLPermissionInfo>.Instance.GetFavoritesMenuList(this.Id).GetEnumerator();
+
+                while (ator_fav.MoveNext())
+                {
+                    FavoritesMenu menu = new FavoritesMenu(ator_fav.Current);
+                    FavoritesMenuList.Add(menu);
+                }
             }
+
+
 
             public int Id
             {
