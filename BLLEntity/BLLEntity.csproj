@@ -44,14 +44,12 @@
     <Compile Include="BEMaterialDataInfo.cs" />
     <Compile Include="BEMaterialFillData.cs" />
     <Compile Include="BEPartNameProduct.cs" />
-    <Compile Include="BEProductDataReadProduct.cs" />
     <Compile Include="BEProductDataInfo.cs" />
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BESizeDataList.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BESupplierClass.cs" />
     <Compile Include="BESupplierMInfo.cs" />
-    <Compile Include="BEWashPrintTemplateProduct.cs" />
     <Compile Include="BLLEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BEDengjiProduct.cs" />
