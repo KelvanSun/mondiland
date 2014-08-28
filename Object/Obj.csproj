@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PermissionObject.cs" />
     <Compile Include="ProductObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierObject.cs" />
