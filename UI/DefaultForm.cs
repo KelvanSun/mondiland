@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
-using Mondiland.Global;
 
 namespace Mondiland.UI
 {

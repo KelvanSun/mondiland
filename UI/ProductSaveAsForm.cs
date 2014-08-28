@@ -10,7 +10,6 @@ using System.Text.RegularExpressions;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
-using Mondiland.Global;
 
 namespace Mondiland.UI
 {

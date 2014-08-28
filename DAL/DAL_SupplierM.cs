@@ -10,6 +10,7 @@ using Mondiland.Entity;
 using Mondiland.IDal;
 using Mondiland.Global;
 
+
 namespace Mondiland.DAL
 {
     public class DAL_SupplierM:BaseDal<Table_SupplierM_Entity>,ITable_SupplierM

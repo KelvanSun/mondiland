@@ -12,7 +12,6 @@ using System.Configuration;
 
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
-using Mondiland.Global;
 using Mondiland.Obj;
 
 using Seagull.BarTender.Print;

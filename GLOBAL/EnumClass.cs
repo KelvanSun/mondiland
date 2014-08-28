@@ -19,9 +19,4 @@ namespace Mondiland.Global
         ASC,
         DESC,
     }
-    public enum Mode
-    {
-        Add,
-        Edit,
-    }
 }

@@ -10,6 +10,7 @@ using Mondiland.Entity;
 using Mondiland.IDal;
 using Mondiland.Global;
 
+
 namespace Mondiland.DAL
 {
     public class DAL_StandardData : BaseDal<Table_StardardData_Entity>,ITable_StandardData 

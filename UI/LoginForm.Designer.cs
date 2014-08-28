@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bt_cancel = new System.Windows.Forms.Button();
             this.bt_login = new System.Windows.Forms.Button();
-            this.cbx_username = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_pwd = new System.Windows.Forms.TextBox();
+            this.cbx_usrename = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,17 +80,6 @@
             this.bt_login.UseVisualStyleBackColor = true;
             this.bt_login.Click += new System.EventHandler(this.bt_login_Click);
             // 
-            // cbx_username
-            // 
-            this.cbx_username.BackColor = System.Drawing.SystemColors.Window;
-            this.cbx_username.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_username.FormattingEnabled = true;
-            this.cbx_username.Location = new System.Drawing.Point(98, 95);
-            this.cbx_username.Name = "cbx_username";
-            this.cbx_username.Size = new System.Drawing.Size(221, 20);
-            this.cbx_username.TabIndex = 13;
-            this.cbx_username.SelectedIndexChanged += new System.EventHandler(this.cbx_username_SelectedIndexChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -120,15 +109,28 @@
             this.tb_pwd.TabIndex = 0;
             this.tb_pwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_pwd_KeyDown);
             // 
+            // cbx_usrename
+            // 
+            this.cbx_usrename.ComboBoxHeight = 14;
+            this.cbx_usrename.DropDownHeight = 114;
+            this.cbx_usrename.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_usrename.DropDownWidth = 121;
+            this.cbx_usrename.FormattingEnabled = true;
+            this.cbx_usrename.ItemDropDownHeight = 14;
+            this.cbx_usrename.Location = new System.Drawing.Point(98, 96);
+            this.cbx_usrename.Name = "cbx_usrename";
+            this.cbx_usrename.Size = new System.Drawing.Size(221, 20);
+            this.cbx_usrename.TabIndex = 15;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(415, 215);
+            this.Controls.Add(this.cbx_usrename);
             this.Controls.Add(this.tb_pwd);
             this.Controls.Add(this.bt_cancel);
             this.Controls.Add(this.bt_login);
-            this.Controls.Add(this.cbx_username);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel);
@@ -154,9 +156,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bt_cancel;
         private System.Windows.Forms.Button bt_login;
-        private System.Windows.Forms.ComboBox cbx_username;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_pwd;
+        private UCControl.MultiColumnComboBoxEx cbx_usrename;
     }
 }

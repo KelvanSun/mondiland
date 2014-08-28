@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Deployment.Application;
 
-using Mondiland.Global;
 using Mondiland.BLL;
 using WeifenLuo.WinFormsUI.Docking;
 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Mondiland.BLL;
-using Mondiland.Global;
+using Mondiland.Obj;
 
 
 namespace Mondiland.UI
@@ -16,6 +16,8 @@ namespace Mondiland.UI
     public partial class LoginForm : Form
     {
         private MainForm m_mainForm = null;
+        private PermissionObject m_permission = new PermissionObject();
+
         public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -38,31 +40,43 @@ namespace Mondiland.UI
                 return;
             }
 
-            if (!BLLFactory<BLLLogin>.Instance.Authentication(cbx_username.Text, tb_pwd.Text))
+            PermissionObject.User user = m_permission.UserList[Convert.ToInt32(cbx_usrename.SelectedValue)];
+
+            if(user.Authentication(tb_pwd.Text.Trim()))
             {
-                MessageUtil.ShowWarning("用户验证失败");
-                tb_pwd.Focus();
-                return;
+
             }
 
-            m_mainForm.SetUserId(BLLFactory<BLLLogin>.Instance.GetUserID(cbx_username.Text));
-            this.Close();
+            //if (!BLLFactory<BLLLogin>.Instance.Authentication(cbx_username.Text, tb_pwd.Text))
+            //{
+            //    MessageUtil.ShowWarning("用户验证失败");
+            //    tb_pwd.Focus();
+            //    return;
+            //}
+
+            //m_mainForm.SetUserId(BLLFactory<BLLLogin>.Instance.GetUserID(cbx_username.Text));
+            //this.Close();
 
 
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            List<string> list = BLLFactory<BLLLogin>.Instance.GetUserList();
+            this.cbx_usrename.DataSource = this.m_permission.GetLoginUserList();
+            this.cbx_usrename.DisplayMember = "UserName";
+            this.cbx_usrename.ValueMember = "Index";
+            
+            
+            //List<string> list = BLLFactory<BLLLogin>.Instance.GetUserList();
 
-            IEnumerator<string> ator = list.GetEnumerator();
+            //IEnumerator<string> ator = list.GetEnumerator();
 
-            while (ator.MoveNext())
-            {
-                this.cbx_username.Items.Add(ator.Current.ToString());
-            }
+            //while (ator.MoveNext())
+            //{
+            //    this.cbx_username.Items.Add(ator.Current.ToString());
+            //}
 
-            this.cbx_username.SelectedIndex = 0;
+            //this.cbx_username.SelectedIndex = 0;
            
         }
 
