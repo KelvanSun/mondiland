@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Text;
 
-namespace Mondiland.DAL
+namespace Mondiland.Global
 {
     public class MessageUtil
     {

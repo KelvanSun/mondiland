@@ -22,6 +22,7 @@ namespace Mondiland.BLL
                     {
                         if (bll == null)
                         {
+                            
                             bll = Reflect<T>.Create(typeof(T).Name, "Mondiland.BLL"); //反射创建，并缓存
                         }
                     }

@@ -127,7 +127,6 @@
     <Compile Include="MainToolForm.Designer.cs">
       <DependentUpon>MainToolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageUtil.cs" />
     <Compile Include="PrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +249,10 @@
     <ProjectReference Include="..\ENTITY\Entity.csproj">
       <Project>{c9ec46ac-0da9-4fc4-a98c-6061619b88ca}</Project>
       <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GLOBAL\Global.csproj">
+      <Project>{bc787dd9-49f1-437f-9f07-c7cb0185669d}</Project>
+      <Name>Global</Name>
     </ProjectReference>
     <ProjectReference Include="..\IDAL\IDal.csproj">
       <Project>{a9c3c9fb-8c15-4f98-bceb-75575362e2b1}</Project>

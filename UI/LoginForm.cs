@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using Mondiland.BLL;
 using Mondiland.Obj;
+using Mondiland.Global;
 
 
 namespace Mondiland.UI
