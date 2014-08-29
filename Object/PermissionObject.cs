@@ -16,14 +16,13 @@ namespace Mondiland.Obj
 
         public PermissionObject()
         {
-            IEnumerator<int> ator = BLLFactory<BLLPermissionInfo>.Instance.GetALlUserList().GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach(int id in BLLFactory<BLLPermissionInfo>.Instance.GetALlUserList())
             {
-                User user = new User(ator.Current);
+                User user = new User(id);
 
                 UserList.Add(user);
             }
+           
         }
 
         /// <summary>
@@ -34,21 +33,20 @@ namespace Mondiland.Obj
         {
             BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
 
-            IEnumerator<User> ator = UserList.GetEnumerator();
-
             int index = 0;
 
-            while(ator.MoveNext())
+            foreach (User user in UserList)
             {
                 LoginUserInfo info = new LoginUserInfo();
 
                 info.Index = index++;
-                info.UserName = ator.Current.Name;
-                info.GroupName = ator.Current.GroupName;
+                info.UserName = user.Name;
+                info.GroupName = user.GroupName;
 
                 list.Add(info);
-            }
 
+            }
+            
             return list;
         }
 
@@ -100,14 +98,7 @@ namespace Mondiland.Obj
 
             public bool IsUserMenuFavorites(string form_name)
             {
-                IEnumerator<FavoritesMenu> ator = FavoritesMenuList.GetEnumerator();
-
-                while(ator.MoveNext())
-                {
-                    if (ator.Current.MenuWindow == form_name) return true;
-                }
-
-                return false;
+                return BLLFactory<BLLPermissionInfo>.Instance.IsUserMenuFavorites(this.m_id, form_name);
             }
 
             public class FavoritesMenu
@@ -172,12 +163,10 @@ namespace Mondiland.Obj
                     this.m_id = id;
                     this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
 
-                    IEnumerator<int> ator = BLLFactory<BLLPermissionInfo>.Instance.GetChildMenuList(this.m_id).GetEnumerator();
 
-                    while(ator.MoveNext())
+                    foreach (int child_id in BLLFactory<BLLPermissionInfo>.Instance.GetChildMenuList(this.m_id))
                     {
-                        MenuChild child = new MenuChild(ator.Current);
-
+                        MenuChild child = new MenuChild(child_id);
                         this.MenuChildList.Add(child);
                     }
 
@@ -256,22 +245,19 @@ namespace Mondiland.Obj
                 this.m_group_id = BLLFactory<BLLPermissionInfo>.Instance.GetGroupId(id);
                 this.m_group_name = BLLFactory<BLLPermissionInfo>.Instance.GetGroupName(this.m_group_id);
 
-                IEnumerator<int> ator = BLLFactory<BLLPermissionInfo>.Instance.GetParentMenuList().GetEnumerator();
-
-                while(ator.MoveNext())
+                foreach (int parent_id in BLLFactory<BLLPermissionInfo>.Instance.GetParentMenuList())
                 {
-                    MenuParent parent = new MenuParent(ator.Current);
+                    MenuParent parent = new MenuParent(parent_id);
 
                     this.MenuParentList.Add(parent);
                 }
-
-                IEnumerator<int> ator_fav = BLLFactory<BLLPermissionInfo>.Instance.GetFavoritesMenuList(this.Id).GetEnumerator();
-
-                while (ator_fav.MoveNext())
+                
+                foreach(int fav_id in BLLFactory<BLLPermissionInfo>.Instance.GetFavoritesMenuList(this.Id))
                 {
-                    FavoritesMenu menu = new FavoritesMenu(ator_fav.Current);
+                    FavoritesMenu menu = new FavoritesMenu(fav_id);
                     FavoritesMenuList.Add(menu);
                 }
+                
             }
 
 

@@ -232,5 +232,26 @@ namespace Mondiland.BLL
 
             return UserMenuFavorites_Dal.Insert(entity);
         }
+
+         /// <summary>
+        /// 根据用户ID与窗口名称查询是否已经收藏
+        /// </summary>
+        /// <param name="user_id">用户ID</param>
+        /// <param name="form_name">窗口名称</param>
+        /// <returns>true为已经收藏</returns>
+        public bool IsUserMenuFavorites(int user_id,string form_name)
+        {
+            Hashtable menu_info_hash = new Hashtable();
+
+            menu_info_hash.Add("menu_window", form_name);
+
+            Table_MenuInfo_Entity menu_info = MenuInfo_Dal.Find(menu_info_hash);
+
+            Hashtable menu_favorites_hash = new Hashtable();
+            menu_favorites_hash.Add("user_id", user_id);
+            menu_favorites_hash.Add("menu_id", menu_info.Id);
+
+            return UserMenuFavorites_Dal.FindPrimaryKey(menu_favorites_hash) > 0 ? true:false;
+        }
     }
 }

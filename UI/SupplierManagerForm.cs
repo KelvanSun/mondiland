@@ -101,11 +101,9 @@ namespace Mondiland.UI
             if(cbx_query_type.Text == "拼音码")
             {
                               
-                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByPym(this.txb_query_text.Text.Trim()).GetEnumerator();
-
-                while(ator.MoveNext())
+                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByPym(this.txb_query_text.Text.Trim()))
                 {
-                    SupplierObject ob = new SupplierObject(ator.Current);
+                    SupplierObject ob = new SupplierObject(id);
 
                     main_list.Add(ob);
                 }
@@ -114,11 +112,9 @@ namespace Mondiland.UI
 
             if(cbx_query_type.Text == "公司简称")
             {
-                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByName(this.txb_query_text.Text.Trim()).GetEnumerator();
-
-                while (ator.MoveNext())
+                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByName(this.txb_query_text.Text.Trim()))
                 {
-                    SupplierObject ob = new SupplierObject(ator.Current);
+                    SupplierObject ob = new SupplierObject(id);
 
                     main_list.Add(ob);
                 }
@@ -126,11 +122,9 @@ namespace Mondiland.UI
 
             if(cbx_query_type.Text == "公司全称")
             {
-                IEnumerator<int> ator = BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()).GetEnumerator();
-
-                while (ator.MoveNext())
+                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()))
                 {
-                    SupplierObject ob = new SupplierObject(ator.Current);
+                    SupplierObject ob = new SupplierObject(id);
 
                     main_list.Add(ob);
                 }

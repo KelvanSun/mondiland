@@ -109,15 +109,6 @@ namespace Mondiland.UI
             cbx_standard.Text = string.Empty;
             cbx_standard.SelectedValue = 0;
             
-            
-            AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
-            IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
-
-            while (ator.MoveNext())
-            {
-                acsc.Add(ator.Current.ToString());
-            }
-
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txb_huohao.AutoCompleteCustomSource = this.GetAutoCompleteCustomSource();
@@ -130,11 +121,9 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (string str in BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList())
             {
-                acsc.Add(ator.Current.ToString());
+                acsc.Add(str);
             }
 
             return acsc;
@@ -159,37 +148,33 @@ namespace Mondiland.UI
         /// </summary>
         private void LoadDgvMaterialFill()
         {
-            IEnumerator<BESizeDataList> size_ator = this.product.SizeDataList.GetEnumerator();
-
             this.dgv_material_fill.Columns.Clear();
             txb_fill.Text = this.product.MaterialFillData.material_type;
 
-            while(size_ator.MoveNext())
+            foreach (BESizeDataList size in this.product.SizeDataList)
             {
                 DataGridViewTextBoxColumn dc = new DataGridViewTextBoxColumn();
 
                 dc.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dc.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dc.HeaderText = string.Format("{0}--{1}",size_ator.Current.SizeName,size_ator.Current.SizeType);
+                dc.HeaderText = string.Format("{0}--{1}", size.SizeName, size.SizeType);
                 dc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 this.dgv_material_fill.Columns.Add(dc);
-
             }
+
 
             if (this.dgv_material_fill.ColumnCount <= 0) return;
 
             int index = this.dgv_material_fill.Rows.Add();
 
-            IEnumerator<BEMaterialFillData> fill_ator = this.product.MaterialFillData.m_material_fill_list.GetEnumerator();
-
             int cell_index = 0;
 
-            while(fill_ator.MoveNext())
+            foreach (BEMaterialFillData fill in this.product.MaterialFillData.m_material_fill_list)
             {
-                this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill_ator.Current.Fill;
-        
+                this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill.Fill;
             }
+
 
             this.dgv_material_fill.Rows[index].Selected = false;
 

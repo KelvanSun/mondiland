@@ -52,17 +52,6 @@ namespace Mondiland.UI
             m_mainForm.UserObj = user;
             this.Close();
 
-            //if (!BLLFactory<BLLLogin>.Instance.Authentication(cbx_username.Text, tb_pwd.Text))
-            //{
-            //    MessageUtil.ShowWarning("用户验证失败");
-            //    tb_pwd.Focus();
-            //    return;
-            //}
-
-            //m_mainForm.SetUserId(BLLFactory<BLLLogin>.Instance.GetUserID(cbx_username.Text));
-            //this.Close();
-
-
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

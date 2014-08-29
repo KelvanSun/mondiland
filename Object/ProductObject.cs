@@ -250,13 +250,11 @@ namespace Mondiland.Obj
                     this.m_size_data_list = BLLFactory<BLLProductInfo>.Instance.ReadSizeDataList(m_partname_id);
 
                     //初始化自定义填充列表
-                    IEnumerator<BESizeDataList> ator = this.m_size_data_list.GetEnumerator();
-
-                    while (ator.MoveNext())
+                    foreach (BESizeDataList item in this.m_size_data_list)
                     {
                         BEMaterialFillData data = new BEMaterialFillData();
 
-                        data.SizeName = ator.Current.SizeName;
+                        data.SizeName = item.SizeName;
                         data.Fill = "0";
 
                         this.MaterialFillData.m_material_fill_list.Add(data);
@@ -498,24 +496,22 @@ namespace Mondiland.Obj
         {
             StringBuilder str = new StringBuilder();
 
-            IEnumerator<BEMaterialDataInfo> material_ator = this.m_material_data_list.GetEnumerator();
-
-            while(material_ator.MoveNext())
+            foreach(BEMaterialDataInfo info in this.m_material_data_list)
             {
-                str.Append(material_ator.Current.Type);
+                str.Append(info.Type);
                 str.Append("\r\n");
             }
 
-            IEnumerator<BEMaterialFillData> materialfill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
 
-            while(materialfill_ator.MoveNext())
+            foreach (BEMaterialFillData data in this.MaterialFillData.m_material_fill_list)
             {
-                if(materialfill_ator.Current.SizeName == str_size_name)
+                if(data.SizeName == str_size_name)
                 {
                     str.Append(this.MaterialFillData.material_type);
-                    str.Append(string.Format(" 充绒量:{0}g\r\n",materialfill_ator.Current.Fill));
+                    str.Append(string.Format(" 充绒量:{0}g\r\n", data.Fill));
                 }
             }
+
 
             return str.ToString().Substring(0, str.Length - 2);
   
@@ -617,11 +613,9 @@ namespace Mondiland.Obj
                 //当填充材质不为空时处理填充数据
                 if(this.MaterialFillData.material_type.Trim() != string.Empty)
                 {
-                    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
-
-                    while(ator_data.MoveNext())
+                    foreach(BEMaterialFillData data in this.MaterialFillData.m_material_fill_list)
                     {
-                        if(ator_data.Current.Fill == "0")
+                        if(data.Fill == "0")
                         {
                             result.Code = CodeType.Error;
                             result.Message = "填充规则数据制定不完整,请重新制定!";
@@ -675,22 +669,18 @@ namespace Mondiland.Obj
 
                 this.m_id = BLLFactory<BLLProductInfo>.Instance.GetProductId(this.m_huohao);
 
-                IEnumerator<BEMaterialDataInfo> ator = this.m_material_data_list.GetEnumerator();
-
                 int index = 1;
 
-                while(ator.MoveNext())
+                foreach(BEMaterialDataInfo ob in this.m_material_data_list)
                 {
-                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ator.Current.Type, index++);
+                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ob.Type, index++);
                 }
 
                 if(this.MaterialFillData.material_type.Trim() != string.Empty)
                 {
-                    IEnumerator<BEMaterialFillData> fill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
-
-                    while(fill_ator.MoveNext())
+                    foreach(BEMaterialFillData fill in this.MaterialFillData.m_material_fill_list)
                     {
-                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, fill_ator.Current.SizeName, this.MaterialFillData.material_type, fill_ator.Current.Fill);
+                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, fill.SizeName, this.MaterialFillData.material_type, fill.Fill);
                     }
                 }
 
@@ -754,11 +744,9 @@ namespace Mondiland.Obj
                 //当填充材质不为空时处理填充数据
                 if (this.MaterialFillData.material_type.Trim() != string.Empty)
                 {
-                    IEnumerator<BEMaterialFillData> ator_data = this.MaterialFillData.m_material_fill_list.GetEnumerator();
-
-                    while (ator_data.MoveNext())
+                    foreach(BEMaterialFillData data in this.MaterialFillData.m_material_fill_list)
                     {
-                        if (ator_data.Current.Fill == "0")
+                        if(data.Fill == "0")
                         {
                             result.Code = CodeType.Error;
                             result.Message = "填充规则数据制定不完整,请重新制定!";
@@ -819,25 +807,22 @@ namespace Mondiland.Obj
                 //保存成份信息
                 BLLFactory<BLLProductInfo>.Instance.DeleteMaterialInfo(this.m_id);
 
-                IEnumerator<BEMaterialDataInfo> ator = this.m_material_data_list.GetEnumerator();
-
                 int index = 1;
 
-                while (ator.MoveNext())
+                foreach (BEMaterialDataInfo info1 in this.m_material_data_list)
                 {
-                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, ator.Current.Type, index++);
+                    BLLFactory<BLLProductInfo>.Instance.AddMaterialInfo(this.m_id, info1.Type, index++);
                 }
+
                 ////////////////////////////////////////////////////////
 
                 BLLFactory<BLLProductInfo>.Instance.DeleteMaterialFillInfo(this.m_id);
 
                 if (this.MaterialFillData.material_type.Trim() != string.Empty)
                 {
-                    IEnumerator<BEMaterialFillData> fill_ator = this.MaterialFillData.m_material_fill_list.GetEnumerator();
-
-                    while (fill_ator.MoveNext())
+                    foreach(BEMaterialFillData data in this.MaterialFillData.m_material_fill_list)
                     {
-                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, fill_ator.Current.SizeName, this.MaterialFillData.material_type, fill_ator.Current.Fill);
+                        BLLFactory<BLLProductInfo>.Instance.AddMaterialFillInfo(this.m_id, data.SizeName, this.MaterialFillData.material_type, data.Fill);
                     }
                 }
 

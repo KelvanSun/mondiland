@@ -26,29 +26,22 @@ namespace Mondiland.UI
         /// <param name="user_id">登陆的用户ID</param>
         public void LoadMenuInfo()
         {
-            IEnumerator<PermissionObject.User.MenuParent> parent_ator = Program.main_form.UserObj.MenuParentList.GetEnumerator();
-
-            int index = 0;
-
-            while(parent_ator.MoveNext())
+            foreach(PermissionObject.User.MenuParent parent in Program.main_form.UserObj.MenuParentList)
             {
-                OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent_ator.Current.MenuName);
+                OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent.MenuName);
                 outlookShortcutsBand.LargeImageList = Program.main_form.imageList;
                 outlookShortcutsBand.SmallImageList = Program.main_form.imageList;
                 outlookShortcutsBand.Background = Color.White;
 
-                IEnumerator<PermissionObject.User.MenuParent.MenuChild> child_ator = Program.main_form.UserObj.MenuParentList[index++].MenuChildList.GetEnumerator();
-
-                while(child_ator.MoveNext())
+                foreach(PermissionObject.User.MenuParent.MenuChild child in parent.MenuChildList)
                 {
                     OutlookBarItem item = new OutlookBarItem();
 
-                    item.Text = child_ator.Current.MenuName;
-                    item.Tag = child_ator.Current.MenuWindow;
-                    item.ImageIndex = child_ator.Current.MenuBmp;
+                    item.Text = child.MenuName;
+                    item.Tag = child.MenuWindow;
+                    item.ImageIndex = child.MenuBmp;
 
                     outlookShortcutsBand.Items.Add(item);
-
                 }
 
                 this.outlookBar.Bands.Add(outlookShortcutsBand);

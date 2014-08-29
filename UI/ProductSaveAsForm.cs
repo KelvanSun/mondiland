@@ -27,11 +27,9 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            IEnumerator<string> ator = BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList().GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (string str in BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList())
             {
-                acsc.Add(ator.Current.ToString());
+                acsc.Add(str);
             }
 
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;

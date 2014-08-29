@@ -23,16 +23,14 @@ namespace Mondiland.UI
         {
             this.flowLayoutPanel.Controls.Clear();
 
-            IEnumerator<PermissionObject.User.FavoritesMenu> ator = Program.main_form.UserObj.FavoritesMenuList.GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach(PermissionObject.User.FavoritesMenu menu in Program.main_form.UserObj.FavoritesMenuList)
             {
                 UCListViewItem item = new UCListViewItem();
 
-                item.ItemCaption = ator.Current.MenuName;
-                item.ItemImage = Program.main_form.imageList.Images[ator.Current.MenuBmp];
-                item.ItemMemo = ator.Current.MenuMemo;
-                item.ItemFormName = ator.Current.MenuWindow;
+                item.ItemCaption = menu.MenuName;
+                item.ItemImage = Program.main_form.imageList.Images[menu.MenuBmp];
+                item.ItemMemo = menu.MenuMemo;
+                item.ItemFormName = menu.MenuWindow;
 
                 this.flowLayoutPanel.Controls.Add(item);
             }
