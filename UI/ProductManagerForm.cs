@@ -299,7 +299,14 @@ namespace Mondiland.UI
 
         private void txb_price_TextChanged(object sender, EventArgs e)
         {
-            this.product.Price = Convert.ToDecimal(this.txb_price.Text);
+            try
+            {
+                this.product.Price = Convert.ToDecimal(this.txb_price.Text);
+            }
+            catch
+            {
+                this.product.Price = 0;
+            }
         }
 
         private void cbx_safedata_DropDownClosed(object sender, EventArgs e)
