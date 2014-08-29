@@ -81,15 +81,13 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("product_id", id);
 
-            IEnumerator<Table_MaterialFill_Entity> ator = MaterialFill_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach (Table_MaterialFill_Entity entity in MaterialFill_Dal.Find(hash, SqlOperator.And, true))
             {
                 BEMaterialFillData info = new BEMaterialFillData();
 
-                info.Id = ator.Current.Id;
-                info.SizeName = ator.Current.Size_Name;
-                info.Fill = ator.Current.Fill;
+                info.Id = entity.Id;
+                info.SizeName = entity.Size_Name;
+                info.Fill = entity.Fill;
 
                 list.Add(info);
             }
@@ -109,11 +107,9 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("product_id", id);
 
-            IEnumerator<Table_MaterialFill_Entity> ator = MaterialFill_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
-            
-            while(ator.MoveNext())
+            foreach (Table_MaterialFill_Entity entity in MaterialFill_Dal.Find(hash, SqlOperator.And, true))
             {
-                str = ator.Current.Type;
+                str = entity.Type;
                 break;
             }
             
@@ -135,32 +131,29 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("class_id", partname.SizeClass_id);
 
-            IEnumerator<Table_SizeData_Entity> ator = SizeData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
-
             int index = 1;
 
-            while (ator.MoveNext())
+            foreach (Table_SizeData_Entity entity in SizeData_Dal.Find(hash, SqlOperator.And, true))
             {
-                BESizeDataList info = new BESizeDataList();                
-                
-                if (ator.Current.Other == string.Empty)
+                BESizeDataList info = new BESizeDataList();
+
+                if (entity.Other == string.Empty)
                 {
                     info.Id = index++;
-                    info.SizeName = ator.Current.Size_Name;
-                    info.SizeType = ator.Current.Size_Type;
-
-                    
+                    info.SizeName = entity.Size_Name;
+                    info.SizeType = entity.Size_Type;
                 }
                 else
                 {
                     info.Id = index++;
-                    info.SizeName = ator.Current.Size_Name;
-                    info.SizeType = string.Format("{0}({1})", ator.Current.Size_Type, ator.Current.Other);
+                    info.SizeName = entity.Size_Name;
+                    info.SizeType = string.Format("{0}({1})", entity.Size_Type, entity.Other);
 
                 }
 
                 list.Add(info);
             }
+
 
             return list;
         }
@@ -332,11 +325,9 @@ namespace Mondiland.BLL
         {
             List<string> list = new List<string>();
 
-            IEnumerator<Table_ProductData_Entity> ator = ProductData_Dal.GetAll(false).GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (Table_ProductData_Entity entity in ProductData_Dal.GetAll(false))
             {
-                list.Add(ator.Current.HuoHao);
+                list.Add(entity.HuoHao);
             }
 
             return list;
@@ -350,15 +341,13 @@ namespace Mondiland.BLL
         {
             BindingList<BEStandardDataProduct> list = new BindingList<BEStandardDataProduct>();
 
-            IEnumerator<Table_StardardData_Entity> ator = StandardData_Dal.GetAll(true).GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (Table_StardardData_Entity entity in StandardData_Dal.GetAll(true))
             {
                 BEStandardDataProduct info = new BEStandardDataProduct();
 
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
-                info.Memo = ator.Current.Memo;
+                info.Id = entity.Id;
+                info.Type = entity.Type;
+                info.Memo = entity.Memo;
 
                 list.Add(info);
             }
@@ -374,15 +363,13 @@ namespace Mondiland.BLL
         {
             BindingList<BESafeDataProduct> list = new BindingList<BESafeDataProduct>();
 
-            IEnumerator<Table_SafeData_Entity> ator = SafeData_Dal.GetAll(true).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach (Table_SafeData_Entity entity in SafeData_Dal.GetAll(true))
             {
                 BESafeDataProduct info = new BESafeDataProduct();
 
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
-                info.Memo = ator.Current.Memo;
+                info.Id = entity.Id;
+                info.Type = entity.Type;
+                info.Memo = entity.Memo;
 
                 list.Add(info);
             }
@@ -398,21 +385,18 @@ namespace Mondiland.BLL
         {
             BindingList<BEPartNameProduct> list = new BindingList<BEPartNameProduct>();
 
-            IEnumerator<Table_PartName_Entity> ator = PartName_Dal.GetAll(false).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach(Table_PartName_Entity partname in PartName_Dal.GetAll(false))
             {
                 BEPartNameProduct info = new BEPartNameProduct();
 
-                Table_SizeClass_Entity entity = SizeClass_Dal.FindByID(ator.Current.SizeClass_id);
+                Table_SizeClass_Entity entity = SizeClass_Dal.FindByID(partname.SizeClass_id);
 
-                info.Id = ator.Current.Id;
-                info.PartName = ator.Current.Name;
+                info.Id = partname.Id;
+                info.PartName = partname.Name;
                 info.ClassType = entity.Type;
-                info.Memo = ator.Current.Memo;
+                info.Memo = partname.Memo;
 
                 list.Add(info);
-
             }
 
 
@@ -428,14 +412,12 @@ namespace Mondiland.BLL
         {
             BindingList<BEMadePlaceProduct> list = new BindingList<BEMadePlaceProduct>();
 
-            IEnumerator<Table_MadePlace_Entity> ator = MadePlace_Dal.GetAll(false).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach (Table_MadePlace_Entity entity in MadePlace_Dal.GetAll(false))
             {
                 BEMadePlaceProduct info = new BEMadePlaceProduct();
 
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
+                info.Id = entity.Id;
+                info.Type = entity.Type;
 
                 list.Add(info);
             }
@@ -451,15 +433,13 @@ namespace Mondiland.BLL
         {
             BindingList<BEDengjiProduct> list = new BindingList<BEDengjiProduct>();
 
-            IEnumerator<Table_Dengji_Entity> ator = Dengji_Dal.GetAll(false).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach (Table_Dengji_Entity entity in Dengji_Dal.GetAll(false))
             {
                 BEDengjiProduct info = new BEDengjiProduct();
 
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
-                info.Memo = ator.Current.Memo;
+                info.Id = entity.Id;
+                info.Type = entity.Type;
+                info.Memo = entity.Memo;
 
                 list.Add(info);
             }
@@ -479,13 +459,11 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("product_id", product_id);
 
-            IEnumerator<Table_MaterialData_Entity> ator = MaterialData_Dal.Find(hash, SqlOperator.And, true).GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (Table_MaterialData_Entity entity in MaterialData_Dal.Find(hash, SqlOperator.And, true))
             {
                 BEMaterialDataInfo info = new BEMaterialDataInfo();
-                info.Id = ator.Current.Id;
-                info.Type = ator.Current.Type;
+                info.Id = entity.Id;
+                info.Type = entity.Type;
 
                 list.Add(info);
             }
@@ -575,13 +553,11 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("type",str_clss);
 
-            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false).GetEnumerator();
-
-            while(ator.MoveNext())
+            foreach (Table_WashPrintTemplate_Entity entity in WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false))
             {
-                if(ator.Current.File_Name.Substring(5,1) == row.ToString())
+                if (entity.File_Name.Substring(5, 1) == row.ToString())
                 {
-                    result = ator.Current.File_Name;
+                    result = entity.File_Name;
                     break;
                 }
             }
@@ -603,13 +579,11 @@ namespace Mondiland.BLL
             Hashtable hash = new Hashtable();
             hash.Add("type", str_clss);
 
-            IEnumerator<Table_WashPrintTemplate_Entity> ator = WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false).GetEnumerator();
-
-            while (ator.MoveNext())
+            foreach (Table_WashPrintTemplate_Entity entity in WashPrintTemplate_Dal.Find(hash, SqlOperator.Like, false))
             {
-                if (ator.Current.File_Name.Substring(5, 1) == row.ToString())
+                if (entity.File_Name.Substring(5, 1) == row.ToString())
                 {
-                    result = ator.Current.Id;
+                    result = entity.Id;
                     break;
                 }
             }
