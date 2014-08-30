@@ -20,7 +20,7 @@ namespace Mondiland.BLLEntity
         private string m_memo = string.Empty;
         private bool m_pwash = false;
         private bool m_pbad = false;
-        private long m_lastamp = 0;
+        private string m_lastamp = string.Empty;
 
 
         public bool Pbad
@@ -28,7 +28,7 @@ namespace Mondiland.BLLEntity
             get { return m_pbad; }
             set { m_pbad = value; }
         }
-        public long LasTamp
+        public string LasTamp
         {
             get { return m_lastamp; }
             set { m_lastamp = value; }

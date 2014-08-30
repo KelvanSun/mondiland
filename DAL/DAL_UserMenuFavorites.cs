@@ -38,7 +38,7 @@ namespace Mondiland.DAL
             entity.Id = reader.GetInt32("id");
             entity.UserId = reader.GetInt32("user_id");
             entity.MenuId = reader.GetInt32("menu_id");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

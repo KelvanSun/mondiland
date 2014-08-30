@@ -26,7 +26,7 @@ namespace Mondiland.Obj
         private string m_fax = string.Empty;
         private string m_address = string.Empty;
         private string m_memo = string.Empty;
-        private long m_lastamp = 0;
+        private string m_lastamp = string.Empty;
 
         public SupplierObject() { }
 

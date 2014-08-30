@@ -100,7 +100,7 @@ namespace Mondiland.Obj
         private decimal m_price = 0;
         private string m_memo = string.Empty;
         private bool m_pwash = false;
-        private long m_lastamp = 0;
+        private string m_lastamp = string.Empty;
         /// <summary>
         /// 条形码前缀
         /// </summary>

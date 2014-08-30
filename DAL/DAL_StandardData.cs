@@ -40,7 +40,7 @@ namespace Mondiland.DAL
             entity.Id = reader.GetInt32("id");
             entity.Type = reader.GetString("type");
             entity.Memo = reader.GetString("memo");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

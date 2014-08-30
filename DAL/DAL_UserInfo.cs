@@ -39,7 +39,7 @@ namespace Mondiland.DAL
             entity.Name = reader.GetString("name");
             entity.Pwd = reader.GetString("pwd");
             entity.Group_Id = reader.GetInt32("group_id");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

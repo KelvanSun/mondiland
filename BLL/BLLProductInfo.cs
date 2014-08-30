@@ -598,7 +598,7 @@ namespace Mondiland.BLL
             entity.Product_Id = product_id;
             entity.Type = type;
             entity.Order_Index = order;
-            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+            entity.LasTamp = System.Guid.NewGuid().ToString();
 
             return MaterialData_Dal.Insert(entity);
         }
@@ -611,7 +611,7 @@ namespace Mondiland.BLL
             entity.Size_Name = size_name;
             entity.Type = type;
             entity.Fill = fill;
-            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+            entity.LasTamp = System.Guid.NewGuid().ToString();
 
             return MaterialFill_Dal.Insert(entity);
         }
@@ -640,7 +640,7 @@ namespace Mondiland.BLL
                 entity.Pbad = 1;
             else
                 entity.Pbad = 0;
-            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+            entity.LasTamp = System.Guid.NewGuid().ToString(); 
             
             return ProductData_Dal.Insert(entity);
         }
@@ -692,7 +692,7 @@ namespace Mondiland.BLL
             field.Add("memo", info.Memo);
             field.Add("pwash", info.Pwash);
             field.Add("pbad", info.Pbad);
-            field.Add("lastamp", UtilFun.GetTimeSLasTamp());
+            field.Add("lastamp", System.Guid.NewGuid().ToString());
 
             Hashtable where = new Hashtable();
 
@@ -740,7 +740,7 @@ namespace Mondiland.BLL
         /// </summary>
         /// <param name="lastamp"></param>
         /// <returns>true为已经变动</returns>
-        public bool UpdateCheckLastamp(int id,long lastamp)
+        public bool UpdateCheckLastamp(int id,string lastamp)
         {
             Table_ProductData_Entity entity = ProductData_Dal.FindByID(id);
 

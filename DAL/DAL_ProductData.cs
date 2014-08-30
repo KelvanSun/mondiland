@@ -48,7 +48,7 @@ namespace Mondiland.DAL
             entity.Memo = reader.GetString("memo");
             entity.Pwash = reader.GetInt32("pwash");
             entity.Pbad = reader.GetInt32("pbad");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

@@ -41,7 +41,7 @@ namespace Mondiland.DAL
             entity.MenuWindow = reader.GetString("menu_window");
             entity.MenuMemo = reader.GetString("menu_memo");
             entity.MenuParent = reader.GetInt32("menu_parent");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
             entity.MenuOrder = reader.GetInt32("menu_order");
 
             return entity;

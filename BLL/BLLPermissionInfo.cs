@@ -228,7 +228,7 @@ namespace Mondiland.BLL
 
             entity.UserId = user_id;
             entity.MenuId = menu_info.Id;
-            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+            entity.LasTamp = System.Guid.NewGuid().ToString();
 
             return UserMenuFavorites_Dal.Insert(entity);
         }

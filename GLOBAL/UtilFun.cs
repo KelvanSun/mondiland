@@ -8,12 +8,6 @@ namespace Mondiland.Global
 {
     public class UtilFun
     {
-        public static long GetTimeSLasTamp()
-        {
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return Convert.ToInt64(ts.TotalSeconds);
-        }
-
         public static string GetMD5(string in_str)
         {
             byte[] result = Encoding.Default.GetBytes(in_str.Trim());    //tbPass为输入密码的文本框  

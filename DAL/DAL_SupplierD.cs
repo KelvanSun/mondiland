@@ -47,7 +47,7 @@ namespace Mondiland.DAL
             entity.QQ = reader.GetString("qq");
             entity.Memo = reader.GetString("memo");
             entity.Address = reader.GetString("address");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

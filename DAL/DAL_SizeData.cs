@@ -44,7 +44,7 @@ namespace Mondiland.DAL
             entity.Size_Type = reader.GetString("size_type");
             entity.Other = reader.GetString("other");
             entity.Memo = reader.GetString("memo");
-            entity.LasTamp = reader.GetLong("lastamp");
+            entity.LasTamp = reader.GetString("lastamp");
 
             return entity;
         }

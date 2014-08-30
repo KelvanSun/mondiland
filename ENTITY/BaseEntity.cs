@@ -8,7 +8,7 @@ namespace Mondiland.Entity
     public class BaseEntity
     {
         protected int m_id = 0;
-        protected long m_lastamp = 0;
+        protected string m_lastamp = string.Empty;
 
         public int Id
         {
@@ -16,7 +16,7 @@ namespace Mondiland.Entity
             set { m_id = value; }
         }
 
-        public long LasTamp
+        public string LasTamp
         {
             get { return m_lastamp; }
             set { m_lastamp = value; }

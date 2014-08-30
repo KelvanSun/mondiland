@@ -78,7 +78,7 @@ namespace Mondiland.BLL
             entity.Fax = info.Fax;
             entity.Address = info.Address;
             entity.Memo = info.Memo;
-            entity.LasTamp = UtilFun.GetTimeSLasTamp();
+            entity.LasTamp = System.Guid.NewGuid().ToString();
 
             return SupplierM_Dal.Insert(entity);
         }
@@ -102,7 +102,7 @@ namespace Mondiland.BLL
             field.Add("fax", info.Fax);
             field.Add("address", info.Address);
             field.Add("memo", info.Memo);
-            field.Add("lastamp", UtilFun.GetTimeSLasTamp());
+            field.Add("lastamp", System.Guid.NewGuid().ToString());
 
             Hashtable where = new Hashtable();
 
@@ -146,7 +146,7 @@ namespace Mondiland.BLL
         /// </summary>
         /// <param name="lastamp"></param>
         /// <returns>true为已经变动</returns>
-        public bool UpdateCheckLastamp(int id, long lastamp)
+        public bool UpdateCheckLastamp(int id, string lastamp)
         {
             Table_SupplierM_Entity entity = SupplierM_Dal.FindByID(id);
 
