@@ -7,6 +7,7 @@ using System.ComponentModel;
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
 using Mondiland.Global;
+using Mondiland.EFModule;
 
 
 namespace Mondiland.Obj
@@ -16,20 +17,21 @@ namespace Mondiland.Obj
         public List<User> UserList = new List<User>();
         public User login_user = null;
 
-
         public PermissionObject()
         {
-            foreach(int id in BLLFactory<BLLPermissionInfo>.Instance.GetALlUserList())
+            using (ProductContext ctx = new ProductContext())
             {
-                User user = new User(id);
+                var users = from u in ctx.UserInfo
+                            select u;
+                
+                foreach (var obj in users)
+                {
+                    User user = new User(obj.id);
 
-                UserList.Add(user);
+                    UserList.Add(user);
+                }
             }
-
-            
-            
-
-           
+       
         }
 
         /// <summary>
@@ -53,7 +55,8 @@ namespace Mondiland.Obj
                 list.Add(info);
 
             }
-            
+
+          
             return list;
         }
 
@@ -96,16 +99,48 @@ namespace Mondiland.Obj
 
             public bool SetFavorites(string form_name)
             {
-                return BLLFactory<BLLPermissionInfo>.Instance.SetFavorites(this.m_id, form_name);
+                using (ProductContext ctx = new ProductContext())
+                {
+                    UserMenuFavorites favorites = new UserMenuFavorites();
+                    favorites.user_id = this.m_id;
+                    favorites.menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+                    favorites.lastamp = System.Guid.NewGuid();
+
+                    ctx.UserMenuFavorites.Add(favorites);
+                    return ctx.SaveChanges() > 0 ? true : false;
+                }
+         
             }
             public bool UnFavorites(string form_name)
             {
-                return BLLFactory<BLLPermissionInfo>.Instance.UnFavorites(this.m_id, form_name);
+                using (ProductContext ctx = new ProductContext())
+                {
+
+                    int menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+
+                    UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
+                                             where fav.user_id == this.m_id && fav.menu_id == menu_id
+                                             select fav).FirstOrDefault();
+
+                    ctx.UserMenuFavorites.Remove(obj);
+
+                    return ctx.SaveChanges() > 0 ? true : false;
+                }
             }
 
             public bool IsUserMenuFavorites(string form_name)
             {
-                return BLLFactory<BLLPermissionInfo>.Instance.IsUserMenuFavorites(this.m_id, form_name);
+                using (ProductContext ctx = new ProductContext())
+                {
+
+                    int menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+
+                    UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
+                                             where fav.user_id == this.m_id && fav.menu_id == menu_id
+                                             select fav).FirstOrDefault();
+
+                    return obj == null ? false : true;
+                }
             }
 
             public class FavoritesMenu
@@ -118,11 +153,20 @@ namespace Mondiland.Obj
 
                 public FavoritesMenu(int id)
                 {
-                    this.m_id = id;
-                    this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
-                    this.m_menu_bmp = BLLFactory<BLLPermissionInfo>.Instance.GetMenuBmp(m_id);
-                    this.m_menu_window = BLLFactory<BLLPermissionInfo>.Instance.GetMenuWindow(m_id);
-                    this.m_menu_memo = BLLFactory<BLLPermissionInfo>.Instance.GetMenuMemo(m_id);
+                    using (ProductContext ctx = new ProductContext())
+                    {
+
+                        MenuInfo info = (from menu in ctx.MenuInfo
+                                         where menu.id == id
+                                         select menu).FirstOrDefault();
+
+                        this.m_id = id;
+                        this.m_menu_name = info.menu_name;
+                        this.m_menu_bmp = info.menu_bmp;
+                        this.m_menu_window = info.menu_window;
+                        this.m_menu_memo = info.menu_memo;
+                    }
+
                 }
 
                 public int Id
@@ -167,16 +211,28 @@ namespace Mondiland.Obj
 
                 public MenuParent(int id)
                 {
-                    this.m_id = id;
-                    this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
-
-
-                    foreach (int child_id in BLLFactory<BLLPermissionInfo>.Instance.GetChildMenuList(this.m_id))
+                    using (ProductContext ctx = new ProductContext())
                     {
-                        MenuChild child = new MenuChild(child_id);
-                        this.MenuChildList.Add(child);
-                    }
+                        this.m_id = id;
+                        this.m_menu_name = (from menu in ctx.MenuInfo
+                                            where menu.id == this.m_id
+                                            select menu).FirstOrDefault().menu_name;
 
+                        var childs = from menu in ctx.MenuInfo
+                                         where menu.menu_parent == this.m_id
+                                         orderby menu.menu_order
+                                         select menu;
+
+                        foreach(var child in childs)
+                        {
+                            MenuChild info = new MenuChild(child.id);
+                            this.MenuChildList.Add(info);
+                        }
+
+
+                    }
+        
+     
                 }
 
                 public int Id
@@ -204,11 +260,18 @@ namespace Mondiland.Obj
 
                     public MenuChild(int id)
                     {
-                        this.m_id = id;
-                        this.m_menu_name = BLLFactory<BLLPermissionInfo>.Instance.GetMenuName(m_id);
-                        this.m_menu_bmp = BLLFactory<BLLPermissionInfo>.Instance.GetMenuBmp(m_id);
-                        this.m_menu_window = BLLFactory<BLLPermissionInfo>.Instance.GetMenuWindow(m_id);
-                        this.m_menu_memo = BLLFactory<BLLPermissionInfo>.Instance.GetMenuMemo(m_id);
+                        using (ProductContext ctx = new ProductContext())
+                        {
+                            MenuInfo menu = (from m in ctx.MenuInfo
+                                             where m.id == id
+                                             select m).FirstOrDefault();
+
+                            this.m_id = id;
+                            this.m_menu_name = menu.menu_name;
+                            this.m_menu_bmp = menu.menu_bmp;
+                            this.m_menu_window = menu.menu_window;
+                            this.m_menu_memo = menu.menu_memo;
+                        }
                     }
 
                     public int Id
@@ -246,25 +309,44 @@ namespace Mondiland.Obj
 
             public User(int id)
             {
-                this.m_id = id;
-                this.m_name = BLLFactory<BLLPermissionInfo>.Instance.GetUserName(id);
-                this.m_pwd = BLLFactory<BLLPermissionInfo>.Instance.GetUserPwd(id);
-                this.m_group_id = BLLFactory<BLLPermissionInfo>.Instance.GetGroupId(id);
-                this.m_group_name = BLLFactory<BLLPermissionInfo>.Instance.GetGroupName(this.m_group_id);
-
-                foreach (int parent_id in BLLFactory<BLLPermissionInfo>.Instance.GetParentMenuList())
+                using (ProductContext ctx = new ProductContext())
                 {
-                    MenuParent parent = new MenuParent(parent_id);
+                    UserInfo info = (from u in ctx.UserInfo
+                                     where u.id == id
+                                     select u).FirstOrDefault();
 
-                    this.MenuParentList.Add(parent);
+                    this.m_id = info.id;
+                    this.m_name = info.name;
+                    this.m_pwd = info.pwd;
+                    this.m_group_id = info.group_id;
+                    this.m_group_name = info.GroupInfo.name;
+                    
+                    
+                    var parents = from m in ctx.MenuInfo
+                                       where m.menu_parent == 0
+                                       select m;
+
+                    foreach(var parent in parents)
+                    {
+                        MenuParent menu = new MenuParent(parent.id);
+
+                        this.MenuParentList.Add(menu);
+                    }
+
+
+                    var favs = from m in ctx.UserMenuFavorites
+                               where m.user_id == this.m_id
+                               select m;
+
+                    foreach(var fav in favs)
+                    {
+                        FavoritesMenu menu = new FavoritesMenu(fav.menu_id);
+                        FavoritesMenuList.Add(menu);
+                    }
+
+
                 }
-                
-                foreach(int fav_id in BLLFactory<BLLPermissionInfo>.Instance.GetFavoritesMenuList(this.Id))
-                {
-                    FavoritesMenu menu = new FavoritesMenu(fav_id);
-                    FavoritesMenuList.Add(menu);
-                }
-                
+               
             }
 
 
