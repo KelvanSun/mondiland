@@ -48,11 +48,106 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dengji.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperties.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupMenu.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MadePlace.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialFill.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartName.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModule.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductModule.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModule.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModule.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductModule.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeClass.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StandardData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierClass.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierD.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierM.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TagPrintTemplate.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenuFavorites.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WashPrintTemplate.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="ProductModule.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProductModule.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ProductModule.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductModule.edmx</DependentUpon>
+      <LastGenOutput>ProductModule.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ProductModule.edmx.diagram">
+      <DependentUpon>ProductModule.edmx</DependentUpon>
+    </None>
+    <None Include="ProductModule.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductModule.edmx</DependentUpon>
+      <LastGenOutput>ProductModule.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

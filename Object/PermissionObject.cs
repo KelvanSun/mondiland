@@ -7,7 +7,7 @@ using System.ComponentModel;
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
 using Mondiland.Global;
-using Mondiland.EFModule;
+
 
 namespace Mondiland.Obj
 {
@@ -26,7 +26,7 @@ namespace Mondiland.Obj
                 UserList.Add(user);
             }
 
-            ProductEntities ctx = new ProductEntities();
+            
             
 
            

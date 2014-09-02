@@ -1,0 +1,1437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dengji">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="menu_id" Type="int" Nullable="false" />
+          <Property Name="menu_order" Type="int" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MadePlace">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialFill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="size_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fill" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="menu_bmp" Type="int" Nullable="false" />
+          <Property Name="menu_window" Type="nvarchar" MaxLength="50" />
+          <Property Name="menu_parent" Type="int" Nullable="false" />
+          <Property Name="menu_memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="menu_order" Type="int" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="size_class_id" Type="int" Nullable="false" />
+          <Property Name="safe_id" Type="int" Nullable="false" />
+          <Property Name="standard_id" Type="int" Nullable="false" />
+          <Property Name="pwash" Type="int" Nullable="false" />
+          <Property Name="pbad" Type="int" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="partname_id" Type="int" Nullable="false" />
+          <Property Name="huohao" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="safedata_id" Type="int" Nullable="false" />
+          <Property Name="standarddata_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="madeplace_id" Type="int" Nullable="false" />
+          <Property Name="dengji_id" Type="int" Nullable="false" />
+          <Property Name="tag_id" Type="int" Nullable="false" />
+          <Property Name="wash_id" Type="int" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="pwash" Type="int" Nullable="false" />
+          <Property Name="pbad" Type="int" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SafeData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SizeClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SizeData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="class_id" Type="int" Nullable="false" />
+          <Property Name="size_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="size_type" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="other" Type="nvarchar" MaxLength="50" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StandardData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplier_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pym" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="qq" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="class_id" Type="int" Nullable="false" />
+          <Property Name="pym" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="intact_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bank_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="account" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagPrintTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="file_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMenuFavorites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="menu_id" Type="int" Nullable="false" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WashPrintTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="file_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="daxiao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GroupMenu_GroupInfo">
+          <End Role="GroupInfo" Type="Self.GroupInfo" Multiplicity="1" />
+          <End Role="GroupMenu" Type="Self.GroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupMenu">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMenu_MenuInfo">
+          <End Role="MenuInfo" Type="Self.MenuInfo" Multiplicity="1" />
+          <End Role="GroupMenu" Type="Self.GroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupMenu">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialData_ProductData">
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="1" />
+          <End Role="MaterialData" Type="Self.MaterialData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaterialData">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialFill_ProductData">
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="1" />
+          <End Role="MaterialFill" Type="Self.MaterialFill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaterialFill">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartName_SizeClass">
+          <End Role="SizeClass" Type="Self.SizeClass" Multiplicity="1" />
+          <End Role="PartName" Type="Self.PartName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartName">
+              <PropertyRef Name="size_class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_Dengji">
+          <End Role="Dengji" Type="Self.Dengji" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dengji">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="dengji_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_MadePlace">
+          <End Role="MadePlace" Type="Self.MadePlace" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MadePlace">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="madeplace_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_PartName">
+          <End Role="PartName" Type="Self.PartName" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="partname_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_SafeData">
+          <End Role="SafeData" Type="Self.SafeData" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SafeData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="safedata_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_StandardData">
+          <End Role="StandardData" Type="Self.StandardData" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="standarddata_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_TagPrintTemplate">
+          <End Role="TagPrintTemplate" Type="Self.TagPrintTemplate" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagPrintTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="tag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_WashPrintTemplate">
+          <End Role="WashPrintTemplate" Type="Self.WashPrintTemplate" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WashPrintTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="wash_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SizeData_SizeClass">
+          <End Role="SizeClass" Type="Self.SizeClass" Multiplicity="1" />
+          <End Role="SizeData" Type="Self.SizeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SizeData">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierD_SupplierM">
+          <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="1" />
+          <End Role="SupplierD" Type="Self.SupplierD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierM">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierD">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierM_SupplierClass">
+          <End Role="SupplierClass" Type="Self.SupplierClass" Multiplicity="1" />
+          <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierM">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_GroupInfo">
+          <End Role="GroupInfo" Type="Self.GroupInfo" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMenuFavorites_MenuInfo">
+          <End Role="MenuInfo" Type="Self.MenuInfo" Multiplicity="1" />
+          <End Role="UserMenuFavorites" Type="Self.UserMenuFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMenuFavorites">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMenuFavorites_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="UserMenuFavorites" Type="Self.UserMenuFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMenuFavorites">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProductModelStoreContainer">
+          <EntitySet Name="Dengji" EntityType="Self.Dengji" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMenu" EntityType="Self.GroupMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MadePlace" EntityType="Self.MadePlace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialData" EntityType="Self.MaterialData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialFill" EntityType="Self.MaterialFill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartName" EntityType="Self.PartName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductData" EntityType="Self.ProductData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SafeData" EntityType="Self.SafeData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SizeClass" EntityType="Self.SizeClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SizeData" EntityType="Self.SizeData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StandardData" EntityType="Self.StandardData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierClass" EntityType="Self.SupplierClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierD" EntityType="Self.SupplierD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierM" EntityType="Self.SupplierM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagPrintTemplate" EntityType="Self.TagPrintTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMenuFavorites" EntityType="Self.UserMenuFavorites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WashPrintTemplate" EntityType="Self.WashPrintTemplate" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GroupMenu_GroupInfo" Association="Self.FK_GroupMenu_GroupInfo">
+            <End Role="GroupInfo" EntitySet="GroupInfo" />
+            <End Role="GroupMenu" EntitySet="GroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMenu_MenuInfo" Association="Self.FK_GroupMenu_MenuInfo">
+            <End Role="MenuInfo" EntitySet="MenuInfo" />
+            <End Role="GroupMenu" EntitySet="GroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialData_ProductData" Association="Self.FK_MaterialData_ProductData">
+            <End Role="ProductData" EntitySet="ProductData" />
+            <End Role="MaterialData" EntitySet="MaterialData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialFill_ProductData" Association="Self.FK_MaterialFill_ProductData">
+            <End Role="ProductData" EntitySet="ProductData" />
+            <End Role="MaterialFill" EntitySet="MaterialFill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartName_SizeClass" Association="Self.FK_PartName_SizeClass">
+            <End Role="SizeClass" EntitySet="SizeClass" />
+            <End Role="PartName" EntitySet="PartName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_Dengji" Association="Self.FK_ProductData_Dengji">
+            <End Role="Dengji" EntitySet="Dengji" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_MadePlace" Association="Self.FK_ProductData_MadePlace">
+            <End Role="MadePlace" EntitySet="MadePlace" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_PartName" Association="Self.FK_ProductData_PartName">
+            <End Role="PartName" EntitySet="PartName" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_SafeData" Association="Self.FK_ProductData_SafeData">
+            <End Role="SafeData" EntitySet="SafeData" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_StandardData" Association="Self.FK_ProductData_StandardData">
+            <End Role="StandardData" EntitySet="StandardData" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_TagPrintTemplate" Association="Self.FK_ProductData_TagPrintTemplate">
+            <End Role="TagPrintTemplate" EntitySet="TagPrintTemplate" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_WashPrintTemplate" Association="Self.FK_ProductData_WashPrintTemplate">
+            <End Role="WashPrintTemplate" EntitySet="WashPrintTemplate" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SizeData_SizeClass" Association="Self.FK_SizeData_SizeClass">
+            <End Role="SizeClass" EntitySet="SizeClass" />
+            <End Role="SizeData" EntitySet="SizeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierD_SupplierM" Association="Self.FK_SupplierD_SupplierM">
+            <End Role="SupplierM" EntitySet="SupplierM" />
+            <End Role="SupplierD" EntitySet="SupplierD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierM_SupplierClass" Association="Self.FK_SupplierM_SupplierClass">
+            <End Role="SupplierClass" EntitySet="SupplierClass" />
+            <End Role="SupplierM" EntitySet="SupplierM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_GroupInfo" Association="Self.FK_UserInfo_GroupInfo">
+            <End Role="GroupInfo" EntitySet="GroupInfo" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMenuFavorites_MenuInfo" Association="Self.FK_UserMenuFavorites_MenuInfo">
+            <End Role="MenuInfo" EntitySet="MenuInfo" />
+            <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMenuFavorites_UserInfo" Association="Self.FK_UserMenuFavorites_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dengji">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_Dengji" FromRole="Dengji" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="GroupMenu" Relationship="Self.FK_GroupMenu_GroupInfo" FromRole="GroupInfo" ToRole="GroupMenu" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserInfo_GroupInfo" FromRole="GroupInfo" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="GroupMenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="menu_id" Type="Int32" Nullable="false" />
+          <Property Name="menu_order" Type="Int32" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="GroupInfo" Relationship="Self.FK_GroupMenu_GroupInfo" FromRole="GroupMenu" ToRole="GroupInfo" />
+          <NavigationProperty Name="MenuInfo" Relationship="Self.FK_GroupMenu_MenuInfo" FromRole="GroupMenu" ToRole="MenuInfo" />
+        </EntityType>
+        <EntityType Name="MadePlace">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_MadePlace" FromRole="MadePlace" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="MaterialData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_MaterialData_ProductData" FromRole="MaterialData" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="MaterialFill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="size_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fill" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_MaterialFill_ProductData" FromRole="MaterialFill" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="MenuInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="menu_bmp" Type="Int32" Nullable="false" />
+          <Property Name="menu_window" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="menu_parent" Type="Int32" Nullable="false" />
+          <Property Name="menu_memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="menu_order" Type="Int32" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="GroupMenu" Relationship="Self.FK_GroupMenu_MenuInfo" FromRole="MenuInfo" ToRole="GroupMenu" />
+          <NavigationProperty Name="UserMenuFavorites" Relationship="Self.FK_UserMenuFavorites_MenuInfo" FromRole="MenuInfo" ToRole="UserMenuFavorites" />
+        </EntityType>
+        <EntityType Name="PartName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="size_class_id" Type="Int32" Nullable="false" />
+          <Property Name="safe_id" Type="Int32" Nullable="false" />
+          <Property Name="standard_id" Type="Int32" Nullable="false" />
+          <Property Name="pwash" Type="Int32" Nullable="false" />
+          <Property Name="pbad" Type="Int32" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SizeClass" Relationship="Self.FK_PartName_SizeClass" FromRole="PartName" ToRole="SizeClass" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_PartName" FromRole="PartName" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="ProductData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="partname_id" Type="Int32" Nullable="false" />
+          <Property Name="huohao" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="safedata_id" Type="Int32" Nullable="false" />
+          <Property Name="standarddata_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="madeplace_id" Type="Int32" Nullable="false" />
+          <Property Name="dengji_id" Type="Int32" Nullable="false" />
+          <Property Name="tag_id" Type="Int32" Nullable="false" />
+          <Property Name="wash_id" Type="Int32" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="pwash" Type="Int32" Nullable="false" />
+          <Property Name="pbad" Type="Int32" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Dengji" Relationship="Self.FK_ProductData_Dengji" FromRole="ProductData" ToRole="Dengji" />
+          <NavigationProperty Name="MadePlace" Relationship="Self.FK_ProductData_MadePlace" FromRole="ProductData" ToRole="MadePlace" />
+          <NavigationProperty Name="MaterialData" Relationship="Self.FK_MaterialData_ProductData" FromRole="ProductData" ToRole="MaterialData" />
+          <NavigationProperty Name="MaterialFill" Relationship="Self.FK_MaterialFill_ProductData" FromRole="ProductData" ToRole="MaterialFill" />
+          <NavigationProperty Name="PartName" Relationship="Self.FK_ProductData_PartName" FromRole="ProductData" ToRole="PartName" />
+          <NavigationProperty Name="SafeData" Relationship="Self.FK_ProductData_SafeData" FromRole="ProductData" ToRole="SafeData" />
+          <NavigationProperty Name="StandardData" Relationship="Self.FK_ProductData_StandardData" FromRole="ProductData" ToRole="StandardData" />
+          <NavigationProperty Name="TagPrintTemplate" Relationship="Self.FK_ProductData_TagPrintTemplate" FromRole="ProductData" ToRole="TagPrintTemplate" />
+          <NavigationProperty Name="WashPrintTemplate" Relationship="Self.FK_ProductData_WashPrintTemplate" FromRole="ProductData" ToRole="WashPrintTemplate" />
+        </EntityType>
+        <EntityType Name="SafeData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_SafeData" FromRole="SafeData" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="SizeClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="PartName" Relationship="Self.FK_PartName_SizeClass" FromRole="SizeClass" ToRole="PartName" />
+          <NavigationProperty Name="SizeData" Relationship="Self.FK_SizeData_SizeClass" FromRole="SizeClass" ToRole="SizeData" />
+        </EntityType>
+        <EntityType Name="SizeData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="class_id" Type="Int32" Nullable="false" />
+          <Property Name="size_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="size_type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="other" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SizeClass" Relationship="Self.FK_SizeData_SizeClass" FromRole="SizeData" ToRole="SizeClass" />
+        </EntityType>
+        <EntityType Name="StandardData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_StandardData" FromRole="StandardData" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="SupplierClass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SupplierM" Relationship="Self.FK_SupplierM_SupplierClass" FromRole="SupplierClass" ToRole="SupplierM" />
+        </EntityType>
+        <EntityType Name="SupplierD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SupplierM" Relationship="Self.FK_SupplierD_SupplierM" FromRole="SupplierD" ToRole="SupplierM" />
+        </EntityType>
+        <EntityType Name="SupplierM">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="class_id" Type="Int32" Nullable="false" />
+          <Property Name="pym" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="intact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SupplierClass" Relationship="Self.FK_SupplierM_SupplierClass" FromRole="SupplierM" ToRole="SupplierClass" />
+          <NavigationProperty Name="SupplierD" Relationship="Self.FK_SupplierD_SupplierM" FromRole="SupplierM" ToRole="SupplierD" />
+        </EntityType>
+        <EntityType Name="TagPrintTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="file_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_TagPrintTemplate" FromRole="TagPrintTemplate" ToRole="ProductData" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="GroupInfo" Relationship="Self.FK_UserInfo_GroupInfo" FromRole="UserInfo" ToRole="GroupInfo" />
+          <NavigationProperty Name="UserMenuFavorites" Relationship="Self.FK_UserMenuFavorites_UserInfo" FromRole="UserInfo" ToRole="UserMenuFavorites" />
+        </EntityType>
+        <EntityType Name="UserMenuFavorites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="menu_id" Type="Int32" Nullable="false" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="MenuInfo" Relationship="Self.FK_UserMenuFavorites_MenuInfo" FromRole="UserMenuFavorites" ToRole="MenuInfo" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserMenuFavorites_UserInfo" FromRole="UserMenuFavorites" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="WashPrintTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="file_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="daxiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_WashPrintTemplate" FromRole="WashPrintTemplate" ToRole="ProductData" />
+        </EntityType>
+        <Association Name="FK_ProductData_Dengji">
+          <End Role="Dengji" Type="Self.Dengji" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dengji">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="dengji_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMenu_GroupInfo">
+          <End Role="GroupInfo" Type="Self.GroupInfo" Multiplicity="1" />
+          <End Role="GroupMenu" Type="Self.GroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupMenu">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfo_GroupInfo">
+          <End Role="GroupInfo" Type="Self.GroupInfo" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMenu_MenuInfo">
+          <End Role="MenuInfo" Type="Self.MenuInfo" Multiplicity="1" />
+          <End Role="GroupMenu" Type="Self.GroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupMenu">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_MadePlace">
+          <End Role="MadePlace" Type="Self.MadePlace" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MadePlace">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="madeplace_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialData_ProductData">
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="1" />
+          <End Role="MaterialData" Type="Self.MaterialData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaterialData">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialFill_ProductData">
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="1" />
+          <End Role="MaterialFill" Type="Self.MaterialFill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaterialFill">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMenuFavorites_MenuInfo">
+          <End Role="MenuInfo" Type="Self.MenuInfo" Multiplicity="1" />
+          <End Role="UserMenuFavorites" Type="Self.UserMenuFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMenuFavorites">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartName_SizeClass">
+          <End Role="SizeClass" Type="Self.SizeClass" Multiplicity="1" />
+          <End Role="PartName" Type="Self.PartName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartName">
+              <PropertyRef Name="size_class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_PartName">
+          <End Role="PartName" Type="Self.PartName" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="partname_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_SafeData">
+          <End Role="SafeData" Type="Self.SafeData" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SafeData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="safedata_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_StandardData">
+          <End Role="StandardData" Type="Self.StandardData" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StandardData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="standarddata_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_TagPrintTemplate">
+          <End Role="TagPrintTemplate" Type="Self.TagPrintTemplate" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagPrintTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="tag_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductData_WashPrintTemplate">
+          <End Role="WashPrintTemplate" Type="Self.WashPrintTemplate" Multiplicity="1" />
+          <End Role="ProductData" Type="Self.ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WashPrintTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="wash_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SizeData_SizeClass">
+          <End Role="SizeClass" Type="Self.SizeClass" Multiplicity="1" />
+          <End Role="SizeData" Type="Self.SizeData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SizeData">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierM_SupplierClass">
+          <End Role="SupplierClass" Type="Self.SupplierClass" Multiplicity="1" />
+          <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierClass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierM">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierD_SupplierM">
+          <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="1" />
+          <End Role="SupplierD" Type="Self.SupplierD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierM">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierD">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMenuFavorites_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="UserMenuFavorites" Type="Self.UserMenuFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserMenuFavorites">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProductContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dengji" EntityType="Self.Dengji" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" />
+          <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" />
+          <EntitySet Name="GroupMenu" EntityType="Self.GroupMenu" />
+          <EntitySet Name="MadePlace" EntityType="Self.MadePlace" />
+          <EntitySet Name="MaterialData" EntityType="Self.MaterialData" />
+          <EntitySet Name="MaterialFill" EntityType="Self.MaterialFill" />
+          <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" />
+          <EntitySet Name="PartName" EntityType="Self.PartName" />
+          <EntitySet Name="ProductData" EntityType="Self.ProductData" />
+          <EntitySet Name="SafeData" EntityType="Self.SafeData" />
+          <EntitySet Name="SizeClass" EntityType="Self.SizeClass" />
+          <EntitySet Name="SizeData" EntityType="Self.SizeData" />
+          <EntitySet Name="StandardData" EntityType="Self.StandardData" />
+          <EntitySet Name="SupplierClass" EntityType="Self.SupplierClass" />
+          <EntitySet Name="SupplierD" EntityType="Self.SupplierD" />
+          <EntitySet Name="SupplierM" EntityType="Self.SupplierM" />
+          <EntitySet Name="TagPrintTemplate" EntityType="Self.TagPrintTemplate" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <EntitySet Name="UserMenuFavorites" EntityType="Self.UserMenuFavorites" />
+          <EntitySet Name="WashPrintTemplate" EntityType="Self.WashPrintTemplate" />
+          <AssociationSet Name="FK_ProductData_Dengji" Association="Self.FK_ProductData_Dengji">
+            <End Role="Dengji" EntitySet="Dengji" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMenu_GroupInfo" Association="Self.FK_GroupMenu_GroupInfo">
+            <End Role="GroupInfo" EntitySet="GroupInfo" />
+            <End Role="GroupMenu" EntitySet="GroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfo_GroupInfo" Association="Self.FK_UserInfo_GroupInfo">
+            <End Role="GroupInfo" EntitySet="GroupInfo" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMenu_MenuInfo" Association="Self.FK_GroupMenu_MenuInfo">
+            <End Role="MenuInfo" EntitySet="MenuInfo" />
+            <End Role="GroupMenu" EntitySet="GroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_MadePlace" Association="Self.FK_ProductData_MadePlace">
+            <End Role="MadePlace" EntitySet="MadePlace" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialData_ProductData" Association="Self.FK_MaterialData_ProductData">
+            <End Role="ProductData" EntitySet="ProductData" />
+            <End Role="MaterialData" EntitySet="MaterialData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialFill_ProductData" Association="Self.FK_MaterialFill_ProductData">
+            <End Role="ProductData" EntitySet="ProductData" />
+            <End Role="MaterialFill" EntitySet="MaterialFill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMenuFavorites_MenuInfo" Association="Self.FK_UserMenuFavorites_MenuInfo">
+            <End Role="MenuInfo" EntitySet="MenuInfo" />
+            <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartName_SizeClass" Association="Self.FK_PartName_SizeClass">
+            <End Role="SizeClass" EntitySet="SizeClass" />
+            <End Role="PartName" EntitySet="PartName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_PartName" Association="Self.FK_ProductData_PartName">
+            <End Role="PartName" EntitySet="PartName" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_SafeData" Association="Self.FK_ProductData_SafeData">
+            <End Role="SafeData" EntitySet="SafeData" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_StandardData" Association="Self.FK_ProductData_StandardData">
+            <End Role="StandardData" EntitySet="StandardData" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_TagPrintTemplate" Association="Self.FK_ProductData_TagPrintTemplate">
+            <End Role="TagPrintTemplate" EntitySet="TagPrintTemplate" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductData_WashPrintTemplate" Association="Self.FK_ProductData_WashPrintTemplate">
+            <End Role="WashPrintTemplate" EntitySet="WashPrintTemplate" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SizeData_SizeClass" Association="Self.FK_SizeData_SizeClass">
+            <End Role="SizeClass" EntitySet="SizeClass" />
+            <End Role="SizeData" EntitySet="SizeData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierM_SupplierClass" Association="Self.FK_SupplierM_SupplierClass">
+            <End Role="SupplierClass" EntitySet="SupplierClass" />
+            <End Role="SupplierM" EntitySet="SupplierM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierD_SupplierM" Association="Self.FK_SupplierD_SupplierM">
+            <End Role="SupplierM" EntitySet="SupplierM" />
+            <End Role="SupplierD" EntitySet="SupplierD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMenuFavorites_UserInfo" Association="Self.FK_UserMenuFavorites_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProductModelStoreContainer" CdmEntityContainer="ProductContext">
+          <EntitySetMapping Name="Dengji">
+            <EntityTypeMapping TypeName="ProductModel.Dengji">
+              <MappingFragment StoreEntitySet="Dengji">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="ProductModel.dtproperties">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupInfo">
+            <EntityTypeMapping TypeName="ProductModel.GroupInfo">
+              <MappingFragment StoreEntitySet="GroupInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMenu">
+            <EntityTypeMapping TypeName="ProductModel.GroupMenu">
+              <MappingFragment StoreEntitySet="GroupMenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="menu_order" ColumnName="menu_order" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MadePlace">
+            <EntityTypeMapping TypeName="ProductModel.MadePlace">
+              <MappingFragment StoreEntitySet="MadePlace">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialData">
+            <EntityTypeMapping TypeName="ProductModel.MaterialData">
+              <MappingFragment StoreEntitySet="MaterialData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialFill">
+            <EntityTypeMapping TypeName="ProductModel.MaterialFill">
+              <MappingFragment StoreEntitySet="MaterialFill">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="size_name" ColumnName="size_name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="fill" ColumnName="fill" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuInfo">
+            <EntityTypeMapping TypeName="ProductModel.MenuInfo">
+              <MappingFragment StoreEntitySet="MenuInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+                <ScalarProperty Name="menu_bmp" ColumnName="menu_bmp" />
+                <ScalarProperty Name="menu_window" ColumnName="menu_window" />
+                <ScalarProperty Name="menu_parent" ColumnName="menu_parent" />
+                <ScalarProperty Name="menu_memo" ColumnName="menu_memo" />
+                <ScalarProperty Name="menu_order" ColumnName="menu_order" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartName">
+            <EntityTypeMapping TypeName="ProductModel.PartName">
+              <MappingFragment StoreEntitySet="PartName">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="size_class_id" ColumnName="size_class_id" />
+                <ScalarProperty Name="safe_id" ColumnName="safe_id" />
+                <ScalarProperty Name="standard_id" ColumnName="standard_id" />
+                <ScalarProperty Name="pwash" ColumnName="pwash" />
+                <ScalarProperty Name="pbad" ColumnName="pbad" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductData">
+            <EntityTypeMapping TypeName="ProductModel.ProductData">
+              <MappingFragment StoreEntitySet="ProductData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="partname_id" ColumnName="partname_id" />
+                <ScalarProperty Name="huohao" ColumnName="huohao" />
+                <ScalarProperty Name="safedata_id" ColumnName="safedata_id" />
+                <ScalarProperty Name="standarddata_id" ColumnName="standarddata_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="madeplace_id" ColumnName="madeplace_id" />
+                <ScalarProperty Name="dengji_id" ColumnName="dengji_id" />
+                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+                <ScalarProperty Name="wash_id" ColumnName="wash_id" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="pwash" ColumnName="pwash" />
+                <ScalarProperty Name="pbad" ColumnName="pbad" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SafeData">
+            <EntityTypeMapping TypeName="ProductModel.SafeData">
+              <MappingFragment StoreEntitySet="SafeData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SizeClass">
+            <EntityTypeMapping TypeName="ProductModel.SizeClass">
+              <MappingFragment StoreEntitySet="SizeClass">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SizeData">
+            <EntityTypeMapping TypeName="ProductModel.SizeData">
+              <MappingFragment StoreEntitySet="SizeData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="class_id" ColumnName="class_id" />
+                <ScalarProperty Name="size_name" ColumnName="size_name" />
+                <ScalarProperty Name="size_type" ColumnName="size_type" />
+                <ScalarProperty Name="other" ColumnName="other" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StandardData">
+            <EntityTypeMapping TypeName="ProductModel.StandardData">
+              <MappingFragment StoreEntitySet="StandardData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierClass">
+            <EntityTypeMapping TypeName="ProductModel.SupplierClass">
+              <MappingFragment StoreEntitySet="SupplierClass">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierD">
+            <EntityTypeMapping TypeName="ProductModel.SupplierD">
+              <MappingFragment StoreEntitySet="SupplierD">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pym" ColumnName="pym" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="qq" ColumnName="qq" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierM">
+            <EntityTypeMapping TypeName="ProductModel.SupplierM">
+              <MappingFragment StoreEntitySet="SupplierM">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="class_id" ColumnName="class_id" />
+                <ScalarProperty Name="pym" ColumnName="pym" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="intact_name" ColumnName="intact_name" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagPrintTemplate">
+            <EntityTypeMapping TypeName="ProductModel.TagPrintTemplate">
+              <MappingFragment StoreEntitySet="TagPrintTemplate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="ProductModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMenuFavorites">
+            <EntityTypeMapping TypeName="ProductModel.UserMenuFavorites">
+              <MappingFragment StoreEntitySet="UserMenuFavorites">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WashPrintTemplate">
+            <EntityTypeMapping TypeName="ProductModel.WashPrintTemplate">
+              <MappingFragment StoreEntitySet="WashPrintTemplate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="daxiao" ColumnName="daxiao" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
