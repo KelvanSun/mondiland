@@ -31,7 +31,7 @@ namespace Mondiland.UI
         /// </summary>
         private void UpdateFavoritesMenu()
         {
-            m_favorites = Program.main_form.UserObj.IsUserMenuFavorites(this.Name);
+            m_favorites = Program.permission.login_user.IsUserMenuFavorites(this.Name);
                         
             if (m_favorites)
             {
@@ -48,7 +48,7 @@ namespace Mondiland.UI
 
         public void UnFavorites()
         {
-            if (Program.main_form.UserObj.UnFavorites(this.Name))
+            if (Program.permission.login_user.UnFavorites(this.Name))
                 MessageUtil.ShowWarning("成功取消快捷方式!");
             else
                 MessageUtil.ShowWarning("取消快捷方式失败!");
@@ -57,7 +57,7 @@ namespace Mondiland.UI
 
         public void SetFavorites()
         {
-            if (Program.main_form.UserObj.SetFavorites(this.Name))
+            if (Program.permission.login_user.SetFavorites(this.Name))
                 MessageUtil.ShowWarning("成功收藏快捷方式!");
             else
                 MessageUtil.ShowWarning("收藏快捷方式失败!");

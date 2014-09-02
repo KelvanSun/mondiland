@@ -18,10 +18,6 @@ namespace Mondiland.UI
 {
     public partial class MainForm : Form
     {
-        public PermissionObject.User UserObj = null;
-
-        public int UserId = 1;
-
         private MainToolForm m_mainToolForm = null;
         private DefaultForm m_defaultForm = null;
 
@@ -37,19 +33,8 @@ namespace Mondiland.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoginForm form = new LoginForm(this);
-            this.Visible = false;
-            form.ShowDialog();
-            
-            if(this.UserObj == null)
-            {
-                Close();
-
-                return;
-            }
-
-            statusStrip.Items["username"].Text = string.Format("用户名:{0}", this.UserObj.Name);
-            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", this.UserObj.GroupName);
+            statusStrip.Items["username"].Text = string.Format("用户名:{0}", Program.permission.login_user.Name);
+            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", Program.permission.login_user.GroupName);
 
             try
             {

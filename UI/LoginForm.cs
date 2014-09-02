@@ -16,14 +16,11 @@ namespace Mondiland.UI
 {
     public partial class LoginForm : Form
     {
-        private MainForm m_mainForm = null;
-        private PermissionObject m_permission = new PermissionObject();
-
-        public LoginForm(MainForm mainForm)
+       
+        public LoginForm()
         {
             InitializeComponent();
 
-            m_mainForm = mainForm;
         }
 
         private void bt_cancel_Click(object sender, EventArgs e)
@@ -41,7 +38,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            PermissionObject.User user = m_permission.UserList[Convert.ToInt32(cbx_usrename.SelectedValue)];
+            PermissionObject.User user = Program.permission.UserList[Convert.ToInt32(cbx_usrename.SelectedValue)];
 
             if(!user.Authentication(tb_pwd.Text.Trim()))
             {
@@ -50,14 +47,17 @@ namespace Mondiland.UI
                 return;
             }
 
-            m_mainForm.UserObj = user;
-            this.Close();
+            Program.permission.login_user = user;
+
+            this.DialogResult = DialogResult.OK;
+
+            //this.Close();
 
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.cbx_usrename.DataSource = this.m_permission.GetLoginUserList();
+            this.cbx_usrename.DataSource = Program.permission.GetLoginUserList();
             this.cbx_usrename.DisplayMember = "UserName";
             this.cbx_usrename.ValueMember = "Index";
       

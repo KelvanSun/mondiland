@@ -13,6 +13,8 @@ namespace Mondiland.Obj
     public class PermissionObject
     {
         public List<User> UserList = new List<User>();
+        public User login_user = null;
+
 
         public PermissionObject()
         {
