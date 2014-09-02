@@ -12,8 +12,10 @@ namespace Mondiland.UI
     public partial class UCListViewItem : UserControl
     {
         private string m_form_name = string.Empty;
-        public UCListViewItem()
+        private MainForm mf = null;
+        public UCListViewItem(MainForm form)
         {
+            this.mf = form;
             InitializeComponent();
         }
 
@@ -42,7 +44,7 @@ namespace Mondiland.UI
 
         private void label_caption_Click(object sender, EventArgs e)
         {
-            Program.main_form.OpenWindows(this.ItemFormName);
+            this.mf.OpenWindows(this.ItemFormName);
         }
     }
 }

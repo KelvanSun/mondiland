@@ -25,8 +25,8 @@ namespace Mondiland.UI
         {
             InitializeComponent();
 
-            m_defaultForm = new DefaultForm();
-            m_mainToolForm = new MainToolForm();
+            m_defaultForm = new DefaultForm(this);
+            m_mainToolForm = new MainToolForm(this);
             
             
         }

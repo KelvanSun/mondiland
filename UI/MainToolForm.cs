@@ -15,8 +15,11 @@ namespace Mondiland.UI
 {
     public partial class MainToolForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public MainToolForm()
+        private MainForm mf = null;
+        
+        public MainToolForm(MainForm form)
         {
+            this.mf = form;
             InitializeComponent();
         }
 
@@ -29,8 +32,8 @@ namespace Mondiland.UI
             foreach(PermissionObject.User.MenuParent parent in Program.permission.login_user.MenuParentList)
             {
                 OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent.MenuName);
-                outlookShortcutsBand.LargeImageList = Program.main_form.imageList;
-                outlookShortcutsBand.SmallImageList = Program.main_form.imageList;
+                outlookShortcutsBand.LargeImageList = this.mf.imageList;
+                outlookShortcutsBand.SmallImageList = this.mf.imageList;
                 outlookShortcutsBand.Background = Color.White;
 
                 foreach(PermissionObject.User.MenuParent.MenuChild child in parent.MenuChildList)
@@ -50,7 +53,7 @@ namespace Mondiland.UI
 
         private void outlookBar_ItemClicked(OutlookBarBand band, OutlookBarItem item)
         {
-            Program.main_form.OpenWindows(item.Tag as string);
+            this.mf.OpenWindows(item.Tag as string);
         }   
     }
 }

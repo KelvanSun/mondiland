@@ -14,8 +14,11 @@ namespace Mondiland.UI
 {
     public partial class DefaultForm : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public DefaultForm()
+        private MainForm mf = null;
+
+        public DefaultForm(MainForm form)
         {
+            this.mf = form;
             InitializeComponent();
         }
 
@@ -25,10 +28,10 @@ namespace Mondiland.UI
 
             foreach(PermissionObject.User.FavoritesMenu menu in Program.permission.login_user.FavoritesMenuList)
             {
-                UCListViewItem item = new UCListViewItem();
+                UCListViewItem item = new UCListViewItem(this.mf);
 
                 item.ItemCaption = menu.MenuName;
-                item.ItemImage = Program.main_form.imageList.Images[menu.MenuBmp];
+                item.ItemImage = mf.imageList.Images[menu.MenuBmp];
                 item.ItemMemo = menu.MenuMemo;
                 item.ItemFormName = menu.MenuWindow;
 
