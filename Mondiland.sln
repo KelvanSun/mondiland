@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCControl", "UCControl\UCCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obj", "Object\Obj.csproj", "{554FC5C1-FF95-4C36-88AD-664091576288}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFModule", "EFModule\EFModule.csproj", "{59E199AE-35CE-439B-923E-40855D779FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{554FC5C1-FF95-4C36-88AD-664091576288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554FC5C1-FF95-4C36-88AD-664091576288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{554FC5C1-FF95-4C36-88AD-664091576288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E199AE-35CE-439B-923E-40855D779FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E199AE-35CE-439B-923E-40855D779FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E199AE-35CE-439B-923E-40855D779FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E199AE-35CE-439B-923E-40855D779FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
