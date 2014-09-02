@@ -32,8 +32,15 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=10.1.3.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=x86" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +68,10 @@
       <Project>{c249d3dc-d316-4bd9-83ff-3656b4a47009}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EFModule\EFModule.csproj">
+      <Project>{59e199ae-35ce-439b-923e-40855d779fbf}</Project>
+      <Name>EFModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ENTITY\Entity.csproj">
       <Project>{c9ec46ac-0da9-4fc4-a98c-6061619b88ca}</Project>
       <Name>Entity</Name>
@@ -73,6 +84,10 @@
       <Project>{a9c3c9fb-8c15-4f98-bceb-75575362e2b1}</Project>
       <Name>IDal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

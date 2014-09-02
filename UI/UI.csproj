@@ -78,8 +78,15 @@
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Seagull.BarTender.Print, Version=10.1.3.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=x86" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -209,6 +216,7 @@
     <EmbeddedResource Include="UCListViewItem.resx">
       <DependentUpon>UCListViewItem.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMadePlaceProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMeterialFillInfo.datasource" />
