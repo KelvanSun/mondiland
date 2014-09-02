@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +48,109 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dengji.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperties.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupInfo.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupMenu.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MadePlace.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialData.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialFill.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuInfo.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartName.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductData.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductMode.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductMode.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductMode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductMode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductMode.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeData.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeClass.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeData.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StandardData.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierClass.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierD.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierM.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TagPrintTemplate.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenuFavorites.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WashPrintTemplate.cs">
+      <DependentUpon>ProductMode.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="ProductMode.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProductMode.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ProductMode.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductMode.edmx</DependentUpon>
+      <LastGenOutput>ProductMode.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ProductMode.edmx.diagram">
+      <DependentUpon>ProductMode.edmx</DependentUpon>
+    </None>
+    <None Include="ProductMode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductMode.edmx</DependentUpon>
+      <LastGenOutput>ProductMode.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

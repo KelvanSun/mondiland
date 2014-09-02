@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27c5d8a2efba4d60a263865ed29a10f3" Name="Diagram1">
+        <EntityTypeShape EntityType="ProductModel.Dengji" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.dtproperties" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.GroupInfo" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.GroupMenu" Width="1.5" PointX="8" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.MadePlace" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.MaterialData" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.MaterialFill" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.MenuInfo" Width="1.5" PointX="5.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.PartName" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.ProductData" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SafeData" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SizeClass" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SizeData" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.StandardData" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SupplierClass" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SupplierD" Width="1.5" PointX="14.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.SupplierM" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.TagPrintTemplate" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.UserInfo" Width="1.5" PointX="8" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.UserMenuFavorites" Width="1.5" PointX="10.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductModel.WashPrintTemplate" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_Dengji" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_GroupMenu_GroupInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_UserInfo_GroupInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_GroupMenu_MenuInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_MadePlace" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_MaterialData_ProductData" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_MaterialFill_ProductData" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_UserMenuFavorites_MenuInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_PartName_SizeClass" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_PartName" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_SafeData" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_StandardData" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_TagPrintTemplate" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_ProductData_WashPrintTemplate" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_SizeData_SizeClass" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_SupplierM_SupplierClass" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_SupplierD_SupplierM" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductModel.FK_UserMenuFavorites_UserInfo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
