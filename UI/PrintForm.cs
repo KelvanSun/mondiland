@@ -55,8 +55,8 @@ namespace Mondiland.UI
             }
 
             cbo_prints.SelectedItem = printers.Default.PrinterName;
-            
-            this.cbx_select.DataSource = this.m_product.SizeDataList;
+
+            this.cbx_select.DataSource = this.m_product.SizeDataListInfo;
             this.cbx_select.DisplayMember = "SizeName";
             this.cbx_select.ValueMember = "Id";
         }

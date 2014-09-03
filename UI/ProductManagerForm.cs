@@ -150,9 +150,9 @@ namespace Mondiland.UI
         private void LoadDgvMaterialFill()
         {
             this.dgv_material_fill.Columns.Clear();
-            txb_fill.Text = this.product.MaterialFillData.material_type;
+            txb_fill.Text = this.product.MaterialFillInfo.material_type;
 
-            foreach (BESizeDataList size in this.product.SizeDataList)
+            foreach (ProductObject.SizeDataList size in this.product.SizeDataListInfo)
             {
                 DataGridViewTextBoxColumn dc = new DataGridViewTextBoxColumn();
 
@@ -171,7 +171,7 @@ namespace Mondiland.UI
 
             int cell_index = 0;
 
-            foreach (BEMaterialFillData fill in this.product.MaterialFillData.m_material_fill_list)
+            foreach (ProductObject.MaterialFillInfoObject.MaterialFillData fill in this.product.MaterialFillInfo.m_material_fill_list)
             {
                 this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill.Fill;
             }
@@ -430,7 +430,7 @@ namespace Mondiland.UI
 
         private void txb_fill_TextChanged(object sender, EventArgs e)
         {
-            this.product.MaterialFillData.material_type = this.txb_fill.Text.Trim();
+            this.product.MaterialFillInfo.material_type = this.txb_fill.Text.Trim();
         }
 
         private void menu_print_tag_Click(object sender, EventArgs e)

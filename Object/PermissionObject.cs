@@ -109,7 +109,7 @@ namespace Mondiland.Obj
                     favorites.user_id = this.m_id;
                     favorites.menu_id = (from m in ctx.MenuInfo
                                          where m.menu_window == form_name
-                                         select m).FirstOrDefault().id;
+                                         select m.id).FirstOrDefault();
                     favorites.lastamp = System.Guid.NewGuid();
 
                     ctx.UserMenuFavorites.Add(favorites);
@@ -123,7 +123,7 @@ namespace Mondiland.Obj
                 {
                     int menu_id = (from m in ctx.MenuInfo
                                    where m.menu_window == form_name
-                                   select m).FirstOrDefault().id;
+                                   select m.id).FirstOrDefault();
 
                     UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
                                              where fav.user_id == this.m_id && fav.menu_id == menu_id
@@ -142,7 +142,7 @@ namespace Mondiland.Obj
 
                     int menu_id = (from m in ctx.MenuInfo
                                    where m.menu_window == form_name
-                                   select m).FirstOrDefault().id;
+                                   select m.id).FirstOrDefault();
 
                     UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
                                              where fav.user_id == this.m_id && fav.menu_id == menu_id
@@ -345,11 +345,11 @@ namespace Mondiland.Obj
 
                     var favs = from m in ctx.UserMenuFavorites
                                where m.user_id == this.m_id
-                               select m;
+                               select m.menu_id;
 
                     foreach(var fav in favs)
                     {
-                        FavoritesMenu menu = new FavoritesMenu(fav.menu_id);
+                        FavoritesMenu menu = new FavoritesMenu(fav);
                         FavoritesMenuList.Add(menu);
                     }
 
