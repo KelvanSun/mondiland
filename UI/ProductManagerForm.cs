@@ -173,6 +173,8 @@ namespace Mondiland.UI
                 this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill.Fill;
             }
 
+            this.dgv_material_fill.Rows[this.dgv_material_fill.CurrentRow.Index].Selected = false;
+
         }
 
         private void txb_huohao_KeyDown(object sender, KeyEventArgs e)

@@ -400,6 +400,8 @@ namespace Mondiland.Obj
 
                     }
 
+
+                    this.MaterialFillInfo.m_material_fill_list.Clear();
                     //初始化自定义填充列表
                     foreach (SizeDataList item in this.m_size_data_list)
                     {
