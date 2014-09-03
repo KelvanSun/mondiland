@@ -22,12 +22,6 @@ namespace Mondiland.BLL
         private ITable_MadePlace MadePlace_Dal = null;
         private ITable_SafeData SafeData_Dal = null;
         private ITable_StandardData StandardData_Dal = null;
-        private ITable_TagPrintTemplate TagPrintTemplate_Dal = null;
-        private ITable_MaterialData MaterialData_Dal = null;
-        private ITable_SizeData SizeData_Dal = null;
-        private ITable_MaterialFill MaterialFill_Dal = null;
-        private ITable_WashPrintTemplate WashPrintTemplate_Dal = null;
-        private ITable_SizeClass SizeClass_Dal = null;
 
         public BLLProductInfo()
         {
@@ -37,50 +31,6 @@ namespace Mondiland.BLL
             MadePlace_Dal = Reflect<ITable_MadePlace>.Create("DAL_MadePlace", "Mondiland.DAL");
             SafeData_Dal = Reflect<ITable_SafeData>.Create("DAL_SafeData", "Mondiland.DAL");
             StandardData_Dal = Reflect<ITable_StandardData>.Create("DAL_StandardData", "Mondiland.DAL");
-            TagPrintTemplate_Dal = Reflect<ITable_TagPrintTemplate>.Create("DAL_TagPrintTemplate", "Mondiland.DAL");
-            MaterialData_Dal = Reflect<ITable_MaterialData>.Create("DAL_MaterialData", "Mondiland.DAL");
-            SizeData_Dal = Reflect<ITable_SizeData>.Create("DAL_SizeData", "Mondiland.DAL");
-            MaterialFill_Dal = Reflect<ITable_MaterialFill>.Create("DAL_MaterialFill", "Mondiland.DAL");
-            WashPrintTemplate_Dal = Reflect<ITable_WashPrintTemplate>.Create("DAL_WashPrintTemplate", "Mondiland.DAL");
-            SizeClass_Dal = Reflect<ITable_SizeClass>.Create("DAL_SizeClass", "Mondiland.DAL");
-        }
-
-      
-        
-        public bool GetOptimizePbad(int partname_id)
-        {
-            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
-
-            return entity.Pbad > 0 ? true : false;
-        }
-        /// <summary>
-        /// 根据产品种类选择合适的安全标准
-        /// </summary>
-        /// <param name="partname_id"></param>
-        /// <returns>安全标准ID</returns>
-        public int GetOptimizeSafeId(int partname_id)
-        {
-            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
-
-            return entity.Safe_Id;
-        }
-        /// <summary>
-        /// 根据产品种类选择合适的执行标准
-        /// </summary>
-        /// <param name="partname_id"></param>
-        /// <returns>安全标准ID</returns>
-        public int GetOptimizeStandardId(int partname_id)
-        {
-            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
-
-            return entity.Standard_Id;
-        }
-
-        public bool GetOptimizePwash(int partname_id)
-        {
-            Table_PartName_Entity entity = PartName_Dal.FindByID(partname_id);
-
-            return entity.Pwash > 0 ? true : false;
         }
 
         /// <summary>
@@ -126,33 +76,6 @@ namespace Mondiland.BLL
 
             return list;
         }
-
-        /// <summary>
-        /// 返回产品种类信息列表
-        /// </summary>
-        /// <returns>绑定列表</returns>
-        public BindingList<BEPartNameProduct> GetPartNameList()
-        {
-            BindingList<BEPartNameProduct> list = new BindingList<BEPartNameProduct>();
-
-            foreach(Table_PartName_Entity partname in PartName_Dal.GetAll(false))
-            {
-                BEPartNameProduct info = new BEPartNameProduct();
-
-                Table_SizeClass_Entity entity = SizeClass_Dal.FindByID(partname.SizeClass_id);
-
-                info.Id = partname.Id;
-                info.PartName = partname.Name;
-                info.ClassType = entity.Type;
-                info.Memo = partname.Memo;
-
-                list.Add(info);
-            }
-
-
-            return list;
-        }
-
 
         /// <summary>
         /// 反回产品产地的列表信息

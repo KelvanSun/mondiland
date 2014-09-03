@@ -376,6 +376,8 @@ namespace Mondiland.Obj
 
                         int index = 1;
 
+                        m_size_data_list.Clear();
+
                         foreach (var data in sizedata)
                         {
                             SizeDataList info = new SizeDataList();

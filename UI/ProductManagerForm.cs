@@ -92,7 +92,7 @@ namespace Mondiland.UI
             cbx_madeplace.Text = string.Empty;
             cbx_madeplace.SelectedValue = 0;
 
-            cbx_partname.DataSource = BLLFactory<BLLProductInfo>.Instance.GetPartNameList();
+            cbx_partname.DataSource = new PartNameObject().GetPartNameList();
             cbx_partname.DisplayMember = "PartName";
             cbx_partname.ValueMember = "Id";
             cbx_partname.Text = string.Empty;
@@ -173,9 +173,6 @@ namespace Mondiland.UI
                 this.dgv_material_fill.Rows[index].Cells[cell_index++].Value = fill.Fill;
             }
 
-
-            this.dgv_material_fill.Rows[index].Selected = false;
-
         }
 
         private void txb_huohao_KeyDown(object sender, KeyEventArgs e)
@@ -250,21 +247,20 @@ namespace Mondiland.UI
             
             this.product.PartName_Id = Convert.ToInt32(this.cbx_partname.SelectedValue);
 
-            int safe_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeSafeId(Convert.ToInt32(cbx_partname.SelectedValue));
-            int standard_id = BLLFactory<BLLProductInfo>.Instance.GetOptimizeStandardId(Convert.ToInt32(cbx_partname.SelectedValue));
-            
-            if (safe_id > 0)
+            PartNameObject.OptimizeInfo opt = new PartNameObject().GetOptimizeInfo(this.product.PartName_Id);
+
+            if (opt.Safe_Id > 0)
             {
-                cbx_safedata.SelectedValue = safe_id;
+                cbx_safedata.SelectedValue = opt.Safe_Id;
             }
             else
             {
                 cbx_safedata.Text = string.Empty;
                 cbx_safedata.SelectedValue = 0;
             }
-            if (standard_id > 0)
+            if (opt.Standard_Id > 0)
             {
-                cbx_standard.SelectedValue = standard_id;
+                cbx_standard.SelectedValue = opt.Standard_Id;
             }
             else
             {
@@ -273,8 +269,8 @@ namespace Mondiland.UI
             }
 
             //选择了休闲裤，打印水洗产品
-            chb_wash.Checked = BLLFactory<BLLProductInfo>.Instance.GetOptimizePwash(Convert.ToInt32(cbx_partname.SelectedValue));
-            chb_bad.Checked = BLLFactory<BLLProductInfo>.Instance.GetOptimizePbad(Convert.ToInt32(cbx_partname.SelectedValue));
+            chb_wash.Checked = opt.Pwash;
+            chb_bad.Checked = opt.Pbad;
 
             cbx_safedata_DropDownClosed(sender, e);
             cbx_standard_DropDownClosed(sender, e);
@@ -282,6 +278,7 @@ namespace Mondiland.UI
 
             
             LoadDgvMaterialFill();
+
         }
 
         private void cbx_dengji_DropDownClosed(object sender, EventArgs e)

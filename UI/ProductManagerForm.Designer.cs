@@ -295,6 +295,7 @@
             // 
             this.cbx_partname.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_partname.ComboBoxHeight = 14;
+            this.cbx_partname.DisplayColumnNames = "PartName,ClassType,Memo";
             this.cbx_partname.DropDownHeight = 114;
             this.cbx_partname.DropDownWidth = 121;
             this.cbx_partname.FormattingEnabled = true;

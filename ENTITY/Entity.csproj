@@ -46,22 +46,14 @@
     <Compile Include="Table_Dengji_Entity.cs" />
     <Compile Include="Table_GroupInfo_Entity.cs" />
     <Compile Include="Table_MadePlace_Entity.cs" />
-    <Compile Include="Table_MaterialData_Entity.cs" />
-    <Compile Include="Table_MaterialFill_Entity.cs" />
     <Compile Include="Table_MenuInfo_Entity.cs" />
     <Compile Include="Table_PartName_Entity.cs" />
     <Compile Include="Table_ProductData_Entity.cs" />
     <Compile Include="Table_SupplierClass_Entity.cs" />
     <Compile Include="Table_SupplierM_Entity.cs" />
-    <Compile Include="Table_TagPrintTemplate_Entity.cs" />
     <Compile Include="Table_SafeData_Entity.cs" />
-    <Compile Include="Table_SizeClass_Entity.cs" />
-    <Compile Include="Table_SizeData_Entity.cs" />
     <Compile Include="Table_StardardData_Entity.cs" />
     <Compile Include="Table_GroupMenu_Entity.cs" />
-    <Compile Include="Table_UserInfo_Entity.cs" />
-    <Compile Include="Table_UserMenuFavorites_Entity.cs" />
-    <Compile Include="Table_WashPrintTemplate_Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -45,23 +45,15 @@
     <Compile Include="DAL_Dengji.cs" />
     <Compile Include="DAL_GroupInfo.cs" />
     <Compile Include="DAL_MadePlace.cs" />
-    <Compile Include="DAL_MaterialData.cs" />
-    <Compile Include="DAL_MaterialFill.cs" />
     <Compile Include="DAL_MenuInfo.cs" />
     <Compile Include="DAL_PartName.cs" />
     <Compile Include="DAL_ProductData.cs" />
     <Compile Include="DAL_SupplierClass.cs" />
     <Compile Include="DAL_SupplierD.cs" />
     <Compile Include="DAL_SupplierM.cs" />
-    <Compile Include="DAL_TagPrintTemplate.cs" />
     <Compile Include="DAL_SafeData.cs" />
-    <Compile Include="DAL_SizeClass.cs" />
-    <Compile Include="DAL_SizeData.cs" />
     <Compile Include="DAL_StandardData.cs" />
     <Compile Include="DAL_GroupMenu.cs" />
-    <Compile Include="DAL_UserInfo.cs" />
-    <Compile Include="DAL_UserMenuFavorites.cs" />
-    <Compile Include="DAL_WashPrintTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartDataReader.cs" />
   </ItemGroup>
