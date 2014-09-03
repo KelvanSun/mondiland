@@ -33,8 +33,8 @@ namespace Mondiland.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            statusStrip.Items["username"].Text = string.Format("用户名:{0}", Program.permission.login_user.Name);
-            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", Program.permission.login_user.GroupName);
+            statusStrip.Items["username"].Text = string.Format("用户名:{0}", Program.permission.LoginUser.Name);
+            statusStrip.Items["groupname"].Text = string.Format("用户组:{0}", Program.permission.LoginUser.GroupName);
 
             try
             {

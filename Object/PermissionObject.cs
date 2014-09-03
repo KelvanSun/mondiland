@@ -14,59 +14,31 @@ namespace Mondiland.Obj
 {
     public class PermissionObject
     {
-        public List<User> UserList = new List<User>();
-        public User login_user = null;
+        private User m_login_user = null;
+
+        public User LoginUser
+        {
+            get { return m_login_user; }
+            set { m_login_user = value; }
+        }
 
         public PermissionObject()
         {
-            using (ProductContext ctx = new ProductContext())
-            {
-                var users = from u in ctx.UserInfo
-                            select u;
-                
-                foreach (var obj in users)
-                {
-                    User user = new User(obj.id);
-
-                    UserList.Add(user);
-                }
-            }
+            
        
         }
 
-        /// <summary>
-        /// 登陆窗口的用户列表
-        /// </summary>
-        /// <returns></returns>
-        public BindingList<LoginUserInfo> GetLoginUserList()
+        public User GetUserObject(int user_id)
         {
-            BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
-
-            int index = 0;
-
-            foreach (User user in UserList)
-            {
-                LoginUserInfo info = new LoginUserInfo();
-
-                info.Index = index++;
-                info.UserName = user.Name;
-                info.GroupName = user.GroupName;
-
-                list.Add(info);
-
-            }
-
-          
-            return list;
+            return new User(user_id);
         }
-
 
         public class LoginUserInfo
         {
             private int m_index = 0;
             private string m_username = string.Empty;
             private string m_groupname = string.Empty;
-            
+
             public int Index
             {
                 get { return m_index; }
@@ -86,6 +58,38 @@ namespace Mondiland.Obj
             }
         }
 
+        /// <summary>
+        /// 登陆窗口的用户列表
+        /// </summary>
+        /// <returns></returns>
+        public BindingList<LoginUserInfo> GetLoginUserList()
+        {
+            BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
+            
+            using (ProductContext ctx = new ProductContext())
+            {
+                var users = from user in ctx.UserInfo
+                            select user;
+
+
+                foreach(var user in users)
+                {
+                    LoginUserInfo info = new LoginUserInfo();
+                    info.Index = user.id;
+                    info.UserName = user.name;
+                    info.GroupName = user.GroupInfo.name;
+
+                    list.Add(info);
+                }
+
+            }
+
+            return list;
+         
+        }
+
+
+
         public class User
         {
             private int m_id = 0;
@@ -103,7 +107,9 @@ namespace Mondiland.Obj
                 {
                     UserMenuFavorites favorites = new UserMenuFavorites();
                     favorites.user_id = this.m_id;
-                    favorites.menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+                    favorites.menu_id = (from m in ctx.MenuInfo
+                                         where m.menu_window == form_name
+                                         select m).FirstOrDefault().id;
                     favorites.lastamp = System.Guid.NewGuid();
 
                     ctx.UserMenuFavorites.Add(favorites);
@@ -115,8 +121,9 @@ namespace Mondiland.Obj
             {
                 using (ProductContext ctx = new ProductContext())
                 {
-
-                    int menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+                    int menu_id = (from m in ctx.MenuInfo
+                                   where m.menu_window == form_name
+                                   select m).FirstOrDefault().id;
 
                     UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
                                              where fav.user_id == this.m_id && fav.menu_id == menu_id
@@ -133,7 +140,9 @@ namespace Mondiland.Obj
                 using (ProductContext ctx = new ProductContext())
                 {
 
-                    int menu_id = ctx.MenuInfo.Where(x => x.menu_window == form_name).FirstOrDefault().id;
+                    int menu_id = (from m in ctx.MenuInfo
+                                   where m.menu_window == form_name
+                                   select m).FirstOrDefault().id;
 
                     UserMenuFavorites obj = (from fav in ctx.UserMenuFavorites
                                              where fav.user_id == this.m_id && fav.menu_id == menu_id

@@ -38,20 +38,20 @@ namespace Mondiland.UI
                 return;
             }
 
-            PermissionObject.User user = Program.permission.UserList[Convert.ToInt32(cbx_usrename.SelectedValue)];
+            PermissionObject.User user = Program.permission.GetUserObject(Convert.ToInt32(cbx_usrename.SelectedValue));
 
-            if(!user.Authentication(tb_pwd.Text.Trim()))
+            if (!user.Authentication(tb_pwd.Text.Trim()))
             {
                 MessageUtil.ShowWarning("用户验证失败");
                 tb_pwd.Focus();
                 return;
             }
 
-            Program.permission.login_user = user;
+            Program.permission.LoginUser = user;
 
             this.DialogResult = DialogResult.OK;
 
-            //this.Close();
+            this.Close();
 
         }
 

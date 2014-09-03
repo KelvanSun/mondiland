@@ -29,7 +29,7 @@ namespace Mondiland.UI
         /// <param name="user_id">登陆的用户ID</param>
         public void LoadMenuInfo()
         {
-            foreach(PermissionObject.User.MenuParent parent in Program.permission.login_user.MenuParentList)
+            foreach(PermissionObject.User.MenuParent parent in Program.permission.LoginUser.MenuParentList)
             {
                 OutlookBarBand outlookShortcutsBand = new OutlookBarBand(parent.MenuName);
                 outlookShortcutsBand.LargeImageList = this.mf.imageList;
