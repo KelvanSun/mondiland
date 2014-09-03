@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PartNameObject.cs" />
     <Compile Include="PermissionObject.cs" />
     <Compile Include="ProductObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

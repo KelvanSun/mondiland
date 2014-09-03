@@ -641,7 +641,7 @@
             // 
             // bindingSource_material
             // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.BLLEntity.BEMaterialDataInfo);
+            this.bindingSource_material.DataSource = typeof(Mondiland.Obj.ProductObject.MaterialDataInfo);
             // 
             // ProductManagerForm
             // 

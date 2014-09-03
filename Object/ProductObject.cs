@@ -597,10 +597,6 @@ namespace Mondiland.Obj
                 //处理打印模板信息
             }
 
-
-
-
-
             this.m_tag_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetTagFileName());
 
             this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetWashFileName());
@@ -633,10 +629,12 @@ namespace Mondiland.Obj
 
         public int GetWashFileNameId()
         {
+            string file = this.GetWashFileName();
+            
             using (ProductContext ctx = new ProductContext())
             {
                 return (from wash in ctx.WashPrintTemplate
-                        where wash.file_name == this.GetWashFileName()
+                        where wash.file_name == file
                         select wash.id).FirstOrDefault();
             }
         }
@@ -644,10 +642,12 @@ namespace Mondiland.Obj
 
         public int GetTagFileNameId()
         {
+            string file = this.GetTagFileName();
+            
             using (ProductContext ctx = new ProductContext())
             {
                 return (from tag in ctx.TagPrintTemplate
-                        where tag.file_name == this.GetTagFileName()
+                        where tag.file_name == file
                         select tag.id).FirstOrDefault();
             }
         }
@@ -816,6 +816,54 @@ namespace Mondiland.Obj
             return formatter.Deserialize(stream);
         }
 
+        public static bool CheckProductHuoHaoExist(string huohao)
+        {
+            using (ProductContext ctx = new ProductContext())
+            {
+                int count = (from product in ctx.ProductData
+                             where product.huohao == huohao
+                             select product).Count();
+
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+
+            }
+        }
+
+        //public List<string> GetHuoHaoList()
+        //{
+        //    List<string> list = new List<string>();
+
+        //    foreach (Table_ProductData_Entity entity in ProductData_Dal.GetAll(false))
+        //    {
+        //        list.Add(entity.HuoHao);
+        //    }
+
+        //    return list;
+        //}
+
+        public static List<string> GetHuoHaoList()
+        {
+            List<string> list = new List<string>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var huohaos = from entity in ctx.ProductData
+                              select entity.huohao;
+
+                foreach(string str in huohaos)
+                {
+                    list.Add(str);
+                }
+            }
+
+            return list;
+            
+        }
+
+
         /// <summary>
         /// 保存记录
         /// </summary>
@@ -835,23 +883,14 @@ namespace Mondiland.Obj
                     return result;
                 }
 
-
-                using (ProductContext ctx = new ProductContext())
+                if (CheckProductHuoHaoExist(this.m_huohao.Trim()))
                 {
-                    int count = (from product in ctx.ProductData
-                                 where product.huohao == this.m_huohao.Trim()
-                                 select product).Count();
+                    result.Code = CodeType.Error;
+                    result.Message = "[产品货号]重复,无法保存!";
 
-                    if (count > 0)
-                    {
-                        result.Code = CodeType.Error;
-                        result.Message = "[产品货号]重复,无法保存!";
-
-                        return result;
-                    }
-
+                    return result;
                 }
- 
+
                 if(this.m_partname_id == 0)
                 {
                     result.Code = CodeType.Error;
@@ -1158,9 +1197,7 @@ namespace Mondiland.Obj
                
 
                 //保存成份信息
-                
-                BLLFactory<BLLProductInfo>.Instance.DeleteMaterialInfo(this.m_id);
-                
+              
                 using (ProductContext ctx = new ProductContext())
                 {
                     var mi = from entity in ctx.MaterialData

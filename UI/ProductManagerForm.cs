@@ -122,7 +122,7 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            foreach (string str in BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList())
+            foreach (string str in ProductObject.GetHuoHaoList())
             {
                 acsc.Add(str);
             }
@@ -163,9 +163,6 @@ namespace Mondiland.UI
 
                 this.dgv_material_fill.Columns.Add(dc);
             }
-
-
-            if (this.dgv_material_fill.ColumnCount <= 0) return;
 
             int index = this.dgv_material_fill.Rows.Add();
 

@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using Mondiland.BLL;
 using Mondiland.BLLEntity;
 using Mondiland.Global;
+using Mondiland.Obj;
 
 namespace Mondiland.UI
 {
@@ -28,7 +29,7 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            foreach (string str in BLLFactory<BLLProductInfo>.Instance.GetHuoHaoList())
+            foreach (string str in ProductObject.GetHuoHaoList())
             {
                 acsc.Add(str);
             }
@@ -48,7 +49,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            if (BLLFactory<BLLProductInfo>.Instance.CheckProductHuoHaoIsExist(this.txb_huohao.Text.Trim()))
+            if(ProductObject.CheckProductHuoHaoExist(this.txb_huohao.Text.Trim()))
             {
                 MessageUtil.ShowWarning("[产品货号]已经存在!");
                 txb_huohao.Focus();

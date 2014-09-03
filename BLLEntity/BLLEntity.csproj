@@ -41,12 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BEMadePlaceProduct.cs" />
-    <Compile Include="BEMaterialDataInfo.cs" />
-    <Compile Include="BEMaterialFillData.cs" />
     <Compile Include="BEPartNameProduct.cs" />
-    <Compile Include="BEProductDataInfo.cs" />
     <Compile Include="BESafeDataProduct.cs" />
-    <Compile Include="BESizeDataList.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BESupplierClass.cs" />
     <Compile Include="BESupplierMInfo.cs" />

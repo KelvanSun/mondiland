@@ -223,6 +223,7 @@
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEProductDataAllInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BLLDengjiProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.PermissionObject+LoginUserInfo.datasource" />
+    <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+MaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\ProductObject.datasource" />
     <None Include="Properties\DataSources\SupplierObject.datasource" />
     <None Include="Properties\Settings.settings">
