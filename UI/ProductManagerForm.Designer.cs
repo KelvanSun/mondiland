@@ -310,6 +310,7 @@
             // 
             this.cbx_madeplace.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_madeplace.ComboBoxHeight = 14;
+            this.cbx_madeplace.DisplayColumnNames = "Type";
             this.cbx_madeplace.DropDownHeight = 114;
             this.cbx_madeplace.DropDownWidth = 121;
             this.cbx_madeplace.FormattingEnabled = true;
@@ -324,6 +325,7 @@
             // 
             this.cbx_dengji.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_dengji.ComboBoxHeight = 14;
+            this.cbx_dengji.DisplayColumnNames = "Type,Memo";
             this.cbx_dengji.DisplayMember = "Id";
             this.cbx_dengji.DropDownHeight = 114;
             this.cbx_dengji.DropDownWidth = 121;

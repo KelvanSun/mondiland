@@ -40,14 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEMadePlaceProduct.cs" />
     <Compile Include="BESafeDataProduct.cs" />
     <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BESupplierClass.cs" />
     <Compile Include="BESupplierMInfo.cs" />
     <Compile Include="BLLEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BEDengjiProduct.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

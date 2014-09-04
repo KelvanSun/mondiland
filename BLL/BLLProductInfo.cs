@@ -15,20 +15,12 @@ namespace Mondiland.BLL
 {
     public class BLLProductInfo : BaseBLL
     {
-        private ITable_ProductData ProductData_Dal = null;
-        
-        private ITable_PartName PartName_Dal = null;
-        private ITable_Dengji Dengji_Dal = null;
-        private ITable_MadePlace MadePlace_Dal = null;
         private ITable_SafeData SafeData_Dal = null;
         private ITable_StandardData StandardData_Dal = null;
 
         public BLLProductInfo()
         {
-            ProductData_Dal = Reflect<ITable_ProductData>.Create("DAL_ProductData", "Mondiland.DAL");
-            PartName_Dal = Reflect<ITable_PartName>.Create("DAL_PartName", "Mondiland.DAL");
-            Dengji_Dal = Reflect<ITable_Dengji>.Create("DAL_Dengji", "Mondiland.DAL");
-            MadePlace_Dal = Reflect<ITable_MadePlace>.Create("DAL_MadePlace", "Mondiland.DAL");
+
             SafeData_Dal = Reflect<ITable_SafeData>.Create("DAL_SafeData", "Mondiland.DAL");
             StandardData_Dal = Reflect<ITable_StandardData>.Create("DAL_StandardData", "Mondiland.DAL");
         }
@@ -77,48 +69,7 @@ namespace Mondiland.BLL
             return list;
         }
 
-        /// <summary>
-        /// 反回产品产地的列表信息
-        /// </summary>
-        /// <returns>绑定列表</returns>
-        public BindingList<BEMadePlaceProduct> GetMadePlaceList()
-        {
-            BindingList<BEMadePlaceProduct> list = new BindingList<BEMadePlaceProduct>();
-
-            foreach (Table_MadePlace_Entity entity in MadePlace_Dal.GetAll(false))
-            {
-                BEMadePlaceProduct info = new BEMadePlaceProduct();
-
-                info.Id = entity.Id;
-                info.Type = entity.Type;
-
-                list.Add(info);
-            }
-
-            return list;
-        }
-
-        /// <summary>
-        /// 返回产品等级所有信息列表
-        /// </summary>
-        /// <returns>绑定列表</returns>
-        public BindingList<BEDengjiProduct> GetDengjiList()
-        {
-            BindingList<BEDengjiProduct> list = new BindingList<BEDengjiProduct>();
-
-            foreach (Table_Dengji_Entity entity in Dengji_Dal.GetAll(false))
-            {
-                BEDengjiProduct info = new BEDengjiProduct();
-
-                info.Id = entity.Id;
-                info.Type = entity.Type;
-                info.Memo = entity.Memo;
-
-                list.Add(info);
-            }
-
-            return list;
-        }
+       
      
     }
 }

@@ -80,13 +80,13 @@ namespace Mondiland.UI
 
         private void ProductManagerForm_Load(object sender, EventArgs e)
         {
-            cbx_dengji.DataSource = BLLFactory<BLLProductInfo>.Instance.GetDengjiList();
+            cbx_dengji.DataSource = new DengjiObject().GetDengjiList();
             cbx_dengji.DisplayMember = "Type";
             cbx_dengji.ValueMember = "Id";
             cbx_dengji.Text = string.Empty;
             cbx_dengji.SelectedValue = 0;
 
-            cbx_madeplace.DataSource = BLLFactory<BLLProductInfo>.Instance.GetMadePlaceList();
+            cbx_madeplace.DataSource = new MadePlaceObject().GetMadePlaceList();
             cbx_madeplace.DisplayMember = "Type";
             cbx_madeplace.ValueMember = "Id";
             cbx_madeplace.Text = string.Empty;
