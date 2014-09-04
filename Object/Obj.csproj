@@ -57,6 +57,7 @@
     <Compile Include="ProductObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafeDataManager.cs" />
+    <Compile Include="StandardDataManager.cs" />
     <Compile Include="SupplierObject.cs" />
   </ItemGroup>
   <ItemGroup>

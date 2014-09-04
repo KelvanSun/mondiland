@@ -104,7 +104,7 @@ namespace Mondiland.UI
             cbx_safedata.Text = string.Empty;
             cbx_safedata.SelectedValue = 0;
 
-            cbx_standard.DataSource = BLLFactory<BLLProductInfo>.Instance.GetStandardDataList();
+            cbx_standard.DataSource = new StandardDataManager().GetStandardDataList();
             cbx_standard.DisplayMember = "Type";
             cbx_standard.ValueMember = "Id";
             cbx_standard.Text = string.Empty;

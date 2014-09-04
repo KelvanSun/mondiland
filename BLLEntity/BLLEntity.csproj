@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEStandardDataProduct.cs" />
     <Compile Include="BESupplierClass.cs" />
     <Compile Include="BESupplierMInfo.cs" />
     <Compile Include="BLLEntity.cs" />

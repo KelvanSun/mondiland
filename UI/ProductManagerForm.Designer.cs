@@ -36,15 +36,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.add = new System.Windows.Forms.ToolStripButton();
-            this.save = new System.Windows.Forms.ToolStripButton();
-            this.saveas = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.menu_print_tag = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_print_wash = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.favorites = new System.Windows.Forms.ToolStripButton();
+            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
+            this.panel_center = new System.Windows.Forms.Panel();
+            this.bt_add = new System.Windows.Forms.Button();
+            this.bt_del = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgv_material = new Mondiland.UCControl.UCDataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_material_fill = new Mondiland.UCControl.UCDataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txb_fill = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel_top = new System.Windows.Forms.Panel();
             this.chb_bad = new System.Windows.Forms.CheckBox();
             this.chb_wash = new System.Windows.Forms.CheckBox();
@@ -66,114 +70,234 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txb_huohao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txb_fill = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dgv_material_fill = new Mondiland.UCControl.UCDataGridView();
-            this.panel_center = new System.Windows.Forms.Panel();
-            this.bt_add = new System.Windows.Forms.Button();
-            this.bt_del = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource_material = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStrip.SuspendLayout();
-            this.panel_top.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_material_fill)).BeginInit();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.add = new System.Windows.Forms.ToolStripButton();
+            this.save = new System.Windows.Forms.ToolStripButton();
+            this.saveas = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.menu_print_tag = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_print_wash = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.favorites = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.panel_center.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_material_fill)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel_top.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip
+            // bindingSource_material
             // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.add,
-            this.save,
-            this.saveas,
-            this.toolStripDropDownButton1,
-            this.toolStripSeparator1,
-            this.favorites});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(970, 40);
-            this.toolStrip.TabIndex = 0;
-            this.toolStrip.Text = "toolStrip";
+            this.bindingSource_material.DataSource = typeof(Mondiland.Obj.ProductObject.MaterialDataInfo);
             // 
-            // add
+            // panel_center
             // 
-            this.add.Image = ((System.Drawing.Image)(resources.GetObject("add.Image")));
-            this.add.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(36, 37);
-            this.add.Text = "新增";
-            this.add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.panel_center.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_center.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_center.Controls.Add(this.bt_add);
+            this.panel_center.Controls.Add(this.bt_del);
+            this.panel_center.Controls.Add(this.label10);
+            this.panel_center.Controls.Add(this.dgv_material);
+            this.panel_center.Location = new System.Drawing.Point(0, 369);
+            this.panel_center.Name = "panel_center";
+            this.panel_center.Size = new System.Drawing.Size(970, 174);
+            this.panel_center.TabIndex = 3;
             // 
-            // save
+            // bt_add
             // 
-            this.save.Image = ((System.Drawing.Image)(resources.GetObject("save.Image")));
-            this.save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(36, 37);
-            this.save.Text = "保存";
-            this.save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.save.Click += new System.EventHandler(this.save_Click);
+            this.bt_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add.Image = ((System.Drawing.Image)(resources.GetObject("bt_add.Image")));
+            this.bt_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_add.Location = new System.Drawing.Point(770, 5);
+            this.bt_add.Name = "bt_add";
+            this.bt_add.Size = new System.Drawing.Size(75, 23);
+            this.bt_add.TabIndex = 43;
+            this.bt_add.Text = "添加行";
+            this.bt_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_add.UseVisualStyleBackColor = true;
+            this.bt_add.Click += new System.EventHandler(this.bt_add_Click);
             // 
-            // saveas
+            // bt_del
             // 
-            this.saveas.Image = ((System.Drawing.Image)(resources.GetObject("saveas.Image")));
-            this.saveas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveas.Name = "saveas";
-            this.saveas.Size = new System.Drawing.Size(36, 37);
-            this.saveas.Text = "另存";
-            this.saveas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.saveas.Click += new System.EventHandler(this.saveas_Click);
+            this.bt_del.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
+            this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_del.Location = new System.Drawing.Point(862, 5);
+            this.bt_del.Name = "bt_del";
+            this.bt_del.Size = new System.Drawing.Size(75, 23);
+            this.bt_del.TabIndex = 42;
+            this.bt_del.Text = "删除行";
+            this.bt_del.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_del.UseVisualStyleBackColor = true;
+            this.bt_del.Click += new System.EventHandler(this.bt_del_Click);
             // 
-            // toolStripDropDownButton1
+            // label10
             // 
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_print_tag,
-            this.menu_print_wash});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(45, 37);
-            this.toolStripDropDownButton1.Text = "打印";
-            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 10);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 12);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "面料成份信息设定";
             // 
-            // menu_print_tag
+            // dgv_material
             // 
-            this.menu_print_tag.Name = "menu_print_tag";
-            this.menu_print_tag.Size = new System.Drawing.Size(124, 22);
-            this.menu_print_tag.Text = "打印吊牌";
-            this.menu_print_tag.Click += new System.EventHandler(this.menu_print_tag_Click);
+            this.dgv_material.AllowUserToAddRows = false;
+            this.dgv_material.AllowUserToDeleteRows = false;
+            this.dgv_material.AllowUserToResizeRows = false;
+            this.dgv_material.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_material.AutoGenerateColumns = false;
+            this.dgv_material.BackgroundColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_material.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_material.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_material.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.Type});
+            this.dgv_material.DataSource = this.bindingSource_material;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_material.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_material.Location = new System.Drawing.Point(0, 31);
+            this.dgv_material.MultiSelect = false;
+            this.dgv_material.Name = "dgv_material";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_material.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_material.RowHeadersWidth = 20;
+            this.dgv_material.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_material.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
+            this.dgv_material.RowTemplate.Height = 23;
+            this.dgv_material.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_material.Size = new System.Drawing.Size(970, 142);
+            this.dgv_material.TabIndex = 4;
+            this.dgv_material.TabStop = false;
+            this.dgv_material.Leave += new System.EventHandler(this.dgv_material_Leave);
             // 
-            // menu_print_wash
+            // idDataGridViewTextBoxColumn
             // 
-            this.menu_print_wash.Name = "menu_print_wash";
-            this.menu_print_wash.Size = new System.Drawing.Size(124, 22);
-            this.menu_print_wash.Text = "打印洗唛";
-            this.menu_print_wash.Click += new System.EventHandler(this.menu_print_wash_Click);
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // toolStripSeparator1
+            // Type
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
+            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "成份内容";
+            this.Type.Name = "Type";
             // 
-            // favorites
+            // dgv_material_fill
             // 
-            this.favorites.Image = ((System.Drawing.Image)(resources.GetObject("favorites.Image")));
-            this.favorites.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.favorites.Name = "favorites";
-            this.favorites.Size = new System.Drawing.Size(36, 37);
-            this.favorites.Text = "收藏";
-            this.favorites.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.favorites.ToolTipText = "添加快捷方式";
-            this.favorites.Click += new System.EventHandler(this.favorites_Click);
+            this.dgv_material_fill.AllowUserToAddRows = false;
+            this.dgv_material_fill.AllowUserToDeleteRows = false;
+            this.dgv_material_fill.AllowUserToResizeRows = false;
+            this.dgv_material_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_material_fill.BackgroundColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_material_fill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_material_fill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_material_fill.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_material_fill.Location = new System.Drawing.Point(0, 574);
+            this.dgv_material_fill.MultiSelect = false;
+            this.dgv_material_fill.Name = "dgv_material_fill";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_material_fill.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_material_fill.RowHeadersWidth = 20;
+            this.dgv_material_fill.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_material_fill.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
+            this.dgv_material_fill.RowTemplate.Height = 23;
+            this.dgv_material_fill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_material_fill.Size = new System.Drawing.Size(970, 85);
+            this.dgv_material_fill.TabIndex = 1;
+            this.dgv_material_fill.TabStop = false;
+            this.dgv_material_fill.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_material_fill_CellValueChanged);
+            this.dgv_material_fill.Leave += new System.EventHandler(this.dgv_material_fill_Leave);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.txb_fill);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 544);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(970, 115);
+            this.panel1.TabIndex = 2;
+            // 
+            // txb_fill
+            // 
+            this.txb_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_fill.BackColor = System.Drawing.SystemColors.Info;
+            this.txb_fill.Location = new System.Drawing.Point(231, 5);
+            this.txb_fill.Name = "txb_fill";
+            this.txb_fill.Size = new System.Drawing.Size(727, 21);
+            this.txb_fill.TabIndex = 6;
+            this.txb_fill.TextChanged += new System.EventHandler(this.txb_fill_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(174, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "填充面料";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(113, 12);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "按规则填充信息设定";
             // 
             // panel_top
             // 
@@ -267,6 +391,7 @@
             // 
             this.cbx_standard.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_standard.ComboBoxHeight = 14;
+            this.cbx_standard.DisplayColumnNames = "Type,Memo";
             this.cbx_standard.DropDownHeight = 114;
             this.cbx_standard.DropDownWidth = 121;
             this.cbx_standard.FormattingEnabled = true;
@@ -436,216 +561,92 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "产品货号";
             // 
-            // panel1
+            // toolStrip
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.txb_fill);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 544);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(970, 115);
-            this.panel1.TabIndex = 2;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.add,
+            this.save,
+            this.saveas,
+            this.toolStripDropDownButton1,
+            this.toolStripSeparator1,
+            this.favorites});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(970, 40);
+            this.toolStrip.TabIndex = 0;
+            this.toolStrip.Text = "toolStrip";
             // 
-            // txb_fill
+            // add
             // 
-            this.txb_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_fill.BackColor = System.Drawing.SystemColors.Info;
-            this.txb_fill.Location = new System.Drawing.Point(231, 5);
-            this.txb_fill.Name = "txb_fill";
-            this.txb_fill.Size = new System.Drawing.Size(727, 21);
-            this.txb_fill.TabIndex = 6;
-            this.txb_fill.TextChanged += new System.EventHandler(this.txb_fill_TextChanged);
+            this.add.Image = ((System.Drawing.Image)(resources.GetObject("add.Image")));
+            this.add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(36, 37);
+            this.add.Text = "新增";
+            this.add.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.add.Click += new System.EventHandler(this.add_Click);
             // 
-            // label9
+            // save
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(174, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "填充面料";
+            this.save.Image = ((System.Drawing.Image)(resources.GetObject("save.Image")));
+            this.save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(36, 37);
+            this.save.Text = "保存";
+            this.save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
-            // label8
+            // saveas
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 12);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "按规则填充信息设定";
+            this.saveas.Image = ((System.Drawing.Image)(resources.GetObject("saveas.Image")));
+            this.saveas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveas.Name = "saveas";
+            this.saveas.Size = new System.Drawing.Size(36, 37);
+            this.saveas.Text = "另存";
+            this.saveas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.saveas.Click += new System.EventHandler(this.saveas_Click);
             // 
-            // dgv_material_fill
+            // toolStripDropDownButton1
             // 
-            this.dgv_material_fill.AllowUserToAddRows = false;
-            this.dgv_material_fill.AllowUserToDeleteRows = false;
-            this.dgv_material_fill.AllowUserToResizeRows = false;
-            this.dgv_material_fill.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_material_fill.BackgroundColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_material_fill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_material_fill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_material_fill.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_material_fill.Location = new System.Drawing.Point(0, 574);
-            this.dgv_material_fill.MultiSelect = false;
-            this.dgv_material_fill.Name = "dgv_material_fill";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_material_fill.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_material_fill.RowHeadersWidth = 20;
-            this.dgv_material_fill.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgv_material_fill.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
-            this.dgv_material_fill.RowTemplate.Height = 23;
-            this.dgv_material_fill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_material_fill.Size = new System.Drawing.Size(970, 85);
-            this.dgv_material_fill.TabIndex = 1;
-            this.dgv_material_fill.TabStop = false;
-            this.dgv_material_fill.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_material_fill_CellValueChanged);
-            this.dgv_material_fill.Leave += new System.EventHandler(this.dgv_material_fill_Leave);
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_print_tag,
+            this.menu_print_wash});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(45, 37);
+            this.toolStripDropDownButton1.Text = "打印";
+            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // panel_center
+            // menu_print_tag
             // 
-            this.panel_center.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_center.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_center.Controls.Add(this.bt_add);
-            this.panel_center.Controls.Add(this.bt_del);
-            this.panel_center.Controls.Add(this.label10);
-            this.panel_center.Controls.Add(this.dgv_material);
-            this.panel_center.Location = new System.Drawing.Point(0, 369);
-            this.panel_center.Name = "panel_center";
-            this.panel_center.Size = new System.Drawing.Size(970, 174);
-            this.panel_center.TabIndex = 3;
+            this.menu_print_tag.Name = "menu_print_tag";
+            this.menu_print_tag.Size = new System.Drawing.Size(124, 22);
+            this.menu_print_tag.Text = "打印吊牌";
+            this.menu_print_tag.Click += new System.EventHandler(this.menu_print_tag_Click);
             // 
-            // bt_add
+            // menu_print_wash
             // 
-            this.bt_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_add.Image = ((System.Drawing.Image)(resources.GetObject("bt_add.Image")));
-            this.bt_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_add.Location = new System.Drawing.Point(770, 5);
-            this.bt_add.Name = "bt_add";
-            this.bt_add.Size = new System.Drawing.Size(75, 23);
-            this.bt_add.TabIndex = 43;
-            this.bt_add.Text = "添加行";
-            this.bt_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bt_add.UseVisualStyleBackColor = true;
-            this.bt_add.Click += new System.EventHandler(this.bt_add_Click);
+            this.menu_print_wash.Name = "menu_print_wash";
+            this.menu_print_wash.Size = new System.Drawing.Size(124, 22);
+            this.menu_print_wash.Text = "打印洗唛";
+            this.menu_print_wash.Click += new System.EventHandler(this.menu_print_wash_Click);
             // 
-            // bt_del
+            // toolStripSeparator1
             // 
-            this.bt_del.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
-            this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_del.Location = new System.Drawing.Point(862, 5);
-            this.bt_del.Name = "bt_del";
-            this.bt_del.Size = new System.Drawing.Size(75, 23);
-            this.bt_del.TabIndex = 42;
-            this.bt_del.Text = "删除行";
-            this.bt_del.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bt_del.UseVisualStyleBackColor = true;
-            this.bt_del.Click += new System.EventHandler(this.bt_del_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
-            // label10
+            // favorites
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 10);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 12);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "面料成份信息设定";
-            // 
-            // dgv_material
-            // 
-            this.dgv_material.AllowUserToAddRows = false;
-            this.dgv_material.AllowUserToDeleteRows = false;
-            this.dgv_material.AllowUserToResizeRows = false;
-            this.dgv_material.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_material.AutoGenerateColumns = false;
-            this.dgv_material.BackgroundColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_material.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_material.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_material.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.Type});
-            this.dgv_material.DataSource = this.bindingSource_material;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_material.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_material.Location = new System.Drawing.Point(0, 31);
-            this.dgv_material.MultiSelect = false;
-            this.dgv_material.Name = "dgv_material";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_material.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv_material.RowHeadersWidth = 20;
-            this.dgv_material.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgv_material.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
-            this.dgv_material.RowTemplate.Height = 23;
-            this.dgv_material.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_material.Size = new System.Drawing.Size(970, 142);
-            this.dgv_material.TabIndex = 4;
-            this.dgv_material.TabStop = false;
-            this.dgv_material.Leave += new System.EventHandler(this.dgv_material_Leave);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // Type
-            // 
-            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "成份内容";
-            this.Type.Name = "Type";
-            // 
-            // bindingSource_material
-            // 
-            this.bindingSource_material.DataSource = typeof(Mondiland.Obj.ProductObject.MaterialDataInfo);
+            this.favorites.Image = ((System.Drawing.Image)(resources.GetObject("favorites.Image")));
+            this.favorites.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.favorites.Name = "favorites";
+            this.favorites.Size = new System.Drawing.Size(36, 37);
+            this.favorites.Text = "收藏";
+            this.favorites.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.favorites.ToolTipText = "添加快捷方式";
+            this.favorites.Click += new System.EventHandler(this.favorites_Click);
             // 
             // ProductManagerForm
             // 
@@ -658,17 +659,17 @@
             this.Name = "ProductManagerForm";
             this.Text = "产品信息管理";
             this.Load += new System.EventHandler(this.ProductManagerForm_Load);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_material_fill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
             this.panel_center.ResumeLayout(false);
             this.panel_center.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_material_fill)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel_top.ResumeLayout(false);
+            this.panel_top.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
