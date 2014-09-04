@@ -9,9 +9,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 
-
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.Obj;
 
 using Seagull.BarTender.Print;

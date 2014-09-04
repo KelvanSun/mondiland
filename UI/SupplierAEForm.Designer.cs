@@ -94,6 +94,7 @@
             // cbx_class
             // 
             this.cbx_class.ComboBoxHeight = 14;
+            this.cbx_class.DisplayColumnNames = "Name,Memo";
             this.cbx_class.DropDownHeight = 114;
             this.cbx_class.DropDownWidth = 121;
             this.cbx_class.FormattingEnabled = true;

@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.Obj;
 using UtilityLibrary.WinControls;
 

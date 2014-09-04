@@ -38,7 +38,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgumentValidation.cs" />
     <Compile Include="ChineseToSpell.cs" />
     <Compile Include="EnumClass.cs" />
     <Compile Include="MessageUtil.cs" />

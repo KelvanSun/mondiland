@@ -31,7 +31,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>148</ApplicationRevision>
+    <ApplicationRevision>151</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -243,29 +243,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLLEntity\BLLEntity.csproj">
-      <Project>{f842f3cc-44a1-487f-8348-1f55f2ba0143}</Project>
-      <Name>BLLEntity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{fdb82b7d-eda3-4516-a355-c895e3d80f52}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{c249d3dc-d316-4bd9-83ff-3656b4a47009}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ENTITY\Entity.csproj">
-      <Project>{c9ec46ac-0da9-4fc4-a98c-6061619b88ca}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GLOBAL\Global.csproj">
       <Project>{bc787dd9-49f1-437f-9f07-c7cb0185669d}</Project>
       <Name>Global</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IDAL\IDal.csproj">
-      <Project>{a9c3c9fb-8c15-4f98-bceb-75575362e2b1}</Project>
-      <Name>IDal</Name>
     </ProjectReference>
     <ProjectReference Include="..\Object\Obj.csproj">
       <Project>{554fc5c1-ff95-4c36-88ad-664091576288}</Project>

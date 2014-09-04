@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Mondiland.BLL;
 using Mondiland.Obj;
 using Mondiland.Global;
+
 
 namespace Mondiland.UI
 {
@@ -23,7 +23,7 @@ namespace Mondiland.UI
 
             InitializeComponent();
 
-            this.cbx_class.DataSource = BLLFactory<BLLSupplierInfo>.Instance.GetSupplierClassList();
+            this.cbx_class.DataSource = new SupplierClassManager().GetSupplierClassList();
             this.cbx_class.DisplayMember = "Name";
             this.cbx_class.ValueMember = "Id";
             this.cbx_class.SelectedValue = 0;

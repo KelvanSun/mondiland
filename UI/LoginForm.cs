@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Mondiland.BLL;
 using Mondiland.Obj;
 using Mondiland.Global;
 

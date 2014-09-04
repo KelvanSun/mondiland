@@ -7,8 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.Obj;
 using Mondiland.Global;
 
@@ -163,6 +161,8 @@ namespace Mondiland.UI
 
                 this.dgv_material_fill.Columns.Add(dc);
             }
+
+            if (this.dgv_material_fill.Columns.Count == 0) return;
 
             int index = this.dgv_material_fill.Rows.Add();
 

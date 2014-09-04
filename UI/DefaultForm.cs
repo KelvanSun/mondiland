@@ -6,9 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Mondiland.BLL;
 using Mondiland.Obj;
-using Mondiland.BLLEntity;
 
 namespace Mondiland.UI
 {

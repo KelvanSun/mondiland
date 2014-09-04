@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Mondiland.BLL;
 using Mondiland.Obj;
 using Mondiland.Global;
 
@@ -101,8 +100,8 @@ namespace Mondiland.UI
 
             if(cbx_query_type.Text == "拼音码")
             {
-                              
-                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByPym(this.txb_query_text.Text.Trim()))
+
+                foreach (int id in new SupplierManager().QuerySupplierMByPym(this.txb_query_text.Text.Trim()))
                 {
                     SupplierObject ob = new SupplierObject(id);
 
@@ -113,7 +112,7 @@ namespace Mondiland.UI
 
             if(cbx_query_type.Text == "公司简称")
             {
-                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByName(this.txb_query_text.Text.Trim()))
+                foreach (int id in new SupplierManager().QuerySupplierMByName(this.txb_query_text.Text.Trim()))
                 {
                     SupplierObject ob = new SupplierObject(id);
 
@@ -123,7 +122,7 @@ namespace Mondiland.UI
 
             if(cbx_query_type.Text == "公司全称")
             {
-                foreach(int id in BLLFactory<BLLSupplierInfo>.Instance.QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()))
+                foreach (int id in new SupplierManager().QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()))
                 {
                     SupplierObject ob = new SupplierObject(id);
 

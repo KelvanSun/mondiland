@@ -8,8 +8,6 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.Serialization.Formatters.Binary;
 
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.EFModule;
 
 using Seagull.BarTender.Print;
@@ -836,18 +834,6 @@ namespace Mondiland.Obj
             }
         }
 
-        //public List<string> GetHuoHaoList()
-        //{
-        //    List<string> list = new List<string>();
-
-        //    foreach (Table_ProductData_Entity entity in ProductData_Dal.GetAll(false))
-        //    {
-        //        list.Add(entity.HuoHao);
-        //    }
-
-        //    return list;
-        //}
-
         public static List<string> GetHuoHaoList()
         {
             List<string> list = new List<string>();
@@ -952,7 +938,7 @@ namespace Mondiland.Obj
                 }
 
                 //当填充材质不为空时处理填充数据
-                if(this.MaterialFillInfo.material_type.Trim() != string.Empty)
+                if(!string.IsNullOrEmpty(this.MaterialFillInfo.material_type))
                 {
                     foreach(MaterialFillInfoObject.MaterialFillData data in this.MaterialFillInfo.m_material_fill_list)
                     {
@@ -978,6 +964,7 @@ namespace Mondiland.Obj
                 info.pwash = this.m_pwash == true ? 1:0;
                 info.pbad = this.m_pbad == true ? 1:0;
                 info.tag_id = this.GetTagFileNameId();
+                info.memo = this.m_memo;
                 info.wash_id = this.GetWashFileNameId();
                 info.lastamp = System.Guid.NewGuid();
                                
@@ -1036,7 +1023,7 @@ namespace Mondiland.Obj
                     }
                 }
 
-                if(this.MaterialFillInfo.material_type.Trim() != string.Empty)
+                if(!string.IsNullOrEmpty(this.MaterialFillInfo.material_type))
                 {
                     foreach(MaterialFillInfoObject.MaterialFillData fill in this.MaterialFillInfo.m_material_fill_list)
                     {
@@ -1123,7 +1110,7 @@ namespace Mondiland.Obj
                 }
 
                 //当填充材质不为空时处理填充数据
-                if (this.MaterialFillInfo.material_type.Trim() != string.Empty)
+                if (!string.IsNullOrEmpty(this.MaterialFillInfo.material_type))
                 {
                     foreach(MaterialFillInfoObject.MaterialFillData data in this.MaterialFillInfo.m_material_fill_list)
                     {
@@ -1168,7 +1155,7 @@ namespace Mondiland.Obj
                     info.standarddata_id = this.m_standarddata_id;
                     info.pwash = this.m_pwash == true ? 1:0;
                     info.pbad = this.m_pbad == true ?1:0;
-
+                    info.memo = this.m_memo;
                     info.tag_id = this.GetTagFileNameId();
                     info.wash_id = this.GetWashFileNameId();
                     info.lastamp = System.Guid.NewGuid();
@@ -1189,7 +1176,7 @@ namespace Mondiland.Obj
                         return result;
                     }
 
-                    if(ctx.SaveChanges() == 0)
+                    if (ctx.SaveChanges() == 0)
                     {
                         result.Code = CodeType.Error;
                         result.Message = "产品基本信息保存失败";
@@ -1250,7 +1237,7 @@ namespace Mondiland.Obj
                     ctx.SaveChanges();
                 }
 
-                if (this.MaterialFillInfo.material_type.Trim() != string.Empty)
+                if (!string.IsNullOrEmpty(this.MaterialFillInfo.material_type))
                 {
                     foreach (MaterialFillInfoObject.MaterialFillData fill in this.MaterialFillInfo.m_material_fill_list)
                     {

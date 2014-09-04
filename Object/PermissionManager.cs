@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.Global;
 using Mondiland.EFModule;
 

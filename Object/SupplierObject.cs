@@ -6,9 +6,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Configuration;
 
-using Mondiland.BLL;
-using Mondiland.BLLEntity;
 using Mondiland.Global;
+using Mondiland.EFModule;
 
 namespace Mondiland.Obj
 {
@@ -26,27 +25,31 @@ namespace Mondiland.Obj
         private string m_fax = string.Empty;
         private string m_address = string.Empty;
         private string m_memo = string.Empty;
-        private string m_lastamp = string.Empty;
+        private System.Guid m_lastamp = System.Guid.Empty;
 
         public SupplierObject() { }
 
         public SupplierObject(int id)
         {
-            BESupplierMInfo info = BLLFactory<BLLSupplierInfo>.Instance.ReadSupplierMInfoByPrimaryKey(id);
+            using(ProductContext ctx = new ProductContext())
+            {
+                SupplierM info = (from entity in ctx.SupplierM
+                                  where entity.id == id
+                                  select entity).FirstOrDefault();
 
-            this.m_id = info.Id;
-            this.Class_Id = info.Class_Id;
-            this.m_name = info.Name;
-            this.m_intact_name = info.Intact_Name;
-            this.m_pym = info.Pym;
-            this.m_bank_name = info.Bank_Name;
-            this.m_account = info.Account;
-            this.m_phone = info.Phone;
-            this.m_fax = info.Fax;
-            this.m_address = info.Address;
-            this.m_memo = info.Memo;
-            this.m_lastamp = info.LasTamp;
-
+                this.m_id = info.id;
+                this.Class_Id = info.class_id;
+                this.m_name = info.name;
+                this.m_intact_name = info.intact_name;
+                this.m_pym = info.pym;
+                this.m_bank_name = info.bank_name;
+                this.m_account = info.account;
+                this.m_phone = info.phone;
+                this.m_fax = info.fax;
+                this.m_address = info.address;
+                this.m_memo = info.memo;
+                this.m_lastamp = info.lastamp;
+            }
         }
 
         public enum CodeType
@@ -77,7 +80,13 @@ namespace Mondiland.Obj
             { 
                 m_class_id = value;
 
-                this.Class_Name = BLLFactory<BLLSupplierInfo>.Instance.GetSupplierClassName(this.m_class_id);
+                using(ProductContext ctx = new ProductContext())
+                {
+                    this.Class_Name = (from entity in ctx.SupplierClass
+                                       where entity.id == this.m_class_id
+                                       select entity.name).FirstOrDefault();
+                }
+
             }
         }
 
@@ -218,72 +227,92 @@ namespace Mondiland.Obj
             //新增操作
             if (this.m_id == 0)
             {
+                SupplierM info = new SupplierM();
 
-                BESupplierMInfo info = new BESupplierMInfo();
+                info.class_id = this.m_class_id;
+                info.pym = this.m_pym;
+                info.name = this.m_name;
+                info.intact_name = this.m_intact_name;
+                info.bank_name = this.m_bank_name;
+                info.account = this.m_account;
+                info.phone = this.m_phone;
+                info.fax = this.m_fax;
+                info.address = this.m_address;
+                info.memo = this.m_memo;
+                info.lastamp = System.Guid.NewGuid();
 
-                info.Class_Id = this.m_class_id;
-                info.Pym = this.m_pym;
-                info.Name = this.m_name;
-                info.Intact_Name = this.m_intact_name;
-                info.Bank_Name = this.m_bank_name;
-                info.Account = this.m_account;
-                info.Phone = this.m_phone;
-                info.Fax = this.m_fax;
-                info.Address = this.m_address;
-                info.Memo = this.m_memo;
-
-                if (BLLFactory<BLLSupplierInfo>.Instance.AddSupplierM(info))
+                using(ProductContext ctx = new ProductContext())
                 {
+                    ctx.SupplierM.Add(info);
+
+                    if(ctx.SaveChanges() > 0)
+                    {
+                        result.Code = CodeType.Ok;
+                        result.Message = "保存成功!";
+
+                        return result;
+                    }
+                    else
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "保存失败!";
+
+                        return result;
+                    }
+
+                }
+
+            }
+            else
+            {
+                using(ProductContext ctx = new ProductContext())
+                {
+                    System.Guid lastamp = (from entity in ctx.SupplierM
+                                           where entity.id == this.m_id
+                                           select entity.lastamp).FirstOrDefault();
+
+                    if(lastamp != this.m_lastamp)
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "当前编辑的记录已经变更,无法保存!";
+
+                        return result;
+                    }
+                }
+
+                using (ProductContext ctx = new ProductContext())
+                {
+                    SupplierM info = (from entity in ctx.SupplierM
+                                      where entity.id == this.m_id
+                                      select entity).FirstOrDefault();
+
+                    info.id = this.m_id;
+                    info.class_id = this.m_class_id;
+                    info.pym = this.m_pym;
+                    info.name = this.m_name;
+                    info.intact_name = this.m_intact_name;
+                    info.bank_name = this.m_bank_name;
+                    info.account = this.m_account;
+                    info.phone = this.m_phone;
+                    info.fax = this.m_fax;
+                    info.address = this.m_address;
+                    info.memo = this.m_memo;
+                    info.lastamp = System.Guid.NewGuid();
+
+                    if(ctx.SaveChanges() == 0)
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "保存失败!";
+
+                        return result;
+                    }
+
                     result.Code = CodeType.Ok;
                     result.Message = "保存成功!";
 
                     return result;
+
                 }
-                else
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "保存失败!";
-
-                    return result;
-                }
-            }
-            else
-            {
-                if (BLLFactory<BLLSupplierInfo>.Instance.UpdateCheckLastamp(this.m_id, this.m_lastamp))
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "当前编辑的记录已经变更,无法保存!";
-
-                    return result;
-                }
-
-                BESupplierMInfo info = new BESupplierMInfo();
-
-                info.Id = this.m_id;
-                info.Class_Id = this.m_class_id;
-                info.Pym = this.m_pym;
-                info.Name = this.m_name;
-                info.Intact_Name = this.m_intact_name;
-                info.Bank_Name = this.m_bank_name;
-                info.Account = this.m_account;
-                info.Phone = this.m_phone;
-                info.Fax = this.m_fax;
-                info.Address = this.m_address;
-                info.Memo = this.m_memo;
-
-                if (!BLLFactory<BLLSupplierInfo>.Instance.UpdateSupplierM(info))
-                {
-                    result.Code = CodeType.Error;
-                    result.Message = "保存失败!";
-
-                    return result;
-                }
-
-                result.Code = CodeType.Ok;
-                result.Message = "保存成功!";
-
-                return result;
-
             }
         }
     }
