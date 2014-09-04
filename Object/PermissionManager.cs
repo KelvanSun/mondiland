@@ -12,7 +12,7 @@ using Mondiland.EFModule;
 
 namespace Mondiland.Obj
 {
-    public class PermissionObject
+    public class PermissionManager
     {
         private User m_login_user = null;
 
@@ -22,7 +22,7 @@ namespace Mondiland.Obj
             set { m_login_user = value; }
         }
 
-        public PermissionObject()
+        public PermissionManager()
         {
             
        

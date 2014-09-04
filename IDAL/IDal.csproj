@@ -42,7 +42,6 @@
     <Compile Include="ITable_SupplierClass.cs" />
     <Compile Include="ITable_SupplierD.cs" />
     <Compile Include="ITable_SupplierM.cs" />
-    <Compile Include="ITable_SafeData.cs" />
     <Compile Include="ITable_StandardData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

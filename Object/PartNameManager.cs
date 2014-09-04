@@ -8,12 +8,12 @@ using Mondiland.EFModule;
 
 namespace Mondiland.Obj
 {
-    public class PartNameObject
+    public class PartNameManager
     {
 
-        public BindingList<PartNameList> GetPartNameList()
+        public BindingList<PartNameListObj> GetPartNameList()
         {
-            BindingList<PartNameList> list = new BindingList<PartNameList>();
+            BindingList<PartNameListObj> list = new BindingList<PartNameListObj>();
 
             using (ProductContext ctx = new ProductContext())
             {
@@ -22,7 +22,7 @@ namespace Mondiland.Obj
 
                 foreach (var partname in partnames)
                 {
-                    PartNameList info = new PartNameList();
+                    PartNameListObj info = new PartNameListObj();
                     info.Id = partname.id;
                     info.PartName = partname.name;
                     info.ClassType = partname.SizeClass.type;
@@ -57,7 +57,7 @@ namespace Mondiland.Obj
         }
 
 
-        public class PartNameList
+        public class PartNameListObj
         {
             private int m_id = 0;
             private string m_partname = string.Empty;

@@ -8,11 +8,11 @@ using Mondiland.EFModule;
 
 namespace Mondiland.Obj
 {
-    public class MadePlaceObject
+    public class MadePlaceManager
     {
-        public BindingList<MadePlaceList> GetMadePlaceList()
+        public BindingList<MadePlaceListObj> GetMadePlaceList()
         {
-            BindingList<MadePlaceList> list = new BindingList<MadePlaceList>();
+            BindingList<MadePlaceListObj> list = new BindingList<MadePlaceListObj>();
 
             using(ProductContext ctx = new ProductContext())
             {
@@ -21,7 +21,7 @@ namespace Mondiland.Obj
 
                 foreach(var madeplace in madeplaces)
                 {
-                    MadePlaceList info = new MadePlaceList();
+                    MadePlaceListObj info = new MadePlaceListObj();
                     info.Id = madeplace.id;
                     info.Type = madeplace.type;
 
@@ -33,7 +33,7 @@ namespace Mondiland.Obj
         }
         
         
-        public class MadePlaceList
+        public class MadePlaceListObj
         {
             private int m_id = 0;
             private string m_type = string.Empty;

@@ -281,6 +281,7 @@
             // 
             this.cbx_safedata.BackColor = System.Drawing.SystemColors.Info;
             this.cbx_safedata.ComboBoxHeight = 14;
+            this.cbx_safedata.DisplayColumnNames = "Type,Memo";
             this.cbx_safedata.DropDownHeight = 114;
             this.cbx_safedata.DropDownWidth = 121;
             this.cbx_safedata.FormattingEnabled = true;

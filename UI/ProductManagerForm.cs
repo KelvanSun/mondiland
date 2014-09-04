@@ -80,25 +80,25 @@ namespace Mondiland.UI
 
         private void ProductManagerForm_Load(object sender, EventArgs e)
         {
-            cbx_dengji.DataSource = new DengjiObject().GetDengjiList();
+            cbx_dengji.DataSource = new DengjiManager().GetDengjiList();
             cbx_dengji.DisplayMember = "Type";
             cbx_dengji.ValueMember = "Id";
             cbx_dengji.Text = string.Empty;
             cbx_dengji.SelectedValue = 0;
 
-            cbx_madeplace.DataSource = new MadePlaceObject().GetMadePlaceList();
+            cbx_madeplace.DataSource = new MadePlaceManager().GetMadePlaceList();
             cbx_madeplace.DisplayMember = "Type";
             cbx_madeplace.ValueMember = "Id";
             cbx_madeplace.Text = string.Empty;
             cbx_madeplace.SelectedValue = 0;
 
-            cbx_partname.DataSource = new PartNameObject().GetPartNameList();
+            cbx_partname.DataSource = new PartNameManager().GetPartNameList();
             cbx_partname.DisplayMember = "PartName";
             cbx_partname.ValueMember = "Id";
             cbx_partname.Text = string.Empty;
             cbx_partname.SelectedValue = 0;
 
-            cbx_safedata.DataSource = BLLFactory<BLLProductInfo>.Instance.GetSafeDataList();
+            cbx_safedata.DataSource = new SafeDataManager().GetSafeDataList();
             cbx_safedata.DisplayMember = "Type";
             cbx_safedata.ValueMember = "Id";
             cbx_safedata.Text = string.Empty;
@@ -249,7 +249,7 @@ namespace Mondiland.UI
             
             this.product.PartName_Id = Convert.ToInt32(this.cbx_partname.SelectedValue);
 
-            PartNameObject.OptimizeInfo opt = new PartNameObject().GetOptimizeInfo(this.product.PartName_Id);
+            PartNameManager.OptimizeInfo opt = new PartNameManager().GetOptimizeInfo(this.product.PartName_Id);
 
             if (opt.Safe_Id > 0)
             {

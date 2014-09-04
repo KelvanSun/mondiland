@@ -8,11 +8,11 @@ using Mondiland.EFModule;
 
 namespace Mondiland.Obj
 {
-    public class DengjiObject
+    public class DengjiManager
     {
-        public BindingList<DengjiList> GetDengjiList()
+        public BindingList<DengjiListObj> GetDengjiList()
         {
-            BindingList<DengjiList> list = new BindingList<DengjiList>();
+            BindingList<DengjiListObj> list = new BindingList<DengjiListObj>();
 
             using(ProductContext ctx = new ProductContext())
             {
@@ -21,7 +21,7 @@ namespace Mondiland.Obj
 
                 foreach(var denji in dengjis)
                 {
-                    DengjiList info = new DengjiList();
+                    DengjiListObj info = new DengjiListObj();
                     info.Id = denji.id;
                     info.Type = denji.type;
                     info.Memo = denji.memo;
@@ -33,7 +33,7 @@ namespace Mondiland.Obj
 
             return list;
         }
-        public class DengjiList
+        public class DengjiListObj
         {
             private int m_id = 0;
             private string m_type = string.Empty;

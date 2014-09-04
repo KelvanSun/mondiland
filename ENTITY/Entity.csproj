@@ -45,7 +45,6 @@
     <Compile Include="Table_SupplierD_Entity.cs" />
     <Compile Include="Table_SupplierClass_Entity.cs" />
     <Compile Include="Table_SupplierM_Entity.cs" />
-    <Compile Include="Table_SafeData_Entity.cs" />
     <Compile Include="Table_StardardData_Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

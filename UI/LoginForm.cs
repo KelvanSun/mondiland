@@ -38,7 +38,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            PermissionObject.User user = Program.permission.GetUserObject(Convert.ToInt32(cbx_usrename.SelectedValue));
+            PermissionManager.User user = Program.permission.GetUserObject(Convert.ToInt32(cbx_usrename.SelectedValue));
 
             if (!user.Authentication(tb_pwd.Text.Trim()))
             {
