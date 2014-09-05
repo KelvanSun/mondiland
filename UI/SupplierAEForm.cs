@@ -23,6 +23,8 @@ namespace Mondiland.UI
 
             InitializeComponent();
 
+            this.bindingSource.DataSource = supplier;
+
             this.cbx_class.DataSource = SupplierClassManager.SupplierClassList;
             this.cbx_class.DisplayMember = "Name";
             this.cbx_class.ValueMember = "Id";
@@ -43,14 +45,6 @@ namespace Mondiland.UI
             }
 
             this.cbx_class.SelectedValue = supplier.Class_Id;
-            this.txb_name.Text = supplier.Name;
-            this.txb_intact_name.Text = supplier.Intact_Name;
-            this.txb_phone.Text = supplier.Phone;
-            this.txb_fax.Text = supplier.Fax;
-            this.txb_bank_name.Text = supplier.Bank_Name;
-            this.txb_account.Text = supplier.Account;
-            this.txb_address.Text = supplier.Address;
-            this.txb_memo.Text = supplier.Memo; 
 
         }
 
@@ -102,15 +96,15 @@ namespace Mondiland.UI
 
         private void bt_save_Click(object sender, EventArgs e)
         {
-            SupplierObject.SaveResult result = supplier.Save();
+            SaveResult result = supplier.Save();
 
-            if(result.Code == SupplierObject.CodeType.Error)
+            if(result.Code == CodeType.Error)
             {
                 MessageUtil.ShowError(result.Message);
                 return;
             }
 
-            if(result.Code == SupplierObject.CodeType.Ok)
+            if(result.Code == CodeType.Ok)
             {
                 MessageUtil.ShowTips(result.Message);
 
@@ -118,44 +112,5 @@ namespace Mondiland.UI
             }
         }
 
-        private void txb_name_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Name = this.txb_name.Text;
-        }
-
-        private void txb_intact_name_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Intact_Name = this.txb_intact_name.Text;
-        }
-
-        private void txb_phone_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Phone = this.txb_phone.Text;
-        }
-
-        private void txb_fax_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Fax = this.txb_fax.Text;
-        }
-
-        private void txb_bank_name_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Bank_Name = this.txb_bank_name.Text;
-        }
-
-        private void txb_account_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Account = this.txb_account.Text;
-        }
-
-        private void txb_address_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Address = this.txb_address.Text;
-        }
-
-        private void txb_memo_TextChanged(object sender, EventArgs e)
-        {
-            supplier.Memo = this.txb_memo.Text;
-        }
     }
 }

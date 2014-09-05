@@ -33,7 +33,7 @@ namespace Mondiland.Obj
 
         public SupplierObject(int id)
         {
-            using(ProductContext ctx = new ProductContext())
+            using (ProductContext ctx = new ProductContext())
             {
                 SupplierM info = (from entity in ctx.SupplierM
                                   where entity.id == id
@@ -51,19 +51,33 @@ namespace Mondiland.Obj
                 this.m_address = info.address;
                 this.m_memo = info.memo;
                 this.m_lastamp = info.lastamp;
-            }
-        }
 
-        public enum CodeType
-        {
-            Ok,
-            Error,
-        }
-        //保存返回信息
-        public class SaveResult
-        {
-            public CodeType Code;
-            public string Message = string.Empty;
+            }
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var infos = from entity in ctx.SupplierF
+                            where entity.supplier_id == id
+                            select entity;
+
+                foreach(SupplierF info in infos)
+                {
+                    SupplierFObject ob = new SupplierFObject();
+                    ob.Id = info.id;
+                    ob.Address = info.address;
+                    ob.Contacts = info.contacts;
+                    ob.Tel = info.tel;
+                    ob.Fax = info.fax;
+                    ob.Memo = info.memo;
+                    ob.LasTamp = info.lastamp;
+
+                    SupplierFList.Add(ob);
+
+                }
+                
+            }
+
+
         }
 
         public int Id
@@ -324,12 +338,26 @@ namespace Mondiland.Obj
         public class SupplierFObject
         {
             private int m_id = 0;
+            private int m_supplier_id = 0;
             private string m_address = string.Empty;
             private string m_contacts = string.Empty;
             private string m_tel = string.Empty;
             private string m_fax = string.Empty;
             private string m_memo = string.Empty;
             private System.Guid m_lastamp = System.Guid.Empty;
+
+            public System.Guid LasTamp
+            {
+                get { return m_lastamp; }
+                set { m_lastamp = value; }
+            }
+
+            public SupplierFObject() { }
+
+            public SupplierFObject(int supplier_id)
+            {
+                this.m_supplier_id = supplier_id;
+            }
 
             public int Id
             {
@@ -366,6 +394,91 @@ namespace Mondiland.Obj
                 get { return m_memo; }
                 set { m_memo = value; }
             }
+
+            /// <summary>
+            /// 保存数据
+            /// </summary>
+            /// <returns></returns>
+            public SaveResult Save()
+            {
+                SaveResult result = new SaveResult();
+
+                if (string.IsNullOrEmpty(this.m_address))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[工厂地址]信息不能为空!";
+
+                    return result;
+                }
+
+                //新增
+                if(this.Id == 0)
+                {
+                    SupplierF factory = new SupplierF();
+                    factory.supplier_id = this.m_supplier_id;
+                    factory.address = this.m_address;
+                    factory.contacts = this.m_contacts;
+                    factory.tel = this.m_tel;
+                    factory.fax = this.m_fax;
+                    factory.memo = this.m_memo;
+                    factory.lastamp = System.Guid.NewGuid();
+
+                    using(ProductContext ctx = new ProductContext())
+                    {
+                        ctx.SupplierF.Add(factory);
+
+                        if(ctx.SaveChanges() == 0)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "保存失败!";
+
+                            return result;
+                        }
+                        else
+                        {
+                            result.Code = CodeType.Ok;
+                            result.Message = "保存成功!";
+
+                            return result;
+                        }
+                    }
+
+                }
+                else //编辑
+                {
+                    using(ProductContext ctx = new ProductContext())
+                    {
+                        SupplierF factory = (from entity in ctx.SupplierF
+                                            where entity.id == this.m_id
+                                            select entity).FirstOrDefault();
+
+                        factory.address = this.m_address;
+                        factory.contacts = this.m_contacts;
+                        factory.tel = this.m_tel;
+                        factory.fax = this.m_fax;
+                        factory.memo = this.m_memo;
+                        factory.lastamp = System.Guid.NewGuid();
+
+                        if (ctx.SaveChanges() == 0)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "保存失败!";
+
+                            return result;
+                        }
+                        else
+                        {
+                            result.Code = CodeType.Ok;
+                            result.Message = "保存成功!";
+
+                            return result;
+                        }
+
+                    }
+                }
+
+            }
         }
+        
     }
 }

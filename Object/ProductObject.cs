@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using Mondiland.EFModule;
+using Mondiland.Global;
 
 using Seagull.BarTender.Print;
 
@@ -24,12 +25,6 @@ namespace Mondiland.Obj
         {
             Tag,
             Wash,
-        }
-
-        public enum CodeType
-        {
-            Ok,
-            Error,
         }
 
         [Serializable]
@@ -64,14 +59,6 @@ namespace Mondiland.Obj
                 get { return m_size_type; }
                 set { m_size_type = value; }
             }
-        }
-
-        //保存返回信息
-        [Serializable]
-        public class SaveResult
-        {
-            public CodeType Code;
-            public string Message = string.Empty;
         }
 
         [Serializable]

@@ -161,6 +161,12 @@
     <Compile Include="SupplierAEForm.Designer.cs">
       <DependentUpon>SupplierAEForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupplierFAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierFAEForm.Designer.cs">
+      <DependentUpon>SupplierFAEForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupplierManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     <EmbeddedResource Include="SupplierAEForm.resx">
       <DependentUpon>SupplierAEForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SupplierFAEForm.resx">
+      <DependentUpon>SupplierFAEForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierManagerForm.resx">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +234,7 @@
     <None Include="Properties\DataSources\Mondiland.Obj.PermissionObject+LoginUserInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+MaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject+SupplierFObject.datasource" />
+    <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject.datasource" />
     <None Include="Properties\DataSources\ProductObject.datasource" />
     <None Include="Properties\DataSources\SupplierObject.datasource" />
     <None Include="Properties\Settings.settings">

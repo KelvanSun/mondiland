@@ -369,16 +369,16 @@ namespace Mondiland.UI
         
         private void save_Click(object sender, EventArgs e)
         {
-            ProductObject.SaveResult result = product.Save();
+            SaveResult result = product.Save();
 
-            if (result.Code == ProductObject.CodeType.Error)
+            if (result.Code == CodeType.Error)
             {
                 MessageUtil.ShowError(result.Message);
 
                 return;
             }
 
-            if (result.Code == ProductObject.CodeType.Ok)
+            if (result.Code == CodeType.Ok)
             {
                 MessageUtil.ShowTips(result.Message);
 
@@ -501,9 +501,9 @@ namespace Mondiland.UI
                 save_as.Id = 0;
                 save_as.HuoHao = this.m_huohao_saveas;
 
-                ProductObject.SaveResult result = save_as.Save();
+                SaveResult result = save_as.Save();
 
-                if(result.Code == ProductObject.CodeType.Error)
+                if(result.Code == CodeType.Error)
                 {
                     MessageUtil.ShowError(result.Message);
                     this.m_huohao_saveas = string.Empty;
@@ -511,7 +511,7 @@ namespace Mondiland.UI
                     return;
                 }
 
-                if(result.Code == ProductObject.CodeType.Ok)
+                if(result.Code == CodeType.Ok)
                 {
                     MessageUtil.ShowTips(result.Message);
 
