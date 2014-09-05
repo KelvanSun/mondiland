@@ -29,7 +29,46 @@ namespace Mondiland.Obj
             return list;
         }
 
-        public List<int>QuerySupplierMByName(string text)
+        public List<int> QueryContactsByPym(string text)
+        {
+            List<int> list = new List<int>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var ids = from entity in ctx.SupplierD
+                          where entity.pym.IndexOf(text) >= 0
+                          select entity.supplier_id;
+
+                foreach (int id in ids)
+                {
+                    list.Add(id);
+                }
+            }
+
+            return list;
+
+        }
+
+        public List<int> QueryContactsByName(string text)
+        {
+            List<int> list = new List<int>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var ids = from entity in ctx.SupplierD
+                          where entity.name.IndexOf(text) >= 0
+                          select entity.supplier_id;
+
+                foreach (int id in ids)
+                {
+                    list.Add(id);
+                }
+            }
+
+            return list;
+        }
+
+        public List<int> QuerySupplierMByName(string text)
         {
             List<int> list = new List<int>();
 
@@ -48,7 +87,7 @@ namespace Mondiland.Obj
             return list;
         }
 
-        public List<int>QuerySupplierMByIntactName(string text)
+        public List<int> QuerySupplierMByIntactName(string text)
         {
             List<int> list = new List<int>();
 

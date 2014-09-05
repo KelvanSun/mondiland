@@ -130,6 +130,28 @@ namespace Mondiland.UI
                 }
             }
 
+            if (cbx_query_type.Text == "联系人简称")
+            {
+                foreach (int id in new SupplierManager().QueryContactsByPym(this.txb_query_text.Text.Trim()))
+                {
+                    SupplierObject ob = new SupplierObject(id);
+
+                    main_list.Add(ob);
+                }
+            }
+
+            if (cbx_query_type.Text == "联系人姓名")
+            {
+                foreach (int id in new SupplierManager().QueryContactsByName(this.txb_query_text.Text.Trim()))
+                {
+                    SupplierObject ob = new SupplierObject(id);
+
+                    main_list.Add(ob);
+                }
+            }
+
+
+
             this.bindingSource_query.DataSource = main_list;
 
             this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);

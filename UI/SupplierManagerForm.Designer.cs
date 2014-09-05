@@ -112,7 +112,6 @@
             this.bindingSource_factory = new System.Windows.Forms.BindingSource(this.components);
             this.tab_supplierD = new System.Windows.Forms.TabPage();
             this.ucDataGridView = new Mondiland.UCControl.UCDataGridView();
-            this.bindingSource_contract = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +120,7 @@
             this.qQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memoDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_contract = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip.SuspendLayout();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
@@ -225,7 +225,7 @@
             // 
             this.tsmi_supplierd_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierd_add.Image")));
             this.tsmi_supplierd_add.Name = "tsmi_supplierd_add";
-            this.tsmi_supplierd_add.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplierd_add.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplierd_add.Text = "新增";
             this.tsmi_supplierd_add.Click += new System.EventHandler(this.tsmi_supplierd_add_Click);
             // 
@@ -233,7 +233,7 @@
             // 
             this.tsmi_supplierd_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierd_edit.Image")));
             this.tsmi_supplierd_edit.Name = "tsmi_supplierd_edit";
-            this.tsmi_supplierd_edit.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplierd_edit.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplierd_edit.Text = "编辑";
             this.tsmi_supplierd_edit.Click += new System.EventHandler(this.tsmi_supplierd_edit_Click);
             // 
@@ -443,7 +443,9 @@
             this.cbx_query_type.Items.AddRange(new object[] {
             "拼音码",
             "公司简称",
-            "公司全称"});
+            "公司全称",
+            "联系人简称",
+            "联系人姓名"});
             this.cbx_query_type.Location = new System.Drawing.Point(17, 22);
             this.cbx_query_type.Name = "cbx_query_type";
             this.cbx_query_type.Size = new System.Drawing.Size(92, 20);
@@ -876,10 +878,6 @@
             this.ucDataGridView.Size = new System.Drawing.Size(924, 260);
             this.ucDataGridView.TabIndex = 0;
             // 
-            // bindingSource_contract
-            // 
-            this.bindingSource_contract.DataSource = typeof(Mondiland.Obj.SupplierObject.SupplierDObject);
-            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -955,6 +953,10 @@
             this.memoDataGridViewTextBoxColumn2.HeaderText = "备注信息";
             this.memoDataGridViewTextBoxColumn2.Name = "memoDataGridViewTextBoxColumn2";
             this.memoDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // bindingSource_contract
+            // 
+            this.bindingSource_contract.DataSource = typeof(Mondiland.Obj.SupplierObject.SupplierDObject);
             // 
             // SupplierManagerForm
             // 
