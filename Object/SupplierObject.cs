@@ -442,6 +442,98 @@ namespace Mondiland.Obj
                 set { m_address = value; }
             }
 
+            /// <summary>
+            /// 保存数据
+            /// </summary>
+            /// <returns></returns>
+            public SaveResult Save()
+            {
+                SaveResult result = new SaveResult();
+
+                if (string.IsNullOrEmpty(this.m_name))
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "[联系人姓名]信息不能为空!";
+
+                    return result;
+                }
+
+                //新增
+                if(this.m_id == 0)
+                {
+                    SupplierD contract = new SupplierD();
+                    contract.supplier_id = this.m_supplier_id;
+                    contract.name = this.m_name;
+                    contract.pym = this.m_pym;
+                    contract.phone = this.m_phone;
+                    contract.fax = this.m_fax;
+                    contract.email = this.m_email;
+                    contract.qq = this.m_qq;
+                    contract.address = this.m_address;
+                    contract.memo = this.m_memo;
+                    contract.lastamp = System.Guid.NewGuid();
+
+                    using (ProductContext ctx = new ProductContext())
+                    {
+                        ctx.SupplierD.Add(contract);
+
+                        if (ctx.SaveChanges() == 0)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "保存失败!";
+
+                            return result;
+                        }
+                        else
+                        {
+                            result.Code = CodeType.Ok;
+                            result.Message = "保存成功!";
+
+                            return result;
+                        }
+                    }
+
+                }
+                else
+                {
+                    using (ProductContext ctx = new ProductContext())
+                    {
+                        SupplierD contract = (from entity in ctx.SupplierD
+                                             where entity.id == this.m_id
+                                             select entity).FirstOrDefault();
+
+                        contract.name = this.m_name;
+                        contract.pym = this.m_pym;
+                        contract.phone = this.m_phone;
+                        contract.fax = this.m_fax;
+                        contract.email = this.m_email;
+                        contract.qq = this.m_qq;
+                        contract.address = this.m_address;
+                        contract.memo = this.m_memo;
+                        contract.lastamp = System.Guid.NewGuid();
+
+
+                        if (ctx.SaveChanges() == 0)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "保存失败!";
+
+                            return result;
+                        }
+                        else
+                        {
+                            result.Code = CodeType.Ok;
+                            result.Message = "保存成功!";
+
+                            return result;
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
         /// <summary>
         /// 工厂信息类

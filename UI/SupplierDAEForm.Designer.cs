@@ -69,7 +69,8 @@
             this.txb_name.MaxLength = 50;
             this.txb_name.Name = "txb_name";
             this.txb_name.Size = new System.Drawing.Size(173, 21);
-            this.txb_name.TabIndex = 1;
+            this.txb_name.TabIndex = 0;
+            this.txb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_name_KeyDown);
             // 
             // label2
             // 
@@ -87,7 +88,8 @@
             this.txb_phone.MaxLength = 50;
             this.txb_phone.Name = "txb_phone";
             this.txb_phone.Size = new System.Drawing.Size(434, 21);
-            this.txb_phone.TabIndex = 3;
+            this.txb_phone.TabIndex = 1;
+            this.txb_phone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_phone_KeyDown);
             // 
             // label3
             // 
@@ -105,7 +107,8 @@
             this.txb_fax.MaxLength = 50;
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(434, 21);
-            this.txb_fax.TabIndex = 5;
+            this.txb_fax.TabIndex = 2;
+            this.txb_fax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_fax_KeyDown);
             // 
             // label4
             // 
@@ -123,7 +126,8 @@
             this.txb_email.MaxLength = 50;
             this.txb_email.Name = "txb_email";
             this.txb_email.Size = new System.Drawing.Size(201, 21);
-            this.txb_email.TabIndex = 7;
+            this.txb_email.TabIndex = 3;
+            this.txb_email.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_email_KeyDown);
             // 
             // label5
             // 
@@ -141,7 +145,8 @@
             this.txb_qq.MaxLength = 50;
             this.txb_qq.Name = "txb_qq";
             this.txb_qq.Size = new System.Drawing.Size(173, 21);
-            this.txb_qq.TabIndex = 9;
+            this.txb_qq.TabIndex = 4;
+            this.txb_qq.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_qq_KeyDown);
             // 
             // label6
             // 
@@ -159,7 +164,8 @@
             this.txb_address.MaxLength = 50;
             this.txb_address.Name = "txb_address";
             this.txb_address.Size = new System.Drawing.Size(434, 21);
-            this.txb_address.TabIndex = 11;
+            this.txb_address.TabIndex = 5;
+            this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
             // label7
             // 
@@ -178,7 +184,7 @@
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(434, 81);
-            this.txb_memo.TabIndex = 13;
+            this.txb_memo.TabIndex = 6;
             // 
             // bt_close
             // 
@@ -187,7 +193,7 @@
             this.bt_close.Location = new System.Drawing.Point(472, 368);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(75, 23);
-            this.bt_close.TabIndex = 16;
+            this.bt_close.TabIndex = 8;
             this.bt_close.Text = "关闭  ";
             this.bt_close.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_close.UseVisualStyleBackColor = true;
@@ -200,10 +206,11 @@
             this.bt_save.Location = new System.Drawing.Point(377, 368);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
-            this.bt_save.TabIndex = 15;
+            this.bt_save.TabIndex = 7;
             this.bt_save.Text = "保存  ";
             this.bt_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
             // groupBox2
             // 
@@ -255,6 +262,7 @@
             this.Name = "SupplierDAEForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增";
+            this.Load += new System.EventHandler(this.SupplierDAEForm_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);

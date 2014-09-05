@@ -42,8 +42,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsddb_supplier = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplier_add = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +59,7 @@
             this.tsmi_supplierf_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplierf_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tssddb_supplierD = new System.Windows.Forms.ToolStripDropDownButton();
-            this.新增ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_supplierd_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplierd_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
@@ -205,7 +212,7 @@
             // tssddb_supplierD
             // 
             this.tssddb_supplierD.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新增ToolStripMenuItem,
+            this.tsmi_supplierd_add,
             this.tsmi_supplierd_edit});
             this.tssddb_supplierD.Image = ((System.Drawing.Image)(resources.GetObject("tssddb_supplierD.Image")));
             this.tssddb_supplierD.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -214,13 +221,13 @@
             this.tssddb_supplierD.Text = "联系人";
             this.tssddb_supplierD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // 新增ToolStripMenuItem
+            // tsmi_supplierd_add
             // 
-            this.新增ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("新增ToolStripMenuItem.Image")));
-            this.新增ToolStripMenuItem.Name = "新增ToolStripMenuItem";
-            this.新增ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.新增ToolStripMenuItem.Text = "新增";
-            this.新增ToolStripMenuItem.Click += new System.EventHandler(this.新增ToolStripMenuItem_Click);
+            this.tsmi_supplierd_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierd_add.Image")));
+            this.tsmi_supplierd_add.Name = "tsmi_supplierd_add";
+            this.tsmi_supplierd_add.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplierd_add.Text = "新增";
+            this.tsmi_supplierd_add.Click += new System.EventHandler(this.tsmi_supplierd_add_Click);
             // 
             // tsmi_supplierd_edit
             // 
@@ -841,27 +848,27 @@
             this.Address,
             this.memoDataGridViewTextBoxColumn2});
             this.ucDataGridView.DataSource = this.bindingSource_contract;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ucDataGridView.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ucDataGridView.DefaultCellStyle = dataGridViewCellStyle20;
             this.ucDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDataGridView.Location = new System.Drawing.Point(3, 3);
             this.ucDataGridView.MultiSelect = false;
             this.ucDataGridView.Name = "ucDataGridView";
             this.ucDataGridView.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ucDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ucDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.ucDataGridView.RowHeadersWidth = 20;
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ucDataGridView.RowTemplate.Height = 23;
@@ -884,6 +891,8 @@
             // nameDataGridViewTextBoxColumn1
             // 
             this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Info;
+            this.nameDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
             this.nameDataGridViewTextBoxColumn1.HeaderText = "联系人名称";
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -892,6 +901,8 @@
             // phoneDataGridViewTextBoxColumn1
             // 
             this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Info;
+            this.phoneDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle14;
             this.phoneDataGridViewTextBoxColumn1.HeaderText = "电话";
             this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
             this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -900,6 +911,8 @@
             // faxDataGridViewTextBoxColumn2
             // 
             this.faxDataGridViewTextBoxColumn2.DataPropertyName = "Fax";
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Info;
+            this.faxDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle15;
             this.faxDataGridViewTextBoxColumn2.HeaderText = "传真";
             this.faxDataGridViewTextBoxColumn2.Name = "faxDataGridViewTextBoxColumn2";
             this.faxDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -907,6 +920,8 @@
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Info;
+            this.emailDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
             this.emailDataGridViewTextBoxColumn.HeaderText = "电子邮件";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
@@ -915,6 +930,8 @@
             // qQDataGridViewTextBoxColumn
             // 
             this.qQDataGridViewTextBoxColumn.DataPropertyName = "QQ";
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Info;
+            this.qQDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.qQDataGridViewTextBoxColumn.HeaderText = "QQ号";
             this.qQDataGridViewTextBoxColumn.Name = "qQDataGridViewTextBoxColumn";
             this.qQDataGridViewTextBoxColumn.ReadOnly = true;
@@ -922,6 +939,8 @@
             // Address
             // 
             this.Address.DataPropertyName = "Address";
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Info;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle18;
             this.Address.HeaderText = "地址";
             this.Address.Name = "Address";
             this.Address.ReadOnly = true;
@@ -931,6 +950,8 @@
             // 
             this.memoDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.memoDataGridViewTextBoxColumn2.DataPropertyName = "Memo";
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Info;
+            this.memoDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle19;
             this.memoDataGridViewTextBoxColumn2.HeaderText = "备注信息";
             this.memoDataGridViewTextBoxColumn2.Name = "memoDataGridViewTextBoxColumn2";
             this.memoDataGridViewTextBoxColumn2.ReadOnly = true;
@@ -1019,7 +1040,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmi_supplierf_add;
         private System.Windows.Forms.ToolStripMenuItem tsmi_supplierf_edit;
         private System.Windows.Forms.ToolStripDropDownButton tssddb_supplierD;
-        private System.Windows.Forms.ToolStripMenuItem 新增ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplierd_add;
         private System.Windows.Forms.ToolStripMenuItem tsmi_supplierd_edit;
         private System.Windows.Forms.TabPage tab_supplierF;
         private UCControl.UCDataGridView dgv_supplierF;

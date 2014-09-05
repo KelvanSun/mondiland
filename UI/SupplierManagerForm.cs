@@ -156,6 +156,8 @@ namespace Mondiland.UI
             this.bindingSource_main.DataSource = this.bindingSource_query.Current as SupplierObject;
 
             this.bindingSource_factory.DataSource = (this.bindingSource_query.Current as SupplierObject).SupplierFList;
+
+            this.bindingSource_contract.DataSource = (this.bindingSource_query.Current as SupplierObject).SupplierDList;
         }
 
         private void tsmi_supplier_add_Click(object sender, EventArgs e)
@@ -198,6 +200,7 @@ namespace Mondiland.UI
 
             this.main_list.Clear();
             this.bindingSource_factory.Clear();
+            this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierf_edit_Click(object sender, EventArgs e)
@@ -213,17 +216,43 @@ namespace Mondiland.UI
 
             this.main_list.Clear();
             this.bindingSource_factory.Clear();
-
-        }
-
-        private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierd_edit_Click(object sender, EventArgs e)
         {
+            if (this.bindingSource_factory.Current == null)
+            {
+                MessageUtil.ShowWarning("先查询到记录再编辑!");
+                return;
+            }
 
+            SupplierDAEForm form = new SupplierDAEForm(this.bindingSource_contract.Current as SupplierObject.SupplierDObject);
+            form.ShowDialog();
+
+            this.main_list.Clear();
+            this.bindingSource_factory.Clear();
+            this.bindingSource_contract.Clear();
+        }
+
+        private void tsmi_supplierd_add_Click(object sender, EventArgs e)
+        {
+            if (this.bindingSource_query.Current == null)
+            {
+                MessageUtil.ShowWarning("先查询到供应商后再[新增]操作!");
+                return;
+            }
+
+            int supplierId = (this.bindingSource_query.Current as SupplierObject).Id;
+
+            SupplierObject.SupplierDObject supplierD = new SupplierObject.SupplierDObject(supplierId);
+
+            SupplierDAEForm form = new SupplierDAEForm(supplierD);
+            form.ShowDialog();
+
+            this.main_list.Clear();
+            this.bindingSource_factory.Clear();
+            this.bindingSource_contract.Clear();
         }
       
     }
