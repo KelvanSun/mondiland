@@ -215,6 +215,16 @@ namespace Mondiland.UI
             this.bindingSource_factory.Clear();
 
         }
+
+        private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmi_supplierd_edit_Click(object sender, EventArgs e)
+        {
+
+        }
       
     }
 }

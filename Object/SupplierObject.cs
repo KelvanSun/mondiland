@@ -27,7 +27,8 @@ namespace Mondiland.Obj
         private string m_memo = string.Empty;
         private System.Guid m_lastamp = System.Guid.Empty;
 
-        public BindingList<SupplierFObject> SupplierFList = new BindingList<SupplierFObject>(); 
+        public BindingList<SupplierFObject> SupplierFList = new BindingList<SupplierFObject>();
+        public BindingList<SupplierDObject> SupplierDList = new BindingList<SupplierDObject>();
 
         public SupplierObject() { }
 
@@ -77,7 +78,30 @@ namespace Mondiland.Obj
                 
             }
 
+            using(ProductContext ctx = new ProductContext())
+            {
+                var infos = from entity in ctx.SupplierD
+                            where entity.supplier_id == id
+                            select entity;
 
+                foreach(SupplierD info in infos)
+                {
+                    SupplierDObject ob = new SupplierDObject();
+                    ob.Id = info.id;
+                    ob.Name = info.name;
+                    ob.Pym = info.pym;
+                    ob.Phone = info.phone;
+                    ob.Fax = info.fax;
+                    ob.Email = info.email;
+                    ob.QQ = info.qq;
+                    ob.Address = info.address;
+                    ob.Memo = info.memo;
+                    ob.LasTamp = info.lastamp;
+
+                    SupplierDList.Add(ob);
+                }
+
+            }
         }
 
         public int Id
@@ -332,6 +356,93 @@ namespace Mondiland.Obj
             }
         }
 
+        public class SupplierDObject
+        {
+            private int m_id = 0;
+            private int m_supplier_id = 0;
+            private string m_pym = string.Empty;
+            private string m_name = string.Empty;
+            private string m_phone = string.Empty;
+            private string m_fax = string.Empty;
+            private string m_email = string.Empty;
+            private string m_qq = string.Empty;
+            private string m_address = string.Empty;
+            private string m_memo = string.Empty;
+            private System.Guid m_lastamp = System.Guid.Empty;
+
+            public SupplierDObject() { }
+
+            public SupplierDObject(int supplier_id)
+            {
+                this.m_supplier_id = supplier_id;
+            }
+
+            public int Id
+            {
+                get { return m_id; }
+                set { m_id = value; }
+            }
+
+            public string Pym
+            {
+                get { return m_pym; }
+                set { m_pym = value; }
+            }
+
+            public string Name
+            {
+                get { return m_name; }
+                set
+                {
+                    m_name = value;
+
+                    this.m_pym = ChineseToSpell.GetChineseSpell(this.m_name);
+                }
+            }
+
+            public string Phone
+            {
+                get { return m_phone; }
+                set { m_phone = value; }
+            }
+
+            public string Fax
+            {
+                get { return m_fax; }
+                set { m_fax = value; }
+            }
+
+            public string Memo
+            {
+                get { return m_memo; }
+                set { m_memo = value; }
+            }
+
+            public System.Guid LasTamp
+            {
+                get { return m_lastamp; }
+                set { m_lastamp = value; }
+            }
+
+            public string Email
+            {
+                get { return m_email; }
+                set { m_email = value; }
+            }
+
+            public string QQ
+            {
+                get { return m_qq; }
+                set { m_qq = value; }
+            }
+
+            public string Address
+            {
+                get { return m_address; }
+                set { m_address = value; }
+            }
+
+        }
         /// <summary>
         /// 工厂信息类
         /// </summary>
