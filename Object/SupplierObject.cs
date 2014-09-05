@@ -27,6 +27,8 @@ namespace Mondiland.Obj
         private string m_memo = string.Empty;
         private System.Guid m_lastamp = System.Guid.Empty;
 
+        public BindingList<SupplierFObject> SupplierFList = new BindingList<SupplierFObject>(); 
+
         public SupplierObject() { }
 
         public SupplierObject(int id)
@@ -313,6 +315,56 @@ namespace Mondiland.Obj
                     return result;
 
                 }
+            }
+        }
+
+        /// <summary>
+        /// 工厂信息类
+        /// </summary>
+        public class SupplierFObject
+        {
+            private int m_id = 0;
+            private string m_address = string.Empty;
+            private string m_contacts = string.Empty;
+            private string m_tel = string.Empty;
+            private string m_fax = string.Empty;
+            private string m_memo = string.Empty;
+            private System.Guid m_lastamp = System.Guid.Empty;
+
+            public int Id
+            {
+                get { return m_id; }
+                set { m_id = value; }
+            }
+
+            public string Address
+            {
+                get { return m_address; }
+                set { m_address = value; }
+            }
+
+            public string Contacts
+            {
+                get { return m_contacts; }
+                set { m_contacts = value; }
+            }
+
+            public string Tel
+            {
+                get { return m_tel; }
+                set { m_tel = value; }
+            }
+
+            public string Fax
+            {
+                get { return m_fax; }
+                set { m_fax = value; }
+            }
+
+            public string Memo
+            {
+                get { return m_memo; }
+                set { m_memo = value; }
             }
         }
     }

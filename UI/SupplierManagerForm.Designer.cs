@@ -33,10 +33,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsddb_supplier = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplier_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplier_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsddb_supplierf = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmi_supplierf_add = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_supplierf_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssddb_supplierD = new System.Windows.Forms.ToolStripDropDownButton();
+            this.新增ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_supplierd_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
             this.tscb_class = new System.Windows.Forms.ToolStripComboBox();
@@ -57,7 +71,7 @@
             this.cbx_query_type = new System.Windows.Forms.ComboBox();
             this.panel_buttom = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage_main = new System.Windows.Forms.TabPage();
+            this.tab_supplierM = new System.Windows.Forms.TabPage();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.bindingSource_main = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
@@ -77,7 +91,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_supplierF = new System.Windows.Forms.TabPage();
+            this.dgv_supplierF = new Mondiland.UCControl.UCDataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.faxDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource_factory = new System.Windows.Forms.BindingSource(this.components);
+            this.tab_supplierD = new System.Windows.Forms.TabPage();
             this.toolStrip.SuspendLayout();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
@@ -85,14 +108,19 @@
             this.groupBox1.SuspendLayout();
             this.panel_buttom.SuspendLayout();
             this.tabControl.SuspendLayout();
-            this.tabPage_main.SuspendLayout();
+            this.tab_supplierM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+            this.tab_supplierF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_supplierF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_factory)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddb_supplier,
+            this.tsddb_supplierf,
+            this.tssddb_supplierD,
             this.toolStripSeparator1,
             this.favorites,
             this.tscb_class});
@@ -129,6 +157,58 @@
             this.tsmi_supplier_edit.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplier_edit.Text = "编辑";
             this.tsmi_supplier_edit.Click += new System.EventHandler(this.tsmi_supplier_edit_Click);
+            // 
+            // tsddb_supplierf
+            // 
+            this.tsddb_supplierf.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_supplierf_add,
+            this.tsmi_supplierf_edit});
+            this.tsddb_supplierf.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_supplierf.Image")));
+            this.tsddb_supplierf.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddb_supplierf.Name = "tsddb_supplierf";
+            this.tsddb_supplierf.Size = new System.Drawing.Size(69, 37);
+            this.tsddb_supplierf.Text = "工厂信息";
+            this.tsddb_supplierf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsmi_supplierf_add
+            // 
+            this.tsmi_supplierf_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierf_add.Image")));
+            this.tsmi_supplierf_add.Name = "tsmi_supplierf_add";
+            this.tsmi_supplierf_add.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplierf_add.Text = "新增";
+            // 
+            // tsmi_supplierf_edit
+            // 
+            this.tsmi_supplierf_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierf_edit.Image")));
+            this.tsmi_supplierf_edit.Name = "tsmi_supplierf_edit";
+            this.tsmi_supplierf_edit.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplierf_edit.Text = "编辑";
+            // 
+            // tssddb_supplierD
+            // 
+            this.tssddb_supplierD.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.新增ToolStripMenuItem,
+            this.tsmi_supplierd_edit});
+            this.tssddb_supplierD.Image = ((System.Drawing.Image)(resources.GetObject("tssddb_supplierD.Image")));
+            this.tssddb_supplierD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tssddb_supplierD.Name = "tssddb_supplierD";
+            this.tssddb_supplierD.Size = new System.Drawing.Size(57, 37);
+            this.tssddb_supplierD.Text = "联系人";
+            this.tssddb_supplierD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // 新增ToolStripMenuItem
+            // 
+            this.新增ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("新增ToolStripMenuItem.Image")));
+            this.新增ToolStripMenuItem.Name = "新增ToolStripMenuItem";
+            this.新增ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.新增ToolStripMenuItem.Text = "新增";
+            // 
+            // tsmi_supplierd_edit
+            // 
+            this.tsmi_supplierd_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplierd_edit.Image")));
+            this.tsmi_supplierd_edit.Name = "tsmi_supplierd_edit";
+            this.tsmi_supplierd_edit.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplierd_edit.Text = "编辑";
             // 
             // toolStripSeparator1
             // 
@@ -354,8 +434,9 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage_main);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tab_supplierM);
+            this.tabControl.Controls.Add(this.tab_supplierF);
+            this.tabControl.Controls.Add(this.tab_supplierD);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -363,33 +444,33 @@
             this.tabControl.Size = new System.Drawing.Size(938, 292);
             this.tabControl.TabIndex = 0;
             // 
-            // tabPage_main
+            // tab_supplierM
             // 
-            this.tabPage_main.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage_main.Controls.Add(this.textBox9);
-            this.tabPage_main.Controls.Add(this.label9);
-            this.tabPage_main.Controls.Add(this.textBox8);
-            this.tabPage_main.Controls.Add(this.label8);
-            this.tabPage_main.Controls.Add(this.textBox7);
-            this.tabPage_main.Controls.Add(this.label7);
-            this.tabPage_main.Controls.Add(this.textBox6);
-            this.tabPage_main.Controls.Add(this.label6);
-            this.tabPage_main.Controls.Add(this.textBox5);
-            this.tabPage_main.Controls.Add(this.label5);
-            this.tabPage_main.Controls.Add(this.textBox4);
-            this.tabPage_main.Controls.Add(this.label4);
-            this.tabPage_main.Controls.Add(this.textBox3);
-            this.tabPage_main.Controls.Add(this.label3);
-            this.tabPage_main.Controls.Add(this.textBox2);
-            this.tabPage_main.Controls.Add(this.label2);
-            this.tabPage_main.Controls.Add(this.textBox1);
-            this.tabPage_main.Controls.Add(this.label1);
-            this.tabPage_main.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_main.Name = "tabPage_main";
-            this.tabPage_main.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_main.Size = new System.Drawing.Size(930, 266);
-            this.tabPage_main.TabIndex = 0;
-            this.tabPage_main.Text = "供应商信息";
+            this.tab_supplierM.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_supplierM.Controls.Add(this.textBox9);
+            this.tab_supplierM.Controls.Add(this.label9);
+            this.tab_supplierM.Controls.Add(this.textBox8);
+            this.tab_supplierM.Controls.Add(this.label8);
+            this.tab_supplierM.Controls.Add(this.textBox7);
+            this.tab_supplierM.Controls.Add(this.label7);
+            this.tab_supplierM.Controls.Add(this.textBox6);
+            this.tab_supplierM.Controls.Add(this.label6);
+            this.tab_supplierM.Controls.Add(this.textBox5);
+            this.tab_supplierM.Controls.Add(this.label5);
+            this.tab_supplierM.Controls.Add(this.textBox4);
+            this.tab_supplierM.Controls.Add(this.label4);
+            this.tab_supplierM.Controls.Add(this.textBox3);
+            this.tab_supplierM.Controls.Add(this.label3);
+            this.tab_supplierM.Controls.Add(this.textBox2);
+            this.tab_supplierM.Controls.Add(this.label2);
+            this.tab_supplierM.Controls.Add(this.textBox1);
+            this.tab_supplierM.Controls.Add(this.label1);
+            this.tab_supplierM.Location = new System.Drawing.Point(4, 22);
+            this.tab_supplierM.Name = "tab_supplierM";
+            this.tab_supplierM.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_supplierM.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierM.TabIndex = 0;
+            this.tab_supplierM.Text = "供应商信息";
             // 
             // textBox9
             // 
@@ -580,15 +661,138 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "供应商简称";
             // 
-            // tabPage2
+            // tab_supplierF
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(930, 266);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "联系人信息";
+            this.tab_supplierF.Controls.Add(this.dgv_supplierF);
+            this.tab_supplierF.Location = new System.Drawing.Point(4, 22);
+            this.tab_supplierF.Name = "tab_supplierF";
+            this.tab_supplierF.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierF.TabIndex = 2;
+            this.tab_supplierF.Text = "公厂信息";
+            this.tab_supplierF.UseVisualStyleBackColor = true;
+            // 
+            // dgv_supplierF
+            // 
+            this.dgv_supplierF.AllowUserToAddRows = false;
+            this.dgv_supplierF.AllowUserToDeleteRows = false;
+            this.dgv_supplierF.AllowUserToResizeRows = false;
+            this.dgv_supplierF.AutoGenerateColumns = false;
+            this.dgv_supplierF.BackgroundColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_supplierF.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_supplierF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_supplierF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn1,
+            this.contactsDataGridViewTextBoxColumn,
+            this.telDataGridViewTextBoxColumn,
+            this.faxDataGridViewTextBoxColumn1,
+            this.memoDataGridViewTextBoxColumn1});
+            this.dgv_supplierF.DataSource = this.bindingSource_factory;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_supplierF.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgv_supplierF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_supplierF.Location = new System.Drawing.Point(0, 0);
+            this.dgv_supplierF.MultiSelect = false;
+            this.dgv_supplierF.Name = "dgv_supplierF";
+            this.dgv_supplierF.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_supplierF.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgv_supplierF.RowHeadersWidth = 20;
+            this.dgv_supplierF.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_supplierF.RowTemplate.Height = 23;
+            this.dgv_supplierF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_supplierF.Size = new System.Drawing.Size(930, 266);
+            this.dgv_supplierF.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // addressDataGridViewTextBoxColumn1
+            // 
+            this.addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info;
+            this.addressDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.addressDataGridViewTextBoxColumn1.HeaderText = "工厂地址";
+            this.addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
+            this.addressDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.addressDataGridViewTextBoxColumn1.Width = 500;
+            // 
+            // contactsDataGridViewTextBoxColumn
+            // 
+            this.contactsDataGridViewTextBoxColumn.DataPropertyName = "Contacts";
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Info;
+            this.contactsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.contactsDataGridViewTextBoxColumn.HeaderText = "联系人";
+            this.contactsDataGridViewTextBoxColumn.Name = "contactsDataGridViewTextBoxColumn";
+            this.contactsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contactsDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // telDataGridViewTextBoxColumn
+            // 
+            this.telDataGridViewTextBoxColumn.DataPropertyName = "Tel";
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Info;
+            this.telDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.telDataGridViewTextBoxColumn.HeaderText = "电话";
+            this.telDataGridViewTextBoxColumn.Name = "telDataGridViewTextBoxColumn";
+            this.telDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // faxDataGridViewTextBoxColumn1
+            // 
+            this.faxDataGridViewTextBoxColumn1.DataPropertyName = "Fax";
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Info;
+            this.faxDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.faxDataGridViewTextBoxColumn1.HeaderText = "传真";
+            this.faxDataGridViewTextBoxColumn1.Name = "faxDataGridViewTextBoxColumn1";
+            this.faxDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // memoDataGridViewTextBoxColumn1
+            // 
+            this.memoDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.memoDataGridViewTextBoxColumn1.DataPropertyName = "Memo";
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Info;
+            this.memoDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle9;
+            this.memoDataGridViewTextBoxColumn1.HeaderText = "备注信息";
+            this.memoDataGridViewTextBoxColumn1.Name = "memoDataGridViewTextBoxColumn1";
+            this.memoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // bindingSource_factory
+            // 
+            this.bindingSource_factory.DataSource = typeof(Mondiland.Obj.SupplierObject.SupplierFObject);
+            // 
+            // tab_supplierD
+            // 
+            this.tab_supplierD.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_supplierD.Location = new System.Drawing.Point(4, 22);
+            this.tab_supplierD.Name = "tab_supplierD";
+            this.tab_supplierD.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_supplierD.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierD.TabIndex = 1;
+            this.tab_supplierD.Text = "联系人信息";
             // 
             // SupplierManagerForm
             // 
@@ -609,9 +813,12 @@
             this.groupBox1.PerformLayout();
             this.panel_buttom.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
-            this.tabPage_main.ResumeLayout(false);
-            this.tabPage_main.PerformLayout();
+            this.tab_supplierM.ResumeLayout(false);
+            this.tab_supplierM.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            this.tab_supplierF.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_supplierF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_factory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -630,8 +837,8 @@
         private System.Windows.Forms.Label label_search_result;
         private System.Windows.Forms.Panel panel_buttom;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage_main;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tab_supplierM;
+        private System.Windows.Forms.TabPage tab_supplierD;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.BindingSource bindingSource_query;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -664,6 +871,21 @@
         private System.Windows.Forms.ToolStripDropDownButton tsddb_supplier;
         private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_add;
         private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_edit;
+        private System.Windows.Forms.ToolStripDropDownButton tsddb_supplierf;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplierf_add;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplierf_edit;
+        private System.Windows.Forms.ToolStripDropDownButton tssddb_supplierD;
+        private System.Windows.Forms.ToolStripMenuItem 新增ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplierd_edit;
+        private System.Windows.Forms.TabPage tab_supplierF;
+        private UCControl.UCDataGridView dgv_supplierF;
+        private System.Windows.Forms.BindingSource bindingSource_factory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn1;
 
     }
 }

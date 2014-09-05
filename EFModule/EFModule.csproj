@@ -112,6 +112,9 @@
     <Compile Include="SupplierD.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>
+    <Compile Include="SupplierF.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="SupplierM.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>

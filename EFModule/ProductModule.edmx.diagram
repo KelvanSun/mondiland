@@ -44,6 +44,8 @@
         <AssociationConnector Association="ProductModel.FK_SupplierM_SupplierClass" ManuallyRouted="false" />
         <AssociationConnector Association="ProductModel.FK_SupplierD_SupplierM" ManuallyRouted="false" />
         <AssociationConnector Association="ProductModel.FK_UserMenuFavorites_UserInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProductModel.SupplierF" Width="1.5" PointX="14.25" PointY="5.625" />
+        <AssociationConnector Association="ProductModel.FK_SupplierF_SupplierF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

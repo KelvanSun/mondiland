@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dengji">
           <Key>
             <PropertyRef Name="id" />
@@ -184,6 +184,19 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="qq" Type="nvarchar" MaxLength="50" />
           <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierF">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplier_id" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contacts" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
           <Property Name="memo" Type="nvarchar" MaxLength="400" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
@@ -412,6 +425,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupplierF_SupplierF">
+          <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="1" />
+          <End Role="SupplierF" Type="Self.SupplierF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierM">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierF">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SupplierM_SupplierClass">
           <End Role="SupplierClass" Type="Self.SupplierClass" Multiplicity="1" />
           <End Role="SupplierM" Type="Self.SupplierM" Multiplicity="*" />
@@ -477,6 +502,7 @@
           <EntitySet Name="StandardData" EntityType="Self.StandardData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierClass" EntityType="Self.SupplierClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierD" EntityType="Self.SupplierD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierF" EntityType="Self.SupplierF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierM" EntityType="Self.SupplierM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagPrintTemplate" EntityType="Self.TagPrintTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
@@ -538,6 +564,10 @@
             <End Role="SupplierM" EntitySet="SupplierM" />
             <End Role="SupplierD" EntitySet="SupplierD" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupplierF_SupplierF" Association="Self.FK_SupplierF_SupplierF">
+            <End Role="SupplierM" EntitySet="SupplierM" />
+            <End Role="SupplierF" EntitySet="SupplierF" />
+          </AssociationSet>
           <AssociationSet Name="FK_SupplierM_SupplierClass" Association="Self.FK_SupplierM_SupplierClass">
             <End Role="SupplierClass" EntitySet="SupplierClass" />
             <End Role="SupplierM" EntitySet="SupplierM" />
@@ -555,8 +585,7 @@
             <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -788,6 +817,7 @@
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SupplierClass" Relationship="Self.FK_SupplierM_SupplierClass" FromRole="SupplierM" ToRole="SupplierClass" />
           <NavigationProperty Name="SupplierD" Relationship="Self.FK_SupplierD_SupplierM" FromRole="SupplierM" ToRole="SupplierD" />
+          <NavigationProperty Name="SupplierF" Relationship="ProductModel.FK_SupplierF_SupplierF" FromRole="SupplierM" ToRole="SupplierF" />
         </EntityType>
         <EntityType Name="TagPrintTemplate">
           <Key>
@@ -1145,7 +1175,38 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="UserMenuFavorites" EntitySet="UserMenuFavorites" />
           </AssociationSet>
+          <EntitySet Name="SupplierF" EntityType="ProductModel.SupplierF" />
+          <AssociationSet Name="FK_SupplierF_SupplierF" Association="ProductModel.FK_SupplierF_SupplierF">
+            <End Role="SupplierM" EntitySet="SupplierM" />
+            <End Role="SupplierF" EntitySet="SupplierF" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SupplierF">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_id" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contacts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="SupplierM" Relationship="ProductModel.FK_SupplierF_SupplierF" FromRole="SupplierF" ToRole="SupplierM" />
+        </EntityType>
+        <Association Name="FK_SupplierF_SupplierF">
+          <End Type="ProductModel.SupplierM" Role="SupplierM" Multiplicity="1" />
+          <End Type="ProductModel.SupplierF" Role="SupplierF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierM">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SupplierF">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1408,6 +1469,20 @@
                 <ScalarProperty Name="daxiao" ColumnName="daxiao" />
                 <ScalarProperty Name="memo" ColumnName="memo" />
                 <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierF">
+            <EntityTypeMapping TypeName="ProductModel.SupplierF">
+              <MappingFragment StoreEntitySet="SupplierF">
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="contacts" ColumnName="contacts" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

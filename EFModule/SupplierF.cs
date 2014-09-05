@@ -12,29 +12,17 @@ namespace Mondiland.EFModule
     using System;
     using System.Collections.Generic;
     
-    public partial class SupplierM
+    public partial class SupplierF
     {
-        public SupplierM()
-        {
-            this.SupplierD = new HashSet<SupplierD>();
-            this.SupplierF = new HashSet<SupplierF>();
-        }
-    
         public int id { get; set; }
-        public int class_id { get; set; }
-        public string pym { get; set; }
+        public int supplier_id { get; set; }
         public string address { get; set; }
-        public string name { get; set; }
-        public string intact_name { get; set; }
-        public string bank_name { get; set; }
-        public string account { get; set; }
-        public string phone { get; set; }
+        public string contacts { get; set; }
+        public string tel { get; set; }
         public string fax { get; set; }
         public string memo { get; set; }
         public System.Guid lastamp { get; set; }
     
-        public virtual SupplierClass SupplierClass { get; set; }
-        public virtual ICollection<SupplierD> SupplierD { get; set; }
-        public virtual ICollection<SupplierF> SupplierF { get; set; }
+        public virtual SupplierM SupplierM { get; set; }
     }
 }
