@@ -56,34 +56,32 @@ namespace Mondiland.Obj
             }
         }
 
-        /// <summary>
-        /// 登陆窗口的用户列表
-        /// </summary>
-        /// <returns></returns>
-        public BindingList<LoginUserInfo> GetLoginUserList()
+        public static BindingList<LoginUserInfo> LoginUserList
         {
-            BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
-            
-            using (ProductContext ctx = new ProductContext())
+            get
             {
-                var users = from user in ctx.UserInfo
-                            select user;
+                BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
 
-
-                foreach(var user in users)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    LoginUserInfo info = new LoginUserInfo();
-                    info.Index = user.id;
-                    info.UserName = user.name;
-                    info.GroupName = user.GroupInfo.name;
+                    var users = from user in ctx.UserInfo
+                                select user;
 
-                    list.Add(info);
+
+                    foreach (var user in users)
+                    {
+                        LoginUserInfo info = new LoginUserInfo();
+                        info.Index = user.id;
+                        info.UserName = user.name;
+                        info.GroupName = user.GroupInfo.name;
+
+                        list.Add(info);
+                    }
+
                 }
 
+                return list;
             }
-
-            return list;
-         
         }
 
 

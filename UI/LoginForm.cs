@@ -56,7 +56,7 @@ namespace Mondiland.UI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.cbx_usrename.DataSource = Program.permission.GetLoginUserList();
+            this.cbx_usrename.DataSource = PermissionManager.LoginUserList;
             this.cbx_usrename.DisplayMember = "UserName";
             this.cbx_usrename.ValueMember = "Index";
       

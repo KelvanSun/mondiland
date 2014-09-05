@@ -78,31 +78,31 @@ namespace Mondiland.UI
 
         private void ProductManagerForm_Load(object sender, EventArgs e)
         {
-            cbx_dengji.DataSource = new DengjiManager().GetDengjiList();
+            cbx_dengji.DataSource = DengjiManager.DengjiList;
             cbx_dengji.DisplayMember = "Type";
             cbx_dengji.ValueMember = "Id";
             cbx_dengji.Text = string.Empty;
             cbx_dengji.SelectedValue = 0;
 
-            cbx_madeplace.DataSource = new MadePlaceManager().GetMadePlaceList();
+            cbx_madeplace.DataSource = MadePlaceManager.MadePlaceList;
             cbx_madeplace.DisplayMember = "Type";
             cbx_madeplace.ValueMember = "Id";
             cbx_madeplace.Text = string.Empty;
             cbx_madeplace.SelectedValue = 0;
 
-            cbx_partname.DataSource = new PartNameManager().GetPartNameList();
+            cbx_partname.DataSource = PartNameManager.PartNameList;
             cbx_partname.DisplayMember = "PartName";
             cbx_partname.ValueMember = "Id";
             cbx_partname.Text = string.Empty;
             cbx_partname.SelectedValue = 0;
 
-            cbx_safedata.DataSource = new SafeDataManager().GetSafeDataList();
+            cbx_safedata.DataSource = SafeDataManager.SafeDataList;
             cbx_safedata.DisplayMember = "Type";
             cbx_safedata.ValueMember = "Id";
             cbx_safedata.Text = string.Empty;
             cbx_safedata.SelectedValue = 0;
 
-            cbx_standard.DataSource = new StandardDataManager().GetStandardDataList();
+            cbx_standard.DataSource = StandardDataManager.StandardDataList;
             cbx_standard.DisplayMember = "Type";
             cbx_standard.ValueMember = "Id";
             cbx_standard.Text = string.Empty;
@@ -120,7 +120,7 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            foreach (string str in ProductObject.GetHuoHaoList())
+            foreach (string str in ProductObject.HuoHaoList)
             {
                 acsc.Add(str);
             }

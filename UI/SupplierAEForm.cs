@@ -23,7 +23,7 @@ namespace Mondiland.UI
 
             InitializeComponent();
 
-            this.cbx_class.DataSource = new SupplierClassManager().GetSupplierClassList();
+            this.cbx_class.DataSource = SupplierClassManager.SupplierClassList;
             this.cbx_class.DisplayMember = "Name";
             this.cbx_class.ValueMember = "Id";
             this.cbx_class.SelectedValue = 0;

@@ -27,7 +27,7 @@ namespace Mondiland.UI
         {
             AutoCompleteStringCollection acsc = new AutoCompleteStringCollection();
 
-            foreach (string str in ProductObject.GetHuoHaoList())
+            foreach (string str in ProductObject.HuoHaoList)
             {
                 acsc.Add(str);
             }

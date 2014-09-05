@@ -10,26 +10,29 @@ namespace Mondiland.Obj
 {
     public class MadePlaceManager
     {
-        public BindingList<MadePlaceListObj> GetMadePlaceList()
+        public static BindingList<MadePlaceListObj> MadePlaceList
         {
-            BindingList<MadePlaceListObj> list = new BindingList<MadePlaceListObj>();
-
-            using(ProductContext ctx = new ProductContext())
+            get
             {
-                var madeplaces = from entity in ctx.MadePlace
-                                 select entity;
+                BindingList<MadePlaceListObj> list = new BindingList<MadePlaceListObj>();
 
-                foreach(var madeplace in madeplaces)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    MadePlaceListObj info = new MadePlaceListObj();
-                    info.Id = madeplace.id;
-                    info.Type = madeplace.type;
+                    var madeplaces = from entity in ctx.MadePlace
+                                     select entity;
 
-                    list.Add(info);
+                    foreach (var madeplace in madeplaces)
+                    {
+                        MadePlaceListObj info = new MadePlaceListObj();
+                        info.Id = madeplace.id;
+                        info.Type = madeplace.type;
+
+                        list.Add(info);
+                    }
                 }
-            }
 
-            return list;
+                return list;
+            }
         }
         
         

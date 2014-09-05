@@ -11,29 +11,32 @@ namespace Mondiland.Obj
     public class PartNameManager
     {
 
-        public BindingList<PartNameListObj> GetPartNameList()
+        public static BindingList<PartNameListObj> PartNameList
         {
-            BindingList<PartNameListObj> list = new BindingList<PartNameListObj>();
-
-            using (ProductContext ctx = new ProductContext())
+            get
             {
-                var partnames = from entity in ctx.PartName
-                                select entity;
+                BindingList<PartNameListObj> list = new BindingList<PartNameListObj>();
 
-                foreach (var partname in partnames)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    PartNameListObj info = new PartNameListObj();
-                    info.Id = partname.id;
-                    info.PartName = partname.name;
-                    info.ClassType = partname.SizeClass.type;
-                    info.Memo = partname.memo;
+                    var partnames = from entity in ctx.PartName
+                                    select entity;
 
-                    list.Add(info);
+                    foreach (var partname in partnames)
+                    {
+                        PartNameListObj info = new PartNameListObj();
+                        info.Id = partname.id;
+                        info.PartName = partname.name;
+                        info.ClassType = partname.SizeClass.type;
+                        info.Memo = partname.memo;
+
+                        list.Add(info);
+                    }
+
                 }
 
+                return list;
             }
-
-            return list;
         }
 
         public OptimizeInfo GetOptimizeInfo(int partname_id)

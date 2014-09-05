@@ -834,23 +834,25 @@ namespace Mondiland.Obj
             }
         }
 
-        public static List<string> GetHuoHaoList()
+        public static List<string> HuoHaoList
         {
-            List<string> list = new List<string>();
-
-            using (ProductContext ctx = new ProductContext())
+            get
             {
-                var huohaos = from entity in ctx.ProductData
-                              select entity.huohao;
+                List<string> list = new List<string>();
 
-                foreach(string str in huohaos)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    list.Add(str);
-                }
-            }
+                    var huohaos = from entity in ctx.ProductData
+                                  select entity.huohao;
 
-            return list;
-            
+                    foreach (string str in huohaos)
+                    {
+                        list.Add(str);
+                    }
+                }
+
+                return list;
+            }
         }
 
 

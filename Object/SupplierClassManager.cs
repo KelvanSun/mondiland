@@ -10,29 +10,32 @@ namespace Mondiland.Obj
 {
     public class SupplierClassManager
     {
-        public BindingList<SupplierClassListObj> GetSupplierClassList()
+        public static BindingList<SupplierClassListObj> SupplierClassList
         {
-            BindingList<SupplierClassListObj> list = new BindingList<SupplierClassListObj>();
-
-            using(ProductContext ctx = new ProductContext())
+            get
             {
-                var SupplierClasss = from entity in ctx.SupplierClass
-                                     select entity;
+                BindingList<SupplierClassListObj> list = new BindingList<SupplierClassListObj>();
 
-                foreach(var supplierclass in SupplierClasss)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    SupplierClassListObj info = new SupplierClassListObj();
+                    var SupplierClasss = from entity in ctx.SupplierClass
+                                         select entity;
 
-                    info.Id = supplierclass.id;
-                    info.Name = supplierclass.name;
-                    info.Memo = supplierclass.memo;
+                    foreach (var supplierclass in SupplierClasss)
+                    {
+                        SupplierClassListObj info = new SupplierClassListObj();
 
-                    list.Add(info);
+                        info.Id = supplierclass.id;
+                        info.Name = supplierclass.name;
+                        info.Memo = supplierclass.memo;
+
+                        list.Add(info);
+                    }
                 }
+
+
+                return list;
             }
-
-
-            return list;
         }
 
 

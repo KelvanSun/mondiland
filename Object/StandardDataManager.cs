@@ -10,27 +10,30 @@ namespace Mondiland.Obj
 {
     public class StandardDataManager
     {
-        public BindingList<StandardDataListObj> GetStandardDataList()
+        public static BindingList<StandardDataListObj> StandardDataList
         {
-            BindingList<StandardDataListObj> list = new BindingList<StandardDataListObj>();
-
-            using (ProductContext ctx = new ProductContext())
+            get
             {
-                var standarddatas = from entity in ctx.StandardData
-                                   select entity;
+                BindingList<StandardDataListObj> list = new BindingList<StandardDataListObj>();
 
-                foreach(var standarddata in standarddatas)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    StandardDataListObj info = new StandardDataListObj();
-                    info.Id = standarddata.id;
-                    info.Type = standarddata.type;
-                    info.Memo = standarddata.memo;
+                    var standarddatas = from entity in ctx.StandardData
+                                        select entity;
 
-                    list.Add(info);
+                    foreach (var standarddata in standarddatas)
+                    {
+                        StandardDataListObj info = new StandardDataListObj();
+                        info.Id = standarddata.id;
+                        info.Type = standarddata.type;
+                        info.Memo = standarddata.memo;
+
+                        list.Add(info);
+                    }
                 }
-            }
 
-            return list;
+                return list;
+            }
         }
         
         public class StandardDataListObj

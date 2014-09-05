@@ -10,29 +10,33 @@ namespace Mondiland.Obj
 {
     public class DengjiManager
     {
-        public BindingList<DengjiListObj> GetDengjiList()
+        public static BindingList<DengjiListObj> DengjiList
         {
-            BindingList<DengjiListObj> list = new BindingList<DengjiListObj>();
-
-            using(ProductContext ctx = new ProductContext())
+            get
             {
-                var dengjis = from entity in ctx.Dengji
-                              select entity;
+                BindingList<DengjiListObj> list = new BindingList<DengjiListObj>();
 
-                foreach(var denji in dengjis)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    DengjiListObj info = new DengjiListObj();
-                    info.Id = denji.id;
-                    info.Type = denji.type;
-                    info.Memo = denji.memo;
+                    var dengjis = from entity in ctx.Dengji
+                                  select entity;
 
-                    list.Add(info);
+                    foreach (var denji in dengjis)
+                    {
+                        DengjiListObj info = new DengjiListObj();
+                        info.Id = denji.id;
+                        info.Type = denji.type;
+                        info.Memo = denji.memo;
+
+                        list.Add(info);
+                    }
+
                 }
 
+                return list;
             }
-
-            return list;
         }
+
         public class DengjiListObj
         {
             private int m_id = 0;

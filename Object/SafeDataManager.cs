@@ -10,30 +10,32 @@ namespace Mondiland.Obj
 {
     public class SafeDataManager
     {
-        public BindingList<SafeDataListObj> GetSafeDataList()
+        public static BindingList<SafeDataListObj> SafeDataList
         {
-            BindingList<SafeDataListObj> list = new BindingList<SafeDataListObj>();
-
-            using (ProductContext ctx = new ProductContext())
+            get
             {
-                var safedatas = from entity in ctx.SafeData
-                                select entity;
+                BindingList<SafeDataListObj> list = new BindingList<SafeDataListObj>();
 
-                foreach(var safedata in safedatas)
+                using (ProductContext ctx = new ProductContext())
                 {
-                    SafeDataListObj info = new SafeDataListObj();
-                    info.Id = safedata.id;
-                    info.Type = safedata.type;
-                    info.Memo = safedata.memo;
+                    var safedatas = from entity in ctx.SafeData
+                                    select entity;
 
-                    list.Add(info);
+                    foreach (var safedata in safedatas)
+                    {
+                        SafeDataListObj info = new SafeDataListObj();
+                        info.Id = safedata.id;
+                        info.Type = safedata.type;
+                        info.Memo = safedata.memo;
+
+                        list.Add(info);
+                    }
+
                 }
 
+                return list;
             }
-
-            return list;
         }
-
 
         public class SafeDataListObj
         {
