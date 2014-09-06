@@ -10,6 +10,26 @@ namespace Mondiland.Obj
 {
     public class SupplierManager
     {
+        public List<int> QuerySupplierMByClassId(int class_id)
+        {
+            List<int> list = new List<int>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var ids = from entity in ctx.SupplierM
+                          where entity.class_id == class_id
+                          select entity.id;
+
+                foreach (int id in ids)
+                {
+                    list.Add(id);
+                }
+            }
+
+
+            return list;
+        }
+
         public List<int> QuerySupplierMByPym(string text)
         {
             List<int> list = new List<int>();

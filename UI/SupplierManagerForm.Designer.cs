@@ -259,6 +259,7 @@
             this.tscb_class.Margin = new System.Windows.Forms.Padding(1, 10, 1, 0);
             this.tscb_class.Name = "tscb_class";
             this.tscb_class.Size = new System.Drawing.Size(121, 30);
+            this.tscb_class.DropDownClosed += new System.EventHandler(this.tscb_class_DropDownClosed);
             // 
             // panel_top
             // 
@@ -695,7 +696,7 @@
             this.tab_supplierF.Controls.Add(this.dgv_supplierF);
             this.tab_supplierF.Location = new System.Drawing.Point(4, 22);
             this.tab_supplierF.Name = "tab_supplierF";
-            this.tab_supplierF.Size = new System.Drawing.Size(930, 333);
+            this.tab_supplierF.Size = new System.Drawing.Size(930, 382);
             this.tab_supplierF.TabIndex = 2;
             this.tab_supplierF.Text = "公厂信息";
             this.tab_supplierF.UseVisualStyleBackColor = true;
@@ -749,7 +750,7 @@
             this.dgv_supplierF.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_supplierF.RowTemplate.Height = 23;
             this.dgv_supplierF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_supplierF.Size = new System.Drawing.Size(930, 333);
+            this.dgv_supplierF.Size = new System.Drawing.Size(930, 382);
             this.dgv_supplierF.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -820,7 +821,7 @@
             this.tab_supplierD.Location = new System.Drawing.Point(4, 22);
             this.tab_supplierD.Name = "tab_supplierD";
             this.tab_supplierD.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_supplierD.Size = new System.Drawing.Size(930, 333);
+            this.tab_supplierD.Size = new System.Drawing.Size(930, 382);
             this.tab_supplierD.TabIndex = 1;
             this.tab_supplierD.Text = "联系人信息";
             // 
@@ -875,7 +876,7 @@
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ucDataGridView.RowTemplate.Height = 23;
             this.ucDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ucDataGridView.Size = new System.Drawing.Size(924, 327);
+            this.ucDataGridView.Size = new System.Drawing.Size(924, 376);
             this.ucDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn1

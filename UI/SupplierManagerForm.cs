@@ -83,6 +83,12 @@ namespace Mondiland.UI
         private void SupplierManagerForm_Load(object sender, EventArgs e)
         {
             this.cbx_query_type.Text = "拼音码";
+
+            this.tscb_class.ComboBox.DataSource = SupplierClassManager.SupplierClassList;
+            this.tscb_class.ComboBox.DisplayMember = "Name";
+            this.tscb_class.ComboBox.ValueMember = "Id";
+            this.tscb_class.ComboBox.Text = string.Empty;
+            this.tscb_class.ComboBox.SelectedValue = 0;
            
         }
 
@@ -201,8 +207,8 @@ namespace Mondiland.UI
             SupplierAEForm form = new SupplierAEForm(this.bindingSource_query.Current as SupplierObject);
             form.ShowDialog();
 
-            this.main_list.Clear();
-            this.bindingSource_factory.Clear();
+            //this.main_list.Clear();
+            //this.bindingSource_factory.Clear();
         }
 
         private void tsmi_supplierf_add_Click(object sender, EventArgs e)
@@ -220,9 +226,9 @@ namespace Mondiland.UI
             SupplierFAEForm form = new SupplierFAEForm(supplierF);
             form.ShowDialog();
 
-            this.main_list.Clear();
-            this.bindingSource_factory.Clear();
-            this.bindingSource_contract.Clear();
+            //this.main_list.Clear();
+            //this.bindingSource_factory.Clear();
+            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierf_edit_Click(object sender, EventArgs e)
@@ -236,9 +242,9 @@ namespace Mondiland.UI
             SupplierFAEForm form = new SupplierFAEForm(this.bindingSource_factory.Current as SupplierObject.SupplierFObject);
             form.ShowDialog();
 
-            this.main_list.Clear();
-            this.bindingSource_factory.Clear();
-            this.bindingSource_contract.Clear();
+            //this.main_list.Clear();
+            //this.bindingSource_factory.Clear();
+            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierd_edit_Click(object sender, EventArgs e)
@@ -252,9 +258,9 @@ namespace Mondiland.UI
             SupplierDAEForm form = new SupplierDAEForm(this.bindingSource_contract.Current as SupplierObject.SupplierDObject);
             form.ShowDialog();
 
-            this.main_list.Clear();
-            this.bindingSource_factory.Clear();
-            this.bindingSource_contract.Clear();
+            //this.main_list.Clear();
+            //this.bindingSource_factory.Clear();
+            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierd_add_Click(object sender, EventArgs e)
@@ -275,6 +281,28 @@ namespace Mondiland.UI
             //this.main_list.Clear();
             //this.bindingSource_factory.Clear();
             //this.bindingSource_contract.Clear();
+        }
+
+        private void tscb_class_DropDownClosed(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(this.tscb_class.ComboBox.SelectedValue);
+            
+            if (id == 0) return;
+
+            main_list.Clear();
+
+            foreach (int ids in new SupplierManager().QuerySupplierMByClassId(id))
+            {
+                SupplierObject ob = new SupplierObject(ids);
+
+                main_list.Add(ob);
+            }
+
+            this.bindingSource_query.DataSource = main_list;
+
+            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
+
+            this.dgv_main.Focus();
         }
       
     }
