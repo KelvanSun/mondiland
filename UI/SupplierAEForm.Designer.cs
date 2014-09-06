@@ -222,6 +222,7 @@
             this.txb_memo.Location = new System.Drawing.Point(98, 368);
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
+            this.txb_memo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txb_memo.Size = new System.Drawing.Size(498, 196);
             this.txb_memo.TabIndex = 7;
             // 

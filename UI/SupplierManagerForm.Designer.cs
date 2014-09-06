@@ -512,6 +512,7 @@
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
+            this.textBox9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox9.Size = new System.Drawing.Size(798, 201);
             this.textBox9.TabIndex = 17;
             // 
