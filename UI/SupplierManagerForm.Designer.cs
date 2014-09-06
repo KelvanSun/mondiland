@@ -271,14 +271,14 @@
             this.panel_top.Controls.Add(this.groupBox1);
             this.panel_top.Location = new System.Drawing.Point(0, 40);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(938, 300);
+            this.panel_top.Size = new System.Drawing.Size(938, 185);
             this.panel_top.TabIndex = 1;
             // 
             // label_search_result
             // 
             this.label_search_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_search_result.AutoSize = true;
-            this.label_search_result.Location = new System.Drawing.Point(11, 278);
+            this.label_search_result.Location = new System.Drawing.Point(11, 163);
             this.label_search_result.Margin = new System.Windows.Forms.Padding(30, 20, 20, 20);
             this.label_search_result.Name = "label_search_result";
             this.label_search_result.Size = new System.Drawing.Size(107, 12);
@@ -338,7 +338,7 @@
             this.dgv_main.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Info;
             this.dgv_main.RowTemplate.Height = 23;
             this.dgv_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_main.Size = new System.Drawing.Size(938, 202);
+            this.dgv_main.Size = new System.Drawing.Size(938, 87);
             this.dgv_main.TabIndex = 2;
             this.dgv_main.SelectionChanged += new System.EventHandler(this.dgv_main_SelectionChanged);
             // 
@@ -456,9 +456,9 @@
             // 
             this.panel_buttom.Controls.Add(this.tabControl);
             this.panel_buttom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_buttom.Location = new System.Drawing.Point(0, 341);
+            this.panel_buttom.Location = new System.Drawing.Point(0, 225);
             this.panel_buttom.Name = "panel_buttom";
-            this.panel_buttom.Size = new System.Drawing.Size(938, 292);
+            this.panel_buttom.Size = new System.Drawing.Size(938, 408);
             this.panel_buttom.TabIndex = 2;
             // 
             // tabControl
@@ -470,7 +470,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(938, 292);
+            this.tabControl.Size = new System.Drawing.Size(938, 408);
             this.tabControl.TabIndex = 0;
             // 
             // tab_supplierM
@@ -497,7 +497,7 @@
             this.tab_supplierM.Location = new System.Drawing.Point(4, 22);
             this.tab_supplierM.Name = "tab_supplierM";
             this.tab_supplierM.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_supplierM.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierM.Size = new System.Drawing.Size(930, 382);
             this.tab_supplierM.TabIndex = 0;
             this.tab_supplierM.Text = "供应商信息";
             // 
@@ -511,7 +511,7 @@
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(798, 82);
+            this.textBox9.Size = new System.Drawing.Size(798, 201);
             this.textBox9.TabIndex = 17;
             // 
             // bindingSource_main
@@ -695,7 +695,7 @@
             this.tab_supplierF.Controls.Add(this.dgv_supplierF);
             this.tab_supplierF.Location = new System.Drawing.Point(4, 22);
             this.tab_supplierF.Name = "tab_supplierF";
-            this.tab_supplierF.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierF.Size = new System.Drawing.Size(930, 333);
             this.tab_supplierF.TabIndex = 2;
             this.tab_supplierF.Text = "公厂信息";
             this.tab_supplierF.UseVisualStyleBackColor = true;
@@ -749,7 +749,7 @@
             this.dgv_supplierF.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_supplierF.RowTemplate.Height = 23;
             this.dgv_supplierF.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_supplierF.Size = new System.Drawing.Size(930, 266);
+            this.dgv_supplierF.Size = new System.Drawing.Size(930, 333);
             this.dgv_supplierF.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -820,7 +820,7 @@
             this.tab_supplierD.Location = new System.Drawing.Point(4, 22);
             this.tab_supplierD.Name = "tab_supplierD";
             this.tab_supplierD.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_supplierD.Size = new System.Drawing.Size(930, 266);
+            this.tab_supplierD.Size = new System.Drawing.Size(930, 333);
             this.tab_supplierD.TabIndex = 1;
             this.tab_supplierD.Text = "联系人信息";
             // 
@@ -875,7 +875,7 @@
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ucDataGridView.RowTemplate.Height = 23;
             this.ucDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ucDataGridView.Size = new System.Drawing.Size(924, 260);
+            this.ucDataGridView.Size = new System.Drawing.Size(924, 327);
             this.ucDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn1

@@ -214,7 +214,7 @@
           <Property Name="account" Type="nvarchar" MaxLength="50" />
           <Property Name="phone" Type="nvarchar" MaxLength="50" />
           <Property Name="fax" Type="nvarchar" MaxLength="50" />
-          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="memo" Type="nvarchar(max)" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="TagPrintTemplate">
@@ -813,7 +813,7 @@
           <Property Name="account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SupplierClass" Relationship="Self.FK_SupplierM_SupplierClass" FromRole="SupplierM" ToRole="SupplierClass" />
           <NavigationProperty Name="SupplierD" Relationship="Self.FK_SupplierD_SupplierM" FromRole="SupplierM" ToRole="SupplierD" />

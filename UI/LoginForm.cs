@@ -69,11 +69,9 @@ namespace Mondiland.UI
             if (e.KeyCode == Keys.Enter) bt_login_Click(sender, e);
         }
 
-        private void cbx_username_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbx_usrename_DropDownClosed(object sender, EventArgs e)
         {
-            tb_pwd.Text = string.Empty;
             tb_pwd.Focus();
-    
         }
 
     }

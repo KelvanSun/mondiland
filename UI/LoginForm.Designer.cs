@@ -121,6 +121,7 @@
             this.cbx_usrename.Name = "cbx_usrename";
             this.cbx_usrename.Size = new System.Drawing.Size(221, 20);
             this.cbx_usrename.TabIndex = 15;
+            this.cbx_usrename.DropDownClosed += new System.EventHandler(this.cbx_usrename_DropDownClosed);
             // 
             // LoginForm
             // 

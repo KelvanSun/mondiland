@@ -272,9 +272,9 @@ namespace Mondiland.UI
             SupplierDAEForm form = new SupplierDAEForm(supplierD);
             form.ShowDialog();
 
-            this.main_list.Clear();
-            this.bindingSource_factory.Clear();
-            this.bindingSource_contract.Clear();
+            //this.main_list.Clear();
+            //this.bindingSource_factory.Clear();
+            //this.bindingSource_contract.Clear();
         }
       
     }
