@@ -6,9 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.NetworkInformation;
 
 using Mondiland.Obj;
 using Mondiland.Global;
+
 
 
 namespace Mondiland.UI
@@ -27,8 +30,31 @@ namespace Mondiland.UI
             Close();
         }
 
+        private string GetMacPhysicalAddress()
+        {
+            string address = string.Empty;
+            
+            NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (NetworkInterface ni in interfaces)
+            {
+                if (ni.OperationalStatus == OperationalStatus.Up)
+                {
+                    if (ni.Name == "本地连接")
+                    {
+                        address = ni.GetPhysicalAddress().ToString();
+
+                        break;
+                    }
+                }
+            }
+
+            return address;
+        }
+
         private void bt_login_Click(object sender, EventArgs e)
         {
+            
             if (tb_pwd.Text.Trim() == string.Empty)
             {
                 MessageUtil.ShowTips("请输入密码!");
@@ -46,6 +72,8 @@ namespace Mondiland.UI
                 return;
             }
 
+            PermissionManager.RecordLoginUserSelect(Convert.ToInt32(cbx_usrename.SelectedValue), GetMacPhysicalAddress());
+
             Program.permission.LoginUser = user;
 
             this.DialogResult = DialogResult.OK;
@@ -59,8 +87,12 @@ namespace Mondiland.UI
             this.cbx_usrename.DataSource = PermissionManager.LoginUserList;
             this.cbx_usrename.DisplayMember = "UserName";
             this.cbx_usrename.ValueMember = "Index";
-      
-           
+
+            int select = PermissionManager.ReadLoginUserSelect(GetMacPhysicalAddress());
+
+            if (select == 0) return;
+
+            this.cbx_usrename.SelectedValue = select;
            
         }
 

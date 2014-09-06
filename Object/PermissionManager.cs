@@ -56,6 +56,45 @@ namespace Mondiland.Obj
             }
         }
 
+        public static void RecordLoginUserSelect(int user_id,string address)
+        {
+            using (ProductContext ctx = new ProductContext())
+            {
+                var del_ob = (from entity in ctx.LoginUserSelect
+                             where entity.user_id == user_id && entity.mac_address == address
+                             select entity).FirstOrDefault();
+
+                if (del_ob != null)
+                {
+                    ctx.LoginUserSelect.Remove(del_ob);
+                    ctx.SaveChanges();
+                }
+            }
+
+            LoginUserSelect new_obj = new LoginUserSelect();
+            new_obj.user_id = user_id;
+            new_obj.mac_address = address;
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                ctx.LoginUserSelect.Add(new_obj);
+                ctx.SaveChanges();
+            }
+
+        }
+
+        public static int ReadLoginUserSelect(string address)
+        {
+            using (ProductContext ctx = new ProductContext())
+            {
+                int sel_id = (from entity in ctx.LoginUserSelect
+                              where entity.mac_address == address
+                              select entity.user_id).FirstOrDefault();
+
+                return sel_id;
+            }
+        }
+
         public static BindingList<LoginUserInfo> LoginUserList
         {
             get

@@ -60,6 +60,9 @@
     <Compile Include="GroupMenu.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoginUserSelect.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="MadePlace.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>

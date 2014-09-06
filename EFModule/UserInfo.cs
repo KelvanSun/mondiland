@@ -17,6 +17,7 @@ namespace Mondiland.EFModule
         public UserInfo()
         {
             this.UserMenuFavorites = new HashSet<UserMenuFavorites>();
+            this.LoginUserSelect = new HashSet<LoginUserSelect>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,6 @@ namespace Mondiland.EFModule
     
         public virtual GroupInfo GroupInfo { get; set; }
         public virtual ICollection<UserMenuFavorites> UserMenuFavorites { get; set; }
+        public virtual ICollection<LoginUserSelect> LoginUserSelect { get; set; }
     }
 }

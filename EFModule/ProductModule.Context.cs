@@ -47,5 +47,6 @@ namespace Mondiland.EFModule
         public virtual DbSet<UserMenuFavorites> UserMenuFavorites { get; set; }
         public virtual DbSet<WashPrintTemplate> WashPrintTemplate { get; set; }
         public virtual DbSet<SupplierF> SupplierF { get; set; }
+        public virtual DbSet<LoginUserSelect> LoginUserSelect { get; set; }
     }
 }
