@@ -78,5 +78,11 @@ namespace Mondiland.UI
                 MessageUtil.ShowError(ex.Message);
             }
         }
+
+        private void tsm_change_pwd_Click(object sender, EventArgs e)
+        {
+            ChangePwdForm form = new ChangePwdForm();
+            form.ShowDialog();
+        }
     }
 }

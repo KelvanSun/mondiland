@@ -194,6 +194,10 @@ namespace Mondiland.UI
 
             SupplierAEForm form = new SupplierAEForm(ob);
             form.ShowDialog();
+
+            this.main_list.Clear();
+            this.bindingSource_factory.Clear();
+            this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplier_edit_Click(object sender, EventArgs e)

@@ -91,11 +91,49 @@ namespace Mondiland.Obj
             private int m_id = 0;
             private string m_name = string.Empty;
             private string m_pwd = string.Empty;
-            private int m_group_id = 0;
             private string m_group_name = string.Empty;
 
             public List<MenuParent> MenuParentList = new List<MenuParent>();
             public List<FavoritesMenu> FavoritesMenuList = new List<FavoritesMenu>();
+
+
+            public SaveResult ChangePwd(string old_pwd,string new_pwd)
+            {
+                SaveResult result = new SaveResult();
+
+                if(UtilFun.GetMD5(old_pwd) != this.m_pwd)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "旧密码验证失败";
+
+                    return result;
+                }
+
+                using (ProductContext ctx = new ProductContext())
+                {
+                    var user = (from entity in ctx.UserInfo
+                                where entity.id == this.m_id
+                                select entity).FirstOrDefault();
+
+                    user.pwd = UtilFun.GetMD5(new_pwd);
+
+                    if(ctx.SaveChanges() == 0)
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "密码修改失败";
+
+                        return result;
+                    }
+                    else
+                    {
+                        result.Code = CodeType.Ok;
+                        result.Message = "密码修改成功";
+
+                        return result;
+                    }
+                }
+
+            }
 
             public bool SetFavorites(string form_name)
             {
@@ -323,7 +361,6 @@ namespace Mondiland.Obj
                     this.m_id = info.id;
                     this.m_name = info.name;
                     this.m_pwd = info.pwd;
-                    this.m_group_id = info.group_id;
                     this.m_group_name = info.GroupInfo.name;
                     
                     
