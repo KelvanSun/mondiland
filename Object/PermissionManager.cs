@@ -61,7 +61,7 @@ namespace Mondiland.Obj
             using (ProductContext ctx = new ProductContext())
             {
                 var del_ob = (from entity in ctx.LoginUserSelect
-                             where entity.user_id == user_id && entity.mac_address == address
+                             where entity.mac_address == address
                              select entity).FirstOrDefault();
 
                 if (del_ob != null)
