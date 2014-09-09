@@ -45,6 +45,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.bt_close = new System.Windows.Forms.Button();
             this.bt_save = new System.Windows.Forms.Button();
+            this.bt_del = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -192,11 +193,25 @@
             this.bt_save.UseVisualStyleBackColor = true;
             this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
+            // bt_del
+            // 
+            this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
+            this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_del.Location = new System.Drawing.Point(15, 340);
+            this.bt_del.Name = "bt_del";
+            this.bt_del.Size = new System.Drawing.Size(75, 23);
+            this.bt_del.TabIndex = 16;
+            this.bt_del.Text = "删除  ";
+            this.bt_del.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_del.UseVisualStyleBackColor = true;
+            this.bt_del.Click += new System.EventHandler(this.bt_del_Click);
+            // 
             // SupplierFAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 377);
+            this.Controls.Add(this.bt_del);
             this.Controls.Add(this.bt_close);
             this.Controls.Add(this.bt_save);
             this.Controls.Add(this.groupBox2);
@@ -241,5 +256,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bt_close;
         private System.Windows.Forms.Button bt_save;
+        private System.Windows.Forms.Button bt_del;
     }
 }

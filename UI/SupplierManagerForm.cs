@@ -253,7 +253,7 @@ namespace Mondiland.UI
 
         private void tsmi_supplierd_edit_Click(object sender, EventArgs e)
         {
-            if (this.bindingSource_factory.Current == null)
+            if (this.bindingSource_contract.Current == null)
             {
                 MessageUtil.ShowWarning("先查询到记录再编辑!");
                 return;

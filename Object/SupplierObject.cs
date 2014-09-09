@@ -442,6 +442,34 @@ namespace Mondiland.Obj
                 set { m_address = value; }
             }
 
+            public SaveResult Del()
+            {
+                SaveResult result = new SaveResult();
+
+                using (ProductContext ctx = new ProductContext())
+                {
+                    SupplierD ob = (from entity in ctx.SupplierD
+                                          where entity.id == this.m_id
+                                          select entity).FirstOrDefault();
+
+                    ctx.SupplierD.Remove(ob);
+
+                    if(ctx.SaveChanges() == 0)
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "删除操作失败!";
+                    }
+                    else
+                    {
+                        result.Code = CodeType.Ok;
+                        result.Message = "成功删除!";
+                    }
+                }
+
+
+                return result;
+            }
+
             /// <summary>
             /// 保存数据
             /// </summary>
@@ -597,6 +625,35 @@ namespace Mondiland.Obj
                 get { return m_memo; }
                 set { m_memo = value; }
             }
+
+            public SaveResult Del()
+            {
+                SaveResult result = new SaveResult();
+
+                using (ProductContext ctx = new ProductContext())
+                {
+                    SupplierF ob = (from entity in ctx.SupplierF
+                                    where entity.id == this.m_id
+                                    select entity).FirstOrDefault();
+
+                    ctx.SupplierF.Remove(ob);
+
+                    if (ctx.SaveChanges() == 0)
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "删除操作失败!";
+                    }
+                    else
+                    {
+                        result.Code = CodeType.Ok;
+                        result.Message = "成功删除!";
+                    }
+                }
+
+
+                return result;
+            }
+
 
             /// <summary>
             /// 保存数据

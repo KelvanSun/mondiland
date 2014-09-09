@@ -106,5 +106,26 @@ namespace Mondiland.UI
                 this.txb_memo.Focus();
             }
         }
+
+        private void bt_del_Click(object sender, EventArgs e)
+        {
+            if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)
+            {
+                SaveResult result = supplierD.Del();
+
+                if (result.Code == CodeType.Error)
+                {
+                    MessageUtil.ShowError(result.Message);
+                    return;
+                }
+
+                if (result.Code == CodeType.Ok)
+                {
+                    MessageUtil.ShowTips(result.Message);
+
+                    Close();
+                }
+            }   
+        }
     }
 }

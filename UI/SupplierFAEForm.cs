@@ -91,5 +91,26 @@ namespace Mondiland.UI
         {
             Close();
         }
+
+        private void bt_del_Click(object sender, EventArgs e)
+        {
+            if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)
+            {
+                SaveResult result = supplierF.Del();
+
+                if (result.Code == CodeType.Error)
+                {
+                    MessageUtil.ShowError(result.Message);
+                    return;
+                }
+
+                if (result.Code == CodeType.Ok)
+                {
+                    MessageUtil.ShowTips(result.Message);
+
+                    Close();
+                }
+            }   
+        }
     }
 }
