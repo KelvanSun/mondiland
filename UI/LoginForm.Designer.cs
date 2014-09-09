@@ -112,6 +112,7 @@
             // cbx_usrename
             // 
             this.cbx_usrename.ComboBoxHeight = 14;
+            this.cbx_usrename.DisplayColumnNames = "UserName,GroupName";
             this.cbx_usrename.DropDownHeight = 114;
             this.cbx_usrename.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_usrename.DropDownWidth = 121;
