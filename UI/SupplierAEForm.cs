@@ -111,6 +111,5 @@ namespace Mondiland.UI
                 Close();
             }
         }
-
     }
 }

@@ -34,7 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txb_name = new Mondiland.UCControl.UCTextBox();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbx_class = new Mondiland.UCControl.MultiColumnComboBoxEx();
             this.label3 = new System.Windows.Forms.Label();
             this.txb_intact_name = new Mondiland.UCControl.UCTextBox();
@@ -54,8 +53,9 @@
             this.bt_close = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txb_address = new Mondiland.UCControl.UCTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,10 +93,6 @@
             this.txb_name.Size = new System.Drawing.Size(172, 21);
             this.txb_name.TabIndex = 0;
             this.txb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_name_KeyDown);
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Mondiland.Obj.SupplierObject);
             // 
             // cbx_class
             // 
@@ -289,6 +285,10 @@
             this.txb_address.TabIndex = 6;
             this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(Mondiland.Obj.SupplierObject);
+            // 
             // SupplierAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -323,8 +323,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增";
             this.Load += new System.EventHandler(this.SupplierAEForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
