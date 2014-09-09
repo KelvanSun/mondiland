@@ -699,7 +699,7 @@
             this.tab_supplierF.Name = "tab_supplierF";
             this.tab_supplierF.Size = new System.Drawing.Size(930, 382);
             this.tab_supplierF.TabIndex = 2;
-            this.tab_supplierF.Text = "公厂信息";
+            this.tab_supplierF.Text = "工厂信息";
             this.tab_supplierF.UseVisualStyleBackColor = true;
             // 
             // dgv_supplierF

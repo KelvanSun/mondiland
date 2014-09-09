@@ -82,7 +82,7 @@ namespace Mondiland.UI
 
         private void SupplierManagerForm_Load(object sender, EventArgs e)
         {
-            this.cbx_query_type.Text = "拼音码";
+            this.cbx_query_type.Text = "公司简称";
 
             this.tscb_class.ComboBox.DataSource = SupplierClassManager.SupplierClassList;
             this.tscb_class.ComboBox.DisplayMember = "Name";
