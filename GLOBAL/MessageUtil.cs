@@ -49,7 +49,7 @@ namespace Mondiland.Global
         /// <param name="message">错误信息</param>
         public static DialogResult ShowYesNoAndTips(string message)
         {
-            return MessageBox.Show(message, "提示信息", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return MessageBox.Show(message, "提示信息", MessageBoxButtons.YesNo, MessageBoxIcon.Information,MessageBoxDefaultButton.Button2);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Mondiland.Global
         /// <param name="message">警告信息</param>
         public static DialogResult ShowYesNoAndWarning(string message)
         {
-            return MessageBox.Show(message, "警告信息", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return MessageBox.Show(message, "警告信息", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Mondiland.Global
         /// <param name="message">错误信息</param>
         public static DialogResult ShowYesNoCancelAndTips(string message)
         {
-            return MessageBox.Show(message, "提示信息", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(message, "提示信息", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
         }
     }
 }
