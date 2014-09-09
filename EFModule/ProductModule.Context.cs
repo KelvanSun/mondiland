@@ -16,7 +16,7 @@ namespace Mondiland.EFModule
     public partial class ProductContext : DbContext
     {
         public ProductContext()
-            :base(DB.GetConnectString())
+            : base("name=ProductContext")
         {
         }
     

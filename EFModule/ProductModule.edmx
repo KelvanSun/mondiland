@@ -185,14 +185,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="supplier_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="pym" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="fax" Type="nvarchar" MaxLength="50" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" />
-          <Property Name="qq" Type="nvarchar" MaxLength="50" />
-          <Property Name="address" Type="nvarchar" MaxLength="50" />
-          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="pym" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="fax" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="qq" Type="nvarchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="memo" Type="nvarchar(max)" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SupplierF">
@@ -201,11 +201,11 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="supplier_id" Type="int" Nullable="false" />
-          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="contacts" Type="nvarchar" MaxLength="50" />
-          <Property Name="tel" Type="nvarchar" MaxLength="50" />
-          <Property Name="fax" Type="nvarchar" MaxLength="50" />
-          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="contacts" Type="nvarchar" MaxLength="100" />
+          <Property Name="tel" Type="nvarchar" MaxLength="100" />
+          <Property Name="fax" Type="nvarchar" MaxLength="100" />
+          <Property Name="memo" Type="nvarchar(max)" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SupplierM">
@@ -214,14 +214,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="class_id" Type="int" Nullable="false" />
-          <Property Name="pym" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="address" Type="nvarchar" MaxLength="50" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="intact_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="bank_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="account" Type="nvarchar" MaxLength="50" />
-          <Property Name="phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="pym" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="intact_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="bank_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="account" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="fax" Type="nvarchar" MaxLength="100" />
           <Property Name="memo" Type="nvarchar(max)" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
@@ -813,14 +813,14 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="supplier_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="pym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pym" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="qq" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SupplierM" Relationship="Self.FK_SupplierD_SupplierM" FromRole="SupplierD" ToRole="SupplierM" />
         </EntityType>
@@ -830,14 +830,14 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="class_id" Type="Int32" Nullable="false" />
-          <Property Name="pym" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="intact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pym" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="intact_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SupplierClass" Relationship="Self.FK_SupplierM_SupplierClass" FromRole="SupplierM" ToRole="SupplierClass" />
@@ -1218,11 +1218,11 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="supplier_id" Type="Int32" Nullable="false" />
-          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="contacts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contacts" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SupplierM" Relationship="ProductModel.FK_SupplierF_SupplierF" FromRole="SupplierF" ToRole="SupplierM" />
         </EntityType>

@@ -67,7 +67,7 @@
             // 
             this.txb_name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Name", true));
             this.txb_name.Location = new System.Drawing.Point(113, 20);
-            this.txb_name.MaxLength = 50;
+            this.txb_name.MaxLength = 100;
             this.txb_name.Name = "txb_name";
             this.txb_name.Size = new System.Drawing.Size(173, 21);
             this.txb_name.TabIndex = 0;
@@ -90,7 +90,7 @@
             // 
             this.txb_phone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Phone", true));
             this.txb_phone.Location = new System.Drawing.Point(113, 64);
-            this.txb_phone.MaxLength = 50;
+            this.txb_phone.MaxLength = 100;
             this.txb_phone.Name = "txb_phone";
             this.txb_phone.Size = new System.Drawing.Size(434, 21);
             this.txb_phone.TabIndex = 1;
@@ -109,7 +109,7 @@
             // 
             this.txb_fax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Fax", true));
             this.txb_fax.Location = new System.Drawing.Point(113, 108);
-            this.txb_fax.MaxLength = 50;
+            this.txb_fax.MaxLength = 100;
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(434, 21);
             this.txb_fax.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             this.txb_email.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Email", true));
             this.txb_email.Location = new System.Drawing.Point(113, 152);
-            this.txb_email.MaxLength = 50;
+            this.txb_email.MaxLength = 100;
             this.txb_email.Name = "txb_email";
             this.txb_email.Size = new System.Drawing.Size(201, 21);
             this.txb_email.TabIndex = 3;
@@ -147,7 +147,7 @@
             // 
             this.txb_qq.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "QQ", true));
             this.txb_qq.Location = new System.Drawing.Point(374, 152);
-            this.txb_qq.MaxLength = 50;
+            this.txb_qq.MaxLength = 100;
             this.txb_qq.Name = "txb_qq";
             this.txb_qq.Size = new System.Drawing.Size(173, 21);
             this.txb_qq.TabIndex = 4;
@@ -166,7 +166,7 @@
             // 
             this.txb_address.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Address", true));
             this.txb_address.Location = new System.Drawing.Point(113, 196);
-            this.txb_address.MaxLength = 50;
+            this.txb_address.MaxLength = 100;
             this.txb_address.Name = "txb_address";
             this.txb_address.Size = new System.Drawing.Size(434, 21);
             this.txb_address.TabIndex = 5;
@@ -185,7 +185,6 @@
             // 
             this.txb_memo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Memo", true));
             this.txb_memo.Location = new System.Drawing.Point(113, 240);
-            this.txb_memo.MaxLength = 50;
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(434, 81);

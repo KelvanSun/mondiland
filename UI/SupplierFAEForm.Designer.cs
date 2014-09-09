@@ -67,7 +67,7 @@
             // 
             this.txb_address.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Address", true));
             this.txb_address.Location = new System.Drawing.Point(96, 25);
-            this.txb_address.MaxLength = 50;
+            this.txb_address.MaxLength = 100;
             this.txb_address.Name = "txb_address";
             this.txb_address.Size = new System.Drawing.Size(406, 21);
             this.txb_address.TabIndex = 0;
@@ -86,7 +86,7 @@
             // 
             this.txb_contacts.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Contacts", true));
             this.txb_contacts.Location = new System.Drawing.Point(96, 67);
-            this.txb_contacts.MaxLength = 50;
+            this.txb_contacts.MaxLength = 100;
             this.txb_contacts.Name = "txb_contacts";
             this.txb_contacts.Size = new System.Drawing.Size(406, 21);
             this.txb_contacts.TabIndex = 1;
@@ -105,7 +105,7 @@
             // 
             this.txb_tel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Tel", true));
             this.txb_tel.Location = new System.Drawing.Point(96, 109);
-            this.txb_tel.MaxLength = 50;
+            this.txb_tel.MaxLength = 100;
             this.txb_tel.Name = "txb_tel";
             this.txb_tel.Size = new System.Drawing.Size(406, 21);
             this.txb_tel.TabIndex = 2;
@@ -124,7 +124,7 @@
             // 
             this.txb_fax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Fax", true));
             this.txb_fax.Location = new System.Drawing.Point(96, 151);
-            this.txb_fax.MaxLength = 50;
+            this.txb_fax.MaxLength = 100;
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(406, 21);
             this.txb_fax.TabIndex = 3;
@@ -143,7 +143,6 @@
             // 
             this.txb_memo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Memo", true));
             this.txb_memo.Location = new System.Drawing.Point(96, 193);
-            this.txb_memo.MaxLength = 400;
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(406, 110);
