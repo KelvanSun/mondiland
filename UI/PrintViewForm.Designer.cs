@@ -37,6 +37,7 @@
             // 
             // SupplierObjectBindingSource
             // 
+            this.SupplierObjectBindingSource.AllowNew = false;
             this.SupplierObjectBindingSource.DataSource = typeof(Mondiland.Obj.SupplierObject);
             // 
             // reportViewer

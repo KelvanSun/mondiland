@@ -167,15 +167,17 @@
             this.txb_address.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Address", true));
             this.txb_address.Location = new System.Drawing.Point(113, 196);
             this.txb_address.MaxLength = 100;
+            this.txb_address.Multiline = true;
             this.txb_address.Name = "txb_address";
-            this.txb_address.Size = new System.Drawing.Size(434, 21);
+            this.txb_address.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txb_address.Size = new System.Drawing.Size(434, 62);
             this.txb_address.TabIndex = 5;
             this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(49, 243);
+            this.label7.Location = new System.Drawing.Point(49, 284);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 12;
@@ -184,7 +186,7 @@
             // txb_memo
             // 
             this.txb_memo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Memo", true));
-            this.txb_memo.Location = new System.Drawing.Point(113, 240);
+            this.txb_memo.Location = new System.Drawing.Point(113, 281);
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.Size = new System.Drawing.Size(434, 81);
@@ -194,7 +196,7 @@
             // 
             this.bt_close.Image = ((System.Drawing.Image)(resources.GetObject("bt_close.Image")));
             this.bt_close.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_close.Location = new System.Drawing.Point(472, 368);
+            this.bt_close.Location = new System.Drawing.Point(472, 403);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(75, 23);
             this.bt_close.TabIndex = 8;
@@ -207,7 +209,7 @@
             // 
             this.bt_save.Image = ((System.Drawing.Image)(resources.GetObject("bt_save.Image")));
             this.bt_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_save.Location = new System.Drawing.Point(377, 368);
+            this.bt_save.Location = new System.Drawing.Point(377, 403);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
             this.bt_save.TabIndex = 7;
@@ -219,9 +221,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 338);
+            this.groupBox2.Location = new System.Drawing.Point(3, 373);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(645, 10);
+            this.groupBox2.Size = new System.Drawing.Size(601, 10);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
@@ -238,7 +240,7 @@
             // 
             this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
             this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_del.Location = new System.Drawing.Point(16, 368);
+            this.bt_del.Location = new System.Drawing.Point(30, 403);
             this.bt_del.Name = "bt_del";
             this.bt_del.Size = new System.Drawing.Size(75, 23);
             this.bt_del.TabIndex = 15;
@@ -251,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 409);
+            this.ClientSize = new System.Drawing.Size(600, 440);
             this.Controls.Add(this.bt_del);
             this.Controls.Add(this.bt_close);
             this.Controls.Add(this.bt_save);
