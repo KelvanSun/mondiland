@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Mondiland.Obj;
 using Mondiland.Global;
+using Microsoft.Reporting.WinForms;
 
 namespace Mondiland.UI
 {
@@ -307,6 +308,22 @@ namespace Mondiland.UI
             this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
 
             this.dgv_main.Focus();
+        }
+
+        private void tsmi_supplier_print_Click(object sender, EventArgs e)
+        {
+            if (this.bindingSource_query.Current == null)
+            {
+                MessageUtil.ShowWarning("先查询到记录再打印!");
+                return;
+            }
+
+            PrintViewForm form = new PrintViewForm();
+
+            form.reportViewer.LocalReport.ReportEmbeddedResource = "Mondiland.UI.SupplierM.rdlc";
+            form.SupplierObjectBindingSource.DataSource = this.bindingSource_main;
+
+            form.ShowDialog();
         }
       
     }

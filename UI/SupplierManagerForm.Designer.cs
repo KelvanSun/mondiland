@@ -55,6 +55,7 @@
             this.tsddb_supplier = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplier_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplier_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_supplier_print = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddb_supplierf = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplierf_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplierf_edit = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,7 +158,8 @@
             // 
             this.tsddb_supplier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_supplier_add,
-            this.tsmi_supplier_edit});
+            this.tsmi_supplier_edit,
+            this.tsmi_supplier_print});
             this.tsddb_supplier.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_supplier.Image")));
             this.tsddb_supplier.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddb_supplier.Name = "tsddb_supplier";
@@ -169,7 +171,7 @@
             // 
             this.tsmi_supplier_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_add.Image")));
             this.tsmi_supplier_add.Name = "tsmi_supplier_add";
-            this.tsmi_supplier_add.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplier_add.Size = new System.Drawing.Size(152, 22);
             this.tsmi_supplier_add.Text = "新增";
             this.tsmi_supplier_add.Click += new System.EventHandler(this.tsmi_supplier_add_Click);
             // 
@@ -177,9 +179,17 @@
             // 
             this.tsmi_supplier_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_edit.Image")));
             this.tsmi_supplier_edit.Name = "tsmi_supplier_edit";
-            this.tsmi_supplier_edit.Size = new System.Drawing.Size(100, 22);
+            this.tsmi_supplier_edit.Size = new System.Drawing.Size(152, 22);
             this.tsmi_supplier_edit.Text = "编辑";
             this.tsmi_supplier_edit.Click += new System.EventHandler(this.tsmi_supplier_edit_Click);
+            // 
+            // tsmi_supplier_print
+            // 
+            this.tsmi_supplier_print.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_print.Image")));
+            this.tsmi_supplier_print.Name = "tsmi_supplier_print";
+            this.tsmi_supplier_print.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplier_print.Text = "打印信息";
+            this.tsmi_supplier_print.Click += new System.EventHandler(this.tsmi_supplier_print_Click);
             // 
             // tsddb_supplierf
             // 
@@ -1065,6 +1075,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qQDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_print;
 
     }
 }
