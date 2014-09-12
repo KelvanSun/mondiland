@@ -59,54 +59,6 @@ namespace Mondiland.UI
             }
         }
 
-        private void txb_name_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_phone.Focus();
-            }
-        }
-
-        private void txb_phone_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_fax.Focus();
-            }
-        }
-
-        private void txb_fax_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_email.Focus();
-            }
-        }
-
-        private void txb_email_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_qq.Focus();
-            }
-        }
-
-        private void txb_qq_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_address.Focus();
-            }
-        }
-
-        private void txb_address_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.txb_memo.Focus();
-            }
-        }
-
         private void bt_del_Click(object sender, EventArgs e)
         {
             if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)

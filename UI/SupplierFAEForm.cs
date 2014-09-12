@@ -37,38 +37,6 @@ namespace Mondiland.UI
             this.bindingSource.DataSource = this.supplierF;
         }
 
-        private void txb_address_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txb_contacts.Focus();
-            }
-        }
-
-        private void txb_contacts_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txb_tel.Focus();
-            }
-        }
-
-        private void txb_tel_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txb_fax.Focus();
-            }
-        }
-
-        private void txb_fax_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                txb_memo.Focus();
-            }
-        }
-
         private void bt_save_Click(object sender, EventArgs e)
         {
             SaveResult result = supplierF.Save();

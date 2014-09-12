@@ -73,7 +73,6 @@
             this.txb_address.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txb_address.Size = new System.Drawing.Size(406, 61);
             this.txb_address.TabIndex = 0;
-            this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
             // label2
             // 
@@ -92,7 +91,6 @@
             this.txb_contacts.Name = "txb_contacts";
             this.txb_contacts.Size = new System.Drawing.Size(406, 21);
             this.txb_contacts.TabIndex = 1;
-            this.txb_contacts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_contacts_KeyDown);
             // 
             // label3
             // 
@@ -111,7 +109,6 @@
             this.txb_tel.Name = "txb_tel";
             this.txb_tel.Size = new System.Drawing.Size(406, 21);
             this.txb_tel.TabIndex = 2;
-            this.txb_tel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_tel_KeyDown);
             // 
             // label4
             // 
@@ -130,7 +127,6 @@
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(406, 21);
             this.txb_fax.TabIndex = 3;
-            this.txb_fax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_fax_KeyDown);
             // 
             // label5
             // 

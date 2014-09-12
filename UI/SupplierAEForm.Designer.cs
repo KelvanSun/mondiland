@@ -92,7 +92,6 @@
             this.txb_name.Name = "txb_name";
             this.txb_name.Size = new System.Drawing.Size(172, 21);
             this.txb_name.TabIndex = 0;
-            this.txb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_name_KeyDown);
             // 
             // bindingSource
             // 
@@ -129,7 +128,6 @@
             this.txb_intact_name.Name = "txb_intact_name";
             this.txb_intact_name.Size = new System.Drawing.Size(498, 21);
             this.txb_intact_name.TabIndex = 1;
-            this.txb_intact_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_intact_name_KeyDown);
             // 
             // label4
             // 
@@ -150,7 +148,6 @@
             this.txb_bank_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txb_bank_name.Size = new System.Drawing.Size(498, 50);
             this.txb_bank_name.TabIndex = 4;
-            this.txb_bank_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_bank_name_KeyDown);
             // 
             // label5
             // 
@@ -171,7 +168,6 @@
             this.txb_account.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txb_account.Size = new System.Drawing.Size(498, 50);
             this.txb_account.TabIndex = 5;
-            this.txb_account.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_account_KeyDown);
             // 
             // label6
             // 
@@ -190,7 +186,6 @@
             this.txb_phone.Name = "txb_phone";
             this.txb_phone.Size = new System.Drawing.Size(498, 21);
             this.txb_phone.TabIndex = 2;
-            this.txb_phone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_phone_KeyDown);
             // 
             // label7
             // 
@@ -209,7 +204,6 @@
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(498, 21);
             this.txb_fax.TabIndex = 3;
-            this.txb_fax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_fax_KeyDown);
             // 
             // label8
             // 
@@ -293,7 +287,6 @@
             this.txb_address.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txb_address.Size = new System.Drawing.Size(498, 50);
             this.txb_address.TabIndex = 6;
-            this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
             // SupplierAEForm
             // 

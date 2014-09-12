@@ -59,41 +59,6 @@ namespace Mondiland.UI
             txb_name.Focus();
         }
 
-        private void txb_name_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_intact_name.Focus();
-        }
-
-        private void txb_intact_name_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_phone.Focus();
-        }
-
-        private void txb_phone_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_fax.Focus();
-        }
-
-        private void txb_fax_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_bank_name.Focus();
-        }
-
-        private void txb_bank_name_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_account.Focus();
-        }
-
-        private void txb_account_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_address.Focus();
-        }
-
-        private void txb_address_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) txb_memo.Focus();
-        }
-
         private void bt_save_Click(object sender, EventArgs e)
         {
             SaveResult result = supplier.Save();
