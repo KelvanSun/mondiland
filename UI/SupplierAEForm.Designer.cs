@@ -115,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 116);
+            this.label3.Location = new System.Drawing.Point(23, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 5;
@@ -124,7 +124,7 @@
             // txb_intact_name
             // 
             this.txb_intact_name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Intact_Name", true));
-            this.txb_intact_name.Location = new System.Drawing.Point(98, 113);
+            this.txb_intact_name.Location = new System.Drawing.Point(98, 102);
             this.txb_intact_name.MaxLength = 100;
             this.txb_intact_name.Name = "txb_intact_name";
             this.txb_intact_name.Size = new System.Drawing.Size(498, 21);
@@ -134,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 243);
+            this.label4.Location = new System.Drawing.Point(18, 197);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 7;
@@ -143,17 +143,19 @@
             // txb_bank_name
             // 
             this.txb_bank_name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Bank_Name", true));
-            this.txb_bank_name.Location = new System.Drawing.Point(98, 239);
-            this.txb_bank_name.MaxLength = 100;
+            this.txb_bank_name.Location = new System.Drawing.Point(98, 195);
+            this.txb_bank_name.MaxLength = 400;
+            this.txb_bank_name.Multiline = true;
             this.txb_bank_name.Name = "txb_bank_name";
-            this.txb_bank_name.Size = new System.Drawing.Size(498, 21);
+            this.txb_bank_name.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txb_bank_name.Size = new System.Drawing.Size(498, 50);
             this.txb_bank_name.TabIndex = 4;
             this.txb_bank_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_bank_name_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 285);
+            this.label5.Location = new System.Drawing.Point(23, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 9;
@@ -162,17 +164,19 @@
             // txb_account
             // 
             this.txb_account.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Account", true));
-            this.txb_account.Location = new System.Drawing.Point(98, 281);
-            this.txb_account.MaxLength = 100;
+            this.txb_account.Location = new System.Drawing.Point(98, 255);
+            this.txb_account.MaxLength = 400;
+            this.txb_account.Multiline = true;
             this.txb_account.Name = "txb_account";
-            this.txb_account.Size = new System.Drawing.Size(498, 21);
+            this.txb_account.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txb_account.Size = new System.Drawing.Size(498, 50);
             this.txb_account.TabIndex = 5;
             this.txb_account.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_account_KeyDown);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 157);
+            this.label6.Location = new System.Drawing.Point(24, 135);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 11;
@@ -181,7 +185,7 @@
             // txb_phone
             // 
             this.txb_phone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Phone", true));
-            this.txb_phone.Location = new System.Drawing.Point(98, 155);
+            this.txb_phone.Location = new System.Drawing.Point(98, 133);
             this.txb_phone.MaxLength = 100;
             this.txb_phone.Name = "txb_phone";
             this.txb_phone.Size = new System.Drawing.Size(498, 21);
@@ -191,7 +195,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 201);
+            this.label7.Location = new System.Drawing.Point(24, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 13;
@@ -200,7 +204,7 @@
             // txb_fax
             // 
             this.txb_fax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Fax", true));
-            this.txb_fax.Location = new System.Drawing.Point(98, 197);
+            this.txb_fax.Location = new System.Drawing.Point(98, 164);
             this.txb_fax.MaxLength = 100;
             this.txb_fax.Name = "txb_fax";
             this.txb_fax.Size = new System.Drawing.Size(498, 21);
@@ -210,7 +214,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 372);
+            this.label8.Location = new System.Drawing.Point(30, 381);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 15;
@@ -219,7 +223,7 @@
             // txb_memo
             // 
             this.txb_memo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Memo", true));
-            this.txb_memo.Location = new System.Drawing.Point(98, 368);
+            this.txb_memo.Location = new System.Drawing.Point(98, 377);
             this.txb_memo.Multiline = true;
             this.txb_memo.Name = "txb_memo";
             this.txb_memo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -229,7 +233,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(0, 573);
+            this.groupBox2.Location = new System.Drawing.Point(0, 581);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(645, 10);
             this.groupBox2.TabIndex = 3;
@@ -248,7 +252,7 @@
             // 
             this.bt_save.Image = ((System.Drawing.Image)(resources.GetObject("bt_save.Image")));
             this.bt_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_save.Location = new System.Drawing.Point(426, 597);
+            this.bt_save.Location = new System.Drawing.Point(426, 602);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
             this.bt_save.TabIndex = 8;
@@ -261,7 +265,7 @@
             // 
             this.bt_close.Image = ((System.Drawing.Image)(resources.GetObject("bt_close.Image")));
             this.bt_close.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_close.Location = new System.Drawing.Point(521, 597);
+            this.bt_close.Location = new System.Drawing.Point(521, 602);
             this.bt_close.Name = "bt_close";
             this.bt_close.Size = new System.Drawing.Size(75, 23);
             this.bt_close.TabIndex = 9;
@@ -273,7 +277,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 330);
+            this.label9.Location = new System.Drawing.Point(24, 318);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 19;
@@ -282,10 +286,12 @@
             // txb_address
             // 
             this.txb_address.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Address", true));
-            this.txb_address.Location = new System.Drawing.Point(98, 325);
-            this.txb_address.MaxLength = 100;
+            this.txb_address.Location = new System.Drawing.Point(98, 315);
+            this.txb_address.MaxLength = 400;
+            this.txb_address.Multiline = true;
             this.txb_address.Name = "txb_address";
-            this.txb_address.Size = new System.Drawing.Size(498, 21);
+            this.txb_address.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txb_address.Size = new System.Drawing.Size(498, 50);
             this.txb_address.TabIndex = 6;
             this.txb_address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_address_KeyDown);
             // 
@@ -293,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 631);
+            this.ClientSize = new System.Drawing.Size(644, 638);
             this.Controls.Add(this.txb_address);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.bt_close);

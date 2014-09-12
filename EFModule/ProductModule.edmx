@@ -215,11 +215,11 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="class_id" Type="int" Nullable="false" />
           <Property Name="pym" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar" MaxLength="400" />
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="intact_name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="bank_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="account" Type="nvarchar" MaxLength="100" />
+          <Property Name="bank_name" Type="nvarchar" MaxLength="400" />
+          <Property Name="account" Type="nvarchar" MaxLength="400" />
           <Property Name="phone" Type="nvarchar" MaxLength="100" />
           <Property Name="fax" Type="nvarchar" MaxLength="100" />
           <Property Name="memo" Type="nvarchar(max)" />
@@ -831,11 +831,11 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="class_id" Type="Int32" Nullable="false" />
           <Property Name="pym" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="intact_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="bank_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bank_name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
