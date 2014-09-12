@@ -20,7 +20,7 @@ namespace Mondiland.UCControl
 
         protected override void OnEnter(EventArgs e)
         {
-            this.BackColor = Color.FromArgb(0, 255, 255);
+            this.BackColor = System.Drawing.SystemColors.Info;
             base.OnLeave(e);
         }
     }

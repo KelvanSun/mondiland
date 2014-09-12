@@ -45,6 +45,9 @@
     <Compile Include="MultiColumnComboBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RichTextBoxPrintCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UCDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
