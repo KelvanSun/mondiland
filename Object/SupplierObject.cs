@@ -526,6 +526,22 @@ namespace Mondiland.Obj
                 {
                     using (ProductContext ctx = new ProductContext())
                     {
+                        System.Guid lastamp = (from entity in ctx.SupplierD
+                                               where entity.id == this.m_id
+                                               select entity.lastamp).FirstOrDefault();
+
+                        if (lastamp != this.m_lastamp)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "当前编辑的记录已经变更,无法保存!";
+
+                            return result;
+                        }
+                    }
+                    
+                    
+                    using (ProductContext ctx = new ProductContext())
+                    {
                         SupplierD contract = (from entity in ctx.SupplierD
                                              where entity.id == this.m_id
                                              select entity).FirstOrDefault();
@@ -706,6 +722,23 @@ namespace Mondiland.Obj
                 }
                 else //编辑
                 {
+                    using (ProductContext ctx = new ProductContext())
+                    {
+                        System.Guid lastamp = (from entity in ctx.SupplierF
+                                               where entity.id == this.m_id
+                                               select entity.lastamp).FirstOrDefault();
+
+                        if (lastamp != this.m_lastamp)
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "当前编辑的记录已经变更,无法保存!";
+
+                            return result;
+                        }
+                    }
+
+                    
+                    
                     using(ProductContext ctx = new ProductContext())
                     {
                         SupplierF factory = (from entity in ctx.SupplierF
