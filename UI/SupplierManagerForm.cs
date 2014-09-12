@@ -95,7 +95,7 @@ namespace Mondiland.UI
 
         private void cbx_query_type_DropDownClosed(object sender, EventArgs e)
         {
-            this.txb_query_text.Text = string.Empty;
+            //this.txb_query_text.Text = string.Empty;
             this.txb_query_text.Focus();
         }
 
@@ -310,20 +310,21 @@ namespace Mondiland.UI
             this.dgv_main.Focus();
         }
 
-        private void tsmi_supplier_print_Click(object sender, EventArgs e)
+        private void tsddb_supplier_view_Click(object sender, EventArgs e)
         {
             if (this.bindingSource_query.Current == null)
             {
-                MessageUtil.ShowWarning("先查询到记录再打印!");
+                MessageUtil.ShowWarning("先查询到供应商后操作!");
                 return;
             }
 
-            PrintViewForm form = new PrintViewForm();
-
-            form.reportViewer.LocalReport.ReportEmbeddedResource = "Mondiland.UI.SupplierM.rdlc";
-            form.SupplierObjectBindingSource.DataSource = this.bindingSource_main;
-
+            SupplierAllViewForm form = new SupplierAllViewForm(this.bindingSource_query.Current as SupplierObject);
             form.ShowDialog();
+        }
+
+        private void dgv_main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tsddb_supplier_view_Click(sender, e);
         }
       
     }

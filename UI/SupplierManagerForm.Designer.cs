@@ -55,13 +55,14 @@
             this.tsddb_supplier = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplier_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplier_edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_supplier_print = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddb_supplierf = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplierf_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplierf_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tssddb_supplierD = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmi_supplierd_add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_supplierd_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsddb_supplier_view = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
             this.tscb_class = new System.Windows.Forms.ToolStripComboBox();
@@ -145,6 +146,8 @@
             this.tsddb_supplier,
             this.tsddb_supplierf,
             this.tssddb_supplierD,
+            this.toolStripSeparator2,
+            this.tsddb_supplier_view,
             this.toolStripSeparator1,
             this.favorites,
             this.tscb_class});
@@ -158,8 +161,7 @@
             // 
             this.tsddb_supplier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_supplier_add,
-            this.tsmi_supplier_edit,
-            this.tsmi_supplier_print});
+            this.tsmi_supplier_edit});
             this.tsddb_supplier.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_supplier.Image")));
             this.tsddb_supplier.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddb_supplier.Name = "tsddb_supplier";
@@ -182,14 +184,6 @@
             this.tsmi_supplier_edit.Size = new System.Drawing.Size(152, 22);
             this.tsmi_supplier_edit.Text = "编辑";
             this.tsmi_supplier_edit.Click += new System.EventHandler(this.tsmi_supplier_edit_Click);
-            // 
-            // tsmi_supplier_print
-            // 
-            this.tsmi_supplier_print.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_print.Image")));
-            this.tsmi_supplier_print.Name = "tsmi_supplier_print";
-            this.tsmi_supplier_print.Size = new System.Drawing.Size(152, 22);
-            this.tsmi_supplier_print.Text = "打印信息";
-            this.tsmi_supplier_print.Click += new System.EventHandler(this.tsmi_supplier_print_Click);
             // 
             // tsddb_supplierf
             // 
@@ -246,6 +240,21 @@
             this.tsmi_supplierd_edit.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplierd_edit.Text = "编辑";
             this.tsmi_supplierd_edit.Click += new System.EventHandler(this.tsmi_supplierd_edit_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
+            // 
+            // tsddb_supplier_view
+            // 
+            this.tsddb_supplier_view.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_supplier_view.Image")));
+            this.tsddb_supplier_view.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddb_supplier_view.Name = "tsddb_supplier_view";
+            this.tsddb_supplier_view.Size = new System.Drawing.Size(60, 37);
+            this.tsddb_supplier_view.Text = "汇总信息";
+            this.tsddb_supplier_view.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsddb_supplier_view.Click += new System.EventHandler(this.tsddb_supplier_view_Click);
             // 
             // toolStripSeparator1
             // 
@@ -351,6 +360,7 @@
             this.dgv_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_main.Size = new System.Drawing.Size(938, 87);
             this.dgv_main.TabIndex = 2;
+            this.dgv_main.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_main_CellDoubleClick);
             this.dgv_main.SelectionChanged += new System.EventHandler(this.dgv_main_SelectionChanged);
             // 
             // Id
@@ -1075,7 +1085,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qQDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_supplier_print;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsddb_supplier_view;
 
     }
 }
