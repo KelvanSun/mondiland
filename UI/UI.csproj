@@ -197,6 +197,12 @@
     <Compile Include="SupplierManagerForm.Designer.cs">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SysLogManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysLogManagerForm.Designer.cs">
+      <DependentUpon>SysLogManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCListViewItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierManagerForm.resx">
       <DependentUpon>SupplierManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysLogManagerForm.resx">
+      <DependentUpon>SysLogManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCListViewItem.resx">
       <DependentUpon>UCListViewItem.cs</DependentUpon>

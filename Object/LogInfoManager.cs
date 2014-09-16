@@ -29,5 +29,38 @@ namespace Mondiland.Obj
             }
 
         }
+
+        public class LogInfoObject
+        {
+            private int m_id = 0;
+            private DateTime m_dt = DateTime.Now;
+            private string m_user_name = string.Empty;
+            private string m_log_info = string.Empty;
+
+            public int Id
+            {
+                get {return m_id;}
+                set {m_id = value;}
+            }
+
+            public DateTime Dt
+            {
+                get { return m_dt; }
+                set { m_dt = value; }
+            }
+
+            public string UserName
+            {
+                get { return m_user_name; }
+                set { m_user_name = value; }
+            }
+
+            public string LogInfo
+            {
+                get { return m_log_info; }
+                set { m_log_info = value; }
+            }
+
+        }
     }
 }
