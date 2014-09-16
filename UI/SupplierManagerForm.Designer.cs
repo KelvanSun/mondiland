@@ -173,7 +173,7 @@
             // 
             this.tsmi_supplier_add.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_add.Image")));
             this.tsmi_supplier_add.Name = "tsmi_supplier_add";
-            this.tsmi_supplier_add.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplier_add.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplier_add.Text = "新增";
             this.tsmi_supplier_add.Click += new System.EventHandler(this.tsmi_supplier_add_Click);
             // 
@@ -181,7 +181,7 @@
             // 
             this.tsmi_supplier_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_supplier_edit.Image")));
             this.tsmi_supplier_edit.Name = "tsmi_supplier_edit";
-            this.tsmi_supplier_edit.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_supplier_edit.Size = new System.Drawing.Size(100, 22);
             this.tsmi_supplier_edit.Text = "编辑";
             this.tsmi_supplier_edit.Click += new System.EventHandler(this.tsmi_supplier_edit_Click);
             // 
@@ -528,12 +528,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.BackColor = System.Drawing.SystemColors.Info;
             this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Memo", true));
-            this.textBox9.Location = new System.Drawing.Point(109, 173);
+            this.textBox9.Location = new System.Drawing.Point(109, 252);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox9.Size = new System.Drawing.Size(798, 201);
+            this.textBox9.Size = new System.Drawing.Size(798, 119);
             this.textBox9.TabIndex = 17;
             // 
             // bindingSource_main
@@ -544,7 +544,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 177);
+            this.label9.Location = new System.Drawing.Point(26, 255);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 16;
@@ -556,16 +556,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.BackColor = System.Drawing.SystemColors.Info;
             this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Address", true));
-            this.textBox8.Location = new System.Drawing.Point(109, 146);
+            this.textBox8.Location = new System.Drawing.Point(109, 198);
+            this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(797, 21);
+            this.textBox8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox8.Size = new System.Drawing.Size(797, 44);
             this.textBox8.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 150);
+            this.label8.Location = new System.Drawing.Point(20, 201);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 14;
@@ -577,16 +579,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.BackColor = System.Drawing.SystemColors.Info;
             this.textBox7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Account", true));
-            this.textBox7.Location = new System.Drawing.Point(109, 119);
+            this.textBox7.Location = new System.Drawing.Point(109, 144);
+            this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(797, 21);
+            this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox7.Size = new System.Drawing.Size(797, 44);
             this.textBox7.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 124);
+            this.label7.Location = new System.Drawing.Point(9, 147);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 12);
             this.label7.TabIndex = 12;
@@ -599,9 +603,11 @@
             this.textBox6.BackColor = System.Drawing.SystemColors.Info;
             this.textBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource_main, "Bank_Name", true));
             this.textBox6.Location = new System.Drawing.Point(109, 92);
+            this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(797, 21);
+            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox6.Size = new System.Drawing.Size(797, 44);
             this.textBox6.TabIndex = 11;
             // 
             // label6

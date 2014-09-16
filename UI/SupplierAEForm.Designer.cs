@@ -87,6 +87,7 @@
             // txb_name
             // 
             this.txb_name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource, "Name", true));
+            this.txb_name.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.txb_name.Location = new System.Drawing.Point(98, 71);
             this.txb_name.MaxLength = 100;
             this.txb_name.Name = "txb_name";

@@ -25,13 +25,14 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://192.168.1.5/mondiland/</InstallUrl>
+    <SupportUrl>http://192.168.1.5/mondiland</SupportUrl>
     <ProductName>宁波麦迪莱登商品管理系统</ProductName>
     <PublisherName>宁波麦迪莱登</PublisherName>
     <SuiteName>宁波麦迪莱登商品管理系统</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>182</ApplicationRevision>
+    <ApplicationRevision>184</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

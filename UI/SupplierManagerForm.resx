@@ -272,36 +272,36 @@
   <data name="tsddb_supplier_view.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKsSURBVDhPVZFdSFNhHMYPXpgX4kIIJKIuKsHhRUiGOXNH
-        0/yoLaTCIGh+zDndXK4isjLswiIKdqVQN2EfBEkQllCkTj3NNZ1tzqlLZWAUg0aajGF+Pv3fczw6//DA
-        OHt/z/t/npejiZOlUCh2p2Ya9en8HVt63u22dLUkJVNuk+1gRo2eozOxDEmavWnaAo3ZFz5rnYa28Ts0
-        jQGcuTKF05ZJ0gRKG/woMftQaHSE2dlNTJrklGNKrTUQ1e6AY8CGcRQTXGzyosjkgbpuKJqcckS5iXOc
-        6tzLTq11+1Zd8xQ6un7hzacQGh8FCBwj0ItT9d9Io7SFGxmaJ52bOBdfZPQvyHBdawB/IyuYnP0DpyeE
-        5ZU1PO6YFeHCulEUEFxQO4y8GscCY0nJSQyUV3b55vHe/pPyekhetLSPIxJdgcZCoHEEJwnOr/2KPIMT
-        jBUN5Kyl5jEsRpZhfuBH+Q0vrc++uzG/uATTfS/BLuQbJJivGdo2kBqmoihnKBxFcxvFoRvLrCM4f92N
-        pX+r1MsIwU5afYhgB9T6L2TASQbseeSinncF8SMUheXhOEEeDI7+xgT1kW9wiLeq9Q7kVgukwW0D+XlY
-        USWmYXQPzGF1bR0bGxvwT4fR+tSLZ++CZMBAASeqBpBT1S8bcIm83rUuP49UlAtai4AL1wRaWUDb6ynR
-        7FV3kOB+5FT2Q3XJvs5YZhDH6z7PiDA1vLMoKSuvH8BHYU40qbzrhKqiD5kX384wVjRIPX71ZuzzsKwy
-        zLKylfnqPtxrd0Nd1YNsXS8OHK2/tWVASsgq7xRkWAKlosS8bOUKO7IregnuQUbZCwdjYg1o9iSm8S22
-        LN1gZAukvKpKu7gyuzXz8ofI4ZwmGzsrMTIb84MmYVfSvkPxifuVsWLf2H/SEXGI4bj/o4ry0bVAQK4A
-        AAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKtSURBVDhPVZFdSFNhHMYPXpgXoiEEElEXleDwIiT7cOam
+        aX7UFlJhdNGcbn5tLlcRWRl2YREFu1Kom7APgiQISyhSpx6PUzfb1OmWysAoBo00GcP8fPq/53h0/uGB
+        cfb+nvf/PC9HEyMrMTFxd0pGtSFNfc+WlnO3JU0lScGU3WA7mG40cHQmmiFJszdVm6cxj4fOW6ehrf8O
+        Tb0f5675cNYyRZpEcZ0XReZx5FcLIXZ2E5MmKfmYQmv1R7Q74CiwbgKFBBeaPCgwuaGqESJJyUcUmzjH
+        KS+8btdat2/VNfrQ1vEL774EUf/ET+AYgR6cqf1GGqUtXEjXPGvfxLnYgirvggzXNPvxN7yCqdk/cLiD
+        WF5Zw9O2WRHOrxlFHsF5VSPIMQoLjCUlJTBQXnl4fB4f7T8pr5vkQVPrBMKRFWgsBFY7cZrg3Koh5FQ6
+        wFjRQM5abB7DYngZ5kdelN7y0Prsuwvzi0swPfQQPIzcSglWGwe3DaSGqSjKGQxF0NhCcejGEqsTF2+6
+        sPRvlXpxEuyg1QcJFqAyDJABJxmw55GLetkRwI9gBJbHEwS50T/6G5PUR26lIN6qMgjIruBJ/dsG8vOw
+        oopMI+jsm8Pq2jo2NjbgnQ6h+bkHLz4EyICBPE6V9yGrvFc24OJVFUPr8vNIRQ1Da+Fx6QZPK/NoeesT
+        zd50BgjuRZa+F8or9nXGMoMYte7rjAhTwzuLkrKqDX34zM+JJvr7DijLepBx+f0MY0WDlJPXb0c/D8sq
+        wywrW1ld0YMHrS6oyruQqevGgaO1d7YMSHEnStt5GZZAqSgxL1u5zI7Msm6Cu5Be8kpgTLQBzZ74VHWT
+        7biuP7wFUl6l3i6uzG7NuPopfDirwcbOSozMRv2giduVsO9QbPx+RbTYN/afdEQcYjjuP5bw8soRhyON
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="favorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJuSURBVDhPlZF7SFNhGId/R6e5pKYTlEIZzG6uQmhlpZVF
-        RUskRVEXSBJFBKHBIhxETaGSYhMNNQtS04wu1rKbRdDMQDJDwzIsrDVXpvOSzsvSXd6+5fmjaYI98MD5
-        vd/7vuccPszGNzWCvmcjp1aJEL70f1jOBsaNVkRZmo6KUvjS3Hkjh4/1yrpK59fzZMpfUxMPzOeP5oYp
-        C/KJhr09REfI8iitvy4Bm/mj2dEAXuUS+N2SQtSvjdA6fxwmoiiym7Oo/fiy0nt7hIurFOKFGhl8WTs3
-        NcUYLhSorJVLdNbr0VfHb++ss96Nbx57fXCYHElsgYzIoaShJwfGeyoSO0xFikZj3o4H7zOXFtdv8zqk
-        kSAAvVof7egL5QgNnSAaSyf6lUJkVzBXMMOZEcxd5LIlkMuaTHZTKnXlR9pubPTWRYrYgkIF5nXlhWTa
-        nsUOUp+EaFBENBDAFP8ly/2B5PoSTOZi4XB1LJezGgjkf+LP/ws+qsUZY/qQbleHgOizt6edAnI2+ZPx
-        jG9f2XovVRCwgB/1gDPrlp+beMgWtIKoxVPDJc5ZHY1TrM9vqn06RFxfeUzZ5B32xnqWnjMNTPczc6QU
-        VLsV2Xz3TFpbywMGSmSvnDfZQA3IcRFUqoHLXsXyfdDkZVBDHK6xVvc1zuTT42OynwWLul1FIGMG7O/2
-        oVG/HSfb02FwZ0cB6G0imtP9EcyPeNKmDpf3qnwHTPthqt2N3LQwhLMyp5Ei+OkmqD4ko7NNgd7TYVg7
-        NTGNllREvkzChVw5Ylic/plciRSr9CuhywvFFr7miSYWgg2hEPLxn8jYYonHLQC/AcvRPfPqsUK+AAAA
-        AElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJtSURBVDhPlZF9SFNhFId/d07TpOYUlEIZaF+uYtDKSqsV
+        FS2RFEVdIEkUEYQGi1CImkIlxSYafhWkphll1rIviyDNQDJDwzIsrDVX5nSam1/pPk6vef9ommAPPHB/
+        5z3n3Ht5MRffMhHwPQNZtSoE8aX/o++8OHqkPKKv+bgokS/NnzdyeNqubqhwfr1Ixtx1NTHAQv5ofhjT
+        IZ9o3N9LdIz6HiVb6mKxlT+aGw0gKJPAuzoUIos2XOv8cZSIIshuSqeOkytK7u3zWVqp9F+skcKLtXPT
+        UwxrvlBtq1ims92IvDZ2e3ed7W5My+jrw1ZyxLMFUiKHioaeHBrrLY/rNBYomww5ux68T1te2LBDcEQj
+        gR/MWk/tyAvVMA2dIhpNIfqVSGRXMlcxw5jhzD3kGo8lly2B7MYk6s6Vjd/c7KGTidiCfCUWdOcEpY0/
+        UwxSv4RoUEQ04Mf0/0uWLWJyfQkkU6GPtUrBZa0FxPxP/Pl/4cdM/9RRfVCPq1NI9NnD3S4hOZt9yXDO
+        q790o0AdACziR93gTLqVFyYesgVtIGp1t/4y56yKxBnW5z3dPhMirr8sqnTyDntjA0vPmfXMqWfmcAmo
+        djsy+O7ZtLWV+Q0USV85b7GBGpCjGFSsgcteyfJ90OQVUGM0rrPWqWuczafHJ6Q/85b0uApAhlTY3x1A
+        k34nTnekoH4qO/JAb+PQkuKLQH7EnfbMMLlZ7TVgPAhj7V5kJ4cgjJU5TSgCn26B+kMCutqVMJ8Nwfrp
+        iRm0JkH2Mh6XsuWIYnHmZ3JFoVijXw1dTjC28TV3NAoINwXDh4//RMoWS9xuAfgNyqk98nW35v4AAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <metadata name="bindingSource_query.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
