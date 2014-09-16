@@ -360,6 +360,7 @@ namespace Mondiland.Obj
         {
             private int m_id = 0;
             private int m_supplier_id = 0;
+            private string m_supplier_name = string.Empty;
             private string m_pym = string.Empty;
             private string m_name = string.Empty;
             private string m_phone = string.Empty;
@@ -372,9 +373,15 @@ namespace Mondiland.Obj
 
             public SupplierDObject() { }
 
-            public SupplierDObject(int supplier_id)
+            public SupplierDObject(int supplier_id,string supplier_name)
             {
                 this.m_supplier_id = supplier_id;
+                this.m_supplier_name = supplier_name;
+            }
+
+            public string SupplierName
+            {
+                get { return m_supplier_name; }
             }
 
             public int Id
@@ -586,6 +593,7 @@ namespace Mondiland.Obj
         {
             private int m_id = 0;
             private int m_supplier_id = 0;
+            private string m_supplier_name = string.Empty;
             private string m_address = string.Empty;
             private string m_contacts = string.Empty;
             private string m_tel = string.Empty;
@@ -601,9 +609,15 @@ namespace Mondiland.Obj
 
             public SupplierFObject() { }
 
-            public SupplierFObject(int supplier_id)
+            public SupplierFObject(int supplier_id,string supplier_name)
             {
                 this.m_supplier_id = supplier_id;
+                this.m_supplier_name = supplier_name;
+            }
+
+            public string SupplierName
+            {
+                get { return m_supplier_name; }
             }
 
             public int Id

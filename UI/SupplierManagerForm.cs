@@ -224,9 +224,11 @@ namespace Mondiland.UI
                 return;
             }
 
-            int supplierId = (this.bindingSource_query.Current as SupplierObject).Id;
+            //int supplierId = (this.bindingSource_query.Current as SupplierObject).Id;
+            SupplierObject obj = (this.bindingSource_query.Current as SupplierObject);
 
-            SupplierObject.SupplierFObject supplierF = new SupplierObject.SupplierFObject(supplierId);
+
+            SupplierObject.SupplierFObject supplierF = new SupplierObject.SupplierFObject(obj.Id,obj.Intact_Name);
 
             SupplierFAEForm form = new SupplierFAEForm(supplierF);
             form.ShowDialog();
@@ -276,9 +278,9 @@ namespace Mondiland.UI
                 return;
             }
 
-            int supplierId = (this.bindingSource_query.Current as SupplierObject).Id;
+            SupplierObject obj = (this.bindingSource_query.Current as SupplierObject);
 
-            SupplierObject.SupplierDObject supplierD = new SupplierObject.SupplierDObject(supplierId);
+            SupplierObject.SupplierDObject supplierD = new SupplierObject.SupplierDObject(obj.Id,obj.Intact_Name);
 
             SupplierDAEForm form = new SupplierDAEForm(supplierD);
             form.ShowDialog();

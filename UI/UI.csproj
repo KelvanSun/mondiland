@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>184</ApplicationRevision>
+    <ApplicationRevision>186</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -146,11 +146,11 @@
     <Compile Include="MainToolForm.Designer.cs">
       <DependentUpon>MainToolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintForm.cs">
+    <Compile Include="ProductPrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrintForm.Designer.cs">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <Compile Include="ProductPrintForm.Designer.cs">
+      <DependentUpon>ProductPrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductManagerForm.cs">
       <SubType>Form</SubType>
@@ -221,8 +221,8 @@
     <EmbeddedResource Include="MainToolForm.resx">
       <DependentUpon>MainToolForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrintForm.resx">
-      <DependentUpon>PrintForm.cs</DependentUpon>
+    <EmbeddedResource Include="ProductPrintForm.resx">
+      <DependentUpon>ProductPrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductManagerForm.resx">
       <DependentUpon>ProductManagerForm.cs</DependentUpon>

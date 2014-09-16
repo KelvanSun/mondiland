@@ -46,6 +46,15 @@
           <Property Name="menu_order" Type="int" Nullable="false" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_time" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="log_info" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="LoginUserSelect">
           <Key>
             <PropertyRef Name="id" />
@@ -289,6 +298,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LogInfo_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="LogInfo" Type="Self.LogInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LogInfo">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LoginUserSelect_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="LoginUserSelect" Type="Self.LoginUserSelect" Multiplicity="*" />
@@ -510,6 +531,7 @@
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupMenu" EntityType="Self.GroupMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginUserSelect" EntityType="Self.LoginUserSelect" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MadePlace" EntityType="Self.MadePlace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialData" EntityType="Self.MaterialData" Schema="dbo" store:Type="Tables" />
@@ -536,6 +558,10 @@
           <AssociationSet Name="FK_GroupMenu_MenuInfo" Association="Self.FK_GroupMenu_MenuInfo">
             <End Role="MenuInfo" EntitySet="MenuInfo" />
             <End Role="GroupMenu" EntitySet="GroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogInfo_UserInfo" Association="Self.FK_LogInfo_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="LogInfo" EntitySet="LogInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_LoginUserSelect_UserInfo" Association="Self.FK_LoginUserSelect_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
@@ -867,6 +893,7 @@
           <NavigationProperty Name="GroupInfo" Relationship="Self.FK_UserInfo_GroupInfo" FromRole="UserInfo" ToRole="GroupInfo" />
           <NavigationProperty Name="UserMenuFavorites" Relationship="Self.FK_UserMenuFavorites_UserInfo" FromRole="UserInfo" ToRole="UserMenuFavorites" />
           <NavigationProperty Name="LoginUserSelect" Relationship="ProductModel.FK_LoginUserSelect_UserInfo" FromRole="UserInfo" ToRole="LoginUserSelect" />
+          <NavigationProperty Name="LogInfo" Relationship="ProductModel.FK_LogInfo_UserInfo" FromRole="UserInfo" ToRole="LogInfo" />
         </EntityType>
         <EntityType Name="UserMenuFavorites">
           <Key>
@@ -1211,6 +1238,11 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="LoginUserSelect" EntitySet="LoginUserSelect" />
           </AssociationSet>
+          <EntitySet Name="LogInfo" EntityType="ProductModel.LogInfo" />
+          <AssociationSet Name="FK_LogInfo_UserInfo" Association="ProductModel.FK_LogInfo_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="LogInfo" EntitySet="LogInfo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SupplierF">
           <Key>
@@ -1255,6 +1287,28 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="LoginUserSelect">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="log_info" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserInfo" Relationship="ProductModel.FK_LogInfo_UserInfo" FromRole="LogInfo" ToRole="UserInfo" />
+          <Property Name="date_time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_LogInfo_UserInfo">
+          <End Type="ProductModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="ProductModel.LogInfo" Role="LogInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LogInfo">
               <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1542,6 +1596,16 @@
             <EntityTypeMapping TypeName="ProductModel.LoginUserSelect">
               <MappingFragment StoreEntitySet="LoginUserSelect">
                 <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogInfo">
+            <EntityTypeMapping TypeName="ProductModel.LogInfo">
+              <MappingFragment StoreEntitySet="LogInfo">
+                <ScalarProperty Name="date_time" ColumnName="date_time" />
+                <ScalarProperty Name="log_info" ColumnName="log_info" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

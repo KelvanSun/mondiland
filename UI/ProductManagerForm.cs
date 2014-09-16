@@ -348,7 +348,9 @@ namespace Mondiland.UI
         private void add_Click(object sender, EventArgs e)
         {
             if (MessageUtil.ShowYesNoAndTips("确定[新增]吗?") == System.Windows.Forms.DialogResult.No) return;
-                                    
+
+            LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("产品信息新增操作!"));              
+
             this.product = new ProductObject();
 
             txb_huohao.Text = product.HuoHao;
@@ -373,6 +375,8 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Error)
             {
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("货号为[{0}]信息保存失败!", product.HuoHao));              
+                
                 MessageUtil.ShowError(result.Message);
 
                 return;
@@ -380,6 +384,8 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Ok)
             {
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("货号为[{0}]信息保存成功!", product.HuoHao));              
+
                 MessageUtil.ShowTips(result.Message);
 
                 this.product = new ProductObject();
@@ -437,7 +443,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            PrintForm print = new PrintForm(this.product, ProductObject.PrintType.Tag);
+            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Tag);
             print.ShowDialog();
         }
 
@@ -450,7 +456,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            PrintForm print = new PrintForm(this.product, ProductObject.PrintType.Wash);
+            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Wash);
             print.ShowDialog();
 
         }
@@ -505,6 +511,8 @@ namespace Mondiland.UI
 
                 if(result.Code == CodeType.Error)
                 {
+                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("另存货号为[{0}]操作保存失败!", save_as.HuoHao));                    
+                    
                     MessageUtil.ShowError(result.Message);
                     this.m_huohao_saveas = string.Empty;
 
@@ -513,6 +521,8 @@ namespace Mondiland.UI
 
                 if(result.Code == CodeType.Ok)
                 {
+                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("另存货号为[{0}]操作保存成功!", save_as.HuoHao));              
+                    
                     MessageUtil.ShowTips(result.Message);
 
                     this.m_huohao_saveas = string.Empty;

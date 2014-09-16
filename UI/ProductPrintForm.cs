@@ -15,7 +15,7 @@ using Seagull.BarTender.Print;
 
 namespace Mondiland.UI
 {
-    public partial class PrintForm : Form
+    public partial class ProductPrintForm : Form
     {
         private ProductObject m_product = null;
         private ProductObject.PrintType m_type;
@@ -23,7 +23,7 @@ namespace Mondiland.UI
         private static Engine m_engine = new Engine(true);
 
      
-        public PrintForm(ProductObject product,ProductObject.PrintType type)
+        public ProductPrintForm(ProductObject product,ProductObject.PrintType type)
         {
             this.m_product = product;
             this.m_type = type;
@@ -41,6 +41,9 @@ namespace Mondiland.UI
                             this.m_type,
                             Convert.ToInt32(cbx_select.SelectedValue), 
                             Convert.ToInt32(numericUpDown.Value));
+
+            LogInfoManager.LogWrite(Program.permission.LoginUser.Id,
+                string.Format("打印货号为[{0}]的{1} {2}张", m_product.HuoHao, this.m_type == ProductObject.PrintType.Tag ? "吊牌" : "洗水唛", numericUpDown.Value));              
           
         }
         private void PrintForm_Load(object sender, EventArgs e)

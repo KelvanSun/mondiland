@@ -61,6 +61,9 @@
     <Compile Include="GroupMenu.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>
+    <Compile Include="LogInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoginUserSelect.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>

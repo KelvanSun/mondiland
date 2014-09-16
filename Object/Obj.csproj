@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DengjiManager.cs" />
+    <Compile Include="LogInfoManager.cs" />
     <Compile Include="MadePlaceManager.cs" />
     <Compile Include="PartNameManager.cs" />
     <Compile Include="PermissionManager.cs" />

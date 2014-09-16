@@ -32,10 +32,14 @@ namespace Mondiland.UI
             if (supplierD.Id == 0)
             {
                 this.Text = "新增";
+
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人新增操作!", supplierD.SupplierName));
             }
             else
             {
                 this.Text = "编辑";
+
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息修改操作!", supplierD.SupplierName, supplierD.Name));
             }
 
             this.bindingSource.DataSource = this.supplierD;
@@ -47,12 +51,15 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Error)
             {
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息保存失败!", supplierD.SupplierName, supplierD.Name));
+                
                 MessageUtil.ShowError(result.Message);
                 return;
             }
 
             if (result.Code == CodeType.Ok)
             {
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息保存成功!", supplierD.SupplierName, supplierD.Name));
                 MessageUtil.ShowTips(result.Message);
 
                 Close();
@@ -67,12 +74,16 @@ namespace Mondiland.UI
 
                 if (result.Code == CodeType.Error)
                 {
+                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除失败!", supplierD.SupplierName, supplierD.Name));
+                    
                     MessageUtil.ShowError(result.Message);
                     return;
                 }
 
                 if (result.Code == CodeType.Ok)
                 {
+                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除成功!", supplierD.SupplierName, supplierD.Name));
+
                     MessageUtil.ShowTips(result.Message);
 
                     Close();

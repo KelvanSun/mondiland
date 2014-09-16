@@ -69,12 +69,17 @@ namespace Mondiland.UI
             {
                 MessageUtil.ShowWarning("用户验证失败");
                 tb_pwd.Focus();
+
+                LogInfoManager.LogWrite(user.Id, string.Format("[{0}]用户验证失败!", user.Name));
+
                 return;
             }
 
             PermissionManager.RecordLoginUserSelect(Convert.ToInt32(cbx_usrename.SelectedValue), GetMacPhysicalAddress());
 
             Program.permission.LoginUser = user;
+
+            LogInfoManager.LogWrite(user.Id, string.Format("[{0}]用户登陆成功!", user.Name));
 
             this.DialogResult = DialogResult.OK;
 

@@ -1,6 +1,6 @@
 ﻿namespace Mondiland.UI
 {
-    partial class PrintForm
+    partial class ProductPrintForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductPrintForm));
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.bt_print = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();

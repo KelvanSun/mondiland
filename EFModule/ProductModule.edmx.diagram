@@ -48,6 +48,8 @@
         <AssociationConnector Association="ProductModel.FK_SupplierF_SupplierF" />
         <EntityTypeShape EntityType="ProductModel.LoginUserSelect" Width="1.5" PointX="10.25" PointY="16.125" />
         <AssociationConnector Association="ProductModel.FK_LoginUserSelect_UserInfo" />
+        <EntityTypeShape EntityType="ProductModel.LogInfo" Width="1.5" PointX="10.25" PointY="10.25" />
+        <AssociationConnector Association="ProductModel.FK_LogInfo_UserInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
