@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>186</ApplicationRevision>
+    <ApplicationRevision>187</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -273,6 +273,7 @@
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEMeterialFillInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BEProductDataAllInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BLLDengjiProduct.datasource" />
+    <None Include="Properties\DataSources\Mondiland.Obj.LogInfoManager+LogInfoObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.PermissionObject+LoginUserInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+MaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject+SupplierDObject.datasource" />

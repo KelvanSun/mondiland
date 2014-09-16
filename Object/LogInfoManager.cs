@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 using Mondiland.EFModule;
 
@@ -29,6 +30,32 @@ namespace Mondiland.Obj
             }
 
         }
+
+        public static BindingList<LogInfoObject> GetLogAllInfo()
+        {
+            BindingList<LogInfoObject> list = new BindingList<LogInfoObject>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var loginfos = from entity in ctx.LogInfo
+                               select entity;
+
+                foreach(var loginfo in loginfos)
+                {
+                    LogInfoObject obj = new LogInfoObject();
+                    obj.Id = loginfo.id;
+                    obj.Dt = loginfo.date_time;
+                    obj.UserName = loginfo.UserInfo.name;
+                    obj.LogInfo = loginfo.log_info;
+
+                    list.Add(obj);
+                }
+            }
+
+
+            return list;
+        }
+
 
         public class LogInfoObject
         {

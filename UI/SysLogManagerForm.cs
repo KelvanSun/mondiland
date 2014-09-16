@@ -64,5 +64,10 @@ namespace Mondiland.UI
 
             UpdateFavoritesMenu();
         }
+
+        private void tsb_all_Click(object sender, EventArgs e)
+        {
+            this.logInfoObjectBindingSource.DataSource = LogInfoManager.GetLogAllInfo();
+        }
     }
 }
