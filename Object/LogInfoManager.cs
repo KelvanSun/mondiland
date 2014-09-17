@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Data.Entity;
 
 using Mondiland.EFModule;
+
 
 namespace Mondiland.Obj
 {
@@ -30,6 +32,86 @@ namespace Mondiland.Obj
             }
 
         }
+
+        public static BindingList<LogInfoObject> GetLogCustomQueryInfo(DateTime dt_begin,DateTime dt_end,string str_username,string str_log)
+        {
+            BindingList<LogInfoObject> list = new BindingList<LogInfoObject>();
+
+            
+            using (ProductContext ctx = new ProductContext())
+            {
+                IQueryable<LogInfo> loginfos = null;     
+          
+
+                if(!string.IsNullOrEmpty(str_username) && !string.IsNullOrEmpty(str_log))
+                {
+                    loginfos = from entity in ctx.LogInfo
+                                   where (DbFunctions.TruncateTime(entity.date_time) >= dt_begin && DbFunctions.TruncateTime(entity.date_time) <= dt_end)
+                                           && entity.UserInfo.name.IndexOf(str_username) >= 0 && entity.log_info.IndexOf(str_log) >= 0
+                                   select entity;
+                }
+                else if (!string.IsNullOrEmpty(str_username) && string.IsNullOrEmpty(str_log))
+                {
+                    loginfos = from entity in ctx.LogInfo
+                               where (DbFunctions.TruncateTime(entity.date_time) >= dt_begin && DbFunctions.TruncateTime(entity.date_time) <= dt_end)
+                                       && entity.UserInfo.name.IndexOf(str_username) >= 0
+                               select entity;
+                }
+                else if (string.IsNullOrEmpty(str_username) && !string.IsNullOrEmpty(str_log))
+                {
+                    loginfos = from entity in ctx.LogInfo
+                               where (DbFunctions.TruncateTime(entity.date_time) >= dt_begin && DbFunctions.TruncateTime(entity.date_time) <= dt_end)
+                                       && entity.log_info.IndexOf(str_log) >= 0
+                               select entity;
+                }
+                else
+                {
+                    loginfos = from entity in ctx.LogInfo
+                               where DbFunctions.TruncateTime(entity.date_time) >= dt_begin && DbFunctions.TruncateTime(entity.date_time) <= dt_end
+                               select entity;
+                }
+                
+                foreach (var loginfo in loginfos)
+                {
+                    LogInfoObject obj = new LogInfoObject();
+                    obj.Id = loginfo.id;
+                    obj.Dt = loginfo.date_time;
+                    obj.UserName = loginfo.UserInfo.name;
+                    obj.LogInfo = loginfo.log_info;
+
+                    list.Add(obj);
+                }
+            }
+   
+            return list;
+        }
+
+        public static BindingList<LogInfoObject> GetLogTodayInfo()
+        {
+            BindingList<LogInfoObject> list = new BindingList<LogInfoObject>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var loginfos = from entity in ctx.LogInfo
+                               where entity.date_time.Day == System.DateTime.Now.Day
+                               select entity;
+
+                foreach (var loginfo in loginfos)
+                {
+                    LogInfoObject obj = new LogInfoObject();
+                    obj.Id = loginfo.id;
+                    obj.Dt = loginfo.date_time;
+                    obj.UserName = loginfo.UserInfo.name;
+                    obj.LogInfo = loginfo.log_info;
+
+                    list.Add(obj);
+                }
+
+            }
+
+            return list;
+        }
+
 
         public static BindingList<LogInfoObject> GetLogAllInfo()
         {

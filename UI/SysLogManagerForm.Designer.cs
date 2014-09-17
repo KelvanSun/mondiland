@@ -32,20 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysLogManagerForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsb_all = new System.Windows.Forms.ToolStripButton();
+            this.tsb_today = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
             this.ucDataGridView = new Mondiland.UCControl.UCDataGridView();
-            this.logInfoObjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.logInfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logInfoObjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tsb_custom = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ucDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logInfoObjectBindingSource)).BeginInit();
@@ -55,6 +56,8 @@
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsb_all,
+            this.tsb_today,
+            this.tsb_custom,
             this.toolStripSeparator1,
             this.favorites});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
@@ -72,6 +75,16 @@
             this.tsb_all.Text = "显示全部";
             this.tsb_all.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsb_all.Click += new System.EventHandler(this.tsb_all_Click);
+            // 
+            // tsb_today
+            // 
+            this.tsb_today.Image = ((System.Drawing.Image)(resources.GetObject("tsb_today.Image")));
+            this.tsb_today.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_today.Name = "tsb_today";
+            this.tsb_today.Size = new System.Drawing.Size(60, 37);
+            this.tsb_today.Text = "显示当天";
+            this.tsb_today.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsb_today.Click += new System.EventHandler(this.tsb_today_Click);
             // 
             // toolStripSeparator1
             // 
@@ -95,7 +108,7 @@
             this.ucDataGridView.AllowUserToResizeRows = false;
             this.ucDataGridView.AutoGenerateColumns = false;
             this.ucDataGridView.BackgroundColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -123,24 +136,12 @@
             this.ucDataGridView.MultiSelect = false;
             this.ucDataGridView.Name = "ucDataGridView";
             this.ucDataGridView.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ucDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ucDataGridView.RowHeadersWidth = 20;
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ucDataGridView.RowTemplate.Height = 23;
             this.ucDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ucDataGridView.Size = new System.Drawing.Size(970, 538);
             this.ucDataGridView.TabIndex = 1;
-            // 
-            // logInfoObjectBindingSource
-            // 
-            this.logInfoObjectBindingSource.DataSource = typeof(Mondiland.Obj.LogInfoManager.LogInfoObject);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -179,6 +180,20 @@
             this.logInfoDataGridViewTextBoxColumn.Name = "logInfoDataGridViewTextBoxColumn";
             this.logInfoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // logInfoObjectBindingSource
+            // 
+            this.logInfoObjectBindingSource.DataSource = typeof(Mondiland.Obj.LogInfoManager.LogInfoObject);
+            // 
+            // tsb_custom
+            // 
+            this.tsb_custom.Image = ((System.Drawing.Image)(resources.GetObject("tsb_custom.Image")));
+            this.tsb_custom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_custom.Name = "tsb_custom";
+            this.tsb_custom.Size = new System.Drawing.Size(72, 37);
+            this.tsb_custom.Text = "自定义查询";
+            this.tsb_custom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsb_custom.Click += new System.EventHandler(this.tsb_custom_Click);
+            // 
             // SysLogManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(970, 578);
@@ -207,5 +222,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn logInfoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton tsb_today;
+        private System.Windows.Forms.ToolStripButton tsb_custom;
     }
 }
