@@ -192,6 +192,10 @@ namespace Mondiland.UI
 
                 product = new ProductObject(txb_huohao.Text.Trim());
 
+                if (product.Id != 0)
+                {
+                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("产品信息[{0}]信息载入!", product.HuoHao));
+                }
                 
                 cbx_partname.SelectedValue = product.PartName_Id;
                 cbx_dengji.SelectedValue = product.DengJi_Id;
@@ -349,7 +353,7 @@ namespace Mondiland.UI
         {
             if (MessageUtil.ShowYesNoAndTips("确定[新增]吗?") == System.Windows.Forms.DialogResult.No) return;
 
-            LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("产品信息新增操作!"));              
+            LogInfoManager.LogWrite(Program.permission.LoginUser.Id, "产品信息新增操作!");              
 
             this.product = new ProductObject();
 

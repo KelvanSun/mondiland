@@ -165,6 +165,8 @@ namespace Mondiland.UI
 
             this.dgv_main.Focus();
 
+            LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("查询条件[{0}] 查询内容[{1}] 共查询到[{2}]条记录", cbx_query_type.Text, this.txb_query_text.Text.Trim(), main_list.Count));
+
         }
 
         private void txb_query_text_KeyDown(object sender, KeyEventArgs e)
@@ -310,6 +312,8 @@ namespace Mondiland.UI
             this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
 
             this.dgv_main.Focus();
+
+            LogInfoManager.LogWrite(Program.permission.LoginUser.Id,string.Format("大类[{0}]方式查询 共查询到[{1}]条记录",this.tscb_class.ComboBox.Text,main_list.Count));
         }
 
         private void tsddb_supplier_view_Click(object sender, EventArgs e)
