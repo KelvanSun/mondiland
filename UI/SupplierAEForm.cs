@@ -44,7 +44,7 @@ namespace Mondiland.UI
             else
             {
                 this.Text = "编辑";
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]新增操作!", supplier.Intact_Name));
+                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]编辑操作!", supplier.Intact_Name));
             }
 
             this.cbx_class.SelectedValue = supplier.Class_Id;

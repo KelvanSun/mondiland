@@ -350,6 +350,8 @@ namespace Mondiland.Obj
                     result.Code = CodeType.Ok;
                     result.Message = "保存成功!";
 
+                    this.m_lastamp = info.lastamp;
+
                     return result;
 
                 }
@@ -576,6 +578,8 @@ namespace Mondiland.Obj
                             result.Code = CodeType.Ok;
                             result.Message = "保存成功!";
 
+                            this.m_lastamp = contract.lastamp;
+
                             return result;
                         }
 
@@ -777,6 +781,8 @@ namespace Mondiland.Obj
                         {
                             result.Code = CodeType.Ok;
                             result.Message = "保存成功!";
+
+                            this.LasTamp = factory.lastamp;
 
                             return result;
                         }
