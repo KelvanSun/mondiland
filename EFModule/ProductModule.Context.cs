@@ -49,5 +49,6 @@ namespace Mondiland.EFModule
         public virtual DbSet<SupplierF> SupplierF { get; set; }
         public virtual DbSet<LoginUserSelect> LoginUserSelect { get; set; }
         public virtual DbSet<LogInfo> LogInfo { get; set; }
+        public virtual DbSet<StoresInfo> StoresInfo { get; set; }
     }
 }

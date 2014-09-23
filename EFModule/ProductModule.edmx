@@ -179,6 +179,19 @@
           <Property Name="memo" Type="nvarchar" MaxLength="400" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="StoresInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="manager" Type="nvarchar" MaxLength="100" />
+          <Property Name="manager_phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="memo" Type="nvarchar(max)" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="SupplierClass">
           <Key>
             <PropertyRef Name="id" />
@@ -543,6 +556,7 @@
           <EntitySet Name="SizeClass" EntityType="Self.SizeClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SizeData" EntityType="Self.SizeData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StandardData" EntityType="Self.StandardData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoresInfo" EntityType="Self.StoresInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierClass" EntityType="Self.SupplierClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierD" EntityType="Self.SupplierD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierF" EntityType="Self.SupplierF" Schema="dbo" store:Type="Tables" />
@@ -1243,6 +1257,7 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="LogInfo" EntitySet="LogInfo" />
           </AssociationSet>
+          <EntitySet Name="StoresInfo" EntityType="ProductModel.StoresInfo" />
         </EntityContainer>
         <EntityType Name="SupplierF">
           <Key>
@@ -1313,6 +1328,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StoresInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="manager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="manager_phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1607,6 +1635,20 @@
                 <ScalarProperty Name="date_time" ColumnName="date_time" />
                 <ScalarProperty Name="log_info" ColumnName="log_info" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoresInfo">
+            <EntityTypeMapping TypeName="ProductModel.StoresInfo">
+              <MappingFragment StoreEntitySet="StoresInfo">
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="manager_phone" ColumnName="manager_phone" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

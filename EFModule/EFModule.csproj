@@ -113,6 +113,9 @@
     <Compile Include="StandardData.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>
+    <Compile Include="StoresInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="SupplierClass.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>

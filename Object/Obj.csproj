@@ -60,6 +60,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafeDataManager.cs" />
     <Compile Include="StandardDataManager.cs" />
+    <Compile Include="StoreObject.cs" />
+    <Compile Include="StoresManager.cs" />
     <Compile Include="SupplierClassManager.cs" />
     <Compile Include="SupplierManager.cs" />
     <Compile Include="SupplierObject.cs" />
