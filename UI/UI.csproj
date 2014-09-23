@@ -173,6 +173,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="StoreAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAEForm.Designer.cs">
+      <DependentUpon>StoreAEForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StoreAEForm.resx">
+      <DependentUpon>StoreAEForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreManagerForm.resx">
       <DependentUpon>StoreManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,6 +303,7 @@
     <None Include="Properties\DataSources\Mondiland.Obj.LogInfoManager+LogInfoObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.PermissionObject+LoginUserInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+MaterialDataInfo.datasource" />
+    <None Include="Properties\DataSources\Mondiland.Obj.StoreObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject+SupplierDObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject+SupplierFObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject.datasource" />

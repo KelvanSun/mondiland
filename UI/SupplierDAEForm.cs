@@ -32,6 +32,8 @@ namespace Mondiland.UI
             if (supplierD.Id == 0)
             {
                 this.Text = "新增";
+                this.bt_del.Visible = false;
+
 
                 LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人新增操作!", supplierD.SupplierName));
             }
@@ -39,6 +41,7 @@ namespace Mondiland.UI
             {
                 this.Text = "编辑";
 
+                
                 LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息修改操作!", supplierD.SupplierName, supplierD.Name));
             }
 

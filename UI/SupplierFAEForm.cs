@@ -28,11 +28,18 @@ namespace Mondiland.UI
             if (supplierF.Id == 0)
             {
                 this.Text = "新增";
+
+                this.bt_del.Visible = false;
+
+
                 LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商{0}新增[工厂信息]操作!", supplierF.SupplierName));
             }
             else
             {
                 LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("供应商[{0}]的工厂地址[{1}]信息修改操作!", supplierF.SupplierName, supplierF.Address));
+
+                
+                
                 this.Text = "编辑";
             }
 
