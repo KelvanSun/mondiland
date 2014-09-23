@@ -18,6 +18,7 @@ namespace Mondiland.Obj
             using(ProductContext ctx = new ProductContext())
             {
                 var stores = from entity in ctx.StoresInfo
+                             orderby entity.name
                              select entity;
 
                 foreach(var store in stores)

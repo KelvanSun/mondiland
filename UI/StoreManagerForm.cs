@@ -104,5 +104,22 @@ namespace Mondiland.UI
         {
             tsb_all_Click(sender, e);
         }
+
+        private void tsb_view_Click(object sender, EventArgs e)
+        {
+            if (this.storeObjectBindingSource.Current == null)
+            {
+                return;
+            }
+
+            StoreInfoViewForm form = new StoreInfoViewForm(this.storeObjectBindingSource.Current as StoreObject);
+
+            form.ShowDialog();
+        }
+
+        private void dgv_main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tsb_view_Click(sender, e);
+        }
     }
 }
