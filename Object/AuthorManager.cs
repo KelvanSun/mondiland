@@ -309,26 +309,18 @@ namespace Mondiland.Obj
                                             where menu.id == this.m_id
                                             select menu).FirstOrDefault().menu_name;
 
-                        var childs = from menu in ctx.MenuInfo
-                                     where menu.menu_parent == this.m_id
-                                     orderby menu.menu_order
-                                     select menu;
+                        var childs = from m in ctx.MenuInfo
+                                     join g in ctx.GroupMenu on m.id equals g.menu_id
+                                     where m.menu_parent == this.m_id && g.group_id == this.m_group_id
+                                     orderby m.menu_order
+                                     select m;
 
                         foreach (var child in childs)
                         {
-                            int count = (from entity in ctx.GroupMenu
-                                         where entity.group_id == this.m_group_id && entity.menu_id == child.id
-                                         select entity).Count();
-
-                            if (count > 0)
-                            {
-                                MenuChild info = new MenuChild(child.id);
-                                this.MenuChildList.Add(info);
-                            }
+                            MenuChild info = new MenuChild(child.id);
+                            this.MenuChildList.Add(info);
                         }
-
                     }
-
                 }
 
                 public int Id
@@ -419,21 +411,16 @@ namespace Mondiland.Obj
 
 
                     var parents = from m in ctx.MenuInfo
-                                  where m.menu_parent == 0
+                                  join g in ctx.GroupMenu on m.id equals g.menu_id
+                                  where g.group_id == this.m_group_id && m.menu_parent == 0
                                   orderby m.menu_order
                                   select m;
 
+
                     foreach (var parent in parents)
                     {
-                        int count = (from entity in ctx.GroupMenu
-                                     where entity.group_id == this.m_group_id && entity.menu_id == parent.id
-                                     select entity).Count();
-
-                        if (count > 0)
-                        {
-                            MenuParent menu = new MenuParent(parent.id,m_group_id);
-                            this.MenuParentList.Add(menu);
-                        }
+                         MenuParent menu = new MenuParent(parent.id,m_group_id);
+                         this.MenuParentList.Add(menu);
                     }
 
 
@@ -446,10 +433,7 @@ namespace Mondiland.Obj
                         FavoritesMenu menu = new FavoritesMenu(fav);
                         FavoritesMenuList.Add(menu);
                     }
-
-
                 }
-
             }
 
             public int Id
