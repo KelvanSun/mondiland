@@ -12,8 +12,6 @@ namespace Mondiland.UI
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
-        public static PermissionManager permission = new PermissionManager();
-
         [STAThread]
         static void Main()
         {

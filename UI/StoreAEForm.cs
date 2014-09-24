@@ -33,12 +33,12 @@ namespace Mondiland.UI
 
                 this.bt_del.Visible = false;
 
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺新增操作!"));
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺新增操作!"));
             }
             else
             {
                 this.Text = "编辑";
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺[{0}]编辑操作!", this.store.Name));
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺[{0}]编辑操作!", this.store.Name));
             }
         }
 
@@ -53,7 +53,7 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Error)
             {
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺[{0}]信息保存失败!", store.Name));
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺[{0}]信息保存失败!", store.Name));
 
                 MessageUtil.ShowError(result.Message);
                 return;
@@ -61,7 +61,7 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Ok)
             {
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺[{0}]信息保存成功!", store.Name));
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺[{0}]信息保存成功!", store.Name));
                 MessageUtil.ShowTips(result.Message);
 
                 Close();
@@ -76,7 +76,7 @@ namespace Mondiland.UI
 
                 if (result.Code == CodeType.Error)
                 {
-                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺[{0}]信息删除失败!", store.Name));
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺[{0}]信息删除失败!", store.Name));
 
                     MessageUtil.ShowError(result.Message);
                     return;
@@ -84,7 +84,7 @@ namespace Mondiland.UI
 
                 if (result.Code == CodeType.Ok)
                 {
-                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("店铺[{0}]信息删除成功!", store.Name));
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("店铺[{0}]信息删除成功!", store.Name));
 
                     MessageUtil.ShowTips(result.Message);
 

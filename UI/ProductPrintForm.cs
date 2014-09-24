@@ -42,7 +42,7 @@ namespace Mondiland.UI
                             Convert.ToInt32(cbx_select.SelectedValue), 
                             Convert.ToInt32(numericUpDown.Value));
 
-            LogInfoManager.LogWrite(Program.permission.LoginUser.Id,
+            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id,
                 string.Format("打印货号为[{0}] {1} 码的{2} {3}张", m_product.HuoHao, cbx_select.Text, this.m_type == ProductObject.PrintType.Tag ? "吊牌" : "洗水唛", numericUpDown.Value));              
           
         }

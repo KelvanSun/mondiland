@@ -17,7 +17,6 @@ namespace Mondiland.EFModule
         public int id { get; set; }
         public int group_id { get; set; }
         public int menu_id { get; set; }
-        public int menu_order { get; set; }
         public System.Guid lastamp { get; set; }
     
         public virtual GroupInfo GroupInfo { get; set; }

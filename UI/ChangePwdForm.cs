@@ -65,7 +65,7 @@ namespace Mondiland.UI
                 return;
             }
 
-            SaveResult result = Program.permission.LoginUser.ChangePwd(txb_old.Text,txb_new.Text);
+            SaveResult result = AuthorManager.LoginUser.ChangePwd(txb_old.Text, txb_new.Text);
 
             if(result.Code == CodeType.Error)
             {

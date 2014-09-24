@@ -35,7 +35,7 @@ namespace Mondiland.UI
         /// </summary>
         private void UpdateFavoritesMenu()
         {
-            m_favorites = Program.permission.LoginUser.IsUserMenuFavorites(this.Name);
+            m_favorites = AuthorManager.LoginUser.IsUserMenuFavorites(this.Name);
 
             if (m_favorites)
             {
@@ -51,7 +51,7 @@ namespace Mondiland.UI
 
         public void UnFavorites()
         {
-            if (Program.permission.LoginUser.UnFavorites(this.Name))
+            if (AuthorManager.LoginUser.UnFavorites(this.Name))
                 MessageUtil.ShowWarning("成功取消快捷方式!");
             else
                 MessageUtil.ShowWarning("取消快捷方式失败!");
@@ -60,7 +60,7 @@ namespace Mondiland.UI
 
         public void SetFavorites()
         {
-            if (Program.permission.LoginUser.SetFavorites(this.Name))
+            if (AuthorManager.LoginUser.SetFavorites(this.Name))
                 MessageUtil.ShowWarning("成功收藏快捷方式!");
             else
                 MessageUtil.ShowWarning("收藏快捷方式失败!");
@@ -194,7 +194,7 @@ namespace Mondiland.UI
 
                 if (product.Id != 0)
                 {
-                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("产品信息[{0}]信息载入!", product.HuoHao));
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("产品信息[{0}]信息载入!", product.HuoHao));
                 }
                 
                 cbx_partname.SelectedValue = product.PartName_Id;
@@ -353,7 +353,7 @@ namespace Mondiland.UI
         {
             if (MessageUtil.ShowYesNoAndTips("确定[新增]吗?") == System.Windows.Forms.DialogResult.No) return;
 
-            LogInfoManager.LogWrite(Program.permission.LoginUser.Id, "产品信息新增操作!");              
+            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, "产品信息新增操作!");              
 
             this.product = new ProductObject();
 
@@ -379,7 +379,7 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Error)
             {
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("货号为[{0}]信息保存失败!", product.HuoHao));              
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("货号为[{0}]信息保存失败!", product.HuoHao));              
                 
                 MessageUtil.ShowError(result.Message);
 
@@ -388,7 +388,7 @@ namespace Mondiland.UI
 
             if (result.Code == CodeType.Ok)
             {
-                LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("货号为[{0}]信息保存成功!", product.HuoHao));              
+                LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("货号为[{0}]信息保存成功!", product.HuoHao));              
 
                 MessageUtil.ShowTips(result.Message);
 
@@ -515,7 +515,7 @@ namespace Mondiland.UI
 
                 if(result.Code == CodeType.Error)
                 {
-                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("另存货号为[{0}]操作保存失败!", save_as.HuoHao));                    
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("另存货号为[{0}]操作保存失败!", save_as.HuoHao));                    
                     
                     MessageUtil.ShowError(result.Message);
                     this.m_huohao_saveas = string.Empty;
@@ -525,7 +525,7 @@ namespace Mondiland.UI
 
                 if(result.Code == CodeType.Ok)
                 {
-                    LogInfoManager.LogWrite(Program.permission.LoginUser.Id, string.Format("另存货号为[{0}]操作保存成功!", save_as.HuoHao));              
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("另存货号为[{0}]操作保存成功!", save_as.HuoHao));              
                     
                     MessageUtil.ShowTips(result.Message);
 

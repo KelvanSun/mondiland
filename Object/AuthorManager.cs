@@ -4,43 +4,29 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-using Mondiland.Global;
 using Mondiland.EFModule;
-
+using Mondiland.Global;
 
 namespace Mondiland.Obj
 {
-    public class PermissionManager
+    public class AuthorManager
     {
-        private User m_login_user = null;
-
-        public User LoginUser
+        private static User m_login_user = null;
+        public static User LoginUser
         {
             get { return m_login_user; }
-            set { m_login_user = value; }
-        }
-
-        public PermissionManager()
-        {
-            
-       
-        }
-
-        public User GetUserObject(int user_id)
-        {
-            return new User(user_id);
         }
 
         public class LoginUserInfo
         {
-            private int m_index = 0;
+            private int m_id = 0;
             private string m_username = string.Empty;
             private string m_groupname = string.Empty;
 
-            public int Index
+            public int Id
             {
-                get { return m_index; }
-                set { m_index = value; }
+                get { return m_id; }
+                set { m_id = value; }
             }
 
             public string UserName
@@ -56,13 +42,42 @@ namespace Mondiland.Obj
             }
         }
 
-        public static void RecordLoginUserSelect(int user_id,string address)
+
+        public static BindingList<LoginUserInfo> LoginUserList
+        {
+            get
+            {
+                BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
+
+                using (ProductContext ctx = new ProductContext())
+                {
+                    var users = from user in ctx.UserInfo
+                                select user;
+
+
+                    foreach (var user in users)
+                    {
+                        LoginUserInfo info = new LoginUserInfo();
+                        info.Id = user.id;
+                        info.UserName = user.name;
+                        info.GroupName = user.GroupInfo.name;
+
+                        list.Add(info);
+                    }
+
+                }
+
+                return list;
+            }
+        }
+
+        public static void RecordLoginUserSelect(int user_id, string address)
         {
             using (ProductContext ctx = new ProductContext())
             {
                 var del_ob = (from entity in ctx.LoginUserSelect
-                             where entity.mac_address == address
-                             select entity).FirstOrDefault();
+                              where entity.mac_address == address
+                              select entity).FirstOrDefault();
 
                 if (del_ob != null)
                 {
@@ -95,39 +110,31 @@ namespace Mondiland.Obj
             }
         }
 
-        public static BindingList<LoginUserInfo> LoginUserList
+        public static bool Authentication(int user_id,string str_pwd)
         {
-            get
+            string str_md5 = UtilFun.GetMD5(str_pwd);
+   
+            using(ProductContext ctx = new ProductContext())
             {
-                BindingList<LoginUserInfo> list = new BindingList<LoginUserInfo>();
+                string pwd = (from entity in ctx.UserInfo
+                              where entity.id == user_id
+                              select entity.pwd).FirstOrDefault();
 
-                using (ProductContext ctx = new ProductContext())
+                if (pwd == str_md5)
                 {
-                    var users = from user in ctx.UserInfo
-                                select user;
-
-
-                    foreach (var user in users)
-                    {
-                        LoginUserInfo info = new LoginUserInfo();
-                        info.Index = user.id;
-                        info.UserName = user.name;
-                        info.GroupName = user.GroupInfo.name;
-
-                        list.Add(info);
-                    }
-
+                    m_login_user = new User(user_id);
+                    return true;
                 }
+                else
+                    return false;
 
-                return list;
             }
         }
-
-
 
         public class User
         {
             private int m_id = 0;
+            private int m_group_id = 0;
             private string m_name = string.Empty;
             private string m_pwd = string.Empty;
             private string m_group_name = string.Empty;
@@ -136,11 +143,11 @@ namespace Mondiland.Obj
             public List<FavoritesMenu> FavoritesMenuList = new List<FavoritesMenu>();
 
 
-            public SaveResult ChangePwd(string old_pwd,string new_pwd)
+            public SaveResult ChangePwd(string old_pwd, string new_pwd)
             {
                 SaveResult result = new SaveResult();
 
-                if(UtilFun.GetMD5(old_pwd) != this.m_pwd)
+                if (UtilFun.GetMD5(old_pwd) != this.m_pwd)
                 {
                     result.Code = CodeType.Error;
                     result.Message = "旧密码验证失败";
@@ -156,7 +163,7 @@ namespace Mondiland.Obj
 
                     user.pwd = UtilFun.GetMD5(new_pwd);
 
-                    if(ctx.SaveChanges() == 0)
+                    if (ctx.SaveChanges() == 0)
                     {
                         result.Code = CodeType.Error;
                         result.Message = "密码修改失败";
@@ -188,7 +195,7 @@ namespace Mondiland.Obj
                     ctx.UserMenuFavorites.Add(favorites);
                     return ctx.SaveChanges() > 0 ? true : false;
                 }
-         
+
             }
             public bool UnFavorites(string form_name)
             {
@@ -287,34 +294,41 @@ namespace Mondiland.Obj
             public class MenuParent
             {
                 private int m_id = 0;
+                private int m_group_id = 0;
                 private string m_menu_name = string.Empty;
 
                 public List<MenuChild> MenuChildList = new List<MenuChild>();
 
-                public MenuParent(int id)
+                public MenuParent(int id,int group_id)
                 {
                     using (ProductContext ctx = new ProductContext())
                     {
                         this.m_id = id;
+                        this.m_group_id = group_id;
                         this.m_menu_name = (from menu in ctx.MenuInfo
                                             where menu.id == this.m_id
                                             select menu).FirstOrDefault().menu_name;
 
                         var childs = from menu in ctx.MenuInfo
-                                         where menu.menu_parent == this.m_id
-                                         orderby menu.menu_order
-                                         select menu;
+                                     where menu.menu_parent == this.m_id
+                                     orderby menu.menu_order
+                                     select menu;
 
-                        foreach(var child in childs)
+                        foreach (var child in childs)
                         {
-                            MenuChild info = new MenuChild(child.id);
-                            this.MenuChildList.Add(info);
+                            int count = (from entity in ctx.GroupMenu
+                                         where entity.group_id == this.m_group_id && entity.menu_id == child.id
+                                         select entity).Count();
+
+                            if (count > 0)
+                            {
+                                MenuChild info = new MenuChild(child.id);
+                                this.MenuChildList.Add(info);
+                            }
                         }
 
-
                     }
-        
-     
+
                 }
 
                 public int Id
@@ -401,17 +415,25 @@ namespace Mondiland.Obj
                     this.m_name = info.name;
                     this.m_pwd = info.pwd;
                     this.m_group_name = info.GroupInfo.name;
-                    
-                    
+                    this.m_group_id = info.group_id;
+
+
                     var parents = from m in ctx.MenuInfo
-                                       where m.menu_parent == 0
-                                       select m;
+                                  where m.menu_parent == 0
+                                  orderby m.menu_order
+                                  select m;
 
-                    foreach(var parent in parents)
+                    foreach (var parent in parents)
                     {
-                        MenuParent menu = new MenuParent(parent.id);
+                        int count = (from entity in ctx.GroupMenu
+                                     where entity.group_id == this.m_group_id && entity.menu_id == parent.id
+                                     select entity).Count();
 
-                        this.MenuParentList.Add(menu);
+                        if (count > 0)
+                        {
+                            MenuParent menu = new MenuParent(parent.id,m_group_id);
+                            this.MenuParentList.Add(menu);
+                        }
                     }
 
 
@@ -419,7 +441,7 @@ namespace Mondiland.Obj
                                where m.user_id == this.m_id
                                select m.menu_id;
 
-                    foreach(var fav in favs)
+                    foreach (var fav in favs)
                     {
                         FavoritesMenu menu = new FavoritesMenu(fav);
                         FavoritesMenuList.Add(menu);
@@ -427,10 +449,8 @@ namespace Mondiland.Obj
 
 
                 }
-               
+
             }
-
-
 
             public int Id
             {
@@ -446,16 +466,10 @@ namespace Mondiland.Obj
                 get { return m_group_name; }
             }
 
-            /// <summary>
-            /// 验证用户密码
-            /// </summary>
-            /// <param name="pwd">密码</param>
-            /// <returns>成功返回true</returns>
-            public bool Authentication(string pwd)
+            public int GroupId
             {
-                return UtilFun.GetMD5(pwd) == this.m_pwd;
+                get { return m_group_id; }
             }
         }
-
     }
 }

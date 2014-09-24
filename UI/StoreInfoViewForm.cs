@@ -89,6 +89,7 @@ namespace Mondiland.UI
                 AppendText(m_store.Memo + "\n", regular_font);
             }
 
+            richTextBox.Select(0, 0);
         }
 
         private void AppendText(string str_text, Font font)

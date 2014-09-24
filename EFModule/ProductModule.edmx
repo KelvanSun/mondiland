@@ -43,7 +43,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="group_id" Type="int" Nullable="false" />
           <Property Name="menu_id" Type="int" Nullable="false" />
-          <Property Name="menu_order" Type="int" Nullable="false" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="LogInfo">
@@ -695,7 +694,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="group_id" Type="Int32" Nullable="false" />
           <Property Name="menu_id" Type="Int32" Nullable="false" />
-          <Property Name="menu_order" Type="Int32" Nullable="false" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="GroupInfo" Relationship="Self.FK_GroupMenu_GroupInfo" FromRole="GroupMenu" ToRole="GroupInfo" />
           <NavigationProperty Name="MenuInfo" Relationship="Self.FK_GroupMenu_MenuInfo" FromRole="GroupMenu" ToRole="MenuInfo" />
@@ -1386,7 +1384,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="group_id" ColumnName="group_id" />
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
-                <ScalarProperty Name="menu_order" ColumnName="menu_order" />
                 <ScalarProperty Name="lastamp" ColumnName="lastamp" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -62,24 +62,22 @@ namespace Mondiland.UI
 
                 return;
             }
+            
+            int select = Convert.ToInt32(cbx_usrename.SelectedValue);
 
-            PermissionManager.User user = Program.permission.GetUserObject(Convert.ToInt32(cbx_usrename.SelectedValue));
-
-            if (!user.Authentication(tb_pwd.Text.Trim()))
+            if (!AuthorManager.Authentication(select ,tb_pwd.Text.Trim()))
             {
                 MessageUtil.ShowWarning("用户验证失败");
                 tb_pwd.Focus();
 
-                LogInfoManager.LogWrite(user.Id, string.Format("[{0}]用户验证失败!", user.Name));
+                LogInfoManager.LogWrite(select, string.Format("[{0}]用户验证失败!", cbx_usrename.Text));
 
                 return;
             }
 
-            PermissionManager.RecordLoginUserSelect(Convert.ToInt32(cbx_usrename.SelectedValue), GetMacPhysicalAddress());
+            AuthorManager.RecordLoginUserSelect(select, GetMacPhysicalAddress());
 
-            Program.permission.LoginUser = user;
-
-            LogInfoManager.LogWrite(user.Id, string.Format("[{0}]用户登陆成功!", user.Name));
+            LogInfoManager.LogWrite(select, string.Format("[{0}]用户登陆成功!", cbx_usrename.Text));
 
             this.DialogResult = DialogResult.OK;
 
@@ -89,11 +87,11 @@ namespace Mondiland.UI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.cbx_usrename.DataSource = PermissionManager.LoginUserList;
+            this.cbx_usrename.DataSource = AuthorManager.LoginUserList;
             this.cbx_usrename.DisplayMember = "UserName";
-            this.cbx_usrename.ValueMember = "Index";
+            this.cbx_usrename.ValueMember = "Id";
 
-            int select = PermissionManager.ReadLoginUserSelect(GetMacPhysicalAddress());
+            int select = AuthorManager.ReadLoginUserSelect(GetMacPhysicalAddress());
 
             if (select == 0) return;
 

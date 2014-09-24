@@ -24,7 +24,7 @@ namespace Mondiland.UI
         {
             this.flowLayoutPanel.Controls.Clear();
 
-            foreach (PermissionManager.User.FavoritesMenu menu in Program.permission.LoginUser.FavoritesMenuList)
+            foreach (AuthorManager.User.FavoritesMenu menu in AuthorManager.LoginUser.FavoritesMenuList)
             {
                 UCListViewItem item = new UCListViewItem(this.mf);
 

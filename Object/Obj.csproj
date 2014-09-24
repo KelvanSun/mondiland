@@ -51,11 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorManager.cs" />
     <Compile Include="DengjiManager.cs" />
     <Compile Include="LogInfoManager.cs" />
     <Compile Include="MadePlaceManager.cs" />
     <Compile Include="PartNameManager.cs" />
-    <Compile Include="PermissionManager.cs" />
     <Compile Include="ProductObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafeDataManager.cs" />
