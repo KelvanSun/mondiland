@@ -55,8 +55,12 @@
             this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsb_view = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsb_export = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
             this.label_search_result = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.storeObjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -193,6 +197,8 @@
             this.tsddb_store,
             this.tsb_view,
             this.toolStripSeparator1,
+            this.tsb_export,
+            this.toolStripSeparator2,
             this.favorites});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
@@ -253,6 +259,21 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
             // 
+            // tsb_export
+            // 
+            this.tsb_export.Image = ((System.Drawing.Image)(resources.GetObject("tsb_export.Image")));
+            this.tsb_export.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_export.Name = "tsb_export";
+            this.tsb_export.Size = new System.Drawing.Size(45, 37);
+            this.tsb_export.Text = "导出...";
+            this.tsb_export.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsb_export.Click += new System.EventHandler(this.tsb_export_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
+            // 
             // favorites
             // 
             this.favorites.Image = ((System.Drawing.Image)(resources.GetObject("favorites.Image")));
@@ -274,9 +295,23 @@
             this.label_search_result.TabIndex = 4;
             this.label_search_result.Text = "共有 0 家店铺";
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Excel 2007|*.xlsx";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.progressBar.Location = new System.Drawing.Point(332, 297);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(272, 23);
+            this.progressBar.TabIndex = 5;
+            this.progressBar.Visible = false;
+            // 
             // StoreManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(936, 617);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label_search_result);
             this.Controls.Add(this.dgv_main);
             this.Controls.Add(this.toolStrip);
@@ -312,5 +347,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton tsb_view;
+        private System.Windows.Forms.ToolStripButton tsb_export;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
