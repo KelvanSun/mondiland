@@ -10,116 +10,140 @@ namespace Mondiland.Obj
 {
     public class SupplierManager
     {
-        public List<int> QuerySupplierMByClassId(int class_id)
+        public static BindingList<SupplierObject> QuerySupplierMByClassId(int class_id)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
             using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierM
                           where entity.class_id == class_id
+                          orderby entity.name
                           select entity.id;
 
                 foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
                 }
-            }
 
+            }
 
             return list;
         }
 
-        public List<int> QuerySupplierMByPym(string text)
+        public static BindingList<SupplierObject> QuerySupplierMByPym(string text)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
-            using(ProductContext ctx = new ProductContext())
+            using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierM
-                         where entity.pym.IndexOf(text) >= 0
-                         select entity.id;
+                          where entity.pym.IndexOf(text) >= 0
+                          orderby entity.name
+                          select entity.id;
 
-                foreach(int id in ids)
+                foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
                 }
             }
 
             return list;
         }
 
-        public List<int> QueryContactsByPym(string text)
+        public static BindingList<SupplierObject> QueryContactsByPym(string text)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
             using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierD
                           where entity.pym.IndexOf(text) >= 0
+                          orderby entity.name
                           select entity.supplier_id;
 
                 foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
                 }
             }
 
             return list;
-
         }
 
-        public List<int> QueryContactsByName(string text)
+        public static BindingList<SupplierObject> QueryContactsByName(string text)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
             using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierD
                           where entity.name.IndexOf(text) >= 0
+                          orderby entity.name
                           select entity.supplier_id;
 
                 foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
                 }
             }
 
             return list;
         }
 
-        public List<int> QuerySupplierMByName(string text)
+        public static BindingList<SupplierObject> QuerySupplierMByName(string text)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
             using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierM
                           where entity.name.IndexOf(text) >= 0
+                          orderby entity.name
                           select entity.id;
 
                 foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
                 }
             }
 
             return list;
         }
 
-        public List<int> QuerySupplierMByIntactName(string text)
+        public static BindingList<SupplierObject> QuerySupplierMByIntactName(string text)
         {
-            List<int> list = new List<int>();
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
 
             using (ProductContext ctx = new ProductContext())
             {
                 var ids = from entity in ctx.SupplierM
                           where entity.intact_name.IndexOf(text) >= 0
+                          orderby entity.name
                           select entity.id;
 
                 foreach (int id in ids)
                 {
-                    list.Add(id);
+                    list.Add(new SupplierObject(id));
+                }
+            }
+
+            return list;
+        }
+
+        public static BindingList<SupplierObject> GetAllInfoList()
+        {
+            BindingList<SupplierObject> list = new BindingList<SupplierObject>();
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var ids = from entity in ctx.SupplierM
+                          orderby entity.name
+                          select entity.id;
+
+                foreach (int id in ids)
+                {
+                    list.Add(new SupplierObject(id));
                 }
             }
 

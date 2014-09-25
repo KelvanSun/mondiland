@@ -15,8 +15,7 @@ namespace Mondiland.UI
     public partial class SupplierManagerForm : Mondiland.UI.BaseForm,IMenuFavorites
     {
         private bool m_favorites = false;
-        private BindingList<SupplierObject> main_list = new BindingList<SupplierObject>();
-
+        
         public SupplierManagerForm()
         {
             InitializeComponent();
@@ -95,77 +94,50 @@ namespace Mondiland.UI
 
         private void cbx_query_type_DropDownClosed(object sender, EventArgs e)
         {
-            //this.txb_query_text.Text = string.Empty;
-            this.txb_query_text.Focus();
+             this.txb_query_text.Focus();
         }
 
         private void button_search_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(this.txb_query_text.Text)) return;
 
-            main_list.Clear();
-
             if(cbx_query_type.Text == "拼音码")
             {
-
-                foreach (int id in new SupplierManager().QuerySupplierMByPym(this.txb_query_text.Text.Trim()))
-                {
-                    SupplierObject ob = new SupplierObject(id);
-
-                    main_list.Add(ob);
-                }
+                this.bindingSource_query.DataSource = SupplierManager.QuerySupplierMByPym(this.txb_query_text.Text.Trim());
                
             }
 
             if(cbx_query_type.Text == "公司简称")
             {
-                foreach (int id in new SupplierManager().QuerySupplierMByName(this.txb_query_text.Text.Trim()))
-                {
-                    SupplierObject ob = new SupplierObject(id);
-
-                    main_list.Add(ob);
-                }
+                
+                this.bindingSource_query.DataSource = SupplierManager.QuerySupplierMByName(this.txb_query_text.Text.Trim());
+          
             }
 
             if(cbx_query_type.Text == "公司全称")
             {
-                foreach (int id in new SupplierManager().QuerySupplierMByIntactName(this.txb_query_text.Text.Trim()))
-                {
-                    SupplierObject ob = new SupplierObject(id);
 
-                    main_list.Add(ob);
-                }
+                this.bindingSource_query.DataSource = SupplierManager.QuerySupplierMByIntactName(this.txb_query_text.Text.Trim());
             }
 
             if (cbx_query_type.Text == "联系人简称")
             {
-                foreach (int id in new SupplierManager().QueryContactsByPym(this.txb_query_text.Text.Trim()))
-                {
-                    SupplierObject ob = new SupplierObject(id);
 
-                    main_list.Add(ob);
-                }
+                this.bindingSource_query.DataSource = SupplierManager.QueryContactsByPym(this.txb_query_text.Text.Trim());
             }
 
             if (cbx_query_type.Text == "联系人姓名")
             {
-                foreach (int id in new SupplierManager().QueryContactsByName(this.txb_query_text.Text.Trim()))
-                {
-                    SupplierObject ob = new SupplierObject(id);
 
-                    main_list.Add(ob);
-                }
+                this.bindingSource_query.DataSource = SupplierManager.QueryContactsByName(this.txb_query_text.Text.Trim());
             }
 
 
-
-            this.bindingSource_query.DataSource = main_list;
-
-            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
+            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", this.bindingSource_query.Count);
 
             this.dgv_main.Focus();
 
-            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("查询条件[{0}] 查询内容[{1}] 共查询到[{2}]条记录", cbx_query_type.Text, this.txb_query_text.Text.Trim(), main_list.Count));
+            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("查询条件[{0}] 查询内容[{1}] 共查询到[{2}]条记录", cbx_query_type.Text, this.txb_query_text.Text.Trim(), this.bindingSource_query.Count));
 
         }
 
@@ -198,7 +170,6 @@ namespace Mondiland.UI
             SupplierAEForm form = new SupplierAEForm(ob);
             form.ShowDialog();
 
-            this.main_list.Clear();
             this.bindingSource_factory.Clear();
             this.bindingSource_contract.Clear();
         }
@@ -214,8 +185,6 @@ namespace Mondiland.UI
             SupplierAEForm form = new SupplierAEForm(this.bindingSource_query.Current as SupplierObject);
             form.ShowDialog();
 
-            //this.main_list.Clear();
-            //this.bindingSource_factory.Clear();
         }
 
         private void tsmi_supplierf_add_Click(object sender, EventArgs e)
@@ -226,7 +195,6 @@ namespace Mondiland.UI
                 return;
             }
 
-            //int supplierId = (this.bindingSource_query.Current as SupplierObject).Id;
             SupplierObject obj = (this.bindingSource_query.Current as SupplierObject);
 
 
@@ -235,9 +203,6 @@ namespace Mondiland.UI
             SupplierFAEForm form = new SupplierFAEForm(supplierF);
             form.ShowDialog();
 
-            //this.main_list.Clear();
-            //this.bindingSource_factory.Clear();
-            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierf_edit_Click(object sender, EventArgs e)
@@ -251,9 +216,6 @@ namespace Mondiland.UI
             SupplierFAEForm form = new SupplierFAEForm(this.bindingSource_factory.Current as SupplierObject.SupplierFObject);
             form.ShowDialog();
 
-            //this.main_list.Clear();
-            //this.bindingSource_factory.Clear();
-            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierd_edit_Click(object sender, EventArgs e)
@@ -267,9 +229,6 @@ namespace Mondiland.UI
             SupplierDAEForm form = new SupplierDAEForm(this.bindingSource_contract.Current as SupplierObject.SupplierDObject);
             form.ShowDialog();
 
-            //this.main_list.Clear();
-            //this.bindingSource_factory.Clear();
-            //this.bindingSource_contract.Clear();
         }
 
         private void tsmi_supplierd_add_Click(object sender, EventArgs e)
@@ -287,9 +246,6 @@ namespace Mondiland.UI
             SupplierDAEForm form = new SupplierDAEForm(supplierD);
             form.ShowDialog();
 
-            //this.main_list.Clear();
-            //this.bindingSource_factory.Clear();
-            //this.bindingSource_contract.Clear();
         }
 
         private void tscb_class_DropDownClosed(object sender, EventArgs e)
@@ -298,22 +254,13 @@ namespace Mondiland.UI
             
             if (id == 0) return;
 
-            main_list.Clear();
+            this.bindingSource_query.DataSource = SupplierManager.QuerySupplierMByClassId(id);
 
-            foreach (int ids in new SupplierManager().QuerySupplierMByClassId(id))
-            {
-                SupplierObject ob = new SupplierObject(ids);
-
-                main_list.Add(ob);
-            }
-
-            this.bindingSource_query.DataSource = main_list;
-
-            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", main_list.Count);
+            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", this.bindingSource_query.Count);
 
             this.dgv_main.Focus();
 
-            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("大类[{0}]方式查询 共查询到[{1}]条记录", this.tscb_class.ComboBox.Text, main_list.Count));
+            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("大类[{0}]方式查询 共查询到[{1}]条记录", this.tscb_class.ComboBox.Text, this.bindingSource_query.Count));
         }
 
         private void tsddb_supplier_view_Click(object sender, EventArgs e)
@@ -331,6 +278,15 @@ namespace Mondiland.UI
         private void dgv_main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             tsddb_supplier_view_Click(sender, e);
+        }
+
+        private void tsb_all_Click(object sender, EventArgs e)
+        {
+            this.bindingSource_query.DataSource = SupplierManager.GetAllInfoList();
+
+            this.label_search_result.Text = string.Format("共查询到 {0} 条记录", this.bindingSource_query.Count);
+
+            LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("查询全部记录共[{0}]条记录",  this.bindingSource_query.Count));
         }
       
     }
