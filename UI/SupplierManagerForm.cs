@@ -226,7 +226,14 @@ namespace Mondiland.UI
                 return;
             }
 
-            SupplierDAEForm form = new SupplierDAEForm(this.bindingSource_contract.Current as SupplierObject.SupplierDObject);
+            SupplierObject.SupplierDObject obj = (this.bindingSource_contract.Current as SupplierObject.SupplierDObject);
+
+            SupplierObject supplier = (this.bindingSource_query.Current as SupplierObject);
+
+            obj.SupplierName = supplier.Intact_Name;
+
+
+            SupplierDAEForm form = new SupplierDAEForm(obj);
             form.ShowDialog();
 
         }

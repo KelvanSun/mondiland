@@ -384,6 +384,7 @@ namespace Mondiland.Obj
             public string SupplierName
             {
                 get { return m_supplier_name; }
+                set { m_supplier_name = value; }
             }
 
             public int Id
