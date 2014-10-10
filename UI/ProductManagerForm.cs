@@ -264,6 +264,7 @@ namespace Mondiland.UI
                 cbx_safedata.Text = string.Empty;
                 cbx_safedata.SelectedValue = 0;
             }
+            
             if (opt.Standard_Id > 0)
             {
                 cbx_standard.SelectedValue = opt.Standard_Id;
@@ -272,6 +273,16 @@ namespace Mondiland.UI
             {
                 cbx_standard.Text = string.Empty;
                 cbx_standard.SelectedValue = 0;
+            }
+
+            if (opt.Dengji_Id > 0)
+            {
+                cbx_dengji.SelectedValue = opt.Dengji_Id;
+            }
+            else
+            {
+                cbx_dengji.Text = string.Empty;
+                cbx_dengji.SelectedValue = 0;
             }
 
             //选择了休闲裤，打印水洗产品

@@ -117,6 +117,7 @@
           <Property Name="size_class_id" Type="int" Nullable="false" />
           <Property Name="safe_id" Type="int" Nullable="false" />
           <Property Name="standard_id" Type="int" Nullable="false" />
+          <Property Name="dengji_id" Type="int" Nullable="false" />
           <Property Name="pwash" Type="int" Nullable="false" />
           <Property Name="pbad" Type="int" Nullable="false" />
           <Property Name="memo" Type="nvarchar" MaxLength="400" />
@@ -766,6 +767,7 @@
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="SizeClass" Relationship="Self.FK_PartName_SizeClass" FromRole="PartName" ToRole="SizeClass" />
           <NavigationProperty Name="ProductData" Relationship="Self.FK_ProductData_PartName" FromRole="PartName" ToRole="ProductData" />
+          <Property Name="dengji_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductData">
           <Key>
@@ -1444,6 +1446,7 @@
           <EntitySetMapping Name="PartName">
             <EntityTypeMapping TypeName="ProductModel.PartName">
               <MappingFragment StoreEntitySet="PartName">
+                <ScalarProperty Name="dengji_id" ColumnName="dengji_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="barcode" ColumnName="barcode" />

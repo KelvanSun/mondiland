@@ -29,6 +29,7 @@ namespace Mondiland.EFModule
         public int pbad { get; set; }
         public string memo { get; set; }
         public System.Guid lastamp { get; set; }
+        public int dengji_id { get; set; }
     
         public virtual SizeClass SizeClass { get; set; }
         public virtual ICollection<ProductData> ProductData { get; set; }

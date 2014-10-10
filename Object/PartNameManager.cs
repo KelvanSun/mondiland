@@ -53,6 +53,7 @@ namespace Mondiland.Obj
                 info.Pwash = data.pwash == 0 ? false : true;
                 info.Safe_Id = data.safe_id;
                 info.Standard_Id = data.standard_id;
+                info.Dengji_Id = data.dengji_id;
             }
 
 
@@ -96,6 +97,7 @@ namespace Mondiland.Obj
         {
             private int m_safe_id = 0;
             private int m_standard_id = 0;
+            private int m_dengji_id = 0;
             private bool m_pwash = false;
             private bool m_pbad = false;
 
@@ -114,6 +116,12 @@ namespace Mondiland.Obj
             {
                 get { return m_safe_id; }
                 set { m_safe_id = value; }
+            }
+
+            public int Dengji_Id
+            {
+                get { return m_dengji_id; }
+                set { m_dengji_id = value; }
             }
 
             public int Standard_Id
