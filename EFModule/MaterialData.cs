@@ -19,6 +19,8 @@ namespace Mondiland.EFModule
         public string type { get; set; }
         public int order_index { get; set; }
         public System.Guid lastamp { get; set; }
+        public bool sel { get; set; }
+        public string memo { get; set; }
     
         public virtual ProductData ProductData { get; set; }
     }

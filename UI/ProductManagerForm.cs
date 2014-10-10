@@ -375,6 +375,9 @@ namespace Mondiland.UI
         
         private void save_Click(object sender, EventArgs e)
         {
+            dgv_material.EndEdit();
+            dgv_material_fill.EndEdit();
+            
             SaveResult result = product.Save();
 
             if (result.Code == CodeType.Error)
@@ -447,6 +450,9 @@ namespace Mondiland.UI
                 return;
             }
 
+            dgv_material.EndEdit();
+            dgv_material_fill.EndEdit();
+
             ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Tag);
             print.ShowDialog();
         }
@@ -459,6 +465,9 @@ namespace Mondiland.UI
                 MessageUtil.ShowWarning("无法打印当前记录!");
                 return;
             }
+
+            dgv_material.EndEdit();
+            dgv_material_fill.EndEdit();
 
             ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Wash);
             print.ShowDialog();

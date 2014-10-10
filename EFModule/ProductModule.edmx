@@ -76,9 +76,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sel" Type="bit" Nullable="false" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="MaterialFill">
@@ -718,6 +720,8 @@
           <Property Name="order_index" Type="Int32" Nullable="false" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
           <NavigationProperty Name="ProductData" Relationship="Self.FK_MaterialData_ProductData" FromRole="MaterialData" ToRole="ProductData" />
+          <Property Name="sel" Type="Boolean" Nullable="false" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MaterialFill">
           <Key>
@@ -1401,6 +1405,8 @@
           <EntitySetMapping Name="MaterialData">
             <EntityTypeMapping TypeName="ProductModel.MaterialData">
               <MappingFragment StoreEntitySet="MaterialData">
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="sel" ColumnName="sel" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="type" ColumnName="type" />

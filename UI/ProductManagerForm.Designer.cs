@@ -42,8 +42,6 @@
             this.bt_del = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dgv_material = new Mondiland.UCControl.UCDataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_material_fill = new Mondiland.UCControl.UCDataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txb_fill = new System.Windows.Forms.TextBox();
@@ -79,6 +77,10 @@
             this.menu_print_wash = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.favorites = new System.Windows.Forms.ToolStripButton();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_material)).BeginInit();
             this.panel_center.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_material)).BeginInit();
@@ -165,7 +167,9 @@
             this.dgv_material.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_material.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.Type});
+            this.selDataGridViewCheckBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.memoDataGridViewTextBoxColumn});
             this.dgv_material.DataSource = this.bindingSource_material;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -195,21 +199,6 @@
             this.dgv_material.TabIndex = 4;
             this.dgv_material.TabStop = false;
             this.dgv_material.Leave += new System.EventHandler(this.dgv_material_Leave);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // Type
-            // 
-            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "成份内容";
-            this.Type.Name = "Type";
             // 
             // dgv_material_fill
             // 
@@ -648,6 +637,34 @@
             this.favorites.ToolTipText = "添加快捷方式";
             this.favorites.Click += new System.EventHandler(this.favorites_Click);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // selDataGridViewCheckBoxColumn
+            // 
+            this.selDataGridViewCheckBoxColumn.DataPropertyName = "Sel";
+            this.selDataGridViewCheckBoxColumn.HeaderText = "选择";
+            this.selDataGridViewCheckBoxColumn.Name = "selDataGridViewCheckBoxColumn";
+            this.selDataGridViewCheckBoxColumn.Width = 50;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "成份内容";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.Width = 400;
+            // 
+            // memoDataGridViewTextBoxColumn
+            // 
+            this.memoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.memoDataGridViewTextBoxColumn.DataPropertyName = "Memo";
+            this.memoDataGridViewTextBoxColumn.HeaderText = "备注信息";
+            this.memoDataGridViewTextBoxColumn.Name = "memoDataGridViewTextBoxColumn";
+            // 
             // ProductManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(970, 659);
@@ -716,9 +733,11 @@
         private System.Windows.Forms.Button bt_del;
         private System.Windows.Forms.Button bt_add;
         private System.Windows.Forms.BindingSource bindingSource_material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.CheckBox chb_bad;
         private System.Windows.Forms.ToolStripButton saveas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn selDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn;
     }
 }

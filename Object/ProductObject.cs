@@ -183,7 +183,9 @@ namespace Mondiland.Obj
         public class MaterialDataInfo
         {
             private int m_id = 0;
+            private bool m_sel = true;
             private string m_type = string.Empty;
+            private string m_memo = string.Empty;
 
             public int Id
             {
@@ -195,6 +197,18 @@ namespace Mondiland.Obj
             {
                 get { return m_type; }
                 set { m_type = value; }
+            }
+
+            public bool Sel
+            {
+                get { return m_sel; }
+                set { m_sel = value; }
+            }
+
+            public string Memo
+            {
+                get { return m_memo; }
+                set { m_memo = value; }
             }
 
         }
@@ -551,6 +565,8 @@ namespace Mondiland.Obj
 
                     info.Id = obj.id;
                     info.Type = obj.type;
+                    info.Sel = obj.sel;
+                    info.Memo = obj.memo;
 
                     this.m_material_data_list.Add(info);
                 }
@@ -583,7 +599,15 @@ namespace Mondiland.Obj
 
         public string GetWashFileName()
         {
-            int row = this.m_material_data_list.Count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
+            int materialdata_count = 0;
+
+            foreach (var obj in this.m_material_data_list)
+            {
+                if (obj.Sel)
+                    ++materialdata_count;
+            }
+
+            int row = materialdata_count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
             string str_class = this.m_huohao.Substring(0, 1);
             string file_name = string.Empty;
 
@@ -633,7 +657,16 @@ namespace Mondiland.Obj
 
         public string GetTagFileName()
         {
-            int row = this.m_material_data_list.Count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
+            int materialdata_count = 0;
+
+            foreach (var obj in this.m_material_data_list)
+            {
+                if (obj.Sel)
+                    ++materialdata_count;
+            }
+
+
+            int row = materialdata_count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
             string file_name = string.Empty;
 
             if(this.m_pwash)
@@ -763,8 +796,11 @@ namespace Mondiland.Obj
 
             foreach(MaterialDataInfo info in this.m_material_data_list)
             {
-                str.Append(info.Type);
-                str.Append("\r\n");
+                if (info.Sel)
+                {
+                    str.Append(info.Type);
+                    str.Append("\r\n");
+                }
             }
 
 
@@ -991,9 +1027,12 @@ namespace Mondiland.Obj
                     using (ProductContext ctx = new ProductContext())
                     {
                         MaterialData entity = new MaterialData();
+                        
                         entity.product_id = this.m_id;
+                        entity.sel = ob.Sel;
                         entity.type = ob.Type;
                         entity.order_index = index++;
+                        entity.memo = ob.Memo;
                         entity.lastamp = System.Guid.NewGuid();
 
                         ctx.MaterialData.Add(entity);
@@ -1190,8 +1229,10 @@ namespace Mondiland.Obj
                     {
                         MaterialData entity = new MaterialData();
                         entity.product_id = this.m_id;
+                        entity.sel = ob.Sel;
                         entity.type = ob.Type;
                         entity.order_index = index++;
+                        entity.memo = ob.Memo;
                         entity.lastamp = System.Guid.NewGuid();
 
                         ctx.MaterialData.Add(entity);
