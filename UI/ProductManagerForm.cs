@@ -289,6 +289,7 @@ namespace Mondiland.UI
             chb_wash.Checked = opt.Pwash;
             chb_bad.Checked = opt.Pbad;
 
+            cbx_dengji_DropDownClosed(sender, e);
             cbx_safedata_DropDownClosed(sender, e);
             cbx_standard_DropDownClosed(sender, e);
             chb_wash_CheckedChanged(sender, e);
