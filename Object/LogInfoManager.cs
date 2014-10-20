@@ -93,7 +93,7 @@ namespace Mondiland.Obj
             using (ProductContext ctx = new ProductContext())
             {
                 var loginfos = from entity in ctx.LogInfo
-                               where entity.date_time.Day == System.DateTime.Now.Day
+                               where DbFunctions.TruncateTime(entity.date_time) == System.DateTime.Today
                                select entity;
 
                 foreach (var loginfo in loginfos)
