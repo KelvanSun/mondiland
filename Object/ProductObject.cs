@@ -7,6 +7,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 
 using Mondiland.EFModule;
 using Mondiland.Global;
@@ -613,9 +614,34 @@ namespace Mondiland.Obj
 
             using (ProductContext ctx = new ProductContext())
             {
-                var wash_info = from wash in ctx.WashPrintTemplate
+                IQueryable<WashPrintTemplate> wash_info = null;
+
+                if(this.m_huohao.Substring(0,1) == "S")
+                {
+                    int count = Regex.Matches(this.m_huohao, "-").Count;
+
+                    if(count == 1)
+                    {
+                        wash_info = from wash in ctx.WashPrintTemplate
+                                    where wash.type.IndexOf(str_class) >= 0 && wash.daxiao == "7cm"
+                                    select wash;
+                    }
+                    else
+                    {
+                        wash_info = from wash in ctx.WashPrintTemplate
+                                    where wash.type.IndexOf(str_class) >= 0 && wash.daxiao == "4cm"
+                                    select wash;
+                    }
+
+
+                }
+                else
+                {
+                    wash_info = from wash in ctx.WashPrintTemplate
                                 where wash.type.IndexOf(str_class) >= 0
                                 select wash;
+
+                }
 
                 foreach(var wash in wash_info)
                 {
