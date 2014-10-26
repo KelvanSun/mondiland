@@ -285,10 +285,13 @@ namespace Mondiland.UI
                 cbx_dengji.SelectedValue = 0;
             }
 
+            cbx_madeplace.SelectedValue = 1;
+
             //选择了休闲裤，打印水洗产品
             chb_wash.Checked = opt.Pwash;
             chb_bad.Checked = opt.Pbad;
 
+            cbx_madeplace_DropDownClosed(sender, e);
             cbx_dengji_DropDownClosed(sender, e);
             cbx_safedata_DropDownClosed(sender, e);
             cbx_standard_DropDownClosed(sender, e);
