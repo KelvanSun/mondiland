@@ -595,7 +595,18 @@ namespace Mondiland.Obj
 
             this.m_tag_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetTagFileName());
 
-            this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetWashFileName());
+            //this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetWashFileName());
+            this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"],GetWashFileNameById(this.Wash_Id));
+        }
+
+        public string GetWashFileNameById(int id)
+        {
+            using(ProductContext ctx = new ProductContext())
+            {
+                return ( from wash in ctx.WashPrintTemplate
+                             where wash.id == id
+                             select wash.file_name).FirstOrDefault();
+            }
         }
 
         public string GetWashFileName()

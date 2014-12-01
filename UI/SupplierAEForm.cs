@@ -83,5 +83,30 @@ namespace Mondiland.UI
                 Close();
             }
         }
+
+        private void bt_del_Click(object sender, EventArgs e)
+        {
+            //if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)
+            //{
+            //    SaveResult result = supplierD.Del();
+
+            //    if (result.Code == CodeType.Error)
+            //    {
+            //        LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除失败!", supplierD.SupplierName, supplierD.Name));
+
+            //        MessageUtil.ShowError(result.Message);
+            //        return;
+            //    }
+
+            //    if (result.Code == CodeType.Ok)
+            //    {
+            //        LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除成功!", supplierD.SupplierName, supplierD.Name));
+
+            //        MessageUtil.ShowTips(result.Message);
+
+            //        Close();
+            //    }
+            //}   
+        }
     }
 }

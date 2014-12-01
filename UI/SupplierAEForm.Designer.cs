@@ -54,6 +54,7 @@
             this.bt_close = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txb_address = new Mondiland.UCControl.UCTextBox();
+            this.bt_del = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -288,11 +289,25 @@
             this.txb_address.Size = new System.Drawing.Size(498, 50);
             this.txb_address.TabIndex = 6;
             // 
+            // bt_del
+            // 
+            this.bt_del.Image = ((System.Drawing.Image)(resources.GetObject("bt_del.Image")));
+            this.bt_del.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_del.Location = new System.Drawing.Point(20, 603);
+            this.bt_del.Name = "bt_del";
+            this.bt_del.Size = new System.Drawing.Size(75, 23);
+            this.bt_del.TabIndex = 20;
+            this.bt_del.Text = "删除  ";
+            this.bt_del.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_del.UseVisualStyleBackColor = true;
+            this.bt_del.Click += new System.EventHandler(this.bt_del_Click);
+            // 
             // SupplierAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 638);
+            this.Controls.Add(this.bt_del);
             this.Controls.Add(this.txb_address);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.bt_close);
@@ -355,6 +370,7 @@
         private System.Windows.Forms.Label label9;
         private UCControl.UCTextBox txb_address;
         private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.Button bt_del;
 
     }
 }

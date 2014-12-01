@@ -76,7 +76,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 10;
-            this.label2.Text = "打印尺寸";
+            this.label2.Text = "打印号型";
             // 
             // cbx_select
             // 
@@ -115,7 +115,7 @@
             this.cbo_prints.Size = new System.Drawing.Size(358, 20);
             this.cbo_prints.TabIndex = 12;
             // 
-            // PrintForm
+            // ProductPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +128,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PrintForm";
+            this.Name = "ProductPrintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "打印";
             this.Load += new System.EventHandler(this.PrintForm_Load);

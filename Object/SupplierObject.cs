@@ -356,7 +356,38 @@ namespace Mondiland.Obj
 
                 }
             }
+
+
         }
+
+
+        //public SaveResult Del()
+        //{
+        //    SaveResult result = new SaveResult();
+
+        //    using (ProductContext ctx = new ProductContext())
+        //    {
+        //        SupplierF ob = (from entity in ctx.SupplierF
+        //                        where entity.id == this.m_id
+        //                        select entity).FirstOrDefault();
+
+        //        ctx.SupplierF.Remove(ob);
+
+        //        if (ctx.SaveChanges() == 0)
+        //        {
+        //            result.Code = CodeType.Error;
+        //            result.Message = "删除操作失败!";
+        //        }
+        //        else
+        //        {
+        //            result.Code = CodeType.Ok;
+        //            result.Message = "成功删除!";
+        //        }
+        //    }
+
+
+        //    return result;
+        //}
 
         public class SupplierDObject
         {
