@@ -86,27 +86,27 @@ namespace Mondiland.UI
 
         private void bt_del_Click(object sender, EventArgs e)
         {
-            //if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    SaveResult result = supplierD.Del();
+            if (MessageUtil.ShowYesNoAndTips("确定删除吗？") == System.Windows.Forms.DialogResult.Yes)
+            {
+                SaveResult result = supplier.Del();
 
-            //    if (result.Code == CodeType.Error)
-            //    {
-            //        LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除失败!", supplierD.SupplierName, supplierD.Name));
+                if (result.Code == CodeType.Error)
+                {
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]信息删除失败!",supplier.Intact_Name ));
 
-            //        MessageUtil.ShowError(result.Message);
-            //        return;
-            //    }
+                    MessageUtil.ShowError(result.Message);
+                    return;
+                }
 
-            //    if (result.Code == CodeType.Ok)
-            //    {
-            //        LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]的联系人[{1}]信息删除成功!", supplierD.SupplierName, supplierD.Name));
+                if (result.Code == CodeType.Ok)
+                {
+                    LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("供应商[{0}]信息删除成功!", supplier.Intact_Name));
 
-            //        MessageUtil.ShowTips(result.Message);
+                    MessageUtil.ShowTips(result.Message);
 
-            //        Close();
-            //    }
-            //}   
+                    Close();
+                }
+            }   
         }
     }
 }

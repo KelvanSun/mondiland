@@ -361,33 +361,62 @@ namespace Mondiland.Obj
         }
 
 
-        //public SaveResult Del()
-        //{
-        //    SaveResult result = new SaveResult();
+        public SaveResult Del()
+        {
+            SaveResult result = new SaveResult();
 
-        //    using (ProductContext ctx = new ProductContext())
-        //    {
-        //        SupplierF ob = (from entity in ctx.SupplierF
-        //                        where entity.id == this.m_id
-        //                        select entity).FirstOrDefault();
+            using (ProductContext ctx = new ProductContext())
+            {
 
-        //        ctx.SupplierF.Remove(ob);
+                var f = from entity_f in ctx.SupplierF
+                        where entity_f.supplier_id == this.m_id
+                        select entity_f;
 
-        //        if (ctx.SaveChanges() == 0)
-        //        {
-        //            result.Code = CodeType.Error;
-        //            result.Message = "删除操作失败!";
-        //        }
-        //        else
-        //        {
-        //            result.Code = CodeType.Ok;
-        //            result.Message = "成功删除!";
-        //        }
-        //    }
+                foreach ( var obj in f)
+                {
+                    ctx.SupplierF.Remove(obj);
+                }
+            }
+
+            using (ProductContext ctx = new ProductContext())
+            {
+                var d = from entity_d in ctx.SupplierD
+                        where entity_d.supplier_id == this.m_id
+                        select entity_d;
+
+                foreach ( var obj in d)
+                {
+                    ctx.SupplierD.Remove(obj);
+                }
+            }
 
 
-        //    return result;
-        //}
+            using (ProductContext ctx = new ProductContext())
+            {
+                var m = (from entity_m in ctx.SupplierM
+                        where entity_m.id == this.m_id
+                        select entity_m).FirstOrDefault();
+
+                ctx.SupplierM.Remove(m);
+
+                if (ctx.SaveChanges() == 0)
+                {
+                    result.Code = CodeType.Error;
+                    result.Message = "删除操作失败!";
+                }
+                else
+                {
+                    result.Code = CodeType.Ok;
+                    result.Message = "成功删除!";
+                }
+            }
+                
+            
+            return result;
+      
+             
+
+        }
 
         public class SupplierDObject
         {
