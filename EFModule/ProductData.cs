@@ -34,6 +34,9 @@ namespace Mondiland.EFModule
         public int pwash { get; set; }
         public int pbad { get; set; }
         public System.Guid lastamp { get; set; }
+        public string gyear { get; set; }
+        public string gmonth { get; set; }
+        public int color_id { get; set; }
     
         public virtual Dengji Dengji { get; set; }
         public virtual MadePlace MadePlace { get; set; }
@@ -44,5 +47,6 @@ namespace Mondiland.EFModule
         public virtual StandardData StandardData { get; set; }
         public virtual TagPrintTemplate TagPrintTemplate { get; set; }
         public virtual WashPrintTemplate WashPrintTemplate { get; set; }
+        public virtual ColorData ColorData { get; set; }
     }
 }

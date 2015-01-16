@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorData.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="Dengji.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>

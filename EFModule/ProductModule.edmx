@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ColorData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Dengji">
           <Key>
             <PropertyRef Name="id" />
@@ -140,6 +149,9 @@
           <Property Name="memo" Type="nvarchar" MaxLength="400" />
           <Property Name="pwash" Type="int" Nullable="false" />
           <Property Name="pbad" Type="int" Nullable="false" />
+          <Property Name="gyear" Type="nvarchar" MaxLength="4" />
+          <Property Name="gmonth" Type="nvarchar" MaxLength="2" />
+          <Property Name="color_id" Type="int" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SafeData">
@@ -542,6 +554,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProductModelStoreContainer">
+          <EntitySet Name="ColorData" EntityType="Self.ColorData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dengji" EntityType="Self.Dengji" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupInfo" EntityType="Self.GroupInfo" Schema="dbo" store:Type="Tables" />
@@ -796,6 +809,10 @@
           <NavigationProperty Name="StandardData" Relationship="Self.FK_ProductData_StandardData" FromRole="ProductData" ToRole="StandardData" />
           <NavigationProperty Name="TagPrintTemplate" Relationship="Self.FK_ProductData_TagPrintTemplate" FromRole="ProductData" ToRole="TagPrintTemplate" />
           <NavigationProperty Name="WashPrintTemplate" Relationship="Self.FK_ProductData_WashPrintTemplate" FromRole="ProductData" ToRole="WashPrintTemplate" />
+          <Property Name="gyear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="gmonth" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="color_id" Type="Int32" />
+          <NavigationProperty Name="ColorData" Relationship="ProductModel.FK_ProductData_ColorData" FromRole="ProductData" ToRole="ColorData" />
         </EntityType>
         <EntityType Name="SafeData">
           <Key>
@@ -1262,6 +1279,11 @@
             <End Role="LogInfo" EntitySet="LogInfo" />
           </AssociationSet>
           <EntitySet Name="StoresInfo" EntityType="ProductModel.StoresInfo" />
+          <EntitySet Name="ColorData" EntityType="ProductModel.ColorData" />
+          <AssociationSet Name="FK_ProductData_ColorData" Association="ProductModel.FK_ProductData_ColorData">
+            <End Role="ColorData" EntitySet="ColorData" />
+            <End Role="ProductData" EntitySet="ProductData" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SupplierF">
           <Key>
@@ -1345,6 +1367,28 @@
           <Property Name="memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lastamp" Type="Guid" Nullable="false" />
         </EntityType>
+        <EntityType Name="ColorData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ProductData" Relationship="ProductModel.FK_ProductData_ColorData" FromRole="ColorData" ToRole="ProductData" />
+        </EntityType>
+        <Association Name="FK_ProductData_ColorData">
+          <End Type="ProductModel.ColorData" Role="ColorData" Multiplicity="0..1" />
+          <End Type="ProductModel.ProductData" Role="ProductData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColorData">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductData">
+              <PropertyRef Name="color_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1463,6 +1507,9 @@
           <EntitySetMapping Name="ProductData">
             <EntityTypeMapping TypeName="ProductModel.ProductData">
               <MappingFragment StoreEntitySet="ProductData">
+                <ScalarProperty Name="color_id" ColumnName="color_id" />
+                <ScalarProperty Name="gmonth" ColumnName="gmonth" />
+                <ScalarProperty Name="gyear" ColumnName="gyear" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="partname_id" ColumnName="partname_id" />
                 <ScalarProperty Name="huohao" ColumnName="huohao" />
@@ -1655,6 +1702,16 @@
                 <ScalarProperty Name="manager" ColumnName="manager" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColorData">
+            <EntityTypeMapping TypeName="ProductModel.ColorData">
+              <MappingFragment StoreEntitySet="ColorData">
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
