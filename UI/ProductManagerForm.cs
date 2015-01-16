@@ -310,6 +310,9 @@ namespace Mondiland.UI
             {
                 this.dateTimePicker.Enabled = true;
                 this.cbx_color.Enabled = true;
+
+                this.product.Gyear = dateTimePicker.Value.Year.ToString();
+                this.product.Gmonth = dateTimePicker.Value.Month.ToString();
             }
             else
             {
