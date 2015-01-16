@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorManager.cs" />
+    <Compile Include="ColorDataManager.cs" />
     <Compile Include="DengjiManager.cs" />
     <Compile Include="LogInfoManager.cs" />
     <Compile Include="MadePlaceManager.cs" />

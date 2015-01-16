@@ -137,6 +137,46 @@ namespace Mondiland.Obj
 
         private bool m_pbad = false;
 
+        private string m_gyear = string.Empty;
+        private string m_gmonth = string.Empty;
+        private string m_colordata = string.Empty;
+        private int m_color_id = 0;
+
+        public string Gyear
+        {
+            get { return m_gyear; }
+            set { m_gyear = value; }
+        }
+
+        public string Gmonth
+        {
+            get { return m_gmonth; }
+            set { m_gmonth = value; }
+        }
+
+        public int Color_Id
+        {
+            get { return m_color_id; }
+            set { 
+                m_color_id = value;
+ 
+                if(this.m_color_id > 0)
+                {
+                    using (ProductContext ctx = new ProductContext())
+                    {
+                        this.m_colordata = (from data in ctx.ColorData
+                                            where data.id == m_color_id
+                                            select data.type).FirstOrDefault();
+                    }
+                }
+            }
+        }
+
+        public string ColorData
+        {
+            get { return m_colordata; }
+        }
+
         public bool Pbad
         {
             get { return m_pbad; }
@@ -545,6 +585,10 @@ namespace Mondiland.Obj
             this.m_wash_id = data.wash_id;
             this.m_lastamp = data.lastamp;
             this.m_pbad = data.pbad == 1 ? true : false;
+
+            this.Color_Id = data.color_id;
+            this.m_gyear = data.gyear;
+            this.m_gmonth = data.gmonth;
             
             using (ProductContext ctx = new ProductContext())
             {
@@ -706,7 +750,11 @@ namespace Mondiland.Obj
             int row = materialdata_count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
             string file_name = string.Empty;
 
-            if(this.m_pwash)
+            if(this.m_partname_id == 21)
+            {
+                file_name = string.Format("TagG{0}.btw", row);
+            }
+            else if(this.m_pwash)
             {
                 file_name = string.Format("TagA{0}.btw", row);
             }
@@ -786,6 +834,13 @@ namespace Mondiland.Obj
                 format.SubStrings.SetSubString("DengJi", this.m_dengji);
                 format.SubStrings.SetSubString("ChengFeng",this.BuildMaterialDataString(str_size_name));
                 format.SubStrings.SetSubString("TiaoMa", this.BuildBarcode(str_size_name));
+
+                if(this.PartName_Id == 21)
+                {
+                    format.SubStrings.SetSubString("Colour", this.m_colordata);
+                    format.SubStrings.SetSubString("Date", string.Format("{0}年{1}月", this.Gyear, this.Gmonth));
+                }
+
                 
             }
             else if(type == PrintType.Wash)
@@ -1018,6 +1073,9 @@ namespace Mondiland.Obj
                 info.tag_id = this.GetTagFileNameId();
                 info.memo = this.m_memo;
                 info.wash_id = this.GetWashFileNameId();
+                info.color_id = this.m_color_id;
+                info.gyear = this.m_gyear;
+                info.gmonth = this.m_gmonth;
                 info.lastamp = System.Guid.NewGuid();
                                
                 if(info.tag_id == 0)
@@ -1030,10 +1088,16 @@ namespace Mondiland.Obj
 
                 if(info.wash_id == 0)
                 {
-                    result.Code = CodeType.Error;
-                    result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
+                    if (this.m_partname_id == 21)
+                        info.wash_id = 1;
+                    else
+                    {
+                        result.Code = CodeType.Error;
+                        result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
 
-                    return result;
+                        return result;
+                    }
+                   
                 }
 
                 using (ProductContext ctx = new ProductContext())
@@ -1213,6 +1277,9 @@ namespace Mondiland.Obj
                     info.memo = this.m_memo;
                     info.tag_id = this.GetTagFileNameId();
                     info.wash_id = this.GetWashFileNameId();
+                    info.color_id = this.m_color_id;
+                    info.gyear = this.m_gyear;
+                    info.gmonth = this.m_gmonth;
                     info.lastamp = System.Guid.NewGuid();
 
                     if (info.tag_id == 0)
@@ -1223,12 +1290,20 @@ namespace Mondiland.Obj
                         return result;
                     }
 
-                    if (info.wash_id == 0)
+                    if (info.wash_id == 0 )
                     {
-                        result.Code = CodeType.Error;
-                        result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
+                        if(this.m_partname_id == 21)
+                        {
+                            info.wash_id = 1;
+                        }
+                        else
+                        {
+                            result.Code = CodeType.Error;
+                            result.Message = "系统未能找到对应的洗唛模板文件,保存无法继续!";
 
-                        return result;
+                            return result;
+                        }
+                       
                     }
 
                     if (ctx.SaveChanges() == 0)
