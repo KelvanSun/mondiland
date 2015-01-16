@@ -107,7 +107,14 @@ namespace Mondiland.UI
             cbx_standard.ValueMember = "Id";
             cbx_standard.Text = string.Empty;
             cbx_standard.SelectedValue = 0;
-            
+
+            cbx_color.DataSource = ColorDataManager.ColorDataList;
+            cbx_color.DisplayMember = "Type";
+            cbx_color.ValueMember = "Id";
+            cbx_color.Text = string.Empty;
+            cbx_color.SelectedValue = 0;
+
+
             txb_huohao.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txb_huohao.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txb_huohao.AutoCompleteCustomSource = this.GetAutoCompleteCustomSource();
@@ -210,6 +217,20 @@ namespace Mondiland.UI
                 if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
 
+                if(product.PartName_Id == 21)
+                {
+                    dateTimePicker.Enabled = true;
+                    cbx_color.Enabled = true;
+
+                    cbx_color.SelectedValue = product.Color_Id;
+                    dateTimePicker.Value = new DateTime(Convert.ToInt32(product.Gyear),Convert.ToInt32(product.Gmonth),1);
+                }
+                else
+                {
+                    dateTimePicker.Enabled = false;
+                    cbx_color.Enabled = false;
+                }
+
             }
 
             if(e.KeyCode == Keys.Escape)
@@ -283,6 +304,17 @@ namespace Mondiland.UI
             {
                 cbx_dengji.Text = string.Empty;
                 cbx_dengji.SelectedValue = 0;
+            }
+
+            if (Convert.ToInt32(this.cbx_partname.SelectedValue) == 21)
+            {
+                this.dateTimePicker.Enabled = true;
+                this.cbx_color.Enabled = true;
+            }
+            else
+            {
+                this.dateTimePicker.Enabled = false;
+                this.cbx_color.Enabled = false;
             }
 
             cbx_madeplace.SelectedValue = 1;
@@ -575,5 +607,15 @@ namespace Mondiland.UI
             }
         }
 
+        private void cbx_color_DropDownClosed(object sender, EventArgs e)
+        {
+            this.product.Color_Id = Convert.ToInt32(this.cbx_color.SelectedValue);
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.product.Gyear = dateTimePicker.Value.Year.ToString();
+            this.product.Gmonth = dateTimePicker.Value.Month.ToString();
+        }
     }
 }
