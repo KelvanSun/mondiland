@@ -376,6 +376,8 @@ namespace Mondiland.Obj
                 {
                     ctx.SupplierF.Remove(obj);
                 }
+
+                ctx.SaveChanges();
             }
 
             using (ProductContext ctx = new ProductContext())
@@ -388,6 +390,8 @@ namespace Mondiland.Obj
                 {
                     ctx.SupplierD.Remove(obj);
                 }
+
+                ctx.SaveChanges();
             }
 
 

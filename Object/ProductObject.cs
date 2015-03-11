@@ -791,6 +791,44 @@ namespace Mondiland.Obj
           
         }
 
+        public void PrintDh(Engine engine)
+        {
+            LabelFormatDocument format = null;
+
+            format = engine.Documents.Open("d:\\Template\\定货会.btw");
+
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+               new System.IO.StreamReader("c:\\data.txt", System.Text.Encoding.Default);
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+                format.SubStrings.SetSubString("name", sArray[0]);
+
+                if(sArray[1] != "*")
+                    format.SubStrings.SetSubString("cf", sArray[1]);
+                else
+                    format.SubStrings.SetSubString("cf", " ");
+
+                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[2])));
+
+                if(sArray[3] != "*")
+                    format.SubStrings.SetSubString("place", sArray[3]);
+                else
+                    format.SubStrings.SetSubString("place", " ");
+
+                format.PrintSetup.IdenticalCopiesOfLabel = 1;
+
+                format.Print();
+            }
+
+            file.Close();
+
+        }
+
         /// <summary>
         /// 打印功能
         /// </summary>
