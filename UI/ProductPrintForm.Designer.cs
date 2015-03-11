@@ -37,6 +37,7 @@
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbo_prints = new System.Windows.Forms.ComboBox();
+            this.bt_print_dh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -115,11 +116,26 @@
             this.cbo_prints.Size = new System.Drawing.Size(358, 20);
             this.cbo_prints.TabIndex = 12;
             // 
+            // bt_print_dh
+            // 
+            this.bt_print_dh.Image = ((System.Drawing.Image)(resources.GetObject("bt_print_dh.Image")));
+            this.bt_print_dh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_print_dh.Location = new System.Drawing.Point(12, 119);
+            this.bt_print_dh.Name = "bt_print_dh";
+            this.bt_print_dh.Size = new System.Drawing.Size(102, 23);
+            this.bt_print_dh.TabIndex = 12;
+            this.bt_print_dh.Text = "打印订货单";
+            this.bt_print_dh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_print_dh.UseVisualStyleBackColor = true;
+            this.bt_print_dh.Visible = false;
+            this.bt_print_dh.Click += new System.EventHandler(this.bt_print_dh_Click);
+            // 
             // ProductPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 152);
+            this.Controls.Add(this.bt_print_dh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbx_select);
             this.Controls.Add(this.label2);
@@ -149,5 +165,6 @@
         private UCControl.MultiColumnComboBoxEx cbx_select;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbo_prints;
+        private System.Windows.Forms.Button bt_print_dh;
     }
 }

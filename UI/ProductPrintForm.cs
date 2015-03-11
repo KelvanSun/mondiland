@@ -71,5 +71,10 @@ namespace Mondiland.UI
         {
             numericUpDown.Select(0, numericUpDown.Value.ToString().Length);
         }
+
+        private void bt_print_dh_Click(object sender, EventArgs e)
+        {
+            m_product.PrintDh(m_engine);
+        }
     }
 }
