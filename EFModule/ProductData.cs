@@ -36,7 +36,9 @@ namespace Mondiland.EFModule
         public System.Guid lastamp { get; set; }
         public string gyear { get; set; }
         public string gmonth { get; set; }
-        public int color_id { get; set; }
+        public Nullable<int> color_id { get; set; }
+        public int ptemplate { get; set; }
+        public string template_data { get; set; }
     
         public virtual Dengji Dengji { get; set; }
         public virtual MadePlace MadePlace { get; set; }

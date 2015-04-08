@@ -152,6 +152,8 @@
           <Property Name="gyear" Type="nvarchar" MaxLength="4" />
           <Property Name="gmonth" Type="nvarchar" MaxLength="2" />
           <Property Name="color_id" Type="int" />
+          <Property Name="ptemplate" Type="int" Nullable="false" />
+          <Property Name="template_data" Type="nvarchar(max)" />
           <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SafeData">
@@ -813,6 +815,8 @@
           <Property Name="gmonth" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="color_id" Type="Int32" />
           <NavigationProperty Name="ColorData" Relationship="ProductModel.FK_ProductData_ColorData" FromRole="ProductData" ToRole="ColorData" />
+          <Property Name="ptemplate" Type="Int32" Nullable="false" />
+          <Property Name="template_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SafeData">
           <Key>
@@ -1507,6 +1511,8 @@
           <EntitySetMapping Name="ProductData">
             <EntityTypeMapping TypeName="ProductModel.ProductData">
               <MappingFragment StoreEntitySet="ProductData">
+                <ScalarProperty Name="template_data" ColumnName="template_data" />
+                <ScalarProperty Name="ptemplate" ColumnName="ptemplate" />
                 <ScalarProperty Name="color_id" ColumnName="color_id" />
                 <ScalarProperty Name="gmonth" ColumnName="gmonth" />
                 <ScalarProperty Name="gyear" ColumnName="gyear" />

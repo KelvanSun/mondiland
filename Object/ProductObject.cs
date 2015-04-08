@@ -137,10 +137,25 @@ namespace Mondiland.Obj
 
         private bool m_pbad = false;
 
+        private bool m_ptemplate = false;
+        private string m_template_data = string.Empty;
+
         private string m_gyear = string.Empty;
         private string m_gmonth = string.Empty;
         private string m_colordata = string.Empty;
         private int m_color_id = 0;
+
+        public bool Ptemplate
+        {
+            get { return m_ptemplate; }
+            set { m_ptemplate = value; }
+        }
+
+        public string TemplateData
+        {
+            get { return m_template_data; }
+            set { m_template_data = value; }
+        }
 
         public string Gyear
         {
@@ -586,7 +601,10 @@ namespace Mondiland.Obj
             this.m_lastamp = data.lastamp;
             this.m_pbad = data.pbad == 1 ? true : false;
 
-            this.Color_Id = data.color_id;
+            this.m_ptemplate = data.ptemplate == 1 ? true : false;
+            this.m_template_data = data.template_data;
+
+            this.Color_Id = (int)data.color_id;
             this.m_gyear = data.gyear;
             this.m_gmonth = data.gmonth;
             
@@ -707,7 +725,13 @@ namespace Mondiland.Obj
                     }
                 }
 
-            }                
+            }
+            
+            if(this.m_ptemplate)
+            {
+                file_name = string.Format("T{0}", file_name);
+            }
+
             return file_name;
         }
 
@@ -889,6 +913,11 @@ namespace Mondiland.Obj
                 format.SubStrings.SetSubString("GuiGe", str_size_name);
                 format.SubStrings.SetSubString("XingHao", str_size_type);
                 format.SubStrings.SetSubString("ChengFeng", this.BuildMaterialDataString(str_size_name));
+
+                if(this.m_ptemplate)
+                {
+                    format.SubStrings.SetSubString("Template", this.m_template_data);
+                }
             }
 
             format.PrintSetup.IdenticalCopiesOfLabel = Convert.ToInt32(count);
@@ -1115,6 +1144,12 @@ namespace Mondiland.Obj
                 info.gyear = this.m_gyear;
                 info.gmonth = this.m_gmonth;
                 info.lastamp = System.Guid.NewGuid();
+
+                if(this.m_ptemplate)
+                {
+                    info.ptemplate = 1;
+                    info.template_data = this.m_template_data;
+                }
                                
                 if(info.tag_id == 0)
                 {
@@ -1319,6 +1354,12 @@ namespace Mondiland.Obj
                     info.gyear = this.m_gyear;
                     info.gmonth = this.m_gmonth;
                     info.lastamp = System.Guid.NewGuid();
+
+                    if (this.m_ptemplate)
+                    {
+                        info.ptemplate = 1;
+                        info.template_data = this.m_template_data;
+                    }
 
                     if (info.tag_id == 0)
                     {

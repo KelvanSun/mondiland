@@ -202,6 +202,7 @@ namespace Mondiland.UI
                 if (product.Id != 0)
                 {
                     LogInfoManager.LogWrite(AuthorManager.LoginUser.Id, string.Format("产品信息[{0}]信息载入!", product.HuoHao));
+                    
                 }
                 
                 cbx_partname.SelectedValue = product.PartName_Id;
@@ -213,6 +214,16 @@ namespace Mondiland.UI
                 txb_memo.Text = product.Memo;
                 chb_wash.Checked = product.Pwash;
                 chb_bad.Checked = product.Pbad;
+
+                chb_template.Checked = product.Ptemplate;
+                txb_template.Text = product.TemplateData;
+                
+
+                if(product.Id !=0 )
+                {
+                    lb_memo.Text = PartNameManager.PartNameList[cbx_partname.SelectedIndex].Memo;
+                }
+
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
@@ -273,6 +284,8 @@ namespace Mondiland.UI
             if (this.cbx_partname.SelectedValue == null) return;
             
             this.product.PartName_Id = Convert.ToInt32(this.cbx_partname.SelectedValue);
+
+            lb_memo.Text = PartNameManager.PartNameList[cbx_partname.SelectedIndex].Memo;
 
             PartNameManager.OptimizeInfo opt = new PartNameManager().GetOptimizeInfo(this.product.PartName_Id);
 
@@ -457,6 +470,8 @@ namespace Mondiland.UI
                 txb_memo.Text = product.Memo;
                 chb_wash.Checked = product.Pwash;
                 chb_bad.Checked = product.Pbad;
+                chb_template.Checked = product.Ptemplate;
+                txb_template.Text = product.TemplateData;
                 this.bindingSource_material.DataSource = product.MaterialDataList;
                 if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
@@ -621,5 +636,16 @@ namespace Mondiland.UI
             this.product.Gyear = dateTimePicker.Value.Year.ToString();
             this.product.Gmonth = dateTimePicker.Value.Month.ToString();
         }
+
+        private void txb_template_TextChanged(object sender, EventArgs e)
+        {
+            this.product.TemplateData = txb_template.Text;
+        }
+
+        private void chb_template_CheckedChanged(object sender, EventArgs e)
+        {
+            this.product.Ptemplate = this.chb_template.Checked;
+        }
+
     }
 }
