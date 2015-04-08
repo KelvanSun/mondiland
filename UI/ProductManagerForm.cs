@@ -430,6 +430,10 @@ namespace Mondiland.UI
             txb_memo.Text = product.Memo;
             chb_wash.Checked = product.Pwash;
             chb_bad.Checked = product.Pbad;
+
+            chb_template.Checked = product.Ptemplate;
+            txb_template.Text = product.TemplateData;
+
             this.bindingSource_material.DataSource = product.MaterialDataList;
             if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
             LoadDgvMaterialFill();
@@ -617,6 +621,10 @@ namespace Mondiland.UI
                     txb_memo.Text = product.Memo;
                     chb_wash.Checked = product.Pwash;
                     chb_bad.Checked = product.Pbad;
+
+                    chb_template.Checked = product.Ptemplate;
+                    txb_template.Text = product.TemplateData;
+
                     this.bindingSource_material.DataSource = product.MaterialDataList;
                     if (dgv_material.RowCount > 0) dgv_material.Rows[0].Selected = false;
                     LoadDgvMaterialFill();
