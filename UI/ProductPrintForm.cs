@@ -31,7 +31,9 @@ namespace Mondiland.UI
             InitializeComponent();
 
             if(this.m_type == ProductObject.PrintType.Wash)
-                this.Text = string.Format("{0}({1})", this.Text, this.m_product.WashSize);
+                this.Text = string.Format("{0}洗唛({1})", this.Text, this.m_product.WashSize);
+            else
+                this.Text = string.Format("{0}吊牌", this.Text);
         }
 
         private void bt_print_Click(object sender, EventArgs e)
