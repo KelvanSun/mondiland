@@ -225,6 +225,8 @@ namespace Mondiland.UI
                 }
 
                 this.bindingSource_material.DataSource = product.MaterialDataList;
+                
+
                 if(dgv_material.RowCount > 0)   dgv_material.Rows[0].Selected = false;
                 LoadDgvMaterialFill();
 
@@ -653,6 +655,27 @@ namespace Mondiland.UI
         private void chb_template_CheckedChanged(object sender, EventArgs e)
         {
             this.product.Ptemplate = this.chb_template.Checked;
+        }
+
+        private void toolStripButtonBarcode_Click(object sender, EventArgs e)
+        {
+            BarcodeManagerForm form = new BarcodeManagerForm();
+            form.ShowDialog();
+        }
+
+        private void tsmi_tag2_print_Click(object sender, EventArgs e)
+        {
+            if (this.product.Id == 0)
+            {
+                MessageUtil.ShowWarning("无法打印当前记录!");
+                return;
+            }
+
+            dgv_material.EndEdit();
+            dgv_material_fill.EndEdit();
+
+            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Tag2);
+            print.ShowDialog();
         }
 
     }

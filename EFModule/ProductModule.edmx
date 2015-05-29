@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BarcodeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="size_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="memo" Type="nvarchar" MaxLength="400" />
+          <Property Name="lastamp" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="ColorData">
           <Key>
             <PropertyRef Name="id" />
@@ -556,6 +567,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProductModelStoreContainer">
+          <EntitySet Name="BarcodeInfo" EntityType="Self.BarcodeInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ColorData" EntityType="Self.ColorData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dengji" EntityType="Self.Dengji" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
@@ -1288,6 +1300,7 @@
             <End Role="ColorData" EntitySet="ColorData" />
             <End Role="ProductData" EntitySet="ProductData" />
           </AssociationSet>
+          <EntitySet Name="BarcodeInfo" EntityType="ProductModel.BarcodeInfo" />
         </EntityContainer>
         <EntityType Name="SupplierF">
           <Key>
@@ -1393,6 +1406,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BarcodeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="size_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="barcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="memo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="lastamp" Type="Guid" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1718,6 +1742,18 @@
                 <ScalarProperty Name="lastamp" ColumnName="lastamp" />
                 <ScalarProperty Name="memo" ColumnName="memo" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarcodeInfo">
+            <EntityTypeMapping TypeName="ProductModel.BarcodeInfo">
+              <MappingFragment StoreEntitySet="BarcodeInfo">
+                <ScalarProperty Name="lastamp" ColumnName="lastamp" />
+                <ScalarProperty Name="memo" ColumnName="memo" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="size_name" ColumnName="size_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

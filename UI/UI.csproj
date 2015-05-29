@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>223</ApplicationRevision>
+    <ApplicationRevision>224</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -112,6 +112,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarcodeManagerForm.Designer.cs">
+      <DependentUpon>BarcodeManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     <Compile Include="UCListViewItem.Designer.cs">
       <DependentUpon>UCListViewItem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BarcodeManagerForm.resx">
+      <DependentUpon>BarcodeManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +323,7 @@
     <None Include="Properties\DataSources\Mondiland.BLLEntity.BLLDengjiProduct.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.LogInfoManager+LogInfoObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.PermissionObject+LoginUserInfo.datasource" />
+    <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+EAN13DataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.ProductObject+MaterialDataInfo.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.StoreObject.datasource" />
     <None Include="Properties\DataSources\Mondiland.Obj.SupplierObject+SupplierDObject.datasource" />

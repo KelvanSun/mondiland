@@ -213,6 +213,15 @@
         rkJggg==
 </value>
   </data>
+  <data name="toolStripButtonBarcode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVDhPzYsxCoNAFET/nsBSsMhdc58gAcGAhUWKNDmA
+        N/AcmT+uqTIMksYHn7ezw8Q5KKVcq2/KP/64IQi9s+oIwt1ZdQRhcFYdQXg4q44gTM6qIwizs+oIwtNZ
+        dQTh5aw6gvB2Vt3OUn2E7+aCG7dnrNXJ/lbOTW6jwbW47uDlJrf/EPEBraJD6+fvzmgAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <data name="favorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

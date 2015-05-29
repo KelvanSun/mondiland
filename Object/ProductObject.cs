@@ -25,7 +25,45 @@ namespace Mondiland.Obj
         public enum PrintType
         {
             Tag,
+            Tag2,
             Wash,
+        }
+
+        [Serializable]
+        public class EAN13DataInfo
+        {
+            private int m_id = 0;
+            private string m_size_name = string.Empty;
+            private string m_barcode_type = string.Empty;
+            private string m_memo = string.Empty;
+
+            public int Id
+            {
+                get { return m_id; }
+                set { m_id = value; }
+            }
+
+            /// <summary>
+            /// 规格
+            /// </summary>
+            public string SizeName
+            {
+                get { return m_size_name; }
+                set { m_size_name = value; }
+            }
+ 
+            public string BarcodeType
+            {
+                get { return m_barcode_type; }
+                set { m_barcode_type = value; }
+            }
+
+            public string Memo
+            {
+                get { return m_memo; }
+                set { m_memo = value; }
+            }
+
         }
 
         [Serializable]
@@ -226,6 +264,8 @@ namespace Mondiland.Obj
         /// </summary>
         private string m_wash_filename = string.Empty;
 
+        private string m_tag2_filename = string.Empty;
+
         /// <summary>
         /// 产品号型列表
         /// </summary>size_data_list
@@ -234,6 +274,12 @@ namespace Mondiland.Obj
         /// 产品成份信息
         /// </summary>
         private BindingList<MaterialDataInfo> m_material_data_list = new BindingList<MaterialDataInfo>();
+
+        /// <summary>
+        /// EAN13条码信息
+        /// </summary>
+        private BindingList<EAN13DataInfo> m_ean13_data_list = new BindingList<EAN13DataInfo>();
+
 
         [Serializable]
         public class MaterialDataInfo
@@ -607,6 +653,29 @@ namespace Mondiland.Obj
             this.Color_Id = (int)data.color_id;
             this.m_gyear = data.gyear;
             this.m_gmonth = data.gmonth;
+
+
+            //加载EAN13信息
+            using (ProductContext ctx = new ProductContext())
+            {
+                var ean13_data = from mater in ctx.BarcodeInfo
+                           where mater.product_id == this.m_id
+                           orderby mater.size_name
+                           select mater;
+
+                foreach(var obj in ean13_data)
+                {
+                    EAN13DataInfo info = new EAN13DataInfo();
+
+                    info.Id = obj.id;
+                    info.SizeName = obj.size_name;
+                    info.BarcodeType = obj.barcode;
+                    info.Memo = obj.memo;
+
+                    this.m_ean13_data_list.Add(info);
+                }
+            }
+
             
             using (ProductContext ctx = new ProductContext())
             {
@@ -659,6 +728,8 @@ namespace Mondiland.Obj
 
             //this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetWashFileName());
             this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"],GetWashFileNameById(this.Wash_Id));
+            this.m_tag2_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], "EAN13.btw");
+
         }
 
         public string GetWashFileNameById(int id)
@@ -865,6 +936,7 @@ namespace Mondiland.Obj
         {
             string str_size_name = string.Empty;
             string str_size_type = string.Empty;
+            string str_ean13_type = string.Empty;
             
             LabelFormatDocument format = null;
             
@@ -880,44 +952,66 @@ namespace Mondiland.Obj
                 }
             }
 
-            //打印吊牌
-            if(type == PrintType.Tag)
+            foreach(var data in this.m_ean13_data_list)
             {
-                format = engine.Documents.Open(this.m_tag_filename);
-
-                format.SubStrings.SetSubString("PinMin", this.m_parntname);
-                format.SubStrings.SetSubString("HuoHao", this.m_huohao);
-                format.SubStrings.SetSubString("GuiGe", str_size_name);
-                format.SubStrings.SetSubString("XingHao", str_size_type);
-                format.SubStrings.SetSubString("SafeData", this.m_safedata);
-                format.SubStrings.SetSubString("StandardData", this.m_standarddata);
-                format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(this.m_price)));
-                format.SubStrings.SetSubString("ChanDi", this.m_madeplace);
-                format.SubStrings.SetSubString("DengJi", this.m_dengji);
-                format.SubStrings.SetSubString("ChengFeng",this.BuildMaterialDataString(str_size_name));
-                format.SubStrings.SetSubString("TiaoMa", this.BuildBarcode(str_size_name));
-
-                if(this.PartName_Id == 21)
+                if(data.SizeName == str_size_name)
                 {
-                    format.SubStrings.SetSubString("Colour", this.m_colordata);
-                    format.SubStrings.SetSubString("Date", string.Format("{0}年{1}月", this.Gyear, this.Gmonth));
+                    str_ean13_type = data.BarcodeType;
                 }
-
-                
             }
-            else if(type == PrintType.Wash)
+
+
+            switch(type)
             {
-                format = engine.Documents.Open(this.m_wash_filename);
+                case PrintType.Tag:
+                    format = engine.Documents.Open(this.m_tag_filename);
 
-                format.SubStrings.SetSubString("HuoHao", this.m_huohao);
-                format.SubStrings.SetSubString("GuiGe", str_size_name);
-                format.SubStrings.SetSubString("XingHao", str_size_type);
-                format.SubStrings.SetSubString("ChengFeng", this.BuildMaterialDataString(str_size_name));
+                    format.SubStrings.SetSubString("PinMin", this.m_parntname);
+                    format.SubStrings.SetSubString("HuoHao", this.m_huohao);
+                    format.SubStrings.SetSubString("GuiGe", str_size_name);
+                    format.SubStrings.SetSubString("XingHao", str_size_type);
+                    format.SubStrings.SetSubString("SafeData", this.m_safedata);
+                    format.SubStrings.SetSubString("StandardData", this.m_standarddata);
+                    format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(this.m_price)));
+                    format.SubStrings.SetSubString("ChanDi", this.m_madeplace);
+                    format.SubStrings.SetSubString("DengJi", this.m_dengji);
+                    format.SubStrings.SetSubString("ChengFeng",this.BuildMaterialDataString(str_size_name));
+                    format.SubStrings.SetSubString("TiaoMa", this.BuildBarcode(str_size_name));
 
-                if(this.m_ptemplate)
-                {
-                    format.SubStrings.SetSubString("Template", this.m_template_data);
-                }
+                    if(this.PartName_Id == 21)
+                    {
+                        format.SubStrings.SetSubString("Colour", this.m_colordata);
+                        format.SubStrings.SetSubString("Date", string.Format("{0}年{1}月", this.Gyear, this.Gmonth));
+                    }
+
+                    break;
+
+                case PrintType.Wash:
+
+                    format = engine.Documents.Open(this.m_wash_filename);
+
+                    format.SubStrings.SetSubString("HuoHao", this.m_huohao);
+                    format.SubStrings.SetSubString("GuiGe", str_size_name);
+                    format.SubStrings.SetSubString("XingHao", str_size_type);
+                    format.SubStrings.SetSubString("ChengFeng", this.BuildMaterialDataString(str_size_name));
+
+                    if(this.m_ptemplate)
+                    {
+                        format.SubStrings.SetSubString("Template", this.m_template_data);
+                    }
+
+                    break;
+
+                case PrintType.Tag2:
+
+                    if (str_ean13_type == string.Empty) return;
+
+                    format = engine.Documents.Open(this.m_tag2_filename);
+
+                    format.SubStrings.SetSubString("HaoXing",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
+                    format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
+
+                    break;
             }
 
             format.PrintSetup.IdenticalCopiesOfLabel = Convert.ToInt32(count);

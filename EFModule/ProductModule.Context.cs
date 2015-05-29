@@ -51,5 +51,6 @@ namespace Mondiland.EFModule
         public virtual DbSet<LogInfo> LogInfo { get; set; }
         public virtual DbSet<StoresInfo> StoresInfo { get; set; }
         public virtual DbSet<ColorData> ColorData { get; set; }
+        public virtual DbSet<BarcodeInfo> BarcodeInfo { get; set; }
     }
 }

@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeInfo.cs">
+      <DependentUpon>ProductModule.tt</DependentUpon>
+    </Compile>
     <Compile Include="ColorData.cs">
       <DependentUpon>ProductModule.tt</DependentUpon>
     </Compile>

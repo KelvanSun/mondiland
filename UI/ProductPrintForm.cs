@@ -30,10 +30,19 @@ namespace Mondiland.UI
             
             InitializeComponent();
 
-            if(this.m_type == ProductObject.PrintType.Wash)
-                this.Text = string.Format("{0}洗唛({1})", this.Text, this.m_product.WashSize);
-            else
-                this.Text = string.Format("{0}吊牌", this.Text);
+            switch(this.m_type)
+            {
+                case ProductObject.PrintType.Tag:
+                    this.Text = string.Format("{0}自编吊牌", this.Text);
+                    break;
+                case ProductObject.PrintType.Tag2:
+                    this.Text = string.Format("{0}国际吊牌", this.Text);
+                    break;
+                case ProductObject.PrintType.Wash:
+                    this.Text = string.Format("{0}洗唛({1})", this.Text, this.m_product.WashSize);
+                    break;
+            }
+                
         }
 
         private void bt_print_Click(object sender, EventArgs e)
