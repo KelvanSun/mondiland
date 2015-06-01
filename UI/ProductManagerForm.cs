@@ -524,7 +524,7 @@ namespace Mondiland.UI
             dgv_material.EndEdit();
             dgv_material_fill.EndEdit();
 
-            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Tag);
+            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.TagCODE93);
             print.ShowDialog();
         }
 
@@ -659,7 +659,13 @@ namespace Mondiland.UI
 
         private void toolStripButtonBarcode_Click(object sender, EventArgs e)
         {
-            BarcodeManagerForm form = new BarcodeManagerForm();
+            if (this.product.Id == 0)
+            {
+                MessageUtil.ShowWarning("无法打印当前记录!");
+                return;
+            }
+            
+            BarcodeManagerForm form = new BarcodeManagerForm(this.product);
             form.ShowDialog();
         }
 
@@ -674,7 +680,7 @@ namespace Mondiland.UI
             dgv_material.EndEdit();
             dgv_material_fill.EndEdit();
 
-            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.Tag2);
+            ProductPrintForm print = new ProductPrintForm(this.product, ProductObject.PrintType.TagEAN13);
             print.ShowDialog();
         }
 

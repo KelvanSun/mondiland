@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="size_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="barcode" Type="nvarchar" MaxLength="50" Nullable="false" />

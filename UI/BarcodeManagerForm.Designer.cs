@@ -28,37 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarcodeManagerForm));
             this.ucDataGridView = new Mondiland.UCControl.UCDataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.memoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            this.SizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ean13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsb_save = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ucDataGridView)).BeginInit();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Mondiland.Obj.ProductObject.EAN13DataInfo);
             // 
             // ucDataGridView
             // 
+            this.ucDataGridView.AllowUserToAddRows = false;
+            this.ucDataGridView.AllowUserToDeleteRows = false;
+            this.ucDataGridView.AllowUserToResizeColumns = false;
             this.ucDataGridView.AllowUserToResizeRows = false;
-            this.ucDataGridView.AutoGenerateColumns = false;
             this.ucDataGridView.BackgroundColor = System.Drawing.SystemColors.Info;
             this.ucDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ucDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.sizeNameDataGridViewTextBoxColumn,
-            this.barcodeTypeDataGridViewTextBoxColumn,
-            this.memoDataGridViewTextBoxColumn});
-            this.ucDataGridView.DataSource = this.bindingSource;
+            this.SizeName,
+            this.ean13,
+            this.Memo});
             this.ucDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.ucDataGridView.MultiSelect = false;
             this.ucDataGridView.Name = "ucDataGridView";
             this.ucDataGridView.RowHeadersWidth = 20;
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -67,43 +64,54 @@
             this.ucDataGridView.Size = new System.Drawing.Size(639, 398);
             this.ucDataGridView.TabIndex = 1;
             // 
-            // idDataGridViewTextBoxColumn
+            // SizeName
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sizeNameDataGridViewTextBoxColumn
-            // 
-            this.sizeNameDataGridViewTextBoxColumn.DataPropertyName = "SizeName";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.sizeNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.sizeNameDataGridViewTextBoxColumn.HeaderText = "号型";
-            this.sizeNameDataGridViewTextBoxColumn.Name = "sizeNameDataGridViewTextBoxColumn";
-            this.sizeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.SizeName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.SizeName.HeaderText = "号型";
+            this.SizeName.Name = "SizeName";
+            this.SizeName.ReadOnly = true;
             // 
-            // barcodeTypeDataGridViewTextBoxColumn
+            // ean13
             // 
-            this.barcodeTypeDataGridViewTextBoxColumn.DataPropertyName = "BarcodeType";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.barcodeTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.barcodeTypeDataGridViewTextBoxColumn.HeaderText = "EAN13条码";
-            this.barcodeTypeDataGridViewTextBoxColumn.Name = "barcodeTypeDataGridViewTextBoxColumn";
-            this.barcodeTypeDataGridViewTextBoxColumn.Width = 150;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ean13.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ean13.HeaderText = "EAN13条码";
+            this.ean13.Name = "ean13";
+            this.ean13.Width = 150;
             // 
-            // memoDataGridViewTextBoxColumn
+            // Memo
             // 
-            this.memoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.memoDataGridViewTextBoxColumn.DataPropertyName = "Memo";
-            this.memoDataGridViewTextBoxColumn.HeaderText = "备注信息";
-            this.memoDataGridViewTextBoxColumn.Name = "memoDataGridViewTextBoxColumn";
+            this.Memo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Memo.HeaderText = "备注信息";
+            this.Memo.Name = "Memo";
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsb_save});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(639, 25);
+            this.toolStrip.TabIndex = 2;
+            this.toolStrip.Text = "toolStrip1";
+            // 
+            // tsb_save
+            // 
+            this.tsb_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsb_save.Image = ((System.Drawing.Image)(resources.GetObject("tsb_save.Image")));
+            this.tsb_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_save.Name = "tsb_save";
+            this.tsb_save.Size = new System.Drawing.Size(23, 22);
+            this.tsb_save.Text = "保存";
+            this.tsb_save.Click += new System.EventHandler(this.tsb_save_Click);
             // 
             // BarcodeManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 398);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.ucDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -111,19 +119,22 @@
             this.Name = "BarcodeManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "条码信息管理";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.BarcodeManagerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ucDataGridView)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.BindingSource bindingSource;
         private UCControl.UCDataGridView ucDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sizeNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn memoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ean13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Memo;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton tsb_save;
     }
 }

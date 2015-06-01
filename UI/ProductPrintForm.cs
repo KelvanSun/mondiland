@@ -32,11 +32,11 @@ namespace Mondiland.UI
 
             switch(this.m_type)
             {
-                case ProductObject.PrintType.Tag:
-                    this.Text = string.Format("{0}自编吊牌", this.Text);
+                case ProductObject.PrintType.TagCODE93:
+                    this.Text = string.Format("{0}Code93吊牌", this.Text);
                     break;
-                case ProductObject.PrintType.Tag2:
-                    this.Text = string.Format("{0}国际吊牌", this.Text);
+                case ProductObject.PrintType.TagEAN13:
+                    this.Text = string.Format("{0}EAN13吊牌", this.Text);
                     break;
                 case ProductObject.PrintType.Wash:
                     this.Text = string.Format("{0}洗唛({1})", this.Text, this.m_product.WashSize);
@@ -53,8 +53,24 @@ namespace Mondiland.UI
                             Convert.ToInt32(cbx_select.SelectedValue), 
                             Convert.ToInt32(numericUpDown.Value));
 
+            string str_type = string.Empty;
+
+            switch(this.m_type)
+            {
+                case ProductObject.PrintType.TagCODE93:
+                    str_type = "Code93吊牌";
+                    break;
+                case ProductObject.PrintType.TagEAN13:
+                    str_type = "EAN13吊牌";
+                    break;
+                case ProductObject.PrintType.Wash:
+                    str_type = "洗水唛";
+                    break;
+            }
+
+
             LogInfoManager.LogWrite(AuthorManager.LoginUser.Id,
-                string.Format("打印货号为[{0}] {1} 码的{2} {3}张", m_product.HuoHao, cbx_select.Text, this.m_type == ProductObject.PrintType.Tag ? "吊牌" : "洗水唛", numericUpDown.Value));              
+                string.Format("打印货号为[{0}] {1} 码的{2} {3}张", m_product.HuoHao, cbx_select.Text, str_type, numericUpDown.Value));              
           
         }
         private void PrintForm_Load(object sender, EventArgs e)

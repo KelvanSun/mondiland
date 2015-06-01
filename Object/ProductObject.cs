@@ -24,8 +24,8 @@ namespace Mondiland.Obj
     {
         public enum PrintType
         {
-            Tag,
-            Tag2,
+            TagCODE93,
+            TagEAN13,
             Wash,
         }
 
@@ -258,13 +258,13 @@ namespace Mondiland.Obj
         /// <summary>
         /// 吊牌文件名
         /// </summary>
-        private string m_tag_filename = string.Empty;
+        private string m_tagCODE93_filename = string.Empty;
         /// <summary>
         /// 洗唛文件名
         /// </summary>
         private string m_wash_filename = string.Empty;
 
-        private string m_tag2_filename = string.Empty;
+        private string m_tagEAN13_filename = string.Empty;
 
         /// <summary>
         /// 产品号型列表
@@ -327,6 +327,11 @@ namespace Mondiland.Obj
         public BindingList<SizeDataList> SizeDataListInfo
         {
             get { return this.m_size_data_list; }
+        }
+
+        public BindingList<EAN13DataInfo> EAN13DataListInfo
+        {
+            get { return this.m_ean13_data_list; }
         }
 
         /// <summary>
@@ -724,11 +729,11 @@ namespace Mondiland.Obj
                 //处理打印模板信息
             }
 
-            this.m_tag_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetTagFileName());
+            this.m_tagCODE93_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetTagFileName());
 
             //this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], GetWashFileName());
             this.m_wash_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"],GetWashFileNameById(this.Wash_Id));
-            this.m_tag2_filename = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["Template"], "EAN13.btw");
+            this.m_tagEAN13_filename = string.Format("{0}\\13{1}", ConfigurationManager.AppSettings["Template"], GetTagFileName());
 
         }
 
@@ -963,8 +968,19 @@ namespace Mondiland.Obj
 
             switch(type)
             {
-                case PrintType.Tag:
-                    format = engine.Documents.Open(this.m_tag_filename);
+                case PrintType.TagEAN13:
+                case PrintType.TagCODE93:
+
+                    if (type == PrintType.TagEAN13)
+                    {
+                        if (str_ean13_type == string.Empty) return;
+
+                        format = engine.Documents.Open(this.m_tagEAN13_filename);
+                    }
+                    else
+                    {
+                        format = engine.Documents.Open(this.m_tagCODE93_filename);
+                    }
 
                     format.SubStrings.SetSubString("PinMin", this.m_parntname);
                     format.SubStrings.SetSubString("HuoHao", this.m_huohao);
@@ -976,7 +992,15 @@ namespace Mondiland.Obj
                     format.SubStrings.SetSubString("ChanDi", this.m_madeplace);
                     format.SubStrings.SetSubString("DengJi", this.m_dengji);
                     format.SubStrings.SetSubString("ChengFeng",this.BuildMaterialDataString(str_size_name));
-                    format.SubStrings.SetSubString("TiaoMa", this.BuildBarcode(str_size_name));
+
+                    if (type == PrintType.TagEAN13)
+                    {
+                        format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
+                    }
+                    else
+                    {
+                        format.SubStrings.SetSubString("TiaoMa", this.BuildBarcode(str_size_name));
+                    }
 
                     if(this.PartName_Id == 21)
                     {
@@ -1002,16 +1026,17 @@ namespace Mondiland.Obj
 
                     break;
 
-                case PrintType.Tag2:
+                //case PrintType.TagEAN13:
 
-                    if (str_ean13_type == string.Empty) return;
+                //    if (str_ean13_type == string.Empty) return;
 
-                    format = engine.Documents.Open(this.m_tag2_filename);
+                    
+                //    format = engine.Documents.Open(this.m_tag2_filename);
 
-                    format.SubStrings.SetSubString("HaoXing",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
-                    format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
+                //    format.SubStrings.SetSubString("HaoXing",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
+                //    format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
 
-                    break;
+                //    break;
             }
 
             format.PrintSetup.IdenticalCopiesOfLabel = Convert.ToInt32(count);
@@ -1571,5 +1596,65 @@ namespace Mondiland.Obj
             return result;
         }
         
+        public void UpdateEAN13Info(string m_sizename,string m_ean13,string m_memo)
+        {
+            bool bfind = false;
+            
+            foreach(var obj in this.m_ean13_data_list)
+            {
+                if(obj.SizeName == m_sizename)
+                {
+                    obj.BarcodeType = m_ean13;
+                    bfind = true;
+                    break;
+                }
+            }
+
+            if(!bfind)
+            {
+                EAN13DataInfo info = new EAN13DataInfo();
+                info.SizeName = m_sizename;
+                info.BarcodeType = m_ean13;
+                info.Memo = m_memo;
+
+                this.m_ean13_data_list.Add(info);
+            }
+        }
+
+        public void SaveEAN13Info()
+        {
+            using (ProductContext ctx = new ProductContext())
+            {
+                var data1 = from entity in ctx.BarcodeInfo
+                            where entity.product_id == this.m_id
+                            select entity;
+
+                foreach ( var obj in data1)
+                {
+                    ctx.BarcodeInfo.Remove(obj);
+                }
+
+                ctx.SaveChanges();
+            }
+
+            foreach(EAN13DataInfo info in this.m_ean13_data_list )
+            {
+                using (ProductContext ctx = new ProductContext())
+                {
+                    BarcodeInfo entity = new BarcodeInfo();
+
+                    entity.product_id = this.m_id;
+                    entity.size_name = info.SizeName;
+                    entity.barcode = info.BarcodeType;
+                    entity.memo = info.Memo;
+                    entity.lastamp = System.Guid.NewGuid();
+
+                    ctx.BarcodeInfo.Add(entity);
+
+                    ctx.SaveChanges();
+                }
+            }
+
+        }
     }
 }
