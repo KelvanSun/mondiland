@@ -53,16 +53,16 @@
             this.SizeName,
             this.ean13,
             this.Memo});
-            this.ucDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.ucDataGridView.Location = new System.Drawing.Point(0, 28);
             this.ucDataGridView.MultiSelect = false;
             this.ucDataGridView.Name = "ucDataGridView";
             this.ucDataGridView.RowHeadersWidth = 20;
             this.ucDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ucDataGridView.RowTemplate.Height = 23;
             this.ucDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ucDataGridView.Size = new System.Drawing.Size(639, 398);
+            this.ucDataGridView.Size = new System.Drawing.Size(639, 370);
             this.ucDataGridView.TabIndex = 1;
+            this.ucDataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ucDataGridView_MouseDown);
             // 
             // SizeName
             // 

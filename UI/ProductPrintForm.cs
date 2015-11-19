@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 using Mondiland.Obj;
 
@@ -101,7 +102,40 @@ namespace Mondiland.UI
 
         private void bt_print_dh_Click(object sender, EventArgs e)
         {
-            m_product.PrintDh(m_engine);
+            //m_product.PrintDh(m_engine);
+
+            string line = string.Empty;
+            int iSelect = 0;
+
+
+            System.IO.StreamReader file =
+                new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+                ProductObject product = new ProductObject(sArray[0]);
+
+                foreach (var size in product.SizeDataListInfo)
+                {
+                    if (size.SizeName == sArray[1])
+                    {
+                        iSelect = size.Id;
+                        break;
+                    }
+                }
+
+                product.Print(m_engine,
+                                this.cbo_prints.SelectedItem.ToString(),
+                                this.m_type,
+                                iSelect,
+                                int.Parse(sArray[2]));
+
+            }
+
+            file.Close();
+
         }
     }
 }

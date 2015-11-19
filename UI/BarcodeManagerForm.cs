@@ -73,6 +73,15 @@ namespace Mondiland.UI
             this.m_product.SaveEAN13Info();
 
             MessageUtil.ShowTips("保存成功!");
+
+            Close();
+        }
+
+        private void ucDataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left) return;
+
+            Clipboard.SetText(ucDataGridView.CurrentRow.Cells["ean13"].Value.ToString());
         }
     }
 }

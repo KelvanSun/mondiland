@@ -250,6 +250,8 @@ namespace Mondiland.Obj
         private decimal m_price = 0;
         private string m_memo = string.Empty;
         private bool m_pwash = false;
+        private bool m_wash_u = false;
+
         private Guid m_lastamp = Guid.Empty;
         /// <summary>
         /// 条形码前缀
@@ -363,6 +365,7 @@ namespace Mondiland.Obj
                 m_pwash = value; 
             }
         }
+
         /// <summary>
         /// 产品备注信息
         /// </summary>
@@ -653,6 +656,7 @@ namespace Mondiland.Obj
             this.m_pbad = data.pbad == 1 ? true : false;
 
             this.m_ptemplate = data.ptemplate == 1 ? true : false;
+            this.m_wash_u = data.wash_u == 1 ? true : false;
             this.m_template_data = data.template_data;
 
             this.Color_Id = (int)data.color_id;
@@ -749,7 +753,24 @@ namespace Mondiland.Obj
 
         public string GetWashFileName()
         {
+                   
+            
             int materialdata_count = 0;
+
+
+            if(m_wash_u)
+            {
+                using (ProductContext ctx = new ProductContext())
+                {
+                    WashPrintTemplate wash_info = (from wash in ctx.WashPrintTemplate
+                                where wash.id == this.m_wash_id
+                                select wash).FirstOrDefault();
+
+                    return wash_info.file_name;
+                }
+            }
+
+
 
             foreach (var obj in this.m_material_data_list)
             {
@@ -893,39 +914,192 @@ namespace Mondiland.Obj
 
         public void PrintDh(Engine engine)
         {
-            LabelFormatDocument format = null;
+            //Dictionary<string, string> myDictionary = new Dictionary<string, string>();
 
-            format = engine.Documents.Open("d:\\Template\\定货会.btw");
+            //myDictionary.Add("K", "508");
+            //myDictionary.Add("C", "503");
+            //myDictionary.Add("T", "504");
+            //myDictionary.Add("J", "505");
+            //myDictionary.Add("F", "502");
 
-            string line;
+
+            //LabelFormatDocument format = engine.Documents.Open("C:\\TWashC1.btw");
+
+
+            //string line = string.Empty;
+            //string begin = string.Empty;
+
+
+            //// Read the file and display it line by line.
+            //System.IO.StreamReader file =
+            //   new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+            //    begin = myDictionary[sArray[0].Trim().Substring(0, 1)];
+
+            //    format.SubStrings.SetSubString("TM", string.Format("{0}{1}{2}",begin,sArray[0].Trim(),sArray[1].Trim()));
+
+            //    format.PrintSetup.IdenticalCopiesOfLabel = 1;
+
+            //    format.Print();
+
+            //}
+
+            //file.Close();
+
+
+
+            
+            LabelFormatDocument format = engine.Documents.Open("d:\\Template\\定货会.btw");
+
+            string line = string.Empty;
 
             // Read the file and display it line by line.
             System.IO.StreamReader file =
-               new System.IO.StreamReader("c:\\data.txt", System.Text.Encoding.Default);
+               new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
             while ((line = file.ReadLine()) != null)
             {
                 string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
 
-                format.SubStrings.SetSubString("name", sArray[0]);
-
-                if(sArray[1] != "*")
-                    format.SubStrings.SetSubString("cf", sArray[1]);
-                else
-                    format.SubStrings.SetSubString("cf", " ");
-
-                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[2])));
-
-                if(sArray[3] != "*")
-                    format.SubStrings.SetSubString("place", sArray[3]);
-                else
-                    format.SubStrings.SetSubString("place", " ");
-
+                format.SubStrings.SetSubString("lb", sArray[0]);
+                format.SubStrings.SetSubString("name", sArray[1]);
+                format.SubStrings.SetSubString("cf", sArray[2]);
+                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[3])));
+                
                 format.PrintSetup.IdenticalCopiesOfLabel = 1;
 
                 format.Print();
             }
 
             file.Close();
+
+            //string data_line = string.Empty;
+            //string data2_line = string.Empty;
+
+            //Dictionary<string,string> myDictionary = new Dictionary<string,string>();
+
+            //System.IO.StreamReader data_file =
+            //    new System.IO.StreamReader("c:\\data.txt", System.Text.Encoding.Default);
+
+            //while((data_line = data_file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(data_line, "\t", RegexOptions.IgnoreCase);
+
+            //    if (myDictionary.ContainsKey(string.Format("{0}-{1}", sArray[1].Trim(), sArray[2].Trim())) == false)
+            //    {
+            //        myDictionary.Add(string.Format("{0}-{1}", sArray[1].Trim(), sArray[2].Trim()), sArray[0].Trim());
+            //    }
+               
+            //}
+
+            //data_file.Close();
+
+            //int count = 0;
+
+            //LabelFormatDocument format = engine.Documents.Open("d:\\Template\\TM.btw");
+
+
+            //System.IO.StreamReader data2_file =
+            //    new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            //while((data2_line = data2_file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(data2_line, "\t", RegexOptions.IgnoreCase);
+
+            //    if(myDictionary.ContainsKey(string.Format("{0}-{1}",sArray[0].Trim(), sArray[1].Trim())) == false)
+            //    {
+            //        //int temp = 0;
+
+            //        continue;
+            //    }
+
+            //    format.SubStrings.SetSubString("Product", string.Format("号型:{0} 规格:{1}", sArray[0],sArray[1]));
+            //    format.SubStrings.SetSubString("TiaoMa", myDictionary[string.Format("{0}-{1}", sArray[0].Trim(), sArray[1].Trim())]);
+            //    format.PrintSetup.IdenticalCopiesOfLabel = 1;
+
+            //    count = int.Parse(sArray[2]);
+
+            //    for(int index = 0;index < count;index++)
+            //    {
+            //        format.Print();
+            //    }
+
+            //}
+
+            //data2_file.Close();
+
+
+            //LabelFormatDocument format = null;
+
+            //format = engine.Documents.Open("d:\\Template\\TM.btw");
+
+            //string line = string.Empty;
+            //int id = 0;
+            //string temp = string.Empty;
+            //string temp2 = string.Empty;
+            //int count = 0;
+
+            //System.IO.StreamReader file =
+            //    new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            //while((line = file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+            //    using (ProductContext ctx = new ProductContext())
+            //    {
+            //        temp = sArray[0];
+            //        temp2 = sArray[1];
+            //        count = int.Parse(sArray[2]);
+                    
+            //        id = (from product in ctx.ProductData
+            //              where product.huohao == temp
+            //              select product.id).FirstOrDefault();
+
+            //        if (id == 0)
+            //        { 
+            //            break; 
+            //        }
+
+
+            //        BarcodeInfo entity = (from info in ctx.BarcodeInfo
+            //                              where info.product_id == id && info.size_name == temp2
+            //                              select info).FirstOrDefault();
+
+
+            //        format.SubStrings.SetSubString("Product", string.Format("号型:{0} 规格:{1}", sArray[0],sArray[1]));
+            //        format.SubStrings.SetSubString("TiaoMa", entity.barcode.Trim());
+
+            //        format.PrintSetup.IdenticalCopiesOfLabel = 1;
+                    
+
+            //        for(int index = 0;index < count;index++)
+            //        {
+            //            format.Print();
+            //        }
+
+
+
+
+            //        //BarcodeInfo entity = new BarcodeInfo();
+
+            //        //entity.product_id = id;
+            //        //entity.size_name = sArray[2];
+            //        //entity.barcode = sArray[0];
+            //        //entity.memo = string.Empty;
+            //        //entity.lastamp = System.Guid.NewGuid();
+
+            //        //ctx.BarcodeInfo.Add(entity);
+
+            //        //ctx.SaveChanges();
+                                            
+            //    }
+
+            //}
+
+            //file.Close();
 
         }
 
@@ -961,7 +1135,7 @@ namespace Mondiland.Obj
             {
                 if(data.SizeName == str_size_name)
                 {
-                    str_ean13_type = data.BarcodeType;
+                    str_ean13_type = data.BarcodeType.Trim();
                 }
             }
 
@@ -996,6 +1170,7 @@ namespace Mondiland.Obj
                     if (type == PrintType.TagEAN13)
                     {
                         format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
+                        format.SubStrings.SetSubString("info",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
                     }
                     else
                     {

@@ -39,6 +39,7 @@ namespace Mondiland.EFModule
         public Nullable<int> color_id { get; set; }
         public int ptemplate { get; set; }
         public string template_data { get; set; }
+        public int wash_u { get; set; }
     
         public virtual Dengji Dengji { get; set; }
         public virtual MadePlace MadePlace { get; set; }

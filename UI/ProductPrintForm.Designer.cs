@@ -34,18 +34,28 @@
             this.bt_print = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbx_select = new Mondiland.UCControl.MultiColumnComboBoxEx();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbo_prints = new System.Windows.Forms.ComboBox();
             this.bt_print_dh = new System.Windows.Forms.Button();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDown
             // 
             this.numericUpDown.Location = new System.Drawing.Point(276, 77);
+            this.numericUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.Size = new System.Drawing.Size(78, 21);
             this.numericUpDown.TabIndex = 1;
@@ -93,10 +103,6 @@
             this.cbx_select.TabIndex = 2;
             this.cbx_select.DropDownClosed += new System.EventHandler(this.cbx_select_DropDownClosed);
             // 
-            // bindingSource
-            // 
-            this.bindingSource.DataSource = typeof(Mondiland.Obj.ProductObject);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbo_prints);
@@ -127,8 +133,11 @@
             this.bt_print_dh.Text = "打印订货单";
             this.bt_print_dh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bt_print_dh.UseVisualStyleBackColor = true;
-            this.bt_print_dh.Visible = false;
             this.bt_print_dh.Click += new System.EventHandler(this.bt_print_dh_Click);
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataSource = typeof(Mondiland.Obj.ProductObject);
             // 
             // ProductPrintForm
             // 
@@ -149,8 +158,8 @@
             this.Text = "打印";
             this.Load += new System.EventHandler(this.PrintForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

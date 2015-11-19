@@ -217,6 +217,17 @@ namespace Mondiland.UI
 
                 chb_template.Checked = product.Ptemplate;
                 txb_template.Text = product.TemplateData;
+
+                if(product.EAN13DataListInfo.Count >0)
+                {
+                    menu_print_tag.Checked = false;                    
+                    tsmi_tag2_print.Checked = true;
+                }
+                else
+                {
+                    menu_print_tag.Checked = true;
+                    tsmi_tag2_print.Checked = false;
+                }
                 
 
                 if(product.Id !=0 )

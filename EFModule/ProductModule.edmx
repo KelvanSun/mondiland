@@ -157,6 +157,7 @@
           <Property Name="dengji_id" Type="int" Nullable="false" />
           <Property Name="tag_id" Type="int" Nullable="false" />
           <Property Name="wash_id" Type="int" Nullable="false" />
+          <Property Name="wash_u" Type="int" Nullable="false" />
           <Property Name="memo" Type="nvarchar" MaxLength="400" />
           <Property Name="pwash" Type="int" Nullable="false" />
           <Property Name="pbad" Type="int" Nullable="false" />
@@ -829,6 +830,7 @@
           <NavigationProperty Name="ColorData" Relationship="ProductModel.FK_ProductData_ColorData" FromRole="ProductData" ToRole="ColorData" />
           <Property Name="ptemplate" Type="Int32" Nullable="false" />
           <Property Name="template_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="wash_u" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="SafeData">
           <Key>
@@ -1535,6 +1537,7 @@
           <EntitySetMapping Name="ProductData">
             <EntityTypeMapping TypeName="ProductModel.ProductData">
               <MappingFragment StoreEntitySet="ProductData">
+                <ScalarProperty Name="wash_u" ColumnName="wash_u" />
                 <ScalarProperty Name="template_data" ColumnName="template_data" />
                 <ScalarProperty Name="ptemplate" ColumnName="ptemplate" />
                 <ScalarProperty Name="color_id" ColumnName="color_id" />
