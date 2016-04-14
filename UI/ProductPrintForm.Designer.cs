@@ -38,6 +38,7 @@
             this.cbo_prints = new System.Windows.Forms.ComboBox();
             this.bt_print_dh = new System.Windows.Forms.Button();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cb_blank = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -139,11 +140,22 @@
             // 
             this.bindingSource.DataSource = typeof(Mondiland.Obj.ProductObject);
             // 
+            // cb_blank
+            // 
+            this.cb_blank.AutoSize = true;
+            this.cb_blank.Location = new System.Drawing.Point(120, 123);
+            this.cb_blank.Name = "cb_blank";
+            this.cb_blank.Size = new System.Drawing.Size(72, 16);
+            this.cb_blank.TabIndex = 13;
+            this.cb_blank.Text = "间隔打印";
+            this.cb_blank.UseVisualStyleBackColor = true;
+            // 
             // ProductPrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 152);
+            this.Controls.Add(this.cb_blank);
             this.Controls.Add(this.bt_print_dh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbx_select);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbo_prints;
         private System.Windows.Forms.Button bt_print_dh;
+        private System.Windows.Forms.CheckBox cb_blank;
     }
 }

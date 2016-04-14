@@ -115,6 +115,7 @@ namespace Mondiland.UI
             {
                 string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
 
+
                 ProductObject product = new ProductObject(sArray[0]);
 
                 foreach (var size in product.SizeDataListInfo)
@@ -126,13 +127,20 @@ namespace Mondiland.UI
                     }
                 }
 
+
                 product.Print(m_engine,
                                 this.cbo_prints.SelectedItem.ToString(),
                                 this.m_type,
                                 iSelect,
                                 int.Parse(sArray[2]));
 
+                if (cb_blank.Checked == true)
+                {
+                    product.PrintBlank(m_engine, this.cbo_prints.SelectedItem.ToString());
+                }
+
             }
+
 
             file.Close();
 

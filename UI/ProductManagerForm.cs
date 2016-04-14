@@ -672,7 +672,7 @@ namespace Mondiland.UI
         {
             if (this.product.Id == 0)
             {
-                MessageUtil.ShowWarning("无法打印当前记录!");
+                MessageUtil.ShowWarning("先保存数据然后再操作!");
                 return;
             }
             

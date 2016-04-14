@@ -875,6 +875,10 @@ namespace Mondiland.Obj
             {
                 file_name = string.Format("TagG{0}.btw", row);
             }
+            else if(this.m_partname_id == 52)
+            {
+                file_name = string.Format("TagL{0}.btw", row);
+            }
             else if(this.m_pwash)
             {
                 file_name = string.Format("TagA{0}.btw", row);
@@ -910,6 +914,17 @@ namespace Mondiland.Obj
                     LoadProductData(data);
             }   
           
+        }
+
+        public void PrintBlank(Engine engine, string printer_name)
+        {
+                  
+            LabelFormatDocument format = engine.Documents.Open("d:\\Template\\WashBlank.btw");
+
+            format.PrintSetup.IdenticalCopiesOfLabel = 2;
+            format.PrintSetup.PrinterName = printer_name;
+
+            format.Print();
         }
 
         public void PrintDh(Engine engine)
@@ -963,10 +978,10 @@ namespace Mondiland.Obj
             {
                 string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
 
-                format.SubStrings.SetSubString("lb", sArray[0]);
-                format.SubStrings.SetSubString("name", sArray[1]);
-                format.SubStrings.SetSubString("cf", sArray[2]);
-                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[3])));
+                ///format.SubStrings.SetSubString("lb", sArray[0]);
+                format.SubStrings.SetSubString("name", sArray[0]);
+                format.SubStrings.SetSubString("cf", sArray[1]);
+                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[2])));
                 
                 format.PrintSetup.IdenticalCopiesOfLabel = 1;
 
@@ -1158,8 +1173,12 @@ namespace Mondiland.Obj
 
                     format.SubStrings.SetSubString("PinMin", this.m_parntname);
                     format.SubStrings.SetSubString("HuoHao", this.m_huohao);
-                    format.SubStrings.SetSubString("GuiGe", str_size_name);
-                    format.SubStrings.SetSubString("XingHao", str_size_type);
+
+                    if (this.m_partname_id != 52)
+                    {
+                        format.SubStrings.SetSubString("GuiGe", str_size_name);
+                        format.SubStrings.SetSubString("XingHao", str_size_type);
+                    }
                     format.SubStrings.SetSubString("SafeData", this.m_safedata);
                     format.SubStrings.SetSubString("StandardData", this.m_standarddata);
                     format.SubStrings.SetSubString("JiaGe", string.Format("￥{0:F2}", Convert.ToDecimal(this.m_price)));
@@ -1170,7 +1189,11 @@ namespace Mondiland.Obj
                     if (type == PrintType.TagEAN13)
                     {
                         format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
-                        format.SubStrings.SetSubString("info",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
+                        
+                        if(this.m_partname_id != 52)
+                            format.SubStrings.SetSubString("info",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
+                        else
+                            format.SubStrings.SetSubString("info", string.Format("货号:{0}", this.m_huohao));
                     }
                     else
                     {
