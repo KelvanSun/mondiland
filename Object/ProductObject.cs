@@ -927,8 +927,66 @@ namespace Mondiland.Obj
             format.Print();
         }
 
+        public class Tmp
+        {
+            public string hh = string.Empty;
+            public string gg = string.Empty;
+            public string tm = string.Empty;
+        };
+
+
         public void PrintDh(Engine engine)
         {
+            string line = string.Empty;
+            LabelFormatDocument format = engine.Documents.Open("C:\\11.btw");
+
+            BindingList<Tmp> EAN13 = new BindingList<Tmp>();
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+               new System.IO.StreamReader("c:\\22.txt", System.Text.Encoding.Default);
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+                Tmp tmp = new Tmp();
+
+                tmp.hh = sArray[0];
+                tmp.gg = sArray[1];
+                tmp.tm = sArray[2];
+
+                EAN13.Add(tmp);
+            }
+
+            file.Close();
+
+            System.IO.StreamReader file1 =
+               new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            while((line = file1.ReadLine()) != null)
+            {
+                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+                foreach(var obj in EAN13)
+                {
+                    if(obj.hh == sArray[0] && obj.gg == sArray[1])
+                    {
+                        format.SubStrings.SetSubString("TM", obj.tm);
+                        format.SubStrings.SetSubString("HH", obj.hh);
+                        format.SubStrings.SetSubString("GG", obj.gg);
+
+                        format.PrintSetup.IdenticalCopiesOfLabel = int.Parse(sArray[2].ToString());
+
+                        format.Print();
+                    }    
+                }
+            }
+
+            file1.Close();
+
+            
+            
+            
             //Dictionary<string, string> myDictionary = new Dictionary<string, string>();
 
             //myDictionary.Add("K", "508");
@@ -967,33 +1025,37 @@ namespace Mondiland.Obj
 
 
             
-            LabelFormatDocument format = engine.Documents.Open("d:\\Template\\定货会.btw");
+            //LabelFormatDocument format = engine.Documents.Open("C:\\t.btw");
 
-            string line = string.Empty;
+            //string line = string.Empty;
 
-            // Read the file and display it line by line.
-            System.IO.StreamReader file =
-               new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
-            while ((line = file.ReadLine()) != null)
-            {
-                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+            //// Read the file and display it line by line.
+            //System.IO.StreamReader file =
+            //   new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
 
-                ///format.SubStrings.SetSubString("lb", sArray[0]);
-                format.SubStrings.SetSubString("name", sArray[0]);
-                format.SubStrings.SetSubString("cf", sArray[1]);
-                format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[2])));
+            //    ///format.SubStrings.SetSubString("lb", sArray[0]);
+            //    format.SubStrings.SetSubString("hh", sArray[0]);
+            //    format.SubStrings.SetSubString("cf", sArray[1]);
+            //    //format.SubStrings.SetSubString("jg", string.Format("￥{0:F2}", Convert.ToDecimal(sArray[2])));
                 
-                format.PrintSetup.IdenticalCopiesOfLabel = 1;
+            //    format.PrintSetup.IdenticalCopiesOfLabel = 1;
 
-                format.Print();
-            }
+            //    format.Print();
+            //}
 
-            file.Close();
+            //file.Close();
+
+            
 
             //string data_line = string.Empty;
             //string data2_line = string.Empty;
 
             //Dictionary<string,string> myDictionary = new Dictionary<string,string>();
+
+                        
 
             //System.IO.StreamReader data_file =
             //    new System.IO.StreamReader("c:\\data.txt", System.Text.Encoding.Default);
@@ -1174,7 +1236,7 @@ namespace Mondiland.Obj
                     format.SubStrings.SetSubString("PinMin", this.m_parntname);
                     format.SubStrings.SetSubString("HuoHao", this.m_huohao);
 
-                    if (this.m_partname_id != 52)
+                    if (this.m_partname_id != 52) //排除领带
                     {
                         format.SubStrings.SetSubString("GuiGe", str_size_name);
                         format.SubStrings.SetSubString("XingHao", str_size_type);
@@ -1212,15 +1274,24 @@ namespace Mondiland.Obj
 
                     format = engine.Documents.Open(this.m_wash_filename);
 
-                    format.SubStrings.SetSubString("HuoHao", this.m_huohao);
-                    format.SubStrings.SetSubString("GuiGe", str_size_name);
-                    format.SubStrings.SetSubString("XingHao", str_size_type);
-                    format.SubStrings.SetSubString("ChengFeng", this.BuildMaterialDataString(str_size_name));
-
-                    if(this.m_ptemplate)
+                    if (this.m_partname_id != 52)
                     {
-                        format.SubStrings.SetSubString("Template", this.m_template_data);
+                        format.SubStrings.SetSubString("HuoHao", this.m_huohao);
+                        format.SubStrings.SetSubString("GuiGe", str_size_name);
+                        format.SubStrings.SetSubString("XingHao", str_size_type);
+                        format.SubStrings.SetSubString("ChengFeng", this.BuildMaterialDataString(str_size_name));
+
+                        if (this.m_ptemplate)
+                        {
+                            format.SubStrings.SetSubString("Template", this.m_template_data);
+                        }
                     }
+                    else
+                    {
+                        format.SubStrings.SetSubString("HuoHao", this.m_huohao);
+                    }
+
+                    
 
                     break;
 
