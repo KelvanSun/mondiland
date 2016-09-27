@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 using Mondiland.Obj;
 using Mondiland.Global;
@@ -82,6 +83,46 @@ namespace Mondiland.UI
             if (e.Button == System.Windows.Forms.MouseButtons.Left) return;
 
             Clipboard.SetText(ucDataGridView.CurrentRow.Cells["ean13"].Value.ToString());
+        }
+
+        
+        private void tsb_import_Click(object sender, EventArgs e)
+        {
+            string line = string.Empty;
+
+            Dictionary<string, string> dump = new Dictionary<string, string>();
+
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+               new System.IO.StreamReader("c:\\dump.txt", System.Text.Encoding.Default);
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+                if (dump.ContainsKey(string.Format("{0}-{1}", sArray[0].Trim(), sArray[1].Trim())) == false)
+                {
+                    dump.Add(string.Format("{0}-{1}", sArray[0].Trim(), sArray[1].Trim()), sArray[2].Trim());
+                }
+            }
+
+            file.Close();
+
+
+            int index = 0;
+            string m_sizename = string.Empty;
+
+            for (index = 0; index < ucDataGridView.Rows.Count; index++)
+            {
+                m_sizename = ucDataGridView.Rows[index].Cells["SizeName"].Value.ToString();
+               
+                if(dump.ContainsKey(string.Format("{0}-{1}",this.m_product.HuoHao, m_sizename.Trim())) == true)
+                {
+                    ucDataGridView.Rows[index].Cells["ean13"].Value = dump[string.Format("{0}-{1}",this.m_product.HuoHao, m_sizename.Trim())];
+                }
+                
+            }
+
         }
     }
 }

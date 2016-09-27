@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarcodeManagerForm));
             this.ucDataGridView = new Mondiland.UCControl.UCDataGridView();
             this.SizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +37,7 @@
             this.Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsb_save = new System.Windows.Forms.ToolStripButton();
+            this.tsb_import = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ucDataGridView)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -66,16 +67,16 @@
             // 
             // SizeName
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SizeName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SizeName.DefaultCellStyle = dataGridViewCellStyle3;
             this.SizeName.HeaderText = "号型";
             this.SizeName.Name = "SizeName";
             this.SizeName.ReadOnly = true;
             // 
             // ean13
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ean13.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ean13.DefaultCellStyle = dataGridViewCellStyle4;
             this.ean13.HeaderText = "EAN13条码";
             this.ean13.Name = "ean13";
             this.ean13.Width = 150;
@@ -89,7 +90,8 @@
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsb_save});
+            this.tsb_save,
+            this.tsb_import});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(639, 25);
@@ -105,6 +107,16 @@
             this.tsb_save.Size = new System.Drawing.Size(23, 22);
             this.tsb_save.Text = "保存";
             this.tsb_save.Click += new System.EventHandler(this.tsb_save_Click);
+            // 
+            // tsb_import
+            // 
+            this.tsb_import.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsb_import.Image = ((System.Drawing.Image)(resources.GetObject("tsb_import.Image")));
+            this.tsb_import.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_import.Name = "tsb_import";
+            this.tsb_import.Size = new System.Drawing.Size(23, 22);
+            this.tsb_import.Text = "导入";
+            this.tsb_import.Click += new System.EventHandler(this.tsb_import_Click);
             // 
             // BarcodeManagerForm
             // 
@@ -136,5 +148,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Memo;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton tsb_save;
+        private System.Windows.Forms.ToolStripButton tsb_import;
     }
 }

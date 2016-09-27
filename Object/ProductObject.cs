@@ -771,6 +771,11 @@ namespace Mondiland.Obj
             }
 
 
+            if (this.m_huohao.Substring(0, 1) == "L")
+            {
+                return "WashG.btw";
+            }
+
 
             foreach (var obj in this.m_material_data_list)
             {
@@ -778,6 +783,7 @@ namespace Mondiland.Obj
                     ++materialdata_count;
             }
 
+            
             int row = materialdata_count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
             string str_class = this.m_huohao.Substring(0, 1);
             string file_name = string.Empty;
@@ -871,11 +877,11 @@ namespace Mondiland.Obj
             int row = materialdata_count + (string.IsNullOrEmpty(this.MaterialFillInfo.material_type) ? 0 : 1);
             string file_name = string.Empty;
 
-            if(this.m_partname_id == 21)
+            if (this.m_huohao.Substring(0, 1) == "G")
             {
                 file_name = string.Format("TagG{0}.btw", row);
             }
-            else if(this.m_partname_id == 52)
+            else if (this.m_huohao.Substring(0, 1) == "L")
             {
                 file_name = string.Format("TagL{0}.btw", row);
             }
@@ -927,12 +933,12 @@ namespace Mondiland.Obj
             format.Print();
         }
 
-        public class Tmp
-        {
-            public string hh = string.Empty;
-            public string gg = string.Empty;
-            public string tm = string.Empty;
-        };
+        //public class Tmp
+        //{
+        //    public string hh = string.Empty;
+        //    public string gg = string.Empty;
+        //    public string tm = string.Empty;
+        //};
 
 
         public void PrintDh(Engine engine)
@@ -940,49 +946,40 @@ namespace Mondiland.Obj
             string line = string.Empty;
             LabelFormatDocument format = engine.Documents.Open("C:\\11.btw");
 
-            BindingList<Tmp> EAN13 = new BindingList<Tmp>();
+            //BindingList<Tmp> EAN13 = new BindingList<Tmp>();
 
-            // Read the file and display it line by line.
+            //// Read the file and display it line by line.
+            //System.IO.StreamReader file =
+            //   new System.IO.StreamReader("c:\\22.txt", System.Text.Encoding.Default);
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+            //    Tmp tmp = new Tmp();
+
+            //    tmp.hh = sArray[0];
+            //    tmp.gg = sArray[1];
+            //    tmp.tm = sArray[2];
+
+            //    EAN13.Add(tmp);
+            //}
+
+            //file.Close();
+
             System.IO.StreamReader file =
-               new System.IO.StreamReader("c:\\22.txt", System.Text.Encoding.Default);
-            while ((line = file.ReadLine()) != null)
+               new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            while((line = file.ReadLine()) != null)
             {
                 string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
 
-                Tmp tmp = new Tmp();
+                format.SubStrings.SetSubString("TXT", sArray[0]);
+                format.PrintSetup.IdenticalCopiesOfLabel = 1;
 
-                tmp.hh = sArray[0];
-                tmp.gg = sArray[1];
-                tmp.tm = sArray[2];
-
-                EAN13.Add(tmp);
+                format.Print();
             }
 
             file.Close();
-
-            System.IO.StreamReader file1 =
-               new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
-
-            while((line = file1.ReadLine()) != null)
-            {
-                string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
-
-                foreach(var obj in EAN13)
-                {
-                    if(obj.hh == sArray[0] && obj.gg == sArray[1])
-                    {
-                        format.SubStrings.SetSubString("TM", obj.tm);
-                        format.SubStrings.SetSubString("HH", obj.hh);
-                        format.SubStrings.SetSubString("GG", obj.gg);
-
-                        format.PrintSetup.IdenticalCopiesOfLabel = int.Parse(sArray[2].ToString());
-
-                        format.Print();
-                    }    
-                }
-            }
-
-            file1.Close();
 
             
             
@@ -1178,6 +1175,30 @@ namespace Mondiland.Obj
 
             //file.Close();
 
+
+            //string line = string.Empty;
+
+            //LabelFormatDocument format = engine.Documents.Open("d:\\Template\\定货会.btw");
+ 
+            //System.IO.StreamReader file =
+            //    new System.IO.StreamReader("c:\\11.txt", System.Text.Encoding.Default);
+
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    string[] sArray = Regex.Split(line, "\t", RegexOptions.IgnoreCase);
+
+            //    format.SubStrings.SetSubString("lb", sArray[0]);
+            //   format.SubStrings.SetSubString("name", sArray[1]);
+            //   format.SubStrings.SetSubString("cf", sArray[2]);
+            //   format.SubStrings.SetSubString("jg",string.Format("￥{0:F2}", Convert.ToDecimal(sArray[3])));
+            //    format.PrintSetup.IdenticalCopiesOfLabel = 1;
+
+            //   format.Print();
+            //}
+
+            //file.Close();
+
+
         }
 
         /// <summary>
@@ -1236,7 +1257,7 @@ namespace Mondiland.Obj
                     format.SubStrings.SetSubString("PinMin", this.m_parntname);
                     format.SubStrings.SetSubString("HuoHao", this.m_huohao);
 
-                    if (this.m_partname_id != 52) //排除领带
+                    if (this.m_huohao.Substring(0, 1) != "L") //排除领带
                     {
                         format.SubStrings.SetSubString("GuiGe", str_size_name);
                         format.SubStrings.SetSubString("XingHao", str_size_type);
@@ -1251,8 +1272,8 @@ namespace Mondiland.Obj
                     if (type == PrintType.TagEAN13)
                     {
                         format.SubStrings.SetSubString("TiaoMa", str_ean13_type);
-                        
-                        if(this.m_partname_id != 52)
+
+                        if (this.m_huohao.Substring(0, 1) != "L")
                             format.SubStrings.SetSubString("info",string.Format("货号:{0} 规格:{1}",this.m_huohao,str_size_name));
                         else
                             format.SubStrings.SetSubString("info", string.Format("货号:{0}", this.m_huohao));
@@ -1274,7 +1295,7 @@ namespace Mondiland.Obj
 
                     format = engine.Documents.Open(this.m_wash_filename);
 
-                    if (this.m_partname_id != 52)
+                    if (this.m_huohao.Substring(0, 1) != "L")
                     {
                         format.SubStrings.SetSubString("HuoHao", this.m_huohao);
                         format.SubStrings.SetSubString("GuiGe", str_size_name);
