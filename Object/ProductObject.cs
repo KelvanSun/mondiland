@@ -776,6 +776,11 @@ namespace Mondiland.Obj
                 return "WashG.btw";
             }
 
+            if (this.m_huohao.Substring(0,1) == "W")
+            {
+                return "WashW.btw";
+            }
+
 
             foreach (var obj in this.m_material_data_list)
             {
@@ -884,6 +889,10 @@ namespace Mondiland.Obj
             else if (this.m_huohao.Substring(0, 1) == "L")
             {
                 file_name = string.Format("TagL{0}.btw", row);
+            }
+            else if(this.m_huohao.Substring(0,1) == "W")
+            {
+                file_name = string.Format("TagW{0}.btw", row);
             }
             else if(this.m_pwash)
             {
@@ -1257,7 +1266,7 @@ namespace Mondiland.Obj
                     format.SubStrings.SetSubString("PinMin", this.m_parntname);
                     format.SubStrings.SetSubString("HuoHao", this.m_huohao);
 
-                    if (this.m_huohao.Substring(0, 1) != "L") //排除领带
+                    if (this.m_huohao.Substring(0, 1) != "L" && this.m_huohao.Substring(0, 1) != "W") //排除领带
                     {
                         format.SubStrings.SetSubString("GuiGe", str_size_name);
                         format.SubStrings.SetSubString("XingHao", str_size_type);
