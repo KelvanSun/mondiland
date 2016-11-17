@@ -250,7 +250,7 @@ namespace Mondiland.Obj
         private decimal m_price = 0;
         private string m_memo = string.Empty;
         private bool m_pwash = false;
-        private bool m_wash_u = false;
+        private int m_wash_u = 0;
 
         private Guid m_lastamp = Guid.Empty;
         /// <summary>
@@ -656,7 +656,7 @@ namespace Mondiland.Obj
             this.m_pbad = data.pbad == 1 ? true : false;
 
             this.m_ptemplate = data.ptemplate == 1 ? true : false;
-            this.m_wash_u = data.wash_u == 1 ? true : false;
+            this.m_wash_u = data.wash_u;
             this.m_template_data = data.template_data;
 
             this.Color_Id = (int)data.color_id;
@@ -758,12 +758,12 @@ namespace Mondiland.Obj
             int materialdata_count = 0;
 
 
-            if(m_wash_u)
+            if(m_wash_u > 0)
             {
                 using (ProductContext ctx = new ProductContext())
                 {
                     WashPrintTemplate wash_info = (from wash in ctx.WashPrintTemplate
-                                where wash.id == this.m_wash_id
+                                where wash.id == this.m_wash_u
                                 select wash).FirstOrDefault();
 
                     return wash_info.file_name;
